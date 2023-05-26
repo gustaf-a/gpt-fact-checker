@@ -1,8 +1,8 @@
 ﻿namespace GptFactCheckerApi.Model;
 
-public class Source
+public class SourceDto
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; }
     public string Name { get; set; }
     public string Language { get; set; }
     public string Description { get; set; }
@@ -11,13 +11,16 @@ public class Source
     public string SourceType { get; set; }
     public string SourcePerson { get; set; }
     public string SourceContext { get; set; }
-    public string SourceUrl { get; set; } 
+    public string SourceUrl { get; set; }
+    public string SourceRawText { get; set; }
 
     public DateOnly SourceImportedDate { get; set; }
     public DateOnly SourceCreatedDate { get; set; }
 
     public DateOnly ClaimsFirstExtractedDate { get; set; }
     public DateOnly ClaimsUpdatedDate { get; set; }
-   
+
     public string CoverImageUrl { get; set; }
+
+    public List<ClaimDto> Claims { get; set; }
 }

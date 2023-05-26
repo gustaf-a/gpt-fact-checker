@@ -1,4 +1,7 @@
 
+using GptFactCheckerApi.Model;
+using Newtonsoft.Json;
+
 namespace GptFactCheckerApi
 {
     public class Program

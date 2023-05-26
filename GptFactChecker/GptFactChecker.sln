@@ -3,7 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GptFactCheckerApi", "GptFactCheckerApi\GptFactCheckerApi.csproj", "{C56B3109-D574-4DAB-B75E-54232CFCBC2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GptFactCheckerApi", "GptFactCheckerApi\GptFactCheckerApi.csproj", "{C56B3109-D574-4DAB-B75E-54232CFCBC2D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "gpt-fact-checker-front", "gpt-fact-checker-front\", "{D8C59B11-84B2-451B-B488-B00E546B06DC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52467"
+		Debug.AspNetCompiler.PhysicalPath = "gpt-fact-checker-front\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52467\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52467"
+		Release.AspNetCompiler.PhysicalPath = "gpt-fact-checker-front\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52467\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52467"
+		SlnRelativePath = "gpt-fact-checker-front\"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GptFactCheckerApiTests", "GptFactCheckerApiTests\GptFactCheckerApiTests.csproj", "{692DB627-1745-45F8-B807-281836535448}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prompting", "Prompting", "{C7D7F583-4E01-496D-838C-1A1CC276FFBC}"
+	ProjectSection(SolutionItems) = preProject
+		FactExtraction_EN.txt = FactExtraction_EN.txt
+		FactExtraction_EN_v2.txt = FactExtraction_EN_v2.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +44,14 @@ Global
 		{C56B3109-D574-4DAB-B75E-54232CFCBC2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C56B3109-D574-4DAB-B75E-54232CFCBC2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C56B3109-D574-4DAB-B75E-54232CFCBC2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{692DB627-1745-45F8-B807-281836535448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692DB627-1745-45F8-B807-281836535448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692DB627-1745-45F8-B807-281836535448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692DB627-1745-45F8-B807-281836535448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
