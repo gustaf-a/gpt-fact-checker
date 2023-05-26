@@ -1,15 +1,22 @@
+<script setup lang="ts">
+import HeroBanner from "@/components/Header/HeroBanner.vue";
+import Container from "@/components/Container.vue";
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+	<div class="content-container">
+		<HeroBanner />
+		<Container>
+			<div class="about">
+				<p>Extracting claims from a source is time consuming.</p>
+				<p>
+					We try to separate the work of extracting claims from the work of fact
+					checking the claims, there by making it easier for qualified
+					individuals to spend their time better.
+				</p>
+			</div>
+		</Container>
+	</div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<style></style>

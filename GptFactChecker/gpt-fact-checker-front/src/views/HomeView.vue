@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import SourcesList from "@/components/Content/HomePage/SourcesList.vue";
+import HeroBanner from "@/components/Header/HeroBanner.vue";
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+	<main>
+		<div class="content-container">
+			<HeroBanner />
+			<SourcesList />
+		</div>
+	</main>
 </template>
