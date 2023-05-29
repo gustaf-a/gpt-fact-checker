@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prompting", "Prompting", "{
 	ProjectSection(SolutionItems) = preProject
 		FactExtraction_EN.txt = FactExtraction_EN.txt
 		FactExtraction_EN_v2.txt = FactExtraction_EN_v2.txt
+		TestData.txt = TestData.txt
 	EndProjectSection
 EndProject
 Global

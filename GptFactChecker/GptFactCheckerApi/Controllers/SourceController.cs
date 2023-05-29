@@ -1,6 +1,6 @@
 ﻿using GptFactCheckerApi.Model;
+using GptFactCheckerApi.Services;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace GptFactCheckerApi.Controllers;
 
@@ -9,11 +9,11 @@ namespace GptFactCheckerApi.Controllers;
 [Route("api/sources")]
 public class SourceController : ControllerBase
 {
-    private const string SourcesJsonFilePath = @"C:\PrivateRepos\gpt-fact-checker\GptFactChecker\GptFactCheckerApi\MockData\Sources.json";
+    private readonly ISourceService _sourceService;
 
-    public SourceController()
+    public SourceController(ISourceService sourceService)
     {
-
+        _sourceService = sourceService;
     }
 
     /// <summary>
@@ -22,12 +22,11 @@ public class SourceController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateSource([FromBody] SourceDto sourceDto)
     {
-        var existingSources = await GetSources();
+        var result = await _sourceService.AddSource(sourceDto.ToSource(), sourceDto.Claims.ToClaims());
 
-        existingSources.Add(sourceDto);
+        if (!result)
+            return NotFound();
 
-        await SaveSources(existingSources);
-        
         return Ok();
     }
 
@@ -37,9 +36,7 @@ public class SourceController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllSources()
     {
-        //Should include claims too?
-
-        var sources = await GetSources();
+        var sources = await _sourceService.GetSources();
 
         return Ok(sources);
     }
@@ -55,14 +52,12 @@ public class SourceController : ControllerBase
         if (string.IsNullOrWhiteSpace(id))
             return NotFound();
 
-        var sources = await GetSources();
+        var source = await _sourceService.GetSourceById(id);
 
-        var matchingSource = sources.Find(s => s.Id == id);
-
-        if (matchingSource == null)
+        if (source is null)
             return NotFound();
 
-        return Ok(matchingSource);
+        return Ok(source);
     }
 
     /// <summary>
@@ -74,31 +69,11 @@ public class SourceController : ControllerBase
         if (string.IsNullOrWhiteSpace(id))
             return NotFound();
 
-        var sources = await GetSources();
+        var result = await _sourceService.DeleteSource(id);
 
-        var matchingSource = sources.Find(s => s.Id == id);
-
-        if (matchingSource == null)
+        if (!result)
             return NotFound();
 
-        sources.Remove(matchingSource);
-
-        await SaveSources(sources);
-
         return Ok();
-    }
-
-    private static async Task<List<SourceDto>> GetSources()
-    {
-        var sourcesJson = await System.IO.File.ReadAllTextAsync(SourcesJsonFilePath);
-
-        return JsonConvert.DeserializeObject<List<SourceDto>>(sourcesJson);
-    }
-
-    private async Task SaveSources(List<SourceDto> existingSources)
-    {
-        var updatedSourcesJson = JsonConvert.SerializeObject(existingSources);
-
-        await System.IO.File.WriteAllTextAsync(SourcesJsonFilePath, updatedSourcesJson);
     }
 }

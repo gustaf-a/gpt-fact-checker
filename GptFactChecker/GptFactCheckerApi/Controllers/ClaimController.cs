@@ -1,62 +1,47 @@
 ﻿using GptFactCheckerApi.Model;
+using GptFactCheckerApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GptFactCheckerApi.Controllers;
 
 [ApiController]
 [Produces("application/json")]
-[Route("api/facts")]
+[Route("api/claims")]
 public class ClaimController : ControllerBase
 {
-    //get all facts
+    private readonly IClaimService _claimService;
+
+    public ClaimController(IClaimService claimService)
+    {
+        _claimService = claimService;
+    }
 
     /// <summary>
-    /// Returns all facts related to a sourceId
+    /// Creates a source
+    /// </summary>
+    [HttpPost("source/id")]
+    public async Task<IActionResult> CreateClaims([FromQuery] string sourceId, [FromBody] ClaimDto[] claimsDtosToCreate)
+    {
+        var result =  await _claimService.AddClaims(claimsDtosToCreate.ToClaims(), sourceId);
+
+        if(!result)
+            return StatusCode(500);
+
+        return Ok();
+    }
+
+    /// <summary>
+    /// Returns all claims related to a sourceId
     /// </summary>
     [HttpGet("source/id")]
-    public async Task<IActionResult> GetAllFactsBySource([FromQuery] string sourceId)
+    public async Task<IActionResult> GetAllClaimsBySource([FromQuery] string sourceId)
     {
         if (string.IsNullOrWhiteSpace(sourceId))
             return NotFound();
 
-        var facts = new List<Claim>
-        {
-            //new Claim {
-            //    Id = "1",
-            //    ClaimText = "The planet will soon cool down.",
-            //    SourceId = sourceId,
-            //    FactChecks = new []{ new ClaimCheck{
-            //        Id = "abcd",
-            //        CreatorId = "1000",
-            //        Label = "False",
-            //        ClaimCheckText = "This is false."
-            //    } }
-            //},
-            //new Claim {
-            //    Id = "2",
-            //    ClaimText = "The scientists don't know.",
-            //    SourceId = sourceId,
-            //    FactChecks = new []{ new ClaimCheck{
-            //        Id = "hhhh",
-            //        CreatorId = "2000",
-            //        Label = "Misleading",
-            //        ClaimCheckText = "This not really true."
-            //    } }
-            //},
-            //new Claim {
-            //    Id = "5",
-            //    ClaimText = "A warming earth is not a bad thing.",
-            //    SourceId = sourceId,
-            //    FactChecks = new []{ new ClaimCheck{
-            //        Id = "kkkkk",
-            //        CreatorId = "3000",
-            //        Label = "Exaggerated",
-            //        ClaimCheckText = "This is very false."
-            //    } }
-            //},
-        };
+        var claims = await _claimService.GetClaims(sourceId);
 
-        return Ok(facts);
+        return Ok(claims);
     }
 
 }
