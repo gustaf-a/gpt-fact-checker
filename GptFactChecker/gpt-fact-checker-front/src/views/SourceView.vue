@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Container from "@/components/Container.vue";
-import SourcePage from "../components/Content/SourcePage.vue";
+import SourcePage from "@/components/Content/SourceDetailsPage/SourcePage.vue";
 </script>
 
 <template>

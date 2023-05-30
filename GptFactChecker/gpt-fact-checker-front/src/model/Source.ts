@@ -13,13 +13,13 @@ class Source {
 	public sourcePerson: string;
 	public sourceContext: string;
 	public sourceUrl: string;
-	public sourceImportedDate?: Date;
-	public sourceCreatedDate?: Date;
 	public sourceRawText: string;
+	public sourceImportedDate?: string;
+	public sourceCreatedDate?: string;
 
-	public claimsFirstExtractedDate?: Date;
-	public claimsUpdatedDate?: Date;
-	public claims: Claim[];
+	public claimsFirstExtractedDate: string;
+	public claimsUpdatedDate: string;
+	public claims?: Claim[];
 
 	constructor() {
 		this.id = "";
@@ -31,12 +31,11 @@ class Source {
 		this.sourcePerson = "";
 		this.sourceContext = "";
 		this.sourceUrl = "";
-		this.sourceImportedDate = undefined;
-		this.sourceCreatedDate = undefined;
-		this.claimsFirstExtractedDate = undefined;
-		this.claimsUpdatedDate = undefined;
+		this.sourceImportedDate = "";
+		this.sourceCreatedDate = "";
+		this.claimsFirstExtractedDate = "";
+		this.claimsUpdatedDate = "";
 		this.coverImageUrl = "";
-		this.claims = [];
 		this.sourceRawText = "";
 	}
 }

@@ -7,11 +7,10 @@ import type { FormInstance } from "ant-design-vue";
 import { notification } from "ant-design-vue";
 import { useSourcesStore } from "@/stores/sources";
 import { storeToRefs } from "pinia";
-import type Source from "@/model/Source";
-import { id } from "vuetify/locale";
+import { generateGuid } from "@/utils/guid";
 
 const sourcesStore = useSourcesStore();
-const { loadingSources, errorMessage } = storeToRefs(sourcesStore);
+const { errorMessage } = storeToRefs(sourcesStore);
 
 // ------------- Form --------------
 //TODO
@@ -47,14 +46,6 @@ const formState = reactive<FormState>({
 	sourceCreatedDate: "",
 });
 
-function generateGuid(): string {
-	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-		const r = (Math.random() * 16) | 0;
-		const v = c === "x" ? r : (r & 0x3) | 0x8;
-		return v.toString(16);
-	});
-}
-
 const formRef = ref<FormInstance>();
 
 const rules: Record<string, Rule[]> = {
@@ -86,27 +77,6 @@ const rules: Record<string, Rule[]> = {
 
 // const removeTag = (index: number) => {
 // 	form.tags.splice(index, 1);
-// };
-
-//Handle claims
-// let newClaimSummarized = ref("");
-// let newClaimRawText = ref("");
-
-// const addClaim = () => {
-// 	if (newClaimSummarized.value && newClaimRawText.value) {
-// 		form.claims.push({
-// 			id: generateGuid(),
-// 			claimSummarized: newClaimSummarized.value,
-// 			claimRawText: newClaimRawText.value,
-// 			claimChecks: [],
-// 		});
-// 		newClaimSummarized.value = "";
-// 		newClaimRawText.value = "";
-// 	}
-// };
-
-// const removeClaim = (index: number) => {
-// 	form.claims.splice(index, 1);
 // };
 
 const onValidationFailed = (errorInfo: any) => {
@@ -152,6 +122,8 @@ const submitForm = async () => {
 function getSourceObject(form: FormState): SourceObject | null {
 	try {
 		const source = new SourceObject();
+		source.id = generateGuid();
+		
 		source.name = form.name;
 		source.language = form.language;
 		source.description = form.description;
@@ -162,17 +134,12 @@ function getSourceObject(form: FormState): SourceObject | null {
 		source.sourceContext = form.sourceContext;
 		source.sourceUrl = form.sourceUrl;
 		source.sourceRawText = form.sourceRawText;
-		source.sourceCreatedDate = convertStringToDate(form.sourceCreatedDate);
+		source.sourceCreatedDate = form.sourceCreatedDate;
 		return source;
 	} catch {
 		console.log("Failed to convert form to source object.");
 		return null;
 	}
-}
-
-function convertStringToDate(dateString: string): Date {
-	const [year, month, day] = dateString.split("-");
-	return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 }
 
 //------------- Visual -------------
@@ -187,7 +154,7 @@ const onClose = () => {
 	visible.value = false;
 };
 
-type NotificationType = "success" | "error" | "info" | "warning"; // Adjust to fit the API
+type NotificationType = "success" | "error" | "info" | "warning";
 
 const openNotificationWithIcon = (
 	notificationType: NotificationType,
@@ -203,6 +170,7 @@ const openNotificationWithIcon = (
 		console.log("Failed to create notification with type: " + notificationType);
 	}
 };
+
 </script>
 
 <template>

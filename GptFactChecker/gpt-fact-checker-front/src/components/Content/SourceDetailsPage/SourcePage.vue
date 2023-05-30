@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-
 import { useRoute } from "vue-router";
 import { useSourcesStore } from "@/stores/sources";
-
 import SourceObject from "@/model/Source";
-
 import ClaimsList from "./ClaimsList.vue";
+
+const isLoggedIn = ref(true);
+const hasEditingRights = ref(true);
+
+const colors = ["green", "pink", "blue", "orange", "cyan", "red", "purple"];
 
 const route = useRoute();
 
@@ -22,8 +24,7 @@ const fetchSource = async () => {
 	loadingSource.value = true;
 
 	try {
-		const sourceFromStore: SourceObject | null =
-			await sourcesStore.getSourceByIdAsync(sourceId);
+		const sourceFromStore = await sourcesStore.getSourceByIdAsync(sourceId);
 
 		if (!sourceFromStore) {
 			console.log("Failed to get source with provided ID.");
@@ -31,6 +32,7 @@ const fetchSource = async () => {
 		}
 
 		source.value = sourceFromStore;
+		console.log(source.value);
 	} catch (error) {
 		console.error(error);
 	} finally {
@@ -48,25 +50,44 @@ onMounted(async () => {
 		class="source"
 		v-if="source"
 	>
-		<h1>{{ source.name }}</h1>
+		<div class="source-heading">
+			<h1>{{ source.name }}</h1>
+			<a-tag
+				v-for="(tag, index) in source.tags"
+				:key="index"
+				:color="colors[index]"
+				>{{ tag }}</a-tag
+			>
+		</div>
 		<p>
 			{{ source.description ? source.description : "No description available" }}
 		</p>
-		<a-descriptions title="About">
-			<a-descriptions-item
-				label="URL"
-				span="3"
-				>{{ source.sourceUrl }}</a-descriptions-item
-			>
-			<a-descriptions-item label="Type">{{
+		<a-descriptions class="description-title" size="small">
+			<a-descriptions-item label="Author" class="description-item">{{
+				source.sourcePerson
+			}}</a-descriptions-item>
+				<a-descriptions-item label="Context" class="description-item">{{
+					source.sourceContext
+				}}</a-descriptions-item>
+			<a-descriptions-item label="Language" class="description-item">{{
+				source.language
+			}}</a-descriptions-item>
+			<a-descriptions-item label="Media type" class="description-item">{{
 				source.sourceType
 			}}</a-descriptions-item>
-			<a-descriptions-item label="Category">{{
-				source.tags
+			<a-descriptions-item label="Source created" class="description-item">{{
+				source.sourceCreatedDate
 			}}</a-descriptions-item>
+			<a-descriptions-item class="description-item">
+				<a
+				:href="source.sourceUrl"
+				target="_blank"
+			>
+				Source Link</a
+			>
+			</a-descriptions-item>
 		</a-descriptions>
 
-		<h3>Claims</h3>
 		<ClaimsList :source="source" />
 	</div>
 	<div v-else>

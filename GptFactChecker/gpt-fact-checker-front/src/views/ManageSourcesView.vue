@@ -26,8 +26,17 @@ onMounted(() => {
 <template>
 	<div class="content-container">
 		<Container>
-			<div class="new-source-container">
-				<AddNewSourceDrawer />
+			<div class="manage-source-top-bar">
+				<div>
+
+					<a-input-search
+					class="nav-item navigation-search"
+					placeholder="Search.."
+					/>
+				</div>
+				<div class="new-source-container">
+					<AddNewSourceDrawer />
+				</div>
 			</div>
 			<a-divider />
 			<div class="manage-sources-container">
@@ -38,10 +47,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.manage-source-top-bar{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 2vh;
+}
+
 .new-source-container {
 	display: flex;
 	justify-content: end;
-	margin-top: 2vh;
-	margin-right: 10vw;
 }
 </style>

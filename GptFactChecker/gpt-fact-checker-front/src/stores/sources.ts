@@ -69,6 +69,31 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		return foundSource;
 	}
 
+	async function deleteSourceAsync(sourceId: string): Promise<boolean> {
+		try {
+			const response = await axios.delete(
+				`${BaseUrl}/api/sources/id?id=${sourceId}`
+			);
+
+			if (response.status !== 200) {
+				errorMessage.value = ErrorMessages.DELETE_RESOURCE_ERROR;
+				return false;
+			}
+
+			sources.value = sources.value.filter(source => source.id !== sourceId);
+
+			return true;
+		} catch (error) {
+			errorMessage.value = `${ErrorMessages.DELETE_RESOURCE_ERROR}: ${
+				error instanceof Error ? error.message : String(error)
+			}`;
+			console.log(error);
+			console.log("Failed to delete source: " + sourceId);
+			return false;
+		} finally {
+		}
+	}
+
 	async function addSourceAsync(source: Source): Promise<boolean> {
 		if (!source) {
 			console.log("Can't create null source.");
@@ -84,7 +109,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
 				console.log(ErrorMessages.CREATE_RESOURCE_ERROR);
-				console.log(source)
+				console.log(source);
 				return false;
 			}
 
@@ -96,7 +121,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 				error instanceof Error ? error.message : String(error)
 			}`;
 			console.log(error);
-			console.log(source)
+			console.log(source);
 			return false;
 		} finally {
 			loadingSources.value = false;
@@ -110,5 +135,6 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		getSourcesAsync,
 		getSourceByIdAsync,
 		addSourceAsync,
+		deleteSourceAsync
 	};
 });

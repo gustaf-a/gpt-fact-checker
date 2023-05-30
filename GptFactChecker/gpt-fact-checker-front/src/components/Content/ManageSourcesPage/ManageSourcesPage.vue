@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { useSourcesStore } from "@/stores/sources";
 import { storeToRefs } from "pinia";
-import ManageSource from "./ManageSource.vue";
-import SourceObject from "@/model/Source";
+import { notification } from "ant-design-vue";
 
 const sourcesStore = useSourcesStore();
 const { sources, loadingSources } = storeToRefs(sourcesStore);
@@ -23,11 +23,62 @@ onMounted(() => {
 	fetchSources();
 	initLoading.value = false;
 });
+//------ Navigation
+
+const router = useRouter();
+
+function navigateToDetails(sourceId: string): void {
+	console.log(sourceId);
+
+	router.push(`/source/${sourceId}`);
+};
+
+//------ Manage sources
+
+async function removeSource(sourceId: string) {
+	try {
+		const deleteSourceResult = await sourcesStore.deleteSourceAsync(sourceId);
+
+		if (!deleteSourceResult) {
+			openNotificationWithIcon(
+				"error",
+				"Failed to remove source",
+				"Couldn't remove source."
+			);
+		}
+
+		openNotificationWithIcon("success", "Source removed", "Removed source.");
+	} catch (error) {
+		console.error(error);
+		openNotificationWithIcon(
+			"error",
+			"Failed to remove source",
+			"Couldn't remove source."
+		);
+	} finally {
+	}
+}
+
+type NotificationType = "success" | "error" | "info" | "warning";
+
+const openNotificationWithIcon = (
+	notificationType: NotificationType,
+	title: string,
+	message: string
+) => {
+	if (notificationType in notification) {
+		notification[notificationType]({
+			message: title,
+			description: message,
+		});
+	} else {
+		console.log("Failed to create notification with type: " + notificationType);
+	}
+};
 </script>
 
 <template>
 	<a-list
-		class="demo-loadmore-list"
 		:loading="loadingSources || initLoading"
 		item-layout="horizontal"
 		:data-source="sources"
@@ -35,9 +86,17 @@ onMounted(() => {
 		<template #renderItem="{ item: source }">
 			<a-list-item>
 				<template #actions>
-					<a key="more">Details</a>
+					<a
+						key="more"
+						@click="navigateToDetails(source.id)"
+						>Details</a
+					>
 					<a key="edit">Edit</a>
-					<a key="delete">Remove</a>
+					<a
+						key="delete"
+						@click="removeSource(source.id)"
+						>Remove</a
+					>
 				</template>
 				<a-skeleton
 					:title="false"
@@ -45,46 +104,27 @@ onMounted(() => {
 				>
 					<a-list-item-meta :description="source.description">
 						<template #title>
-                            <div>
-                                <p>{{ source.name }}</p>
-                            </div>
+							<div>
+								<h3 class="source-title">{{ source.name }}</h3>
+							</div>
 						</template>
 					</a-list-item-meta>
 					<div class="list-item-content">
-                        <a :href="source.sourceUrl" target="_blank">Source</a>
-                        content
-                    </div>
+						<a
+							:href="source.sourceUrl"
+							target="_blank"
+							>Source</a
+						>
+					</div>
 				</a-skeleton>
 			</a-list-item>
 		</template>
 	</a-list>
-
-	<div class="manage-sources-list">
-		<div v-if="!loadingSources">
-			<div
-				v-for="source in sources"
-				class="source-container"
-				:key="source.id"
-			>
-				<ManageSource :source="source" />
-			</div>
-		</div>
-		<div
-			v-else
-			class="loading-sources"
-		>
-			<a-spin size="large" />
-		</div>
-	</div>
 </template>
 
 <style scoped>
-.manage-sources-list {
-}
-
-.loading-sources {
-	display: flex;
-	justify-content: center;
-	margin-top: 10vh;
+.source-title {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 </style>
