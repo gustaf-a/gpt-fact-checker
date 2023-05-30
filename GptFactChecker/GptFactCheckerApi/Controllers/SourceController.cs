@@ -22,7 +22,7 @@ public class SourceController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateSource([FromBody] SourceDto sourceDto)
     {
-        var result = await _sourceService.AddSource(sourceDto.ToSource(), sourceDto.Claims.ToClaims());
+        var result = await _sourceService.AddSource(sourceDto.ToSource());
 
         if (!result)
             return NotFound();

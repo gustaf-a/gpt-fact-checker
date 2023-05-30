@@ -13,11 +13,11 @@ public class Source
     public string SourceContext { get; set; }
     public string SourceUrl { get; set; } 
 
-    public DateOnly SourceImportedDate { get; set; }
-    public DateOnly SourceCreatedDate { get; set; }
+    public string SourceImportedDate { get; set; }
+    public string SourceCreatedDate { get; set; }
 
-    public DateOnly ClaimsFirstExtractedDate { get; set; }
-    public DateOnly ClaimsUpdatedDate { get; set; }
+    public string ClaimsFirstExtractedDate { get; set; }
+    public string ClaimsUpdatedDate { get; set; }
    
     public string CoverImageUrl { get; set; }
 }

@@ -21,6 +21,8 @@ public static class Extensions
             ClaimsFirstExtractedDate = sourceDto.ClaimsFirstExtractedDate,
             ClaimsUpdatedDate = sourceDto.ClaimsUpdatedDate,
             CoverImageUrl = sourceDto.CoverImageUrl,
+
+            Tags = sourceDto.Tags,
         };
     }
 
@@ -48,12 +50,17 @@ public static class Extensions
             ClaimsFirstExtractedDate = source.ClaimsFirstExtractedDate,
             ClaimsUpdatedDate = source.ClaimsUpdatedDate,
             CoverImageUrl = source.CoverImageUrl,
+
+            Tags = source.Tags
         };
     }
 
     public static List<Claim> ToClaims(this IEnumerable<ClaimDto> claimDtos)
     {
         List<Claim> claims = new();
+
+        if (claimDtos is null)
+            return claims;
 
         foreach (ClaimDto claimDto in claimDtos)
         {

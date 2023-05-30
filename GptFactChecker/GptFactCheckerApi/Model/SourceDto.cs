@@ -14,13 +14,13 @@ public class SourceDto
     public string SourceUrl { get; set; }
     public string SourceRawText { get; set; }
 
-    public DateOnly SourceImportedDate { get; set; }
-    public DateOnly SourceCreatedDate { get; set; }
+    public string SourceImportedDate { get; set; }
+    public string SourceCreatedDate { get; set; }
 
-    public DateOnly ClaimsFirstExtractedDate { get; set; }
-    public DateOnly ClaimsUpdatedDate { get; set; }
+    public string ClaimsFirstExtractedDate { get; set; }
+    public string ClaimsUpdatedDate { get; set; }
 
     public string CoverImageUrl { get; set; }
 
-    public List<ClaimDto> Claims { get; set; }
+    public List<ClaimDto>? Claims { get; set; }
 }

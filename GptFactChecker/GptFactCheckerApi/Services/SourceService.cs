@@ -16,12 +16,9 @@ public class SourceService : ISourceService
         _sourcesClaimsRepository = sourcesClaimsRepository;
     }
 
-    public async Task<bool> AddSource(Source source, List<Claim> claims)
+    public async Task<bool> AddSource(Source source)
     {
         var result = await _sourceRepository.CreateSource(source);
-
-        if (claims.Any())
-            await _claimService.AddClaims(claims, source.Id);
 
         return result;
     }

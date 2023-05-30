@@ -28,11 +28,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "gpt-fact-checker-front", "g
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GptFactCheckerApiTests", "GptFactCheckerApiTests\GptFactCheckerApiTests.csproj", "{692DB627-1745-45F8-B807-281836535448}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prompting", "Prompting", "{C7D7F583-4E01-496D-838C-1A1CC276FFBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{854A667D-B24C-45D6-A1BD-3A4FCD690CFA}"
 	ProjectSection(SolutionItems) = preProject
-		FactExtraction_EN.txt = FactExtraction_EN.txt
-		FactExtraction_EN_v2.txt = FactExtraction_EN_v2.txt
-		TestData.txt = TestData.txt
+		FactCheck.txt = FactCheck.txt
+		Prompting\FactExtraction_EN.txt = Prompting\FactExtraction_EN.txt
+		Prompting\FactExtraction_EN_v2.txt = Prompting\FactExtraction_EN_v2.txt
+		Prompting\FactExtraction_EN_v3.txt = Prompting\FactExtraction_EN_v3.txt
+		FactExtraction_v3.json = FactExtraction_v3.json
 	EndProjectSection
 EndProject
 Global
