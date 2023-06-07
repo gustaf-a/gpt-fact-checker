@@ -22,12 +22,12 @@ const isLoggedIn = ref(true);
 						to="/sources"
 						>FactChecks</RouterLink
 					>
-
+<!-- 
 					<RouterLink
 						class="nav-item nav-button"
 						to="/resources"
 						>Resources</RouterLink
-					>
+					> -->
 
 					<RouterLink
 						class="nav-item nav-button"

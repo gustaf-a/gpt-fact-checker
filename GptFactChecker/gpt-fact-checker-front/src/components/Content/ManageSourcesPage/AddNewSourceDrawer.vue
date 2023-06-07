@@ -4,10 +4,10 @@ import { PlusOutlined } from "@ant-design/icons-vue";
 import SourceObject from "@/model/Source";
 import type { Rule } from "ant-design-vue/es/form";
 import type { FormInstance } from "ant-design-vue";
-import { notification } from "ant-design-vue";
 import { useSourcesStore } from "@/stores/sources";
 import { storeToRefs } from "pinia";
 import { generateGuid } from "@/utils/guid";
+import { NotificationError, NotificationSuccess } from "@/utils/notifications";
 
 const sourcesStore = useSourcesStore();
 const { errorMessage } = storeToRefs(sourcesStore);
@@ -65,20 +65,6 @@ const rules: Record<string, Rule[]> = {
 	],
 };
 
-//Handle tags
-// let newTag = ref("");
-
-// const addTag = () => {
-// 	if (newTag.value) {
-// 		form.tags.push(newTag.value);
-// 		newTag.value = "";
-// 	}
-// };
-
-// const removeTag = (index: number) => {
-// 	form.tags.splice(index, 1);
-// };
-
 const onValidationFailed = (errorInfo: any) => {
 	console.log("Validation failed:", errorInfo);
 };
@@ -91,8 +77,7 @@ const submitForm = async () => {
 
 	const sourceObject = getSourceObject(formState);
 	if (!sourceObject) {
-		console.log("Failed to convert from form to source object.");
-		console.log(formState);
+		console.log("Failed to convert from form to source object.", formState);
 		return;
 	}
 
@@ -101,17 +86,12 @@ const submitForm = async () => {
 	const createSourceResult = await sourcesStore.addSourceAsync(sourceObject);
 
 	if (!createSourceResult) {
-		openNotificationWithIcon(
-			"error",
-			"Failed to create source",
-			`Source couldn't be created.`
-		);
+		NotificationError("Failed to create source", `Source couldn't be created.`);
 		visible.value = true;
 		return;
 	}
 
-	openNotificationWithIcon(
-		"success",
+	NotificationSuccess(
 		"Source Created!",
 		`Source ${formState.name} created successfully`
 	);
@@ -123,7 +103,7 @@ function getSourceObject(form: FormState): SourceObject | null {
 	try {
 		const source = new SourceObject();
 		source.id = generateGuid();
-		
+
 		source.name = form.name;
 		source.language = form.language;
 		source.description = form.description;
@@ -136,8 +116,8 @@ function getSourceObject(form: FormState): SourceObject | null {
 		source.sourceRawText = form.sourceRawText;
 		source.sourceCreatedDate = form.sourceCreatedDate;
 		return source;
-	} catch {
-		console.log("Failed to convert form to source object.");
+	} catch (error) {
+		console.log("Failed to convert form to source object.", error);
 		return null;
 	}
 }
@@ -153,24 +133,6 @@ const showDrawer = () => {
 const onClose = () => {
 	visible.value = false;
 };
-
-type NotificationType = "success" | "error" | "info" | "warning";
-
-const openNotificationWithIcon = (
-	notificationType: NotificationType,
-	title: string,
-	message: string
-) => {
-	if (notificationType in notification) {
-		notification[notificationType]({
-			message: title,
-			description: message,
-		});
-	} else {
-		console.log("Failed to create notification with type: " + notificationType);
-	}
-};
-
 </script>
 
 <template>
@@ -362,9 +324,5 @@ const openNotificationWithIcon = (
 				</a-col>
 			</a-row>
 		</a-form>
-
-		<template #extra>
-			<a-space> </a-space>
-		</template>
 	</a-drawer>
 </template>

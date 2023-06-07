@@ -28,8 +28,6 @@ onMounted(() => {
 const router = useRouter();
 
 function navigateToDetails(sourceId: string): void {
-	console.log(sourceId);
-
 	router.push(`/source/${sourceId}`);
 };
 

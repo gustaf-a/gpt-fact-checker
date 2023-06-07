@@ -64,8 +64,6 @@ const handleFinish = (values: FormState) => {
 		return;
 	}
 
-	console.log(loadedJsonObject.value);
-
 	emits("claims", loadedJsonObject.value);
 };
 

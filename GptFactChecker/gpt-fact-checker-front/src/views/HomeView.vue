@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SourcesList from "@/components/Content/HomePage/SourcesList.vue";
+import HomePage from "@/components/Content/HomePage/HomePage.vue";
 import HeroBanner from "@/components/Header/HeroBanner.vue";
 </script>
 
@@ -7,7 +7,7 @@ import HeroBanner from "@/components/Header/HeroBanner.vue";
 	<main>
 		<div class="content-container">
 			<HeroBanner />
-			<SourcesList />
+			<HomePage />
 		</div>
 	</main>
 </template>

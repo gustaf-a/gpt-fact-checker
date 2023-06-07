@@ -5,16 +5,18 @@ import ClaimObject from "@/model/Claim";
 import SourceObject from "@/model/Source";
 import ClaimCard from "./ClaimCard.vue";
 import AddClaimsModal from "./AddClaimsModal.vue";
+import { useUserStore } from "@/stores/users";
+import { storeToRefs } from "pinia";
+
+const userStore = useUserStore();
+const { user } = storeToRefs(userStore);
+const { userHasRole, Roles } = userStore;
 
 interface Props {
 	source: SourceObject;
 }
 
-const userLoggedIn = ref(true);
-
 const { source } = defineProps<Props>();
-
-console.log(source);
 
 const claimsStore = useClaimsStore();
 const claims = ref<ClaimObject[]>([]);
@@ -26,16 +28,16 @@ onMounted(async () => {
 });
 
 async function fetchClaims() {
-	if (!source){
+	if (!source) {
 		initLoading.value = false;
 		return;
-	} 
+	}
 
 	loadingClaims.value = true;
 
 	try {
 		const claimsFound = await claimsStore.getClaimsAsync(source.id);
-		console.log(claimsFound);
+
 		claims.value = claimsFound;
 	} catch (error) {
 		console.error(error);
@@ -69,7 +71,10 @@ async function removeClaim(claimId: string) {}
 <template>
 	<div class="claims-header">
 		<h3 class="claim-title">Claims</h3>
-		<AddClaimsModal @claims="addClaims" v-if="userLoggedIn" />
+		<AddClaimsModal
+			@claims="addClaims"
+			v-if="userHasRole(Roles.ADDCLAIMS)"
+		/>
 	</div>
 
 	<div class="claims-container">
@@ -78,10 +83,7 @@ async function removeClaim(claimId: string) {}
 			:key="claim.id"
 			class="claim"
 		>
-			<ClaimCard
-				:claim="claim"
-				:claim-checks="claim.claimChecks"
-			/>
+			<ClaimCard :claim="claim" />
 		</div>
 	</div>
 </template>

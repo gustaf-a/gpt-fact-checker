@@ -1,25 +1,25 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import Source from "@/model/Source";
-import { Keys } from "./constants";
+import { Keys, Urls } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
-
-const BaseUrl = "http://localhost:5067";
+import Source from "@/model/Source";
+import { useUserStore } from "@/stores/users";
 
 export const useSourcesStore = defineStore(Keys.SOURCES, () => {
+	const userStore = useUserStore();
+	const { userHasRole, Roles } = userStore;
+
 	const sources = ref<Source[]>([]);
 
 	const errorMessage = ref("");
 	const loadingSources = ref(false);
 
 	async function getSourcesAsync(): Promise<void> {
-		if (sources.value.length > 0) return;
-
 		try {
 			loadingSources.value = true;
 
-			const response = await axios.get(`${BaseUrl}/api/sources`);
+			const response = await axios.get(`${Urls.BASE_URL}/api/sources`);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
@@ -42,13 +42,11 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 
 		let foundSource: Source | null = null;
 
-		console.log("Trying to fetch source with id ${sourceId} from backend.");
-
 		try {
 			loadingSources.value = true;
 
 			const response = await axios.get(
-				`${BaseUrl}/api/sources/id?id=${sourceId}`
+				`${Urls.BASE_URL}/api/sources/id?id=${sourceId}`
 			);
 
 			if (response.status !== 200) {
@@ -70,9 +68,11 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 	}
 
 	async function deleteSourceAsync(sourceId: string): Promise<boolean> {
+		if (!userHasRole(Roles.DELETESOURCES)) return false;
+		
 		try {
 			const response = await axios.delete(
-				`${BaseUrl}/api/sources/id?id=${sourceId}`
+				`${Urls.BASE_URL}/api/sources/id?id=${sourceId}`
 			);
 
 			if (response.status !== 200) {
@@ -80,7 +80,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 				return false;
 			}
 
-			sources.value = sources.value.filter(source => source.id !== sourceId);
+			sources.value = sources.value.filter((source) => source.id !== sourceId);
 
 			return true;
 		} catch (error) {
@@ -95,6 +95,8 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 	}
 
 	async function addSourceAsync(source: Source): Promise<boolean> {
+		if (!userHasRole(Roles.ADDSOURCES)) return false;
+		
 		if (!source) {
 			console.log("Can't create null source.");
 			return false;
@@ -103,25 +105,21 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		try {
 			loadingSources.value = true;
 
-			console.log("Sending to backend");
-			const response = await axios.post(`${BaseUrl}/api/sources`, source);
+			const response = await axios.post(`${Urls.BASE_URL}/api/sources`, source);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
-				console.log(ErrorMessages.CREATE_RESOURCE_ERROR);
-				console.log(source);
+				console.log(ErrorMessages.CREATE_RESOURCE_ERROR, source);
 				return false;
 			}
 
-			console.log("Adding to current sources");
 			sources.value.push(source);
 			return true;
 		} catch (error) {
 			errorMessage.value = `${ErrorMessages.CREATE_RESOURCE_ERROR}: ${
 				error instanceof Error ? error.message : String(error)
 			}`;
-			console.log(error);
-			console.log(source);
+			console.log(error, source);
 			return false;
 		} finally {
 			loadingSources.value = false;
@@ -135,6 +133,6 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		getSourcesAsync,
 		getSourceByIdAsync,
 		addSourceAsync,
-		deleteSourceAsync
+		deleteSourceAsync,
 	};
 });

@@ -32,7 +32,6 @@ const fetchSource = async () => {
 		}
 
 		source.value = sourceFromStore;
-		console.log(source.value);
 	} catch (error) {
 		console.error(error);
 	} finally {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ClaimObject from "@/model/Claim";
-import FactCheckList from "./FactCheckList.vue";
+import ClaimCheckList from "./ClaimCheckList.vue";
 
 interface Props {
 	claim: ClaimObject;
@@ -8,6 +8,7 @@ interface Props {
 
 const { claim } = defineProps<Props>();
 
+//TODO base on claimcheck verdict
 const cardColor = () => {
 	if (!claim.claimChecks) return "gray";
 
@@ -21,66 +22,70 @@ const cardColor = () => {
 			return "gray";
 	}
 };
+
 </script>
 
 <template>
-	<div class="claim-card">
-		<a-card>
-			<a-row>
-				<a-col>
-					<h3 class="claim-title">{{ claim.claimSummarized }}</h3>
-				</a-col>
-				<a-col>
-					<div class="horizontal-divider"></div>
-					<div class="claim-card-content">
-						<q class="claim-raw-text">{{ claim.claimRawText }}</q>
-					</div>
-					<div class="horizontal-divider"></div>
-				</a-col>
-			</a-row>
-			<div class="fact-checks">
-				<!-- <FactCheckList :claim="claim" /> -->
-			</div>
-		</a-card>
-	</div>
+	<a-card class="claim-card">
+		<a-row class="claim-card-content">
+			<a-col
+				:span="10"
+				class="claim-card-left"
+			>
+				<h3 class="claim-summary">{{ claim.claimSummarized }}</h3>
+				<p class="claim-raw-text">"{{ claim.claimRawText }}"</p>
+			</a-col>
+			<a-col
+				:span="14"
+				class="claim-card-right"
+			>
+				<ClaimCheckList :claim="claim" />
+			</a-col>
+		</a-row>
+	</a-card>
 </template>
 
 <style scoped>
 .claim-card {
 	width: 90vw;
-	border: 1px solid #f0f0f0;
-	border-radius: 2px;
+	min-height: 25vh;
 	box-shadow: 0 2px 8px #f0f0f0;
-}
-
-.claim-title {
-	margin: 0;
-	font-size:medium
-}
-
-.horizontal-divider {
-	height: 1px;
-	background-color: #f0f0f0;
-	margin: 0.5vh 0;
-}
-
-.vertical-divider {
-  width: 1px;
-  height: 100%;
-  background-color: #f0f0f0;
 }
 
 .claim-card-content {
 	margin: 0;
+	padding: 0;
 	display: flex;
 }
 
-.claim-raw-text {
+.claim-card-left {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	border-right: 1px solid #f0f0f0;
+}
+
+.claim-summary {
+	margin: 0 1vw;
 	font-size: 1em;
+}
+
+.claim-raw-text {
+	margin: 1vw 1vw 0 1vw;
+	font-size: 0.9em;
 	color: rgba(0, 0, 0, 0.9);
-	margin-top: 0;
-	margin-bottom: 0px;
 	font-weight: 200;
 	font-style: italic;
+	text-align: center;
+}
+
+.claim-card-right {
+	padding: 0 1vw;
+	margin-top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
 }
 </style>

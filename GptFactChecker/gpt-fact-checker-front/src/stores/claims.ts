@@ -1,23 +1,27 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import Claim from "@/model/Claim";
-import ClaimsToCreateDto from "@/model/ClaimsToCreateDto"
-import { Keys } from "./constants";
+import { Keys, Urls } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
+import Claim from "@/model/Claim";
+import { useUserStore } from "@/stores/users";
 
-const BaseUrl = "http://localhost:5067";
 
 export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
+	const userStore = useUserStore();
+	const { userHasRole, Roles } = userStore;
+
 	const errorMessage = ref("");
 	const loadingClaims = ref(false);
+
+	//TODO add local claims?
 
 	async function getClaimsAsync(sourceId: string): Promise<Claim[]> {
 		loadingClaims.value = true;
 
 		try {
 			const response = await axios.get(
-				`${BaseUrl}/api/claims/source/id?sourceId=${sourceId}`
+				`${Urls.BASE_URL}/api/claims/source/id?sourceId=${sourceId}`
 			);
 
 			if (response.status !== 200) {
@@ -38,6 +42,8 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 	}
 
 	async function addClaimsAsync(claimsToAdd: Claim[], sourceId: string) {
+		if (!userHasRole(Roles.ADDCLAIMS)) return false;
+		
 		if (!claimsToAdd || claimsToAdd.length == 0) {
 			console.log("No claims to add found.");
 			return false;
@@ -51,13 +57,11 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		try {
 			loadingClaims.value = true;
 
-			console.log(`Sending to backend sourceId: ${sourceId}`);
-			const response = await axios.post(`${BaseUrl}/api/claims/source/id?sourceId=${sourceId}`, claimsToAdd);
+			const response = await axios.post(`${Urls.BASE_URL}/api/claims/source/id?sourceId=${sourceId}`, claimsToAdd);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
-				console.log(ErrorMessages.CREATE_RESOURCE_ERROR);
-				console.log(claimsToAdd);
+				console.log(ErrorMessages.CREATE_RESOURCE_ERROR, claimsToAdd);
 				return false;
 			}
 
@@ -73,10 +77,55 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		}
 	}
 
+	async function getAllClaimsAsync(): Promise<Claim[]> {
+		loadingClaims.value = true;
+	
+		try {
+			const response = await axios.get(`${Urls.BASE_URL}/api/claims`);
+	
+			if (response.status !== 200) {
+				errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
+				return [];
+			}
+	
+			return response.data;
+		} catch (error) {
+			errorMessage.value = `${ErrorMessages.DATA_FETCH_ERROR}: ${
+				error instanceof Error ? error.message : String(error)
+			}`;
+		} finally {
+			loadingClaims.value = false;
+		}
+	
+		return [];
+	}
+	
+	async function deleteClaimsAsync(claimId: string): Promise<boolean> {
+		if (!userHasRole(Roles.DELETECLAIMS)) return false;
+		
+		try {
+			const response = await axios.delete(`${Urls.BASE_URL}/api/claims/id?claimId=${claimId}`);
+	
+			if (response.status !== 200) {
+				errorMessage.value = ErrorMessages.DELETE_RESOURCE_ERROR;
+				return false;
+			}
+	
+			return true;
+		} catch (error) {
+			errorMessage.value = `${ErrorMessages.DELETE_RESOURCE_ERROR}: ${
+				error instanceof Error ? error.message : String(error)
+			}`;
+			return false;
+		}
+	}
+
 	return {
 		errorMessage,
 		loadingClaims,
 		getClaimsAsync,
-		addClaimsAsync
+		getAllClaimsAsync,
+		addClaimsAsync,
+		deleteClaimsAsync
 	};
 });

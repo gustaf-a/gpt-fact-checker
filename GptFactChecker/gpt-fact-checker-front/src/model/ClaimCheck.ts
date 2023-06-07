@@ -1,14 +1,20 @@
+import type ClaimCheckReaction from "./ClaimCheckReaction";
+
 class ClaimCheck {
     public id: string;
-    public creatorId: string;
+    public userId: string;
     public label: string;
     public claimCheckText: string;
+    public dateCreated: string;
+
+    public claimCheckReactions?: ClaimCheckReaction[];
 
     constructor() {
         this.id = '';
-        this.creatorId = '';
+        this.userId = '';
         this.label = '';
         this.claimCheckText = '';
+        this.dateCreated = new Date().toISOString(); //YYYY-MM-DDTHH:mm:ss.sssZ
     }
 }
 
