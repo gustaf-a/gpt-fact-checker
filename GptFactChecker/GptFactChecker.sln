@@ -31,6 +31,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{854A667D-B24C-45D6-A1BD-3A4FCD690CFA}"
 	ProjectSection(SolutionItems) = preProject
 		FactCheck.txt = FactCheck.txt
+		Prompting\FactChecking_v1.txt = Prompting\FactChecking_v1.txt
 		Prompting\FactExtraction_EN.txt = Prompting\FactExtraction_EN.txt
 		Prompting\FactExtraction_EN_v2.txt = Prompting\FactExtraction_EN_v2.txt
 		Prompting\FactExtraction_EN_v3.txt = Prompting\FactExtraction_EN_v3.txt

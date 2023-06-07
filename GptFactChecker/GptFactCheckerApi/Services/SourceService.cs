@@ -16,9 +16,9 @@ public class SourceService : ISourceService
         _sourcesClaimsRepository = sourcesClaimsRepository;
     }
 
-    public async Task<bool> AddSource(Source source)
+    public async Task<bool> AddSource(SourceDto source)
     {
-        var result = await _sourceRepository.CreateSource(source);
+        var result = await _sourceRepository.CreateSource(source.ToSource());
 
         return result;
     }
@@ -27,7 +27,7 @@ public class SourceService : ISourceService
     {
         var claims = await _sourcesClaimsRepository.GetClaimsForSource(sourceId);
 
-        var deleteClaimsResult = await _claimService.RemoveClaims(claims);
+        var deleteClaimsResult = await _claimService.DeleteClaims(claims);
 
         var deleteSourcesClaimsResult = await _sourcesClaimsRepository.RemoveSource(sourceId);
 
@@ -36,25 +36,36 @@ public class SourceService : ISourceService
         return deleteSourceResult && deleteSourcesClaimsResult && deleteClaimsResult;
     }
 
-    public async Task<SourceDto> GetSourceById(string sourceId)
+    public async Task<SourceDto> GetSourceById(string sourceId, bool includeClaims = false)
     {
         var source = await _sourceRepository.GetByIdAsync(sourceId);
 
-        var claimIds = await _sourcesClaimsRepository.GetClaimsForSource(sourceId);
-
-        var claims = await _claimService.GetClaims(claimIds);
-
         var sourceDto = source.ToDto();
 
-        sourceDto.Claims = claims.ToDtos();
+        if (includeClaims)
+        {
+            var claimIds = await _sourcesClaimsRepository.GetClaimsForSource(sourceId);
+
+            sourceDto.Claims = await _claimService.GetClaims(claimIds);
+        }
 
         return sourceDto;
     }
 
-    public async Task<List<SourceDto>> GetSources()
+    public async Task<List<SourceDto>> GetSources(bool includeClaims = false)
     {
         var sources = await _sourceRepository.GetAllAsync();
 
-        return sources.ToDtos();
+        var sourceDtos = sources.ToDtos();
+
+        if (includeClaims)
+            foreach (var sourceDto in sourceDtos)
+            {
+                var claimIds = await _sourcesClaimsRepository.GetClaimsForSource(sourceDto.Id);
+
+                sourceDto.Claims = await _claimService.GetClaims(claimIds);
+            }
+
+        return sourceDtos;
     }
 }

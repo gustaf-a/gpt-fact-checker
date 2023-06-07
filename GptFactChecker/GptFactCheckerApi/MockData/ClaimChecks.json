@@ -1,0 +1,44 @@
+[
+  {
+    "Id": "67vx356C",
+    "UserId": "aaaa1000",
+    "Label": "Opinion",
+    "ClaimCheckText": "The claim expresses an opinion rather than stating a fact. The IPCC reports are prepared using comprehensive scientific data and reviewed by experts globally. While any scientific report can be debated, outright dismissal isn't supported by the scientific consensus. The 'net zero' by 2050 target is widely regarded as necessary to prevent catastrophic global warming, as outlined in the Paris Agreement."
+  },
+  {
+    "Id": "MoPr2)Ce",
+    "UserId": "aaaa1000",
+    "Label": "Misleading",
+    "ClaimCheckText": "The IPCC reports on the science of climate change, its impacts, and potential future risks. To characterize this as 'perpetuating fear' is misleading. The IPCC's mandate is to provide policymakers with an objective scientific view on the current state of knowledge in climate change and its potential environmental and socio-economic impacts."
+  },
+  {
+    "Id": "1HG8Gejq",
+    "UserId": "aaaa1000",
+    "Label": "Misleading",
+    "ClaimCheckText": "It is true that the IPCC's Summaries for Policymakers (SPMs) are approved line by line by member governments during Plenary Sessions. However, it is important to note that this does not 'override' the scientific conclusions in the report; rather, it ensures the summary accurately represents the findings of the report, and is understandable to policymakers."
+  },
+  {
+    "Id": "ucGeJOhQ",
+    "UserId": "aaaa1000",
+    "Label": "False",
+    "ClaimCheckText": "The IPCC process is rigorous and involves multiple rounds of review and revisions based on thousands of comments from experts and governments. While it's true that governments review and approve the SPMs, they do not 'delete' contrary evidence from the reports. All data and findings, including those that show uncertainties or discrepancies, are included in the full reports."
+  },
+  {
+    "Id": "ELAWA)fu",
+    "UserId": "aaaa1000",
+    "Label": "Unsupported",
+    "ClaimCheckText": "Without specifying how the AR6 WG I report supposedly 'distorts' climate history, this claim is unsupported. The IPCC reports are rigorously peer-reviewed, with the intention of accurately representing the current state of scientific knowledge on climate change. Any claim of distortion would need to provide specific evidence."
+  },
+  {
+    "Id": "zC%nDpmn",
+    "UserId": "aaaa1000",
+    "Label": "Unsupported",
+    "ClaimCheckText": "Without providing specific evidence, this claim is unsupported. The IPCC's carbon budget is based on current scientific understanding and is derived from a multitude of sources and models. To refute the carbon budget, it would require specific and compelling evidence to the contrary."
+  },
+  {
+    "Id": "Dj^uhB2i",
+    "UserId": "aaaa1000",
+    "Label": "Unsupported",
+    "ClaimCheckText": "Without specific evidence, this claim is unsupported. The IPCC's temperature forecasts are based on a multitude of climate models and take into account different potential socio-economic and policy scenarios. Claiming that the forecasts are 'questionable' without providing detailed evidence or analysis is not substantiated."
+  }
+]

@@ -78,7 +78,7 @@ public static class Extensions
         return claims;
     }
 
-    public static List<ClaimDto> ToDtos(this IEnumerable<Claim> claims)
+    public static List<ClaimDto> ToDtos(this List<Claim> claims)
     {
         List<ClaimDto> claimDtos = new();
 
@@ -98,4 +98,47 @@ public static class Extensions
         return claimDtos;
     }
 
+    public static List<ClaimCheck> ToClaimChecks(this IEnumerable<ClaimCheckDto> claimCheckDtos)
+    {
+        List<ClaimCheck> claimChecks = new();
+
+        if (claimCheckDtos is null)
+            return claimChecks;
+
+        foreach (ClaimCheckDto claimCheckDto in claimCheckDtos)
+        {
+            ClaimCheck claimCheck = new()
+            {
+                Id = claimCheckDto.Id,
+                UserId = claimCheckDto.UserId,
+                Label = claimCheckDto.Label,
+                ClaimCheckText = claimCheckDto.ClaimCheckText,
+                DateCreated = claimCheckDto.DateCreated,
+            };
+
+            claimChecks.Add(claimCheck);
+        }
+
+        return claimChecks;
+    }
+
+    public static List<ClaimCheckDto> ToDtos(this IEnumerable<ClaimCheck> claimChecks)
+    {
+        List<ClaimCheckDto> claimCheckDtos = new();
+
+        foreach (ClaimCheck claimCheck in claimChecks)
+        {
+            ClaimCheckDto claimCheckDto = new()
+            {
+                Id = claimCheck.Id,
+                UserId = claimCheck.UserId,
+                Label = claimCheck.Label,
+                ClaimCheckText = claimCheck.ClaimCheckText
+            };
+
+            claimCheckDtos.Add(claimCheckDto);
+        }
+
+        return claimCheckDtos;
+    }
 }

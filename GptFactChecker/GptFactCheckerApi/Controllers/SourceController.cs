@@ -22,7 +22,7 @@ public class SourceController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateSource([FromBody] SourceDto sourceDto)
     {
-        var result = await _sourceService.AddSource(sourceDto.ToSource());
+        var result = await _sourceService.AddSource(sourceDto);
 
         if (!result)
             return NotFound();
@@ -36,7 +36,7 @@ public class SourceController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllSources()
     {
-        var sources = await _sourceService.GetSources();
+        var sources = await _sourceService.GetSources(includeClaims: true);
 
         return Ok(sources);
     }
@@ -47,12 +47,10 @@ public class SourceController : ControllerBase
     [HttpGet("id")]
     public async Task<IActionResult> GetSourceById([FromQuery] string id)
     {
-        //Should include claims too?
-
         if (string.IsNullOrWhiteSpace(id))
             return NotFound();
 
-        var source = await _sourceService.GetSourceById(id);
+        var source = await _sourceService.GetSourceById(id, false);
 
         if (source is null)
             return NotFound();

@@ -1,1 +1,38 @@
-[{"Id":"abcd-1234-test-oksdf","Name":"Antarktis 2022","Language":"English","Description":"Texten presenterar flera påståenden om havsisen i Antarktis, dess förändringar över tid och vilka faktorer som kan ha bidragit till minskningar.","Tags":["climate","Antarctica","La Niña"],"SourceType":"Text","SourcePerson":"Hans Iwan Bratt","SourceContext":"Klimatfakta.info","SourceUrl":"https://www.klimatfakta.info/article.php?m=1&i=3543&n=Antarktis-2022","SourceRawText":"WMO har presenterat en rapport om klimatet under 2022 med uppgifter om havsisen i Antarktis och meddelat att havsisen i Antarktis är på den lägsta nivå som hittills har uppmätts. [1]\n\nSom diagrammet visar är utbredningen i 2022 och 2023 ovanligt liten, men ändå inte under 2016. Vad som kanske är mer påtagligt är att trenden 1979 till 2015 var en tydlig tillväxt trots den globala uppvärmningen under denna period.\n\nDet plötsliga minskningen av havsisen 2015 berodde på en mycket kraftig storm vid mätningen är årslägsta utbredningen.\n\nUrsprunget till isförlusten 2022 kan spåras tillbaka till oktober/november 2021 då det var serie stormar väster om den antarktiska halvön. Detta område är starkt påverkat av El Niño-Southern Oscillation (ENSO), och stormarna överensstämmer med La Niñas förhållanden vid den tiden. Sydliga vindar på upp till 30 m/s flyttade havsisen bort från västkusten Antarktis, skapar en 1 miljon km2 område med öppet vatten känt som en polynya. [2]\n\ntitle Sea Ice Index Daily and Monthly Image Viewer, NSIDC\n\n⇑ Källor\nState of the Global Climate 2022, WMO\nSea Ice Index Daily and Monthly Image Viewer, NSIDC\nAntarctica, Charctic Interactive Sea Ice Graph, NSIDC\nWMO\nNSIDC - National Snow and Ice Data Center\nFotnoter\n1) Rapport: Ny rekordnivå för smältning av glaciärer, Omni\n2) State of the Global Climate 2022, WMO, sida 12..13","SourceImportedDate":{"Year":1,"Month":1,"Day":1,"DayOfWeek":1,"DayOfYear":1,"DayNumber":0},"SourceCreatedDate":{"Year":1,"Month":1,"Day":1,"DayOfWeek":1,"DayOfYear":1,"DayNumber":0},"ClaimsFirstExtractedDate":{"Year":1,"Month":1,"Day":1,"DayOfWeek":1,"DayOfYear":1,"DayNumber":0},"ClaimsUpdatedDate":{"Year":1,"Month":1,"Day":1,"DayOfWeek":1,"DayOfYear":1,"DayNumber":0},"CoverImageUrl":"https://www.klimatfakta.info/media/Antarktis%20sj%C3%B6is.png","Claims":[]}]
+[
+  {
+    "Id": "abcd1234",
+    "Name": "Antarktis 2022",
+    "Language": "English",
+    "Description": "Texten presenterar flera påståenden om havsisen i Antarktis, dess förändringar över tid och vilka faktorer som kan ha bidragit till minskningar.",
+    "Tags": [
+      "climate",
+      "Antarctica",
+      "La Niña"
+    ],
+    "SourceType": "Text",
+    "SourcePerson": "Hans Iwan Bratt",
+    "SourceContext": "Klimatfakta.info",
+    "SourceUrl": "https://www.klimatfakta.info/article.php?m=1&i=3543&n=Antarktis-2022",
+    "SourceImportedDate": "2023-05-28",
+    "SourceCreatedDate": "2023-05-28",
+    "ClaimsFirstExtractedDate": "2023-05-28",
+    "ClaimsUpdatedDate": "2023-05-29",
+    "CoverImageUrl": "https://www.klimatfakta.info/media/Antarktis%20sj%C3%B6is.png"
+  },
+  {
+    "Id": "dd6503a6",
+    "Name": "Why You Should Ignore The Latest IPCC Climate Report",
+    "Language": "English",
+    "Description": "The claims in this article are largely critical of the Intergovernmental Panel on Climate Change (IPCC), accusing it of fearmongering, data manipulation, and political bias in its assessment reports.",
+    "Tags": ["climate", "IPCC", "politics"],
+    "SourceType": "Text",
+    "SourcePerson": "Ron Barmby",
+    "SourceContext": "Climate Change Dispatch",
+    "SourceUrl": "https://climatechangedispatch.com/why-you-should-ignore-latest-ipcc-climate-report/",
+    "SourceImportedDate": "",
+    "SourceCreatedDate": "2023-03-31",
+    "ClaimsFirstExtractedDate": "",
+    "ClaimsUpdatedDate": "",
+    "CoverImageUrl": ""
+  }
+]
