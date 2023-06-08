@@ -6,6 +6,7 @@ class User {
     public profileImage: string;
     public password?: string;
     public roles: string[];
+    public about: string;
 
 	constructor() {
         this.id = "";
@@ -14,6 +15,7 @@ class User {
         this.userName = "";
         this.profileImage = "";
         this.roles = [];
+        this.about = "";
 	}
 }
 

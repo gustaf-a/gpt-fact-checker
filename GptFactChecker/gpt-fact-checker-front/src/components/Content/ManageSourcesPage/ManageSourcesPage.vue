@@ -6,7 +6,7 @@ import { storeToRefs } from "pinia";
 import { notification } from "ant-design-vue";
 
 const sourcesStore = useSourcesStore();
-const { sources, loadingSources } = storeToRefs(sourcesStore);
+const { filteredSources, loadingSources } = storeToRefs(sourcesStore);
 
 const initLoading = ref(true);
 
@@ -79,7 +79,7 @@ const openNotificationWithIcon = (
 	<a-list
 		:loading="loadingSources || initLoading"
 		item-layout="horizontal"
-		:data-source="sources"
+		:data-source="filteredSources"
 	>
 		<template #renderItem="{ item: source }">
 			<a-list-item>

@@ -1,11 +1,13 @@
 import { ref } from "vue";
 import { defineStore, storeToRefs } from "pinia";
 import axios from "axios";
-import { Keys, Urls } from "./constants";
+import { Keys } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
 import ClaimCheckReaction from "@/model/ClaimCheckReaction";
 import { useUserStore } from "@/stores/users";
 import type ClaimCheck from "@/model/ClaimCheck";
+
+const { VITE_API_BASE_URL } = import.meta.env;
 
 export const useClaimCheckReactionsStore = defineStore(
 	Keys.CLAIMCHECKREACTIONS,
@@ -24,7 +26,7 @@ export const useClaimCheckReactionsStore = defineStore(
 
 			try {
 				const response = await axios.get(
-					`${Urls.BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheckId}`
+					`${VITE_API_BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheckId}`
 				);
 
 				if (response.status !== 200) {
@@ -76,7 +78,7 @@ export const useClaimCheckReactionsStore = defineStore(
 				loadingClaimCheckReactions.value = true;
 
 				const response = await axios.post(
-					`${Urls.BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheck.id}`,
+					`${VITE_API_BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheck.id}`,
 					claimCheckReactionToAdd
 				);
 
@@ -125,7 +127,7 @@ export const useClaimCheckReactionsStore = defineStore(
 
 			try {
 				const response = await axios.get(
-					`${Urls.BASE_URL}/api/claimcheckreactions`
+					`${VITE_API_BASE_URL}/api/claimcheckreactions`
 				);
 
 				if (response.status !== 200) {
@@ -152,7 +154,7 @@ export const useClaimCheckReactionsStore = defineStore(
 
 			try {
 				const response = await axios.delete(
-					`${Urls.BASE_URL}/api/claimcheckreactions/id?claimCheckReactionId=${claimCheckReactionId}`
+					`${VITE_API_BASE_URL}/api/claimcheckreactions/id?claimCheckReactionId=${claimCheckReactionId}`
 				);
 
 				if (response.status !== 200) {

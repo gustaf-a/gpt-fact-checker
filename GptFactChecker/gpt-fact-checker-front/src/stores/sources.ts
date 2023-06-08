@@ -1,16 +1,25 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import { Keys, Urls } from "./constants";
+import { Keys } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
 import Source from "@/model/Source";
 import { useUserStore } from "@/stores/users";
+import { filterSources } from "@/utils/searchfilters";
+import SourcesFilterOptions from "@/model/SourcesFilterOptions"
+
+const { VITE_API_BASE_URL } = import.meta.env;
 
 export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 	const userStore = useUserStore();
 	const { userHasRole, Roles } = userStore;
 
 	const sources = ref<Source[]>([]);
+	const filteredSources = ref<Source[]>([]);
+
+	function applyFilters(filterOptions: SourcesFilterOptions | undefined){
+		filteredSources.value = filterSources(sources.value, filterOptions);
+	}
 
 	const errorMessage = ref("");
 	const loadingSources = ref(false);
@@ -19,7 +28,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		try {
 			loadingSources.value = true;
 
-			const response = await axios.get(`${Urls.BASE_URL}/api/sources`);
+			const response = await axios.get(`${VITE_API_BASE_URL}/api/sources`);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
@@ -27,6 +36,8 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 			}
 
 			sources.value = response.data;
+			
+			applyFilters(undefined);
 		} catch (error) {
 			errorMessage.value = `${ErrorMessages.DATA_FETCH_ERROR}: ${
 				error instanceof Error ? error.message : String(error)
@@ -46,7 +57,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 			loadingSources.value = true;
 
 			const response = await axios.get(
-				`${Urls.BASE_URL}/api/sources/id?id=${sourceId}`
+				`${VITE_API_BASE_URL}/api/sources/id?id=${sourceId}`
 			);
 
 			if (response.status !== 200) {
@@ -72,7 +83,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		
 		try {
 			const response = await axios.delete(
-				`${Urls.BASE_URL}/api/sources/id?id=${sourceId}`
+				`${VITE_API_BASE_URL}/api/sources/id?id=${sourceId}`
 			);
 
 			if (response.status !== 200) {
@@ -105,7 +116,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		try {
 			loadingSources.value = true;
 
-			const response = await axios.post(`${Urls.BASE_URL}/api/sources`, source);
+			const response = await axios.post(`${VITE_API_BASE_URL}/api/sources`, source);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
@@ -128,11 +139,13 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 
 	return {
 		sources,
+		filteredSources,
 		errorMessage,
 		loadingSources,
 		getSourcesAsync,
 		getSourceByIdAsync,
 		addSourceAsync,
 		deleteSourceAsync,
+		applyFilters
 	};
 });

@@ -73,10 +73,9 @@ function assignMostEngagingClaims() {
 
         claimsMostEngaging.value = [claimWithSource1, claimWithSource2];
     }
+
     loadingClaimsEngaging.value = false;
 }
-
-
 </script>
 
 <template>
@@ -86,7 +85,7 @@ function assignMostEngagingClaims() {
 			v-if="!loadingSourcesMostViewed"
 			:sources-in-list="sourcesMostViewed"
 			:max-length="80"
-			><h2 class="sources-headline">Most Viewed</h2></SourcesList
+			><h2 class="sources-headline">Most viewed sources</h2></SourcesList
             >
         </div>
         <div class="list-container">
@@ -94,18 +93,18 @@ function assignMostEngagingClaims() {
 			v-if="!loadingSourcesRecent"
 			:sources-in-list="sourcesRecent"
 			:max-length="80"
-			><h2 class="sources-headline">Recently added</h2></SourcesList
+			><h2 class="sources-headline">Recently added sources</h2></SourcesList
             >
         </div>
         
-                <div class="list-container">
-                    <ClaimsList
-                    v-if="!loadingClaimsEngaging"
-                    :claims-with-source="claimsMostEngaging"
-                    :max-length="200"
-                    ><h2 class="sources-headline">Most engaging claims</h2></ClaimsList
-                    >
-                </div>
+        <div class="list-container">
+            <ClaimsList
+            v-if="!loadingClaimsEngaging"
+            :claims-with-source="claimsMostEngaging"
+            :max-length="200"
+            ><h2 class="sources-headline">Most engaging claims</h2></ClaimsList
+            >
+        </div>
 	</Container>
 </template>
 
@@ -121,9 +120,10 @@ function assignMostEngagingClaims() {
 }
 
 .sources-headline {
-	margin-top: 1vh;
+	margin-top: 0vh;
 	opacity: 1;
 	margin-bottom: 0;
+    font-size: 1.3em;
 }
 
 .divider {

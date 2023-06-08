@@ -4,7 +4,3 @@ export const Keys = {
     CLAIMCHECKS: "claimchecks",
     CLAIMCHECKREACTIONS: "claimcheckreactions"
 };
-
-export const Urls = {
-    BASE_URL: "http://localhost:5067",
-};

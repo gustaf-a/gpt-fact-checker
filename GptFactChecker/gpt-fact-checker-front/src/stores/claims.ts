@@ -1,11 +1,12 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import { Keys, Urls } from "./constants";
+import { Keys } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
 import Claim from "@/model/Claim";
 import { useUserStore } from "@/stores/users";
 
+const { VITE_API_BASE_URL } = import.meta.env;
 
 export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 	const userStore = useUserStore();
@@ -21,7 +22,7 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 
 		try {
 			const response = await axios.get(
-				`${Urls.BASE_URL}/api/claims/source/id?sourceId=${sourceId}`
+				`${VITE_API_BASE_URL}/api/claims/source/id?sourceId=${sourceId}`
 			);
 
 			if (response.status !== 200) {
@@ -57,7 +58,7 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		try {
 			loadingClaims.value = true;
 
-			const response = await axios.post(`${Urls.BASE_URL}/api/claims/source/id?sourceId=${sourceId}`, claimsToAdd);
+			const response = await axios.post(`${VITE_API_BASE_URL}/api/claims/source/id?sourceId=${sourceId}`, claimsToAdd);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
@@ -81,7 +82,7 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		loadingClaims.value = true;
 	
 		try {
-			const response = await axios.get(`${Urls.BASE_URL}/api/claims`);
+			const response = await axios.get(`${VITE_API_BASE_URL}/api/claims`);
 	
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
@@ -104,7 +105,7 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		if (!userHasRole(Roles.DELETECLAIMS)) return false;
 		
 		try {
-			const response = await axios.delete(`${Urls.BASE_URL}/api/claims/id?claimId=${claimId}`);
+			const response = await axios.delete(`${VITE_API_BASE_URL}/api/claims/id?claimId=${claimId}`);
 	
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.DELETE_RESOURCE_ERROR;

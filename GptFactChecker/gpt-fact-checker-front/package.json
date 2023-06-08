@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
+    "@supabase/supabase-js": "^2.24.0",
     "ant-design-vue": "^3.2.20",
     "axios": "^1.4.0",
     "pinia": "^2.0.36",

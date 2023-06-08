@@ -1,10 +1,12 @@
 import { ref } from "vue";
 import { defineStore, storeToRefs } from "pinia";
 import axios from "axios";
-import { Keys, Urls } from "./constants";
+import { Keys } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
 import ClaimCheck from "@/model/ClaimCheck";
 import { useUserStore } from "@/stores/users";
+
+const { VITE_API_BASE_URL } = import.meta.env;
 
 export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 	const userStore = useUserStore();
@@ -24,7 +26,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 
 		try {
 			const response = await axios.get(
-				`${Urls.BASE_URL}/api/claimchecks/claim/id?claimId=${claimId}`
+				`${VITE_API_BASE_URL}/api/claimchecks/claim/id?claimId=${claimId}`
 			);
 
 			if (response.status !== 200) {
@@ -68,14 +70,20 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 		}
 
 		if (isInvalidClaimChecks(claimChecksToAdd)) {
-			console.log("Failed to add claim checks: ClaimChecks invalid.", claimChecksToAdd);
-			return
+			console.log(
+				"Failed to add claim checks: ClaimChecks invalid.",
+				claimChecksToAdd
+			);
+			return;
 		}
 
 		try {
 			loadingClaimChecks.value = true;
 
-			const response = await axios.post(`${Urls.BASE_URL}/api/claimchecks/claim/id?claimId=${claimId}`,claimChecksToAdd);
+			const response = await axios.post(
+				`${VITE_API_BASE_URL}/api/claimchecks/claim/id?claimId=${claimId}`,
+				claimChecksToAdd
+			);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
@@ -124,7 +132,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 		loadingClaimChecks.value = true;
 
 		try {
-			const response = await axios.get(`${Urls.BASE_URL}/api/claimchecks`);
+			const response = await axios.get(`${VITE_API_BASE_URL}/api/claimchecks`);
 
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
@@ -150,7 +158,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 
 		try {
 			const response = await axios.delete(
-				`${Urls.BASE_URL}/api/claimchecks/id?claimCheckId=${claimCheckId}`
+				`${VITE_API_BASE_URL}/api/claimchecks/id?claimCheckId=${claimCheckId}`
 			);
 
 			if (response.status !== 200) {

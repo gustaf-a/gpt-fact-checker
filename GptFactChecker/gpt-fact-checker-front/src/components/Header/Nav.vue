@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import Container from "../Container.vue";
-import { ref} from "vue"
+import { ref } from "vue";
+import { useUserStore } from "@/stores/users";
+import { storeToRefs } from "pinia";
+import LoginModal from "../UserHandling/LoginModal.vue";
+import SignupModal from "../UserHandling/SignupModal.vue";
 
-const isLoggedIn = ref(true);
+const userStore = useUserStore();
+const { user } = storeToRefs(userStore);
+
+const initLoading = ref(true);
+
+const handleLogout = async () => {
+	await userStore.handleLogout();
+}
 
 </script>
 
@@ -22,7 +33,7 @@ const isLoggedIn = ref(true);
 						to="/sources"
 						>FactChecks</RouterLink
 					>
-<!-- 
+					<!-- 
 					<RouterLink
 						class="nav-item nav-button"
 						to="/resources"
@@ -42,20 +53,24 @@ const isLoggedIn = ref(true);
 						placeholder="Search.."
 					/> -->
 				</div>
-				<div class="navigation-right">
-					<div v-if="isLoggedIn">
-						<RouterLink
+				<div
+					v-if="user"
+					class="navigation-right"
+				>
+					<RouterLink
 						class="nav-item nav-button"
 						to="/managesources"
 						>Manage Sources</RouterLink
 					>
-						<!-- <a-button class="nav-item">MyPages</a-button> -->
-						<a-button class="nav-item">Logout</a-button>
-					</div>
-					<div v-else>
-						<a-button class="nav-item">Sign up</a-button>
-						<a-button class="nav-item">Login</a-button>
-					</div>
+					<!-- <a-button class="nav-item">MyPages</a-button> -->
+					<a-button class="nav-item" @click="handleLogout">Logout</a-button>
+				</div>
+				<div
+					v-else
+					class="navigation-right"
+				>
+					<LoginModal class="nav-item discrete" />
+					<SignupModal class="nav-item discrete" />
 				</div>
 			</div>
 		</Container>
@@ -94,6 +109,10 @@ const isLoggedIn = ref(true);
 .nav-button {
 	color: white;
 	font-size: larger;
+}
+
+.discrete{
+	opacity: 0.9;
 }
 
 .navigation-right {
