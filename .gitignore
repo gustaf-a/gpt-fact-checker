@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 GptFactChecker/gpt-fact-checker-front/.env
 /SkepticalScienceCrawler
+/GptFactChecker/GptFactCheckerApi/appsettings.json
