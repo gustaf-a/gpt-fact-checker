@@ -35,7 +35,7 @@
             "items": { "type": "string" }
           }
         },
-        "required": [ "id", "label", "explanation", "reference_ids" ]
+        "required": [ "id", "label", "explanation" ]
       }
     }
   ],
