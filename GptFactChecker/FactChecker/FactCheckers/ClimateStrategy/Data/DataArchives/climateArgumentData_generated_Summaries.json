@@ -1,0 +1,430 @@
+[
+  {
+    "Id": 458097,
+    "CounterArgumentSummary": "Claiming 'the climate's changed before' is not a useful statement, as it lacks specifics about how it changed and the impacts. Rapid climate changes, like those caused by human carbon emissions, can lead to severe and potentially disastrous consequences for ecosystems, including humans. Hence, such dismissive statements either stem from ignorance or intentional deception."
+  },
+  {
+    "Id": 419924,
+    "CounterArgumentSummary": "Our Sun's stability and the relatively minimal fluctuations in solar irradiance demonstrate that it cannot be the primary cause of global warming. Data shows that while solar radiation has slightly declined since the 1970s, global temperatures have continued to rise, indicating other factors, like greenhouse gases, are at play. Claims attributing global warming to the Sun often involve 'cherry-picking' data and ignoring conflicting evidence."
+  },
+  {
+    "Id": 654985,
+    "CounterArgumentSummary": "Scientific consensus, when the majority of experts agree on a principle, is the product of thorough research and examination. With regards to climate change, there's a strong consensus (greater than 97%) that carbon dioxide traps heat and its increase warms the planet. Public misunderstanding of this consensus is often due to the spread of misinformation."
+  },
+  {
+    "Id": 667443,
+    "CounterArgumentSummary": "Despite some fluctuations due to phenomena like La Nina and El Nino, the overall trend shows that the Earth's surface, oceans, and atmosphere are warming, with recent years being the hottest on record. Claims that global warming has 'paused' or stopped are misinformation, debunked by the continued warming trend."
+  },
+  {
+    "Id": 409953,
+    "CounterArgumentSummary": "Computer models, integral in numerous fields including climate science, simulate and study complex physical systems. While not perfect, climate models that have successfully recreated past climate trends provide invaluable insights into future warming. Misunderstandings about their accuracy often stem from climate change denial, which seeks to spread confusion."
+  },
+  {
+    "Id": 874585,
+    "CounterArgumentSummary": "Most climate change denial occurs outside the scientific community, often online. Misguided attempts to discredit temperature records overlook the fact that professional climate scientists account for outliers and potential biases, such as urban heat effects. Independent analyses of temperature datasets, like Berkeley Earth Surface Temperatures, support the consensus on global warming."
+  },
+  {
+    "Id": 732023,
+    "CounterArgumentSummary": "The argument suggests that climate change deniers have manipulated data to claim global warming has stopped by choosing specific time periods like post-1998, an exceptionally warm year due to El Nino. However, it argues that such tactics, known as 'cherry-picking', are misleading as they ignore the long-term upward trend in temperatures and the top ten warmest years all occurring since 2000. Climatologists analyze data over multiple decades to accurately capture global warming trends."
+  },
+  {
+    "Id": 746075,
+    "CounterArgumentSummary": "The counterargument refutes the myth of an impending ice age predicted in the 1970s, attributing it to media sensationalism rather than scientific consensus. A study by Thomas Peterson and colleagues found that 62% of climate papers published between 1965 and 1979 predicted global warming, while only 10% predicted a cooling trend. The myth can be ascribed to the media adage of not letting truth interfere with a good story."
+  },
+  {
+    "Id": 410206,
+    "CounterArgumentSummary": "The argument debunks the claim of an impending ice age, labeling it as 'nonsensical'. The onset of ice ages or glacials are dictated by regular variations in Earth's orbit around the Sun over tens of thousands of years. However, due to extensive burning of fossil fuels, atmospheric CO2 concentration has risen well beyond the normal range, pushing the climate towards conditions typical of the warmer mid-Pliocene epoch rather than an ice age."
+  },
+  {
+    "Id": 853723,
+    "CounterArgumentSummary": "This counterargument acknowledges the concerns about the melting ice in Antarctica, especially in West Antarctica, which if melted completely would raise global sea levels by 65 centimetres. With increasing CO2 levels, East Antarctica's main ice sheet might also become unstable. These processes are already happening and if CO2 emissions continue at the current rate, they could trigger catastrophic consequences."
+  },
+  {
+    "Id": 948526,
+    "CounterArgumentSummary": "The counterargument refutes the claim that since CO2 levels rose after temperature in ancient ice cores, CO2 doesn't cause climate change. It explains that rising temperatures cause CO2 release from permafrost and oceans due to lower solubility in warmer water, thereby leading to higher atmospheric CO2 levels, which further amplify warming. This process, called a positive feedback, underscores CO2's critical role in climate change."
+  },
+  {
+    "Id": 507823,
+    "CounterArgumentSummary": "The counterargument discredits the view that climate change won't be too severe. It argues that while CO2 is indeed a nutrient for plants, it is just one of many requirements for plant health. Climate change disrupts agriculture through more intense droughts, floods, and soil degradation, implying that any benefit from additional CO2 is outweighed by the detrimental impacts of a changing climate."
+  },
+  {
+    "Id": 227431,
+    "CounterArgumentSummary": "Although the film 'An Inconvenient Truth' contained minor errors, such as attributing the shrinking ice cap of Mount Kilimanjaro entirely to climate change, it doesn't invalidate the film's main message. The minor errors do not challenge the widely accepted reality of climate change and the film actually exposed the denial mindset. Even though exact future timelines may be debatable, rising sea levels are a threat that cannot be ignored."
+  },
+  {
+    "Id": 242194,
+    "CounterArgumentSummary": "The idea that changes in cosmic ray flux, which leads to variation in cloud formation, could drive global warming is not supported by substantial scientific evidence. The 'Cosmics Leaving Outdoor Droplets' (CLOUD) experiment showed that the effect of changes in cosmic ray flux intensity on cloud formation is relatively insignificant compared to other natural factors like volcanic eruptions."
+  },
+  {
+    "Id": 841192,
+    "CounterArgumentSummary": "The Hockey Stick graph, although derived from indirect climate indicators, remains a relevant representation of climate change. The graph uses proxy datasets which, despite their inherent uncertainty, are cross-validated and continually refined. The recent years since its publication have only confirmed its depiction of rising global temperatures."
+  },
+  {
+    "Id": 343291,
+    "CounterArgumentSummary": "The so-called 'Climategate' scandal, centered on stolen emails from the Climate Research Unit, involved misleading out-of-context interpretations. The most infamous quote about 'hiding the decline' was actually referring to a known divergence problem in certain tree-ring datasets, not an attempt to cover up declining temperatures."
+  },
+  {
+    "Id": 159655,
+    "CounterArgumentSummary": "The few glaciers that are growing should not be highlighted to downplay the global warming phenomenon. Most of Earth's mountain glaciers are in retreat, as evidenced by mass balance measurements, and this overall trend cannot be denied. Cherry-picking such data is misleading and unscientific."
+  },
+  {
+    "Id": 819688,
+    "CounterArgumentSummary": "The glacier shrinkage on Mount Kilimanjaro is not solely caused by global warming, though this does not negate the overall warming of the Earth. Declining glaciers in mid and high latitudes provide significant evidence for this global warming trend."
+  },
+  {
+    "Id": 916489,
+    "CounterArgumentSummary": "CO2 can be a pollutant through ocean acidification, but its primary issue is the greenhouse warming effect. This natural process, when exaggerated, can lead to negative impacts on agriculture, health, and the environment."
+  },
+  {
+    "Id": 155874,
+    "CounterArgumentSummary": "Satellite measurements generally align with model results, barring discrepancies in the tropics due to correction for satellite drift. The U.S. Climate Change Science Program attributes these discrepancies more likely to data errors."
+  },
+  {
+    "Id": 593100,
+    "CounterArgumentSummary": "Some species can adapt to climate change, but many are restricted to specific ecological niches and can't migrate or adapt effectively. Human activity and global warming have led to limited options for species adaptation, potentially increasing the risk of zoonotic pathogens."
+  },
+  {
+    "Id": 514614,
+    "CounterArgumentSummary": "The El Nino Southern Oscillation correlates with short-term global temperatures but fails to explain the consistent long-term warming trend observed in recent decades."
+  },
+  {
+    "Id": 700990,
+    "CounterArgumentSummary": "The large number of neutral papers in Schulte's survey, neither accepting nor rejecting anthropogenic global warming, is significant because the scientific community has largely moved on to discussing the specifics of the problem, such as its speed, impacts, and timing."
+  },
+  {
+    "Id": 259501,
+    "CounterArgumentSummary": "The belief that solar cycle length indicates the sun is causing global warming is derived from one study in 1991. However, later research, including a paper by a co-author of the 1991 paper, found the sun's contribution to global warming has been minimal since 1975."
+  },
+  {
+    "Id": 885773,
+    "CounterArgumentSummary": "While individual CO2 molecules remain in the atmosphere for approximately 5 years, they simply exchange places with CO2 in the ocean when they leave the atmosphere. Therefore, the additional CO2 that remains in the atmosphere stays for centuries."
+  },
+  {
+    "Id": 749019,
+    "CounterArgumentSummary": "Tsonis and Swanson's research shows that climate shifts only cause temporary accelerations or decelerations of the long-term warming trend. When this internal variability is removed, we see a nearly continuous, escalating warming trend throughout the 20th Century."
+  },
+  {
+    "Id": 255967,
+    "CounterArgumentSummary": "The argument that the greenhouse effect contradicts the second law of thermodynamics is based on a flawed 2009 paper by Gerlich and Tscheuschner. However, Earth isn't a closed system; it's part of a net energy flow from the Sun, with greenhouse gases partly returning outgoing energy back to Earth's surface, which aligns with the laws of thermodynamics."
+  },
+  {
+    "Id": 180575,
+    "CounterArgumentSummary": "Correlations between warming and economic activity are often unreliable, as they don't consider local forcing agents like tropospheric ozone or black carbon. Furthermore, independent evidence of warming can be seen in changes in the oceans, snow cover, and sea ice extent."
+  },
+  {
+    "Id": 322153,
+    "CounterArgumentSummary": "The cold snap is a result of a strong phase of the Arctic Oscillation, which causes cooler temperatures at mid-latitudes and warming in polar regions. These warm and cool regions roughly cancel each other out, having little effect on the overall global temperature."
+  },
+  {
+    "Id": 794259,
+    "CounterArgumentSummary": "Although methane is a stronger greenhouse gas than CO2, the amount of CO2 in the atmosphere is over 200 times greater. As a result, methane's contribution to warming is only 28% of that of CO2."
+  },
+  {
+    "Id": 108500,
+    "CounterArgumentSummary": "Upon close examination, many studies alleged to disprove man-made global warming do not actually do so. The few that do claim to disprove it often repeat widely debunked myths."
+  },
+  {
+    "Id": 982226,
+    "CounterArgumentSummary": "Papers deemed by critics to disprove climate consensus are found to actually support it or merely review others' work, causing the original critic, Benny Peiser, to retract his criticism of Oreskes' study."
+  },
+  {
+    "Id": 990766,
+    "CounterArgumentSummary": "Phil Jones is highlighting that while there is a warming trend, its statistical significance is challenging to discern due to the noise in the data over a short period, not denying that warming is occurring."
+  },
+  {
+    "Id": 955810,
+    "CounterArgumentSummary": "Humans are significantly contributing to the increase in atmospheric CO2, with 43% of our emissions remaining airborne. Even though there is debate over the increasing airborne fraction, current CO2 levels are the highest in 15 million years."
+  },
+  {
+    "Id": 124987,
+    "CounterArgumentSummary": "Record snowfall does not contradict global warming; instead, it is consistent with climate models as warming causes increased moisture in the air, leading to more extreme precipitation events including heavy snowstorms."
+  },
+  {
+    "Id": 935611,
+    "CounterArgumentSummary": "Lindzen's analysis is flawed due to its narrow geographic focus. Other independent studies using near-global data report positive feedback and high climate sensitivity."
+  },
+  {
+    "Id": 798344,
+    "CounterArgumentSummary": "Tung 2008 identifies a solar signal in global temperature but it does not contradict long-term global warming trends. The study’s estimated climate sensitivity aligns with IPCC estimates."
+  },
+  {
+    "Id": 382764,
+    "CounterArgumentSummary": "While there is a link between solar activity and water levels, the correlation with global temperatures ended around 1975, indicating recent warming is due to factors other than solar variations."
+  },
+  {
+    "Id": 704627,
+    "CounterArgumentSummary": "Stratospheric water vapor contributes only a fraction of the temperature change compared to man-made greenhouse gases, and the exact cause of its variation remains unclear. However, the long-term warming trend suggests it's unlikely to be a negative feedback."
+  },
+  {
+    "Id": 400885,
+    "CounterArgumentSummary": "The retracted paper predicting low future sea level rise actually reinforces other research predicting a rise of 80cm to 2 meters by 2100, as it removes a lower bound of sea level prediction."
+  },
+  {
+    "Id": 258743,
+    "CounterArgumentSummary": "CO2 measurements at the Mauna Loa Observatory are reliable and unaffected by the volcano's emissions, confirmed by consistent increasing CO2 concentration trends recorded in other locations."
+  },
+  {
+    "Id": 930632,
+    "CounterArgumentSummary": "Trenberth emphasizes that despite temporary surface cooling periods due to internal variability, the planet is constantly warming due to increasing carbon dioxide. He criticizes our current inability to fully track the energy flow through the climate system."
+  },
+  {
+    "Id": 857683,
+    "CounterArgumentSummary": "During the Ordovician period, lower solar output and a large polar continent made CO2 levels sufficient to promote glaciation. The cooling of the climate during this period reinforces the fact that CO2 is a significant climate driver."
+  },
+  {
+    "Id": 562446,
+    "CounterArgumentSummary": "Sea ice decline is the primary cause of Arctic amplification, with maximum warming occurring in winter and less in summer due to heat melting the ice, which is consistent with the concept of sea ice amplification."
+  },
+  {
+    "Id": 397550,
+    "CounterArgumentSummary": "The divergence problem, a decline in tree growth in recent decades, is unique to this period, indicating an anthropogenic cause like warming-induced drought and global dimming. Before 1960, tree-ring proxy reconstructions were reliable and tracked with the instrumental record."
+  },
+  {
+    "Id": 541364,
+    "CounterArgumentSummary": "Accusations that the IPCC misrepresents scientific views are unsubstantiated. Instead, those distorting Hulme's paper are misleading."
+  },
+  {
+    "Id": 494275,
+    "CounterArgumentSummary": "There's a strong correlation between CO2 emissions and levels, backed by carbon isotopes data that aligns with fossil fuel emissions."
+  },
+  {
+    "Id": 400069,
+    "CounterArgumentSummary": "Global brightening results from changes in cloud cover and aerosols. Any increase in surface sunlight can be offset by the cooling effect from reduced cloud warmth trapping and less sunlight absorption by aerosols."
+  },
+  {
+    "Id": 484311,
+    "CounterArgumentSummary": "Hocker's model inaccurately attributes CO2 upward trend to temperature, overlooking the role of fossil fuel emissions. Evidence indicates that oceans are absorbing, not emitting, CO2."
+  },
+  {
+    "Id": 884259,
+    "CounterArgumentSummary": "Antarctica is losing ice due to accelerated glacier movement, facilitated by meltwater lubrication and thinning ice shelves, largely caused by warming ocean waters."
+  },
+  {
+    "Id": 461064,
+    "CounterArgumentSummary": "Waste heat contributes significantly less to global climate than human greenhouse gases, which add approximately 100 times more heat."
+  },
+  {
+    "Id": 826120,
+    "CounterArgumentSummary": "Temperature errors in the Great Lakes region don't affect global mean temperature records, especially those from satellite microwave temperature analyses."
+  },
+  {
+    "Id": 892023,
+    "CounterArgumentSummary": "Wu et al (2010) introduces a new method for calculating ice sheet mass balance that, despite discrepancies with other methods, aligns with upper-end IPCC predictions for ice losses."
+  },
+  {
+    "Id": 413151,
+    "CounterArgumentSummary": "Claims that CO2 is responsible for only 35% of global warming are misunderstandings of Penner et al.'s commentary, which states that short-lived pollutants also contribute to additional warming and cooling."
+  },
+  {
+    "Id": 755590,
+    "CounterArgumentSummary": "Suggesting that humidity is decreasing ignores numerous studies indicating an increase and neglects the full body of evidence."
+  },
+  {
+    "Id": 639989,
+    "CounterArgumentSummary": "Natural cycles can't explain observed global warming; only increased greenhouse gases due to human activities match observed evidence and energy imbalance."
+  },
+  {
+    "Id": 778328,
+    "CounterArgumentSummary": "Renewable energy can provide baseload power through various methods such as geothermal energy, concentrated solar thermal energy, and stored wind energy."
+  },
+  {
+    "Id": 611634,
+    "CounterArgumentSummary": "The Independent Climate Change Email Review confirmed the CRU's results, concluding that CRU was not hiding or tampering with data."
+  },
+  {
+    "Id": 695028,
+    "CounterArgumentSummary": "The Independent Climate Change Email Review found the CRU scientists' peer review actions to be normal and not threatening to the integrity of peer review."
+  },
+  {
+    "Id": 303515,
+    "CounterArgumentSummary": "The Independent Climate Change Email Review concluded that the CRU scientists followed the spirit of the IPCC rules, and any related texts were team responsibilities."
+  },
+  {
+    "Id": 884536,
+    "CounterArgumentSummary": "Despite the CRU scientists being found unhelpful and occasionally in breach of FoI laws, it was also determined that they were under-resourced and felt the information requests were not in good faith. The integrity and diligence of these scientists were confirmed by the same investigation."
+  },
+  {
+    "Id": 593900,
+    "CounterArgumentSummary": "Coral reefs around the world are deteriorating rapidly. Significant coral loss has been observed in the Caribbean, Indonesia, the Pacific, and the Galapagos Islands due to factors such as bleaching linked to El-Nino events."
+  },
+  {
+    "Id": 778519,
+    "CounterArgumentSummary": "The notion of a growing consensus on imminent global cooling is misleading as it lacks scientific backing. Many of the cited scientists are not actually predicting a global cooling."
+  },
+  {
+    "Id": 206046,
+    "CounterArgumentSummary": "The terms 'global warming' and 'climate change' are used interchangeably, but they have distinct meanings and have been in use for several decades. The notion of a name change is primarily propagated by climate change skeptics."
+  },
+  {
+    "Id": 314237,
+    "CounterArgumentSummary": "Soares' focus on short-term trends neglects the long-term warming effect of increasing CO2 levels, which are smaller but consistently present amidst natural fluctuations."
+  },
+  {
+    "Id": 320342,
+    "CounterArgumentSummary": "Even with a logarithmic relationship between CO2 and temperatures, the rapid rise in CO2 levels will still lead to an acceleration of global warming unless emissions are significantly reduced."
+  },
+  {
+    "Id": 323473,
+    "CounterArgumentSummary": "The claim of record high winter snow cover in 2008/2009 is inaccurate. The trend over time shows a significant reduction in spring, summer, and annual snow cover, resulting in the Earth absorbing more sunlight and thus experiencing accelerated global warming."
+  },
+  {
+    "Id": 649601,
+    "CounterArgumentSummary": "Claims that 'Earth hasn't warmed as much as expected' often neglect cooling factors and thermal inertia. Once these factors are considered, the actual warming aligns with predictions."
+  },
+  {
+    "Id": 297924,
+    "CounterArgumentSummary": "Using temperatures from the top of the Greenland ice sheet, which only reflects regional warming and ends in 1855, before modern global warming, is misleading when discussing global warming."
+  },
+  {
+    "Id": 677169,
+    "CounterArgumentSummary": "The IPCC did not 'erase' the Medieval Warm Period, they updated their reports with more accurate, widespread data instead of relying solely on central England's temperature record."
+  },
+  {
+    "Id": 709410,
+    "CounterArgumentSummary": "Ljungqvist's research agrees with earlier studies and concludes that current temperatures surpass those of the Medieval Warm Period (MWP). Arguing for a hotter MWP inadvertently argues that climate sensitivity is not low."
+  },
+  {
+    "Id": 839680,
+    "CounterArgumentSummary": "The reduction of a single country's CO2 emissions will not suffice, but combined efforts from all countries can lead to significant global reductions."
+  },
+  {
+    "Id": 580086,
+    "CounterArgumentSummary": "Water vapor and clouds cause a significant part of the greenhouse effect, but are dependent on non-condensing greenhouse gases. Therefore, removal of CO2 would result in loss of most of the greenhouse effect and a drastic cooling of Earth."
+  },
+  {
+    "Id": 732182,
+    "CounterArgumentSummary": "When considering hidden costs, such as health impacts and air pollution, the actual cost of fossil fuels is higher than most renewable energy technologies."
+  },
+  {
+    "Id": 612768,
+    "CounterArgumentSummary": "Global data shows that sea level rise has been increasing since 1880 and the rate has increased since 1930. Future sea level rise predictions are based on physics, not just statistics."
+  },
+  {
+    "Id": 492584,
+    "CounterArgumentSummary": "Scientific studies have proven that internal variability can only explain a minor part of global warming in the past century, as it accounts for a maximum of ~0.3°C change in global surface air temperature over several decades."
+  },
+  {
+    "Id": 696381,
+    "CounterArgumentSummary": "According to IPCC 2007, if greenhouse gas emissions continue at or above current rates, it would likely induce significant changes in the global climate system during the 21st century, larger than those seen in the 20th century."
+  },
+  {
+    "Id": 581874,
+    "CounterArgumentSummary": "The claim that alternative energy jobs destroy conventional jobs is based on flawed data and methodology, whereas in reality, renewable energy development often creates more jobs than fossil fuel energy."
+  },
+  {
+    "Id": 761164,
+    "CounterArgumentSummary": "Multiple lines of evidence clearly indicate that atmospheric CO2 levels have risen to the highest in 800,000 years due to human activities, particularly the burning of fossil fuels."
+  },
+  {
+    "Id": 256207,
+    "CounterArgumentSummary": "Joseph Postma's critique of a basic climate model is founded on numerous mistakes, and in no way undermines the existence or necessity of the greenhouse effect."
+  },
+  {
+    "Id": 111912,
+    "CounterArgumentSummary": "Sea level fluctuations during El Niño and La Niña result from exchanges of water between land and ocean. These do not impact long-term sea level rise, which is caused by melting icesheets, glaciers, and thermal expansion."
+  },
+  {
+    "Id": 719923,
+    "CounterArgumentSummary": "The energy flow from the Earth's interior is significantly smaller than that from the Sun, and has remained steady for millions of years. Therefore, it does not significantly impact the climate."
+  },
+  {
+    "Id": 965747,
+    "CounterArgumentSummary": "Modern scientists, like Galileo, follow an evidence-based scientific method. Those who oppose scientific findings based on their worldview align more with Galileo's critics in the Catholic Church."
+  },
+  {
+    "Id": 187749,
+    "CounterArgumentSummary": "Relying on the 1940s navigation of the Northwest Passage to claim it was ice-free then is misleading and ignores the complexities revealed by original sources."
+  },
+  {
+    "Id": 336995,
+    "CounterArgumentSummary": "Global warming is driven by human-caused greenhouse gas emissions, not natural cycles. These natural cycles don't create or retain heat, so they don't cause long-term global warming."
+  },
+  {
+    "Id": 599747,
+    "CounterArgumentSummary": "Blaming global warming on planetary movements lacks physical evidence and is more akin to 'climastrology' and curve fitting."
+  },
+  {
+    "Id": 602629,
+    "CounterArgumentSummary": "Schmittner et al.'s estimated climate sensitivities are marginally lower than the IPCC's and are largely based on a new estimate of Last Glacial Maximum temperatures. The validity of their estimates still needs to be proven."
+  },
+  {
+    "Id": 551817,
+    "CounterArgumentSummary": "The infrared iris hypothesis has been refuted by subsequent research, showing that if it exists at all, its effect is much smaller than originally suggested and may even exacerbate global warming."
+  },
+  {
+    "Id": 293583,
+    "CounterArgumentSummary": "Claims that Ben Santer single-handedly altered the 1995 IPCC report are false, as the IPCC operates by consensus. These accusations attempt to misrepresent history."
+  },
+  {
+    "Id": 158545,
+    "CounterArgumentSummary": "The 2007 IPCC report discusses natural contributions to climate change but concludes that their impact on recent climate change is small."
+  },
+  {
+    "Id": 532313,
+    "CounterArgumentSummary": "An increase in troposphere warmth raises the sea surface temperature threshold for convection, not any universal maximum ocean temperature."
+  },
+  {
+    "Id": 773934,
+    "CounterArgumentSummary": "The documented case of 'pal review' involved climate contrarians in the journal Climate Research between 1997 and 2003, which is an isolated incident and not reflective of the overall scientific community."
+  },
+  {
+    "Id": 301886,
+    "CounterArgumentSummary": "The impact of summer Arctic storms on sea ice minimums is minimal unless the ice is already deteriorating due to long-term, primarily human-caused effects, as seen in 2012."
+  },
+  {
+    "Id": 849101,
+    "CounterArgumentSummary": "Human-caused global warming, by raising sea levels, warming oceans, and increasing atmospheric moisture, exacerbated the damage caused by Hurricane Sandy."
+  },
+  {
+    "Id": 623803,
+    "CounterArgumentSummary": "Lord Monckton incorrectly used an IPCC equation and misrepresented its results, making his methodology and attributions inapt."
+  },
+  {
+    "Id": 825633,
+    "CounterArgumentSummary": "After accounting for natural factors like El Niño and La Niña, there is no evidence of a significant change in the human contribution to climate change."
+  },
+  {
+    "Id": 494613,
+    "CounterArgumentSummary": "Studies asserting low climate sensitivity often neglect deep ocean warming, yet still align with IPCC's expected sensitivity range."
+  },
+  {
+    "Id": 196893,
+    "CounterArgumentSummary": "The 97% consensus on human-caused global warming is derived from two independent surveys and is consistent with previous findings; no significant accurate critiques have been made."
+  },
+  {
+    "Id": 414041,
+    "CounterArgumentSummary": "Research indicates that a grand solar minimum would result in a minor cooling effect, insufficient to counteract human-caused global warming."
+  },
+  {
+    "Id": 446668,
+    "CounterArgumentSummary": "Akasofu's argument relies on baseless curve fitting without physical explanation. Climate changes require a physical cause, such as an increased greenhouse effect."
+  },
+  {
+    "Id": 481226,
+    "CounterArgumentSummary": "The IPCC report indicates that global warming, when considering the entire climate system, is persisting rapidly, equating to the energy of 4 Hiroshima atomic bombs per second."
+  },
+  {
+    "Id": 822715,
+    "CounterArgumentSummary": "Being part of the 97% consensus implies agreement that humans significantly impact global warming, and being part of the 96% expert consensus requires explicit agreement that humans caused the majority of warming in the last 50 years."
+  },
+  {
+    "Id": 194899,
+    "CounterArgumentSummary": "While there's no conclusive evidence that climate change is increasing extreme weather damage costs, certain types of extreme weather are becoming more intense and frequent, thereby raising disaster costs."
+  },
+  {
+    "Id": 560639,
+    "CounterArgumentSummary": "Fossil fuel consumption for electricity and heat produces the majority of greenhouse gas emissions, followed by transportation, manufacturing, and animal agriculture."
+  },
+  {
+    "Id": 623166,
+    "CounterArgumentSummary": "Holistic Management doesn't significantly increase productivity or carbon storage in soils over the long term and offers no advantages over other similar grazing techniques in mitigating climate change."
+  },
+  {
+    "Id": 157650,
+    "CounterArgumentSummary": "Global warming enhances wildfires by drying vegetation and soil, thereby providing more fuel and causing fires to spread faster. Some regions may also experience more intense and frequent high pressure systems, leading to drier conditions and prolonged fire seasons."
+  },
+  {
+    "Id": 156229,
+    "CounterArgumentSummary": "Massive afforestation and reforestation would sequester around 7-8 years of current annual human emissions, which could only slow global warming by less than a quarter degree Celsius."
+  }
+]
