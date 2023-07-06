@@ -2,23 +2,62 @@
 using Shared.GptClient;
 using Shared.Models;
 using Shared.Extensions;
+using Shared.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
 
 public class TopicIdentifier : ITopicIdentifier
 {
+    private readonly FactCheckerOptions _factCheckerOptions;
     private readonly IGptClient _gptClient;
     private readonly IGptResponseParser _gptResponseParser;
     private readonly ITopicIdentificationPrompt _topicIdentificationPrompt;
 
-    public TopicIdentifier(IGptClient gptClient, IGptResponseParser gptResponseParser, ITopicIdentificationPrompt topicIdentificationPrompt)
+    public TopicIdentifier(IOptions<FactCheckerOptions> factCheckerOptions, IGptClient gptClient, IGptResponseParser gptResponseParser, ITopicIdentificationPrompt topicIdentificationPrompt)
     {
+        _factCheckerOptions = factCheckerOptions.Value;
         _gptClient = gptClient;
         _gptResponseParser = gptResponseParser;
         _topicIdentificationPrompt = topicIdentificationPrompt;
     }
 
     public async Task<List<ClaimWithReferences>> GetClaimsWithReferences(List<Fact> compatibleFacts, List<ArgumentData> argumentDataList)
+    {
+        List<ClaimWithReferences> claimsWithReferences = new();
+
+        var argumentDataParts = argumentDataList.SplitIntoParts(_factCheckerOptions.TopicIdentificationCalls);
+        if (argumentDataParts.IsNullOrEmpty())
+        {
+            Console.WriteLine("Failed to divide facts into parts for topic identification.");
+            return claimsWithReferences;
+        }
+
+        for (int i = 0; i < _factCheckerOptions.TopicIdentificationCalls; i++)
+        {
+            var claimsWithPartOfReferences = await GetClaimsWithReferencesInternal(compatibleFacts, argumentDataParts[i]);
+
+            if (claimsWithReferences.IsNullOrEmpty())
+            {
+                claimsWithReferences = claimsWithPartOfReferences;
+                continue;
+            }
+
+            foreach (var claimWithPartOfReference in claimsWithPartOfReferences)
+            {
+                var matchingClaim = claimsWithReferences.FirstOrDefault(c => c.ClaimId == claimWithPartOfReference.ClaimId);
+
+                if (matchingClaim is null)
+                    claimsWithReferences.Add(claimWithPartOfReference);
+                else
+                    matchingClaim.ReferenceIds.AddRange(claimWithPartOfReference.ReferenceIds);
+            }
+        }
+
+        return claimsWithReferences;
+    }
+
+    private async Task<List<ClaimWithReferences>> GetClaimsWithReferencesInternal(List<Fact> compatibleFacts, List<ArgumentData> argumentDataList)
     {
         var topicIdentificationPrompt = await _topicIdentificationPrompt.GetPrompt(compatibleFacts, argumentDataList);
 

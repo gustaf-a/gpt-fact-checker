@@ -1,6 +1,6 @@
-﻿namespace FactCheckingService.FactCheckers.ClimateStrategy.Models;
+﻿namespace Shared.Models;
 
-public class ClimateFactCheck
+public class GptResponseFunctionCallFactCheck
 {
     public string Id { get; set; }
     public string Label { get; set; }

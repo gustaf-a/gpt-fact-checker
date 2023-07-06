@@ -12,7 +12,7 @@ public class TopicIdentificationPrompt : PromptWithReferencesBase, ITopicIdentif
 
     private const string SystemPromptWithoutReferences =
         $"""
-Include all references relevant to a claim. Only use references from within the <{ReferenceTagText}> tags. Use function fact_check_with_reference_data if matching references found, otherwise use fact_check_without_reference_data.
+Your task is to identify which references are related to different claims and send them for fact checking. Reference IDs with keywords are presented below.
 """;
 
     public async Task<Prompt> GetPrompt(List<Fact> factClaims, List<ArgumentData> argumentData)
@@ -38,13 +38,26 @@ Include all references relevant to a claim. Only use references from within the 
 
     private static void AddArgumentReference(StringBuilder sb, ArgumentData argument)
     {
-        if (argument.Id == 0 || string.IsNullOrWhiteSpace(argument.ArgumentText))
+        if (argument.Id == 0)
         {
-            Console.WriteLine($"Invalid argument found: ID '{argument.Id == 0}', ArgumentText:'{argument.ArgumentText}'.");
+            Console.WriteLine($"Invalid argument found. ID 0 is not allowed. Argument:'{JsonHelper.Serialize(argument)}'.");
             return;
         }
 
-        sb.AppendLine($"{argument.Id}: {argument.ArgumentText}");
+        if (!argument.ArgumentTextKeyWords.IsNullOrEmpty())
+        {
+            sb.AppendLine($"<{argument.Id}>{string.Join(",", argument.ArgumentTextKeyWords)}</{argument.Id}>");
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(argument.ArgumentText))
+        {
+            sb.AppendLine($"<{argument.Id}>{argument.ArgumentText}</{argument.Id}>");
+            return;
+        }
+
+        Console.WriteLine($"Invalid argument found. No valid keywords or argument text found. Argument: '{JsonHelper.Serialize(argument)}'.");
+        return;
     }
 
     protected override string BuildUserPrompt(List<Fact> facts)

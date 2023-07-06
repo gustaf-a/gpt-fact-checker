@@ -1,5 +1,6 @@
 ﻿using GptFactCheckerApi.Model;
 using GptFactCheckerApi.Repository;
+using Shared.Extensions;
 
 namespace GptFactCheckerApi.Services;
 
@@ -52,7 +53,10 @@ public class ClaimCheckService : IClaimCheckService
             foreach (var claimCheckDto in claimCheckDtos)
                 claimCheckDto.ClaimCheckReactions = await _claimCheckReactionService.GetClaimCheckReactions(claimCheckDto.Id);
 
-            //TODO sort claimCheckDtos based on sum of their ClaimCheckReactions. Secondary sorting is newest first, that is by the ISOstring DateCreated
+            claimCheckDtos = claimCheckDtos
+                        .OrderByDescending(dto => dto.ClaimCheckReactions.IsNullOrEmpty() ? 0 : dto.ClaimCheckReactions.Sum(reaction => reaction.Reaction))
+                        .ThenByDescending(dto => dto.DateCreated)
+                        .ToList();
         }
 
         return claimCheckDtos;

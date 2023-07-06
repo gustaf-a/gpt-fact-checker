@@ -1,12 +1,12 @@
 ﻿import json
 
 # Load JSON file 1
-json_file1_path = "C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\Data\climateArgumentData_modified.json"
+json_file1_path = "C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\Data\climateArgumentData.json"
 with open(json_file1_path, 'r', encoding='utf-8') as file1:
     json_content1 = json.load(file1)
     
 # Load JSON file 2
-json_file2_path = "C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\Data\climateArgumentData_generated_Summaries.json"
+json_file2_path = "C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\Data\climateArgumentData_newKeywords.json"
 with open(json_file2_path, 'r', encoding='utf-8') as file2:
     json_content2 = json.load(file2)
 

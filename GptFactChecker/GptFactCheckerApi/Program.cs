@@ -1,7 +1,4 @@
 
-using GptFactCheckerApi.Model;
-using Newtonsoft.Json;
-
 namespace GptFactCheckerApi
 {
     public class Program
@@ -10,7 +7,8 @@ namespace GptFactCheckerApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.ConfigureMyServices();
+            var startup = new Startup(builder.Configuration);
+            startup.ConfigureMyServices(builder.Services);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

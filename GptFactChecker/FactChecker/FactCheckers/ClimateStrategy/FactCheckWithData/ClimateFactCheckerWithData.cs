@@ -60,7 +60,7 @@ public class ClimateFactCheckerWithData : IClimateFactCheckerWithData
                 Fact = claim,
                 FactCheck = factCheck,
                 IsChecked = true,
-                Message = CreateFactCheckMessage()
+                Messages = CreateFactCheckMessage()
             });
         }
 
@@ -71,30 +71,16 @@ public class ClimateFactCheckerWithData : IClimateFactCheckerWithData
     {
         var factCheckResponse = await _gptClient.GetCompletion(factCheckPrompt);
 
-        var climateFactCheck = _gptResponseParser.ParseGptResponseFunctionCall<ClimateFactCheck>(factCheckResponse, nameof(ClimateFactCheckerWithData));
-        
-        var factCheck = ConvertToFactCheck(climateFactCheck);
+        var climateFactCheck = _gptResponseParser.ParseGptResponseFunctionCall<GptResponseFunctionCallFactCheck>(factCheckResponse, nameof(ClimateFactCheckerWithData));
+
+        var factCheck = climateFactCheck.ConvertToFactCheck();
 
         return factCheck;
     }
 
-    private FactCheck ConvertToFactCheck(ClimateFactCheck climateFactCheck)
+    private List<string> CreateFactCheckMessage()
     {
-        if (climateFactCheck is null)
-            return null;
-
-        return new FactCheck
-        {
-            Id = climateFactCheck.Id,
-            Label = climateFactCheck.Label,
-            FactCheckText = climateFactCheck.Explanation,
-            References = climateFactCheck.ReferencesUsed.IsNullOrEmpty() ? new() : climateFactCheck.ReferencesUsed
-        };
-    }
-
-    private string CreateFactCheckMessage()
-    {
-        return $"Fact checked automatically using: {nameof(ClimateFactCheckerWithReferencesStrategy)}.";
+        return new() { $"Fact checked automatically using: {nameof(ClimateFactCheckerWithReferencesStrategy)}." };
     }
 
     private static List<ArgumentData> GetRelevantReferences(List<ArgumentData> argumentDataList, ClaimWithReferences claimWithRefs)

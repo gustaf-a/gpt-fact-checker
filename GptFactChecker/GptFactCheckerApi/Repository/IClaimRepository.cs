@@ -1,10 +1,10 @@
-﻿using GptFactCheckerApi.Model;
+﻿using Shared.Models;
 
 namespace GptFactCheckerApi.Repository;
 
 public interface IClaimRepository
 {
-    public Task<bool> CreateClaims(List<Claim> claimsToCreate);
-    public Task<List<Claim>> GetClaims(List<string>? claimIds);
+    public Task<bool> CreateClaims(List<Fact> claimsToCreate);
+    public Task<List<Fact>> GetClaims(List<string>? claimIds);
     public Task<bool> RemoveClaims(List<string> claimIds);
 }

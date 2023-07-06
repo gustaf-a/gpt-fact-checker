@@ -13,7 +13,7 @@ public class ParentChildrenHolderJsonRepository : IParentChildrenHolderRepositor
 
     public async Task<bool> AddChildrenForParent(string parentId, List<string> childIds)
     {
-        var parentChildrenHolders = await JsonRepositoryHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
+        var parentChildrenHolders = await JsonHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
 
         var parentChildrenHolder = GetParentChildrenHolder(parentId, parentChildrenHolders);
 
@@ -32,14 +32,14 @@ public class ParentChildrenHolderJsonRepository : IParentChildrenHolderRepositor
             if (!parentChildrenHolder.ChildIds.Contains(childId))
                 parentChildrenHolder.ChildIds.Add(childId);
 
-        await JsonRepositoryHelper.SaveToJson(parentChildrenHolders, _jsonFilePath);
+        await JsonHelper.SaveToJson(parentChildrenHolders, _jsonFilePath);
 
         return true;
     }
 
     public async Task<List<string>> GetChildrenForParent(string parentId)
     {
-        var parentChildrenHolders = await JsonRepositoryHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
+        var parentChildrenHolders = await JsonHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
 
         var parentChildrenHolder = GetParentChildrenHolder(parentId, parentChildrenHolders);
 
@@ -48,19 +48,19 @@ public class ParentChildrenHolderJsonRepository : IParentChildrenHolderRepositor
 
     public async Task<bool> RemoveChildren(List<string> childIds)
     {
-        var parentChildrenHolders = await JsonRepositoryHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
+        var parentChildrenHolders = await JsonHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
 
         foreach (var parentChildrenHolder in parentChildrenHolders)
             parentChildrenHolder.ChildIds.RemoveAll(childIds.Contains);
 
-        await JsonRepositoryHelper.SaveToJson(parentChildrenHolders, _jsonFilePath);
+        await JsonHelper.SaveToJson(parentChildrenHolders, _jsonFilePath);
 
         return true;
     }
 
     public async Task<bool> RemoveParent(string parentId)
     {
-        var parentChildrenHolders = await JsonRepositoryHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
+        var parentChildrenHolders = await JsonHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
 
         var parentChildrenHolder = GetParentChildrenHolder(parentId, parentChildrenHolders);
 
@@ -69,7 +69,7 @@ public class ParentChildrenHolderJsonRepository : IParentChildrenHolderRepositor
 
         parentChildrenHolders.Remove(parentChildrenHolder);
 
-        await JsonRepositoryHelper.SaveToJson(parentChildrenHolders, _jsonFilePath);
+        await JsonHelper.SaveToJson(parentChildrenHolders, _jsonFilePath);
 
         return true;
     }

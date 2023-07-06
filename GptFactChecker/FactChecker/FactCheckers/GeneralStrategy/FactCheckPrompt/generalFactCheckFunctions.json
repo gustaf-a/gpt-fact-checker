@@ -18,7 +18,7 @@
           "description": "Short text explaining why the label is proper"
         }
       },
-      "required": [ "id", "label" ]
+      "required": [ "id", "label", "explanation" ]
     }
   }
 ]

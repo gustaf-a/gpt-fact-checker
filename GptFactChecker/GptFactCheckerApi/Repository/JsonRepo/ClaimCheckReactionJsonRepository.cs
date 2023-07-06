@@ -8,11 +8,11 @@ public class ClaimCheckReactionJsonRepository : IClaimCheckReactionRepository
 
     public async Task<bool> CreateClaimCheckReaction(ClaimCheckReaction claimCheckReactionToCreate)
     {
-        var claimCheckReactions = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
+        var claimCheckReactions = await JsonHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
 
         claimCheckReactions.Add(claimCheckReactionToCreate);
 
-        await JsonRepositoryHelper.SaveToJson(claimCheckReactions, JsonFilePath);
+        await JsonHelper.SaveToJson(claimCheckReactions, JsonFilePath);
 
         return true;
     }
@@ -27,7 +27,7 @@ public class ClaimCheckReactionJsonRepository : IClaimCheckReactionRepository
         if (string.IsNullOrWhiteSpace(claimCheckId) || string.IsNullOrWhiteSpace(userId))
             return new();
 
-        var claimCheckReactions = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
+        var claimCheckReactions = await JsonHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
 
         var foundClaimCheckReactionsForUser = claimCheckReactions.FindAll(c => userId.Equals(c.UserId));
 
@@ -47,11 +47,11 @@ public class ClaimCheckReactionJsonRepository : IClaimCheckReactionRepository
         if (claimCheckReactionIds is null || !claimCheckReactionIds.Any())
             return true;
 
-        var claimCheckReactions = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
+        var claimCheckReactions = await JsonHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
 
         var claimCheckReactionsToKeep = claimCheckReactions.Where(ccr => !claimCheckReactionIds.Contains(ccr.Id)).ToList();
 
-        await JsonRepositoryHelper.SaveToJson(claimCheckReactionsToKeep, JsonFilePath);
+        await JsonHelper.SaveToJson(claimCheckReactionsToKeep, JsonFilePath);
 
         return true;
     }
@@ -61,7 +61,7 @@ public class ClaimCheckReactionJsonRepository : IClaimCheckReactionRepository
         if (claimCheckReactionIds == null || !claimCheckReactionIds.Any())
             return new List<ClaimCheckReaction>();
 
-        var claimCheckReactions = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
+        var claimCheckReactions = await JsonHelper.GetObjectFromJson<List<ClaimCheckReaction>>(JsonFilePath);
 
         if (claimCheckReactions is not null && claimCheckReactionIds.Any())
             claimCheckReactions = claimCheckReactions.Where(ccr => claimCheckReactionIds.Contains(ccr.Id)).ToList();

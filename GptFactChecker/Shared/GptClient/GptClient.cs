@@ -55,6 +55,7 @@ public class GptClient : IGptClient
         if (!response.IsSuccessStatusCode)
         {
             Console.WriteLine($"Request failed with status code {response.StatusCode}");
+            Console.WriteLine($"Response: {await response.Content.ReadAsStringAsync()}");
             return string.Empty;
         }
 

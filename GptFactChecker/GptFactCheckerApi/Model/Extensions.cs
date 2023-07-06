@@ -1,4 +1,6 @@
-﻿namespace GptFactCheckerApi.Model;
+﻿using Shared.Models;
+
+namespace GptFactCheckerApi.Model;
 
 public static class Extensions
 {
@@ -55,16 +57,16 @@ public static class Extensions
         };
     }
 
-    public static List<Claim> ToClaims(this IEnumerable<ClaimDto> claimDtos)
+    public static List<Fact> ToClaims(this IEnumerable<ClaimDto> claimDtos)
     {
-        List<Claim> claims = new();
+        List<Fact> claims = new();
 
         if (claimDtos is null)
             return claims;
 
         foreach (ClaimDto claimDto in claimDtos)
         {
-            Claim claim = new()
+            Fact claim = new()
             {
                 Id = claimDto.Id,
                 ClaimSummarized = claimDto.ClaimSummarized,
@@ -78,11 +80,11 @@ public static class Extensions
         return claims;
     }
 
-    public static List<ClaimDto> ToDtos(this List<Claim> claims)
+    public static List<ClaimDto> ToDtos(this List<Fact> claims)
     {
         List<ClaimDto> claimDtos = new();
 
-        foreach (Claim claim in claims)
+        foreach (Fact claim in claims)
         {
             ClaimDto claimDto = new()
             {

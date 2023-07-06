@@ -1,13 +1,32 @@
-﻿using GptFactCheckerApi.Repository;
+﻿using FactCheckingService;
+using FactCheckingService.FactCheckers;
+using FactCheckingService.FactCheckers.ClimateStrategy;
+using FactCheckingService.FactCheckers.ClimateStrategy.FactCheckWithData;
+using FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
+using FactCheckingService.FactCheckers.GeneralStrategy;
+using FactCheckingService.FactCheckers.GeneralStrategy.FactCheckPrompt;
+using GptFactCheckerApi.Repository;
 using GptFactCheckerApi.Repository.JsonRepo;
 using GptFactCheckerApi.Services;
+using Shared.Configuration;
+using Shared.GptClient;
 
 namespace GptFactCheckerApi;
 
-public static class Startup
+public class Startup
 {
-    public static void ConfigureMyServices(this IServiceCollection services)
+    private readonly ConfigurationManager _configurationManager;
+
+    public Startup(ConfigurationManager configurationManager)
     {
+        _configurationManager = configurationManager;
+    }
+
+    public void ConfigureMyServices(IServiceCollection services)
+    {
+        services.Configure<OpenAiOptions>(_configurationManager.GetSection(OpenAiOptions.OpenAi));
+        services.Configure<FactCheckerOptions>(_configurationManager.GetSection(FactCheckerOptions.FactChecker));
+
         services.AddSingleton<ISourceRepository, SourceJsonRepository>();
         services.AddSingleton<IClaimRepository, ClaimJsonRepository>();
         services.AddSingleton<IClaimCheckRepository, ClaimCheckJsonRepository>();
@@ -21,5 +40,24 @@ public static class Startup
         services.AddSingleton<IClaimService, ClaimService>();
         services.AddSingleton<IClaimCheckService, ClaimCheckService>();
         services.AddSingleton<IClaimCheckReactionService, ClaimCheckReactionService>();
+
+        services.AddHttpClient();
+
+        services.AddSingleton<IGptClient, GptClient>();
+        services.AddSingleton<IGptResponseParser, GptResponseParser>();
+
+        services.AddSingleton<IFactCheckingService, Services.FactCheckingService>();
+
+        services.AddSingleton<IFactChecker, FactChecker>();
+
+        services.AddSingleton<IFactCheckerStrategy, ClimateFactCheckerWithReferencesStrategy>();
+        services.AddSingleton<ITopicIdentifier, TopicIdentifier>();
+        services.AddSingleton<ITopicIdentificationPrompt, TopicIdentificationPrompt>();
+        services.AddSingleton<IClimateFactCheckerWithData, ClimateFactCheckerWithData>();
+        services.AddSingleton<IClimateFactCheckWithDataPrompt, ClimateFactCheckWithDataPrompt>();
+
+        services.AddSingleton<IFactCheckerStrategy, FactCheckerStrategyGeneral>();
+        services.AddSingleton<IGeneralFactCheckPrompt, GeneralFactCheckPrompt>();
+
     }
 }

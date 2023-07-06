@@ -7,10 +7,9 @@ namespace FactCheckingTests;
 
 public class FactCheckerTests
 {
-    private readonly IFactChecker _factChecker;
-
-    private readonly Mock<IFactCheckerStrategy> _mockedFackCheckerStrategyOne;
-    private readonly Mock<IFactCheckerStrategy> _mockedFackCheckerStrategyTwo;
+    private Mock<IFactCheckerStrategy> _mockedFackCheckerStrategyOne;
+    private Mock<IFactCheckerStrategy> _mockedFackCheckerStrategyTwo;
+    private IFactChecker _factChecker;
 
     public FactCheckerTests()
     {
@@ -26,7 +25,7 @@ public class FactCheckerTests
     }
 
     [Fact]
-    public async Task FactChecker_should_return_empty_list_if_no_input()
+    public async Task CheckFacts_ReturnsEmptyList_WhenNoInputProvided()
     {
         // Arrange
         var facts = new List<Fact>();
@@ -40,19 +39,10 @@ public class FactCheckerTests
     }
 
     [Fact]
-    public async Task FactChecker_should_not_send_facts_to_strategy2_if_strategy1_works()
+    public async Task CheckFacts_DoesNotCallSecondStrategy_WhenFirstStrategySucceeds()
     {
         // Arrange
-        var facts = new List<Fact>
-        {
-            new Fact
-            {
-                Id = "1",
-                ClaimSummarized = "Summary",
-                ClaimRawText = "raw text",
-                Tags = new[] { "tag1", "tag2"}
-            }
-        };
+        var facts = GetTestFacts();
 
         var factCheckResponses = new List<FactCheckResponse> {
             new FactCheckResponse
@@ -76,5 +66,43 @@ public class FactCheckerTests
         // Assert
         Assert.NotNull(responses);
         Assert.Single(responses);
+        _mockedFackCheckerStrategyTwo.Verify(f => f.ExecuteFactCheck(It.IsAny<List<Fact>>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task CheckFacts_CallsSecondStrategy_WhenFirstStrategyFails()
+    {
+        // Arrange
+        var facts = GetTestFacts();
+
+        _mockedFackCheckerStrategyOne
+            .Setup(f => f.ExecuteFactCheck(It.IsAny<List<Fact>>()))
+            .ReturnsAsync(new List<FactCheckResponse>());
+
+        _mockedFackCheckerStrategyTwo
+            .Setup(f => f.ExecuteFactCheck(It.IsAny<List<Fact>>()))
+            .ReturnsAsync(new List<FactCheckResponse>() { new FactCheckResponse { IsChecked = true, Fact = facts[0] } });
+
+        // Act
+        var responses = await _factChecker.CheckFacts(facts);
+
+        // Assert
+        Assert.NotNull(responses);
+        Assert.Single(responses);
+        _mockedFackCheckerStrategyTwo.Verify(f => f.ExecuteFactCheck(It.IsAny<List<Fact>>()), Times.Once);
+    }
+
+    private List<Fact> GetTestFacts()
+    {
+        return new List<Fact>
+        {
+            new Fact
+            {
+                Id = "1",
+                ClaimSummarized = "Summary",
+                ClaimRawText = "raw text",
+                Tags = new[] { "tag1", "tag2"}
+            }
+        };
     }
 }

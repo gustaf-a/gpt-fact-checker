@@ -8,4 +8,5 @@ public interface IFactCheckerStrategy : IComparable<IFactCheckerStrategy>
 
     public bool IsCompatible(Fact fact);
     public Task<List<FactCheckResponse>> ExecuteFactCheck(List<Fact> facts);
+    public Author Author { get; }
 }

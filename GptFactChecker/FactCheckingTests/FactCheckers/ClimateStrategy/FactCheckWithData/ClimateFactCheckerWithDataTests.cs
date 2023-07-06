@@ -31,12 +31,12 @@ public class ClimateFactCheckerWithDataTests
         {
             new ClaimWithReferences
             {
-                ClaimId = 1,
+                ClaimId = "1",
                 ReferenceIds = new List<string> { "51" }
             },
             new ClaimWithReferences
             {
-                ClaimId = 3,
+                ClaimId = "3",
                 ReferenceIds = new List<string> { "53", "54" }
             }
         };

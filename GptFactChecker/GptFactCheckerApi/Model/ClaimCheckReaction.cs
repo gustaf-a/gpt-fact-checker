@@ -6,7 +6,7 @@ public class ClaimCheckReaction
     public string UserId { get; set; }
 
     /// <summary>
-    /// -1, 0, +1
+    /// -1 | 0 | +1
     /// </summary>
     public int Reaction { get; set; }
 }

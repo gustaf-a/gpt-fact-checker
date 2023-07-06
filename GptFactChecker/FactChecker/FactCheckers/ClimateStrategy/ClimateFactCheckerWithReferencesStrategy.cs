@@ -10,10 +10,12 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
 {
     private const string ArgumentDataFilePath = @"C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\Data\climateArgumentData.json";
 
-    private readonly static List<string> CompatibleTags = new() { "climate", "environment", "sustainability", "global warming" };
+    private readonly static List<string> CompatibleTags = new() { "climate", "environment", "sustainability", "global warming", "ipcc" };
 
     private readonly ITopicIdentifier _topicIdentifier;
     private readonly IClimateFactCheckerWithData _climateFactCheckerWithData;
+
+    private static List<ArgumentData> _cachedArgumentData;
 
     public ClimateFactCheckerWithReferencesStrategy(ITopicIdentifier topicIdentifier, IClimateFactCheckerWithData climateFactCheckerWithData)
     {
@@ -22,6 +24,16 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
     }
 
     public int Priority => 1;
+
+    private const string VersionNumber = "1.0";
+
+    public Author Author => new()
+    {
+        Id = $"FC-ClimateWithReferences-{VersionNumber}",
+        Name = $"Climate Fact Checker with references {VersionNumber}",
+        IsSystem = true,
+        IsVerified = true
+    };
 
     public int CompareTo(IFactCheckerStrategy? other)
     {
@@ -65,11 +77,25 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
             return new();
         }
 
+        AddAuthorIfChecked(factCheckResponses);
+
         return factCheckResponses;
     }
 
+    private void AddAuthorIfChecked(List<FactCheckResponse> factCheckResponses)
+    {
+        foreach (var factCheckResponse in factCheckResponses)
+            if (factCheckResponse.IsChecked)
+                factCheckResponse.Author = Author;
+    }
+
     private static async Task<List<ArgumentData>> GetArgumentDataList()
-        => await JsonHelper.GetObjectFromJson<List<ArgumentData>>(ArgumentDataFilePath);
+    {
+        if(_cachedArgumentData.IsNullOrEmpty())
+            _cachedArgumentData = await JsonHelper.GetObjectFromJson<List<ArgumentData>>(ArgumentDataFilePath);
+
+        return _cachedArgumentData;
+    }
 
     public bool IsCompatible(Fact fact)
     {
@@ -82,7 +108,7 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
     private static bool AllTagsAreCompatible(string[] tags)
     {
         foreach (var tag in tags)
-            if (!CompatibleTags.Any(ct => tag.Contains(ct)))
+            if (!CompatibleTags.Any(ct => tag.ToLower().Contains(ct)))
                 return false;
 
         return true;

@@ -1,4 +1,4 @@
-﻿using Claim = GptFactCheckerApi.Model.Claim;
+﻿using Fact = Shared.Models.Fact;
 
 namespace GptFactCheckerApi.Repository.JsonRepo;
 
@@ -13,7 +13,7 @@ public class SourcesClaimsJsonRepository : ISourcesClaimsRepository
         _parentChildrenHolderJsonRepository = new ParentChildrenHolderJsonRepository(JsonFilePath);
     }
 
-    public async Task<bool> AddClaimsForSource(string sourceId, List<Claim> claims)
+    public async Task<bool> AddClaimsForSource(string sourceId, List<Fact> claims)
     {
         var claimsIds = claims.Select(c => c.Id).ToList();
 

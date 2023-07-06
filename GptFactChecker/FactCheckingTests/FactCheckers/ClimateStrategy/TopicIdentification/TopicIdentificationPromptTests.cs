@@ -64,6 +64,11 @@ public class TopicIdentificationPromptTests
         var argumentData = new List<ArgumentData> {
             new ArgumentData
             {
+                Id = 122334,
+                ArgumentTextKeyWords = new(){"Holistic Management", "reverse climate change", "grazing strategy", "desertification", "carbon sequestration", "Allan Savory"}
+            },
+            new ArgumentData
+            {
                 Id = 123456,
                 ArgumentText = "It's only natural cycles."
             },

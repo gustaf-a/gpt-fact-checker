@@ -5,15 +5,17 @@ namespace Shared.GptClient;
 
 public class GptResponseParser : IGptResponseParser
 {
+    private static readonly List<string> ValidFinishReasons = new() { "function_call", "stop" };
+
     public T ParseGptResponseFunctionCall<T>(string gptResponseString, string callerName)
     {
         var choice = ParseChoice(gptResponseString, callerName);
         if (choice is null)
             return default;
 
-        if (choice.FinishReason != "function_call")
+        if (!ValidFinishReasons.Contains(choice.FinishReason))
         {
-            Console.WriteLine($"Bad response from GPT Client. Function call not made for request. {callerName} failed.");
+            Console.WriteLine($"Possible corrupt finish response from GPT Client. Bad finish reason: {choice.FinishReason}. {callerName} failed.");
             return default;
         }
 
@@ -45,7 +47,7 @@ public class GptResponseParser : IGptResponseParser
         {
             Console.WriteLine($"Bad response from GPT Client. Content not set in response. {callerName} failed.");
             return default;
-        }   
+        }
 
         var content = JsonHelper.Deserialize<T>(contentString);
         if (content is null)
@@ -65,7 +67,18 @@ public class GptResponseParser : IGptResponseParser
             return default;
         }
 
-        var gptResponse = JsonHelper.Deserialize<GptResponse>(gptResponseString);
+        GptResponse gptResponse;
+
+        try
+        {
+            gptResponse = JsonHelper.Deserialize<GptResponse>(gptResponseString);
+        }
+        catch (Exception)
+        {
+            Console.WriteLine($"Failed deserialize response from GPT Client. {callerName} failed.");
+            return default;
+        }
+
         if (gptResponse is null)
         {
             Console.WriteLine($"Failed to get response from GPT Client. Failed to deserialize GptResponse. {callerName} failed.");

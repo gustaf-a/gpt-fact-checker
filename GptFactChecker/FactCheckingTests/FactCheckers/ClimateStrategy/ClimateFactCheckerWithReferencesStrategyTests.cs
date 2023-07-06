@@ -17,12 +17,12 @@ public class ClimateFactCheckerWithReferencesStrategyTests
         {
             new ClaimWithReferences
             {
-                ClaimId = 1,
+                ClaimId = "1",
                 ReferenceIds = new List<string> { "419924" }
             },
             new ClaimWithReferences
             {
-                ClaimId = 3,
+                ClaimId = "3",
                 ReferenceIds = new List<string> { "654985" }
             }
         };

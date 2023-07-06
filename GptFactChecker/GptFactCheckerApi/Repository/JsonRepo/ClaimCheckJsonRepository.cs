@@ -8,13 +8,13 @@ public class ClaimCheckJsonRepository : IClaimCheckRepository
 
     public async Task<bool> CreateClaimChecks(List<ClaimCheck> claimChecksToCreate)
     {
-        var claimChecks = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheck>>(JsonFilePath);
+        var claimChecks = await JsonHelper.GetObjectFromJson<List<ClaimCheck>>(JsonFilePath);
 
         foreach (var claimCheckToCreate in claimChecksToCreate)
             if (!claimChecks.Any(cc => cc.Id == claimCheckToCreate.Id))
                 claimChecks.Add(claimCheckToCreate);
 
-        await JsonRepositoryHelper.SaveToJson(claimChecks, JsonFilePath);
+        await JsonHelper.SaveToJson(claimChecks, JsonFilePath);
 
         return true;
     }
@@ -24,7 +24,7 @@ public class ClaimCheckJsonRepository : IClaimCheckRepository
         if (claimCheckIds == null || !claimCheckIds.Any())
             return new List<ClaimCheck>();
 
-        var claimChecks = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheck>>(JsonFilePath);
+        var claimChecks = await JsonHelper.GetObjectFromJson<List<ClaimCheck>>(JsonFilePath);
 
         if (claimChecks is not null && claimChecks.Any())
             claimChecks = claimChecks.Where(cc => claimCheckIds.Contains(cc.Id)).ToList();
@@ -37,11 +37,11 @@ public class ClaimCheckJsonRepository : IClaimCheckRepository
         if (claimCheckIds is null || !claimCheckIds.Any())
             return true;
 
-        var claimChecks = await JsonRepositoryHelper.GetObjectFromJson<List<ClaimCheck>>(JsonFilePath);
+        var claimChecks = await JsonHelper.GetObjectFromJson<List<ClaimCheck>>(JsonFilePath);
 
         var claimChecksToKeep = claimChecks.Where(cc => !claimCheckIds.Contains(cc.Id)).ToList();
 
-        await JsonRepositoryHelper.SaveToJson(claimChecksToKeep, JsonFilePath);
+        await JsonHelper.SaveToJson(claimChecksToKeep, JsonFilePath);
 
         return true;
     }
