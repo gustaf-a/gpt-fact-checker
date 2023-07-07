@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Shared.Models;
 
-namespace FactCheckingService.FactCheckers.GeneralStrategy.Models;
+namespace FactCheckingService.Models;
 
 internal class GeneralFactCheckFunctionCallArguments
 {

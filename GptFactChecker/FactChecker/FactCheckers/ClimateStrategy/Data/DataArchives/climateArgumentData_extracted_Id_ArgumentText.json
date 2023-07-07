@@ -1,0 +1,870 @@
+[
+  //{
+  //  "Id": 458097,
+  //  "ArgumentText": "Climate's changed before Climate is always changing. We have had ice ages and warmer periods when alligators were found in Spitzbergen. Ice ages have occurred in a hundred thousand year cycle for the last 700 thousand years, and there have been previous periods that appear to have been warmer than the present despite CO2 levels being lower than they are now. More recently, we have had the medieval warm period and the little ice age. (Richard Lindzen)"
+  //},
+  //{
+  //  "Id": 419924,
+  //  "ArgumentText": "It's the sun 'Over the past few hundred years, there has been a steady increase in the numbers of sunspots, at the time when the Earth has been getting warmer. The data suggests solar activity is influencing the global climate causing the world to get warmer.' (BBC)"
+  //},
+  //{
+  //  "Id": 654985,
+  //  "ArgumentText": "There is no consensus. 97% of scientists is based on one discredited study."
+  //},
+  //{
+  //  "Id": 667443,
+  //  "ArgumentText": "It's cooling 'In fact global warming has stopped and a cooling is beginning. No climate model has predicted a cooling of the Earth \u2013 quite the contrary. And this means that the projections of future climate are unreliable.' (source: Henrik Svensmark)"
+  //},
+  //{
+  //  "Id": 409953,
+  //  "ArgumentText": "Models are unreliable '[Models] are full of fudge factors that are fitted to the existing climate, so the models more or less agree with the observed data. But there is no reason to believe that the same fudge factors would give the right behaviour in a world with different chemistry, for example in a world with increased CO2 in the atmosphere.' (Freeman Dyson)"
+  //},
+  //{
+  //  "Id": 874585,
+  //  "ArgumentText": "Temp record is unreliable 'We found [U.S. weather] stations located next to the exhaust fans of air conditioning units, surrounded by asphalt parking lots and roads, on blistering-hot rooftops, and near sidewalks and buildings that absorb and radiate heat. We found 68 stations located at wastewater treatment plants, where the process of waste digestion causes temperatures to be higher than in surrounding areas. In fact, we found that 89 percent of the stations \u2013 nearly 9 of every 10 \u2013 fail to meet the National Weather Service\u2019s own siting requirements that stations must be 30 meters (about 100 feet) or more away from an artificial heating or radiating/reflecting heat source.' (Watts 2009)"
+  //},
+  //{
+  //  "Id": 732023,
+  //  "ArgumentText": "It hasn't warmed since 1998 For the years 1998-2005, temperature did not increase. This period coincides with society's continued pumping of more CO2 into the atmosphere. (Bob Carter)"
+  //},
+  //{
+  //  "Id": 746075,
+  //  "ArgumentText": "Ice age predicted in the 70s 'If you go back to Time Magazine, they actually were proclaiming the next ice age is coming, now it's become global warming\u2026 How do you believe the same people that were predicting just a couple decades ago that the new ice age is coming?' (Sean Hannity)"
+  //},
+  //{
+  //  "Id": 410206,
+  //  "ArgumentText": "We're heading into an ice age 'One day you'll wake up - or you won't wake up, rather - buried beneath nine stories of snow. It's all part of a dependable, predictable cycle, a natural cycle that returns like clockwork every 11,500 years. And since the last ice age ended almost exactly 11,500 years ago\u2026' (Ice Age Now)"
+  //},
+  //{
+  //  "Id": 853723,
+  //  "ArgumentText": "Antarctica is gaining ice '[Ice] is expanding in much of Antarctica, contrary to the widespread public belief that global warming is melting the continental ice cap.' (Greg Roberts, The Australian)"
+  //},
+  //{
+  //  "Id": 948526,
+  //  "ArgumentText": "CO2 lags temperature 'An article in Science magazine illustrated that a rise in carbon dioxide did not precede a rise in temperatures, but actually lagged behind temperature rises by 200 to 1000 years. A rise in carbon dioxide levels could not have caused a rise in temperature if it followed the temperature.' (Joe Barton, US House of Representatives (Texas) 1985-2019) - Full Statement"
+  //},
+  //{
+  //  "Id": 507823,
+  //  "ArgumentText": "It's not bad 'By the way, if you\u2019re going to vote for something, vote for warming. Less deaths due to cold, regions more habitable, larger crops, longer growing season. That\u2019s good. Warming helps the poor.' (John MacArthur)"
+  //},
+  //{
+  //  "Id": 227431,
+  //  "ArgumentText": "Al Gore got it wrong \u201cAl Gore's Oscar-winning documentary on global warming, An Inconvenient Truth, was [\u2026] criticised by a high court judge who highlighted what he said were 'nine scientific errors' in the film. Mr Justice Barton yesterday said that while the film was 'broadly accurate' in its presentation of climate change, he identified nine significant errors in the film, some of which, he said, had arisen in 'the context of alarmism and exaggeration' to support the former US vice-president's views on climate change.\u201d (The Guardian)"
+  //},
+  //{
+  //  "Id": 242194,
+  //  "ArgumentText": "It's cosmic rays 'When the Sun is active, its magnetic field is better at shielding us against the cosmic rays coming from outer space, before they reach our planet. By regulating the Earth\u2019s cloud cover, the Sun can turn the temperature up and down. ... As the Sun\u2019s magnetism doubled in strength during the 20th century, this natural mechanism may be responsible for a large part of global warming seen then.' (Henrik Svensmark)"
+  //},
+  //{
+  //  "Id": 215579,
+  //  "ArgumentText": "It's freaking cold! 'Austria is today seeing its earliest snowfall in history with 30 to 40 centimetres already predicted in the mountains. Such dramatic falls in temperatures provide superficial evidence for those who doubt that the world is threatened by climate change.' (Mail Online)"
+  //},
+  //{
+  //  "Id": 745238,
+  //  "ArgumentText": "Hurricanes aren't linked to global warming \u201cAccording to the National Hurricane Center, storms are no more intense or frequent worldwide than they have been since 1850. [\u2026] Constant 24-7 media coverage of every significant storm worldwide just makes it seem that way.\u201d (Paul Bedard)"
+  //},
+  //{
+  //  "Id": 897693,
+  //  "ArgumentText": "1934 - hottest year on record Steve McIntyre noticed a strange discontinuity in US temperature data, occurring around January 2000. McIntyre notified NASA which acknowledged the problem as an 'oversight' that would be fixed in the next data refresh. As a result, 'The warmest year on US record is now 1934. 1998 (long trumpeted by the media as record-breaking) moves to second place.' (Daily Tech)."
+  //},
+  //{
+  //  "Id": 841192,
+  //  "ArgumentText": "Hockey stick is broken \u201cIn 2003 Professor McKitrick teamed with a Canadian engineer, Steve McIntyre, in attempting to replicate the chart and finally debunked it as statistical nonsense. They revealed how the chart was derived from 'collation errors, unjustified truncation or extrapolation of source data, obsolete data, incorrect principal component calculations, geographical mislocations and other serious defects' -- substantially affecting the temperature index.\u201d (John McLaughlin)"
+  //},
+  //{
+  //  "Id": 748350,
+  //  "ArgumentText": "Mars is warming 'Some people think that our planet is suffering from a fever. Now scientists are telling us that Mars is experiencing its own planetary warming: Martian warming. It seems scientists have noticed recently that quite a few planets in our solar system seem to be heating up a bit, including Pluto. NASA says the Martian South Pole\u2019s \u201cice cap\u201d has been shrinking for three summers in a row. Maybe Mars got its fever from earth. If so, I guess Jupiter\u2019s caught the same cold, because it\u2019s warming up too, like Pluto.' (Fred Thompson)."
+  //},
+  //{
+  //  "Id": 411512,
+  //  "ArgumentText": "It's Urban Heat Island effect A paper by Ross McKitrick, an economics professor at the University of Guelph, and Patrick Michaels, an environmental studies professor at the University of Virginia, concludes that half of the global warming trend from 1980 to 2002 is caused by Urban Heat Island. (McKitrick & Michaels)"
+  //},
+  //{
+  //  "Id": 881367,
+  //  "ArgumentText": "It's a 1500 year cycle \u201cEvery one of them [climate records of the past] show this (roughly 1500 year) cycle. It was first discovered in ice cores in Greenland. Then it was seen in ocean sediments in the Atlantic. And now it\u2019s been found everywhere, including in stalagmites in caves. [\u2026] it could well account for the current warming.\u201d (Fred Singer)"
+  //},
+  //{
+  //  "Id": 734825,
+  //  "ArgumentText": "Arctic icemelt is a natural cycle 'In 2007, the Northern Hemisphere reached a record low in ice coverage and the Northwest Passage was opened. At that point, we were told melting was occurring faster than expected. What you were not told was that the data that triggered this record is only available back to the late 1970s. We know the Northwest Passage had been open before.' (Matt Rogers)"
+  //},
+  //{
+  //  "Id": 857919,
+  //  "ArgumentText": "Sea level rise is exaggerated 'We are told sea level is rising and will soon swamp all of our cities. Everybody knows that the Pacific island of Tuvalu is sinking. ... Around 1990 it became obvious the local tide-gauge did not agree - there was no evidence of 'sinking.' So scientists at Flinders University, Adelaide, set up new, modern, tide-gauges in 12 Pacific islands. Recently, the whole project was abandoned as there was no sign of a change in sea level at any of the 12 islands for the past 16 years.' Vincent Gray)."
+  //},
+  //{
+  //  "Id": 733435,
+  //  "ArgumentText": "Water vapor is the most powerful greenhouse gas \u201cWater vapour is the most important greenhouse gas. This is part of the difficulty with the public and the media in understanding that 95% of greenhouse gases are water vapour. The public understand it, in that if you get a fall evening or spring evening and the sky is clear the heat will escape and the temperature will drop and you get frost. If there is a cloud cover, the heat is trapped by water vapour as a greenhouse gas and the temperature stays quite warm. If you go to In Salah in southern Algeria, they recorded at one point a daytime or noon high of 52 degrees Celsius \u2013 by midnight that night it was -3.6 degree Celsius. [\u2026] That was caused because there is no, or very little, water vapour in the atmosphere and it is a demonstration of water vapour as the most important greenhouse gas.\u201d (Tim Ball)"
+  //},
+  //{
+  //  "Id": 990131,
+  //  "ArgumentText": "Other planets are warming '[E]vidence that CO2 is not the principle driver of warming on this planet is provided by the simultaneous warming of other planets and moons in our solar system, despite the fact that they obviously have no anthropogenic emissions of greenhouse gases. Mars, Triton, Pluto and Jupiter all show global warming, pointing to the Sun as the dominating influence in determining climate throughout the solar system.' (Ian McClintock)"
+  //},
+  //{
+  //  "Id": 700529,
+  //  "ArgumentText": "Greenland was green \u201cCfA's Sallie Baliunas [\u2026] refers to the medieval Viking sagas as examples of unusual warming around 1003 A.D. \u2018The Vikings established colonies in Greenland at the beginning of the second millennium, but they died out several hundred years later when the climate turned colder,\u2019 she notes.\u201d (William Cromie)"
+  //},
+  //{
+  //  "Id": 280871,
+  //  "ArgumentText": "Oceans are cooling \u201cOcean heat touches on the very core of the AGW hypothesis: When all is said and done, if the climate system is not accumulating heat, the hypothesis is invalid. [\u2026]Now that heat accumulation has stopped (and perhaps even reversed), the tables have turned. The same criteria used to support their hypothesis, is now being used to falsify it.\u201d (William DiPuccio)"
+  //},
+  //{
+  //  "Id": 343291,
+  //  "ArgumentText": "Climategate CRU emails suggest conspiracy \u201c[T]he 1079 emails and 72 documents seem indeed evidence of a scandal involving most of the most prominent scientists pushing the man-made warming theory - a scandal that is one of the greatest in modern science. [\u2026] emails suggesting conspiracy, collusion in exaggerating warming data, possibly illegal destruction of embarrassing information, organised resistance to disclosure, manipulation of data, private admissions of flaws in their public claims and much more.\u201d (Andrew Bolt, Herald Sun)"
+  //},
+  //{
+  //  "Id": 602912,
+  //  "ArgumentText": "Human CO2 is a tiny % of CO2 emissions \u201cThe oceans contain 37,400 billion tons (GT) of suspended carbon, land biomass has 2000-3000 GT. The atpmosphere contains 720 billion tons of CO2 and humans contribute only 6 GT additional load on this balance. The oceans, land and atpmosphere exchange CO2 continuously so the additional load by humans is incredibly small. A small shift in the balance between oceans and air would cause a CO2 much more severe rise than anything we could produce.\u201d (Jeff Id)"
+  //},
+  //{
+  //  "Id": 602236,
+  //  "ArgumentText": "Climate sensitivity is low 'His [Dr Spencer's] latest research demonstrates that \u2013 in the short term, at any rate \u2013 the temperature feedbacks that the IPCC imagines will greatly amplify any initial warming caused by CO2 are net-negative, attenuating the warming they are supposed to enhance. His best estimate is that the warming in response to a doubling of CO2 concentration, which may happen this century unless the usual suspects get away with shutting down the economies of the West, will be a harmless 1 Fahrenheit degree, not the 6 F predicted by the IPCC.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 861565,
+  //  "ArgumentText": "Increasing CO2 has little to no effect 'While major green house gas H2O substantially warms the Earth, minor green house gases such as CO2 have little effect.... The 6-fold increase in hydrocarbon use since 1940 has had no noticeable effect on atmospheric temperature ... ' (Environmental Effects of Increased Atmospheric Carbon Dioxide)"
+  //},
+  //{
+  //  "Id": 300315,
+  //  "ArgumentText": "We're coming out of the Little Ice Age 'The global temperature has been rising at a steady trend rate of 0.5\u00b0C per century since the end of the little ice age in the 1700s (when the Thames River would freeze over every winter; the last time it froze over was 1804) ... ... The IPCC blames human emissions of carbon dioxide for the last warming. But by general consensus human emissions of carbon dioxide have only been large enough to be significant since 1940\u2014yet the warming trend was in place for well over a century before that.' (David Evans)"
+  //},
+  //{
+  //  "Id": 354035,
+  //  "ArgumentText": "It cooled mid-century 'It was the post war industrialization that caused the rapid rise in global CO2 emissions, but by 1945 when this began, the Earth was already in a cooling phase that continued until 1975. With 32 years of rapidly increasing global temperatures and only a minor increase in global CO2 emissions, followed by 33 years of slowly cooling global temperatures with rapid increases in global CO2 emissions, it was deceitful for the IPCC to make any claim that CO2 emissions were primarily responsible for observed 20th century global warming.' (Norm Kalmanovitch)"
+  //},
+  //{
+  //  "Id": 159655,
+  //  "ArgumentText": "Glaciers are growing \u201c[R]eports are coming in from all over the world: for the first time in over 250 years, glaciers in Alaska, Canada, New Zealand, Greenland, and now Norway are growing.\u201d(JamulBlog)"
+  //},
+  //{
+  //  "Id": 212228,
+  //  "ArgumentText": "It warmed before 1940 when CO2 was low 'Of the rise in temperature during the 20th century, the bulk occurred from 1900 to 1940. It was followed by the aforementioned cooling trend from 1940 to around 1975. Yet the concentration of greenhouse gases was measurably higher in that later period than in the former. That drop in temperature came after what was described in the National Geographic as 'six decades of abnormal warmth'.' (James Schlesinger)"
+  //},
+  //{
+  //  "Id": 668607,
+  //  "ArgumentText": "There's no empirical evidence 'There is no actual evidence that carbon dioxide emissions are causing global warming. Note that computer models are just concatenations of calculations you could do on a hand-held calculator, so they are theoretical and cannot be part of any evidence.' (David Evans)"
+  //},
+  //{
+  //  "Id": 735072,
+  //  "ArgumentText": "Polar bear numbers are increasing \u201cA leading Canadian authority on polar bears, Mitch Taylor, said: \u2018We\u2019re seeing an increase in bears that\u2019s really unprecedented, and in places where we\u2019re seeing a decrease in the population it\u2019s from hunting, not from climate change.'\u201d (Scotsman.com)"
+  //},
+  //{
+  //  "Id": 657768,
+  //  "ArgumentText": "Satellites show no warming in the troposphere 'Satellite measurements indicate an absence of significant global warming since 1979, the very period that human carbon dioxide emissions have been increasing rapidly. The satellite data signal not only the absence of substantial human-induced warming but also provide an empirical test of the greenhouse hypothesis - a test that the hypothesis fails.' (Bob Carter)"
+  //},
+  //{
+  //  "Id": 819688,
+  //  "ArgumentText": "Mt. Kilimanjaro's ice loss is due to land use 'Gore claims the snowcap atop Africa's Mt. Kilimanjaro is shrinking and that global warming is to blame. Yet according to the November 2003 issue of Nature magazine, 'Although it's tempting to blame the ice loss on global warming, researchers think deforestation of the mountain's foothills is the more likely culprit. Without the forests' humidity, previously moisture-laden winds blew dry. No longer replenished with water, the ice is evaporating in the strong equatorial sunshine.'' (James Taylor)"
+  //},
+  //{
+  //  "Id": 427609,
+  //  "ArgumentText": "IPCC is alarmist 'Unquestionably, the U.N. Intergovernmental Panel on Climate Change (IPCC) was formed to build the scientific case for humanity being the primary cause of global warming. Such a goal is fundamentally unscientific, as it is hostile to alternative hypotheses for the causes of climate change.' (Roy Spencer)"
+  //},
+  //{
+  //  "Id": 363018,
+  //  "ArgumentText": "Extreme weather isn't caused by global warming 'The 30 major droughts of the 20th century were likely natural in all respects; and, hence, they are 'indicative of what could also happen in the future,' as Narisma et al. state in their concluding paragraph. And happen they will. Consequently, the next time a serious drought takes hold of some part of the world and the likes of Al Gore blame it on the 'carbon footprints' of you and your family, ask them why just the opposite of what their hypothesis suggests actually occurred over the course of the 20th century, i.e., why, when the earth warmed - and at a rate and to a degree that they claim was unprecedented overthousands of years - the rate-of-occurrence of severe regional droughts actually declined.' (source: CO2 Science)"
+  //},
+  //{
+  //  "Id": 916489,
+  //  "ArgumentText": "CO2 is not a pollutant 'To suddenly label CO2 as a 'pollutant' is a disservice to a gas that has played an enormous role in the development and sustainability of all life on this wonderful Earth. Mother Earth has clearly ruled that CO2 is not a pollutant.' (Robert Balling, as quoted by Popular Technology)"
+  //},
+  //{
+  //  "Id": 871001,
+  //  "ArgumentText": "There's no correlation between CO2 and temperature 'Twentieth century global warming did not start until 1910. By that time CO2 emissions had already risen from the expanded use of coal that had powered the industrial revolution, and emissions only increased slowly from 3.5gigatonnes in 1910 to under 4gigatonnes by the end of the Second World War. It was the post war industrialization that caused the rapid rise in global CO2 emissions, but by 1945 when this began, the Earth was already in a cooling phase that started around 1942 and continued until 1975. With 32 years of rapidly increasing global temperatures and only a minor increase in global CO2 emissions, followed by 33 years of slowly cooling global temperatures with rapid increases in global CO2 emissions, it was deceitful for the IPCC to make any claim that CO2 emissions were primarily responsible for observed 20th century global warming.' (Norm Kalmanovitch)."
+  //},
+  //{
+  //  "Id": 773913,
+  //  "ArgumentText": "Greenland is gaining ice \u201c[E]ven if it were true that Greenland\u2019s ice had been melting at \u2018new record\u2019 rates, after seven and a half years of global cooling global warming cannot be the cause. The true position in Greenland is to be found in Johannessen et al. (2005), where satellite altimetry established that the mean thickness of the entire Greenland ice sheet had increased at 2 inches per year \u2013 a total of almost 2 feet \u2013 in the 11 years 1993-2003.\u201d (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 211778,
+  //  "ArgumentText": "CO2 was higher in the past 'The killer proof that CO2 does not drive climate is to be found during the Ordovician- Silurian and the Jurassic-Cretaceous periods when CO2 levels were greater than 4000 ppmv (parts per million by volume) and about 2000 ppmv respectively. If the IPCC theory is correct there should have been runaway greenhouse induced global warming during these periods but instead there was glaciation.'(The Lavoisier Group)"
+  //},
+  //{
+  //  "Id": 569451,
+  //  "ArgumentText": "Scientists can't even predict weather ...Since modern computer models cannot with any certainty predict the weather two weeks from now, how can we rely upon computer models to predict what the Earth's climate might be like a hundred years from now? They can't! Yet people like Al 'Carbon-Credit' Gore want you to believe that these models can predict the future. I bet I can do at least as well with a crystal ball (source: Kowabunga)"
+  //},
+  //{
+  //  "Id": 155874,
+  //  "ArgumentText": "There's no tropospheric hot spot The IPCC confirms that computer modeling predicts the existence of a tropical, mid-troposphere \u201chot spot\u201d about 10km above the Earth\u2019s surface. Yet in the observed record of the Hadley Centre\u2019s radiosondes, the predicted \u201chot-spot\u201d signature of anthropogenic greenhouse warming is entirely absent (source: Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 240244,
+  //  "ArgumentText": "Neptune is warming In April 2007, Heidi Hammel published a study comparing Neptune's brightening to Earth's warming and solar variations. She concluded that while they don't correlate statistically, the patterns are visually compelling and planetary climate changes may be due to solar variations."
+  //},
+  //{
+  //  "Id": 228810,
+  //  "ArgumentText": "Jupiter is warming 'A new storm and a new red spot on Jupiter hints at climate change, USA TODAY and dozens of other sources explained yesterday. The temperatures are expected to change by as much as 10 Fahrenheit degrees at different places of the globe. At least close to the new spot and to the equator, nothing less than global warming is expected' (source: The Reference Frame)."
+  //},
+  //{
+  //  "Id": 955421,
+  //  "ArgumentText": "It's Pacific Decadal Oscillation 'The Pacific Decadal Oscillation (PDO) is a temperature pattern in the Pacific Ocean that spends roughly 20-30 years in the cool phase or the warm phase. In 1905, PDO switched to a warm phase. In 1946, PDO switched to a cool phase. In 1977, PDO switched to a warm phase. In 1998, PDO showed a few cool years. Note that the cool phases seem to coincide with the periods of cooling (1946-1977) and the warm phases seem to coincide with periods of warming (1905-1946, 1977-1998).' (The Reference Frame)"
+  //},
+  //{
+  //  "Id": 210728,
+  //  "ArgumentText": "CO2 effect is saturated 'Each unit of CO2 you put into the atmosphere has less and less of a warming impact. Once the atmosphere reaches a saturation point, additional input of CO2 will not really have any major impact. It's like putting insulation in your attic. They give a recommended amount and after that you can stack the insulation up to the roof and it's going to have no impact.' (Marc Morano, as quoted by Steve Eliot)"
+  //},
+  //{
+  //  "Id": 106191,
+  //  "ArgumentText": "Pluto is warming 'Some people think that our planet is suffering from a fever. Now scientists are telling us that Mars is experiencing its own planetary warming: Martian warming. It seems scientists have noticed recently that quite a few planets in our solar system seem to be heating up a bit, including Pluto.' (Fred Thompson)"
+  //},
+  //{
+  //  "Id": 534405,
+  //  "ArgumentText": "Greenland ice sheet won't collapse 'A July 6, 2007 study published in the journal Science about Greenland by an international team of scientists found DNA \u201cevidence that suggests the frozen shield covering the immense island survived the Earth\u2019s last period of global warming,\u201d according to a Boston Globe Article. ... [T]he study indicates \u201cGreenland\u2019s ice may be less susceptible to the massive meltdown predicted by computer models of climate change, the main author ... said in an interview. ... The study found \u201cGreenland really was green, before Ice Age glaciers enshrouded vast swaths of the Northern Hemisphere\u2026somewhere between 450,000 and 800,000 years ago,\u201d according to the article. (Marc Morano, discussing the views of Eske Willerslev)"
+  //},
+  //{
+  //  "Id": 809348,
+  //  "ArgumentText": "Volcanoes emit more CO2 than humans 'Human additions of CO2 to the atmosphere must be taken into perspective. Over the past 250 years, humans have added just one part of CO2 in 10,000 to the atmosphere. One volcanic cough can do this in a day.' (Ian Plimer)"
+  //},
+  //{
+  //  "Id": 593100,
+  //  "ArgumentText": "Animals and plants can adapt [C]orals, trees, birds, mammals, and butterflies are adapting well to the routine reality of changing climate.' (source: Hudson Institute)"
+  //},
+  //{
+  //  "Id": 299783,
+  //  "ArgumentText": "Medieval Warm Period was warmer 'For now, though, it is enough just to see the Medieval WARM Period shown to be global, and warmer than today.' (Musings from the Chiefio)"
+  //},
+  //{
+  //  "Id": 935540,
+  //  "ArgumentText": "CO2 measurements are suspect 'The Keeling curve, which is widely used to show the increase in CO2 emissions, is based on data from the top of Mount Mauna Loa in Hawaii. Mauna Loa is a volcano and it doesn\u2019t seem to me that a volcano is the best place to be taking CO2 measurements' (disinter)"
+  //},
+  //{
+  //  "Id": 982452,
+  //  "ArgumentText": "It's the ocean 'These small global temperature increases of the last 25 years and over the last century are likely natural changes that the globe has seen many times in the past. This small warming is likely a result of the natural alterations in global ocean currents which are driven by ocean salinity variations. Ocean circulation variations are as yet little understood. Human kind has little or nothing to do with the recent temperature changes. We are not that influential.' (William Gray)"
+  //},
+  //{
+  //  "Id": 514614,
+  //  "ArgumentText": "It's El Ni\u00f1o 'Three Australasian researchers have shown that natural forces are the dominant influence on climate, in a study just published in the highly-regarded Journal of Geophysical Research. According to this study little or none of the late 20th century global warming and cooling can be attributed to human activity. The close relationship between ENSO and global temperature, as described in the paper, leaves little room for any warming driven by human carbon dioxide emissions. The available data indicate that future global temperatures will continue to change primarily in response to ENSO cycling, volcanic activity and solar changes.' (Climate Depot)"
+  //},
+  //{
+  //  "Id": 234250,
+  //  "ArgumentText": "Arctic sea ice has recovered 'Those who have been following NSIDC and JAXA sea ice plots have noted that this has been an extraordinary year so far, with Arctic sea ice hitting the \u201cnormal\u201d line on some datasets. ... As of today, JAXA shows that we have more ice than any time on this date for the past 8 years of Aqua satellite measurement for this AMSRE dataset.' (Anthony Watts, 22 April 2010)"
+  //},
+  //{
+  //  "Id": 700990,
+  //  "ArgumentText": "Less than half of published scientists endorse global warming Klaus-Martin Schulte examined all papers published from 2004 to February 2007. Of 528 total papers on climate change, only 38 (7%) gave an explicit endorsement of the consensus. While only 32 papers (6%) reject the consensus outright, the largest category (48%) are neutral papers, refusing to either accept or reject the hypothesis. Only a single one makes any reference to climate change leading to catastrophic results. (Source: DailyTech)"
+  //},
+  //{
+  //  "Id": 238945,
+  //  "ArgumentText": "Dropped stations introduce warming bias 'Two American researchers allege that U.S. government scientists have skewed global temperature trends by ignoring readings from thousands of local weather stations around the world, particularly those in colder altitudes and more northerly latitudes, such as Canada.' (Vancouver Sun)"
+  //},
+  //{
+  //  "Id": 259501,
+  //  "ArgumentText": "Solar Cycle Length proves its the sun In 1991, Eigil Friis-Christensen and Knud Lassen published an article claiming 'strikingly good agreement' between solar cycle lengths (the fluctuating lengths of cycles undergone by sunspot numbers) and northern hemisphere land temperatures over the period 1860\u20131990 (Friis-Christensen 1991)."
+  //},
+  //{
+  //  "Id": 271599,
+  //  "ArgumentText": "It's aerosols Is a Thinning Haze Unveiling the Real Global Warming? (Kerr 2007) points out that the sunlight-reflecting haze that cools much of the planet seems to have thinned over the past decade or so. If real, the thinning would not explain away a century of global warming but it might explain the unexpectedly strong global warming of late, the accelerating loss of glacial ice and much of rising sea levels."
+  //},
+  //{
+  //  "Id": 872507,
+  //  "ArgumentText": "It's microsite influences U.S. weather stations have been located next to exhaust fans of air conditioning units, surrounded by asphalt parking lots, on blistering-hot rooftops, and near sidewalks and buildings that absorb and radiate heat. 89 percent of the stations fail to meet the National Weather Service\u2019s own siting requirements that stations must be 30 metres away from an artificial heating or radiating/reflecting heat source. (Watts 2009)"
+  //},
+  //{
+  //  "Id": 885773,
+  //  "ArgumentText": "CO2 has a short residence time '[T]he overwhelming majority of peer-reviewed studies [find] that CO2 in the atmosphere remained there a short time.' (Lawrence Solomon)"
+  //},
+  //{
+  //  "Id": 749019,
+  //  "ArgumentText": "It's a climate regime shift 'For small changes in climate associated with tenths of a degree, there is no need for any external cause. The earth is never exactly in equilibrium. The motions of the massive oceans where heat is moved between deep layers and the surface provides variability on time scales from years to centuries. Recent work (Tsonis et al, 2007), suggests that this variability is enough to account for all climate change since the 19th Century.' (Richard Lindzen)"
+  //},
+  //{
+  //  "Id": 255967,
+  //  "ArgumentText": "2nd law of thermodynamics contradicts greenhouse theory 'The atmospheric greenhouse effect, an idea that many authors trace back to the traditional works of Fourier 1824, Tyndall 1861, and Arrhenius 1896, and which is still supported in global climatology, essentially describes a fictitious mechanism, in which a planetary atmosphere acts as a heat pump driven by an environment that is radiatively interacting with but radiatively equilibrated to the atmospheric system. According to the second law of thermodynamics such a planetary machine can never exist.' (Gerhard Gerlich)"
+  //},
+  //{
+  //  "Id": 380379,
+  //  "ArgumentText": "Humans are too insignificant to affect global climate To suggest that humanity is capable of impacting and disturbing forces of such magnitude is reflective of a self-centred arrogance that is mind numbing. Humanity is a subset of Nature. Nature is not a subset of humanity. We have travelled full circle. We are back in the mindset that prevailed when Society\u2019s leaders dictated what people in Copernicus\u2019 days may or may not think. The Earth is once again flat. (source: Financial Sense University)"
+  //},
+  //{
+  //  "Id": 737295,
+  //  "ArgumentText": "It's not happening '...these global warming studies that now we're seeing (are) a bunch of snake oil science.' (Sarah Palin)"
+  //},
+  //{
+  //  "Id": 562005,
+  //  "ArgumentText": "Greenhouse effect has been falsified '[T]he influence of so-called greenhouse gases on near-surface temperature - is not yet absolutely proven. In other words, there is as yet no incontrovertible proof either of the greenhouse effect, or its connection with alleged global warming. This is no surprise, because in fact there is no such thing as the greenhouse effect: it is an impossibility. The statement that so-called greenhouse gases, especially CO2, contribute to near-surface atmospheric warming is in glaring contradiction to well-known physical laws relating to gas and vapour, as well as to general caloric theory.' (Heinz Thieme)"
+  //},
+  //{
+  //  "Id": 180575,
+  //  "ArgumentText": "It's land use 'Land-use modifications for urbanization and agriculture have affected climate change data more than previously thought, according to new research by a University of Guelph professor. In a paper published online this week in the Journal of Geophysical Research-Atmosphere, economics professor Ross McKitrick says the resulting discrepancies may be leading to an overstatement of the role of greenhouse gases in the atmosphere. In fact, the study concludes that skewed data could account for as much as half the post-1980 warming trend over land.' (University of Guelph)"
+  //},
+  //{
+  //  "Id": 556011,
+  //  "ArgumentText": "The science isn't settled 'Many people think the science of climate change is settled. It isn't. And the issue is not whether there has been an overall warming during the past century. There has, although it was not uniform and none was observed during the past decade. The geologic record provides us with abundant evidence for such perpetual natural climate variability, from icecaps reaching almost to the equator to none at all, even at the poles. The climate debate is, in reality, about a 1.6 watts per square metre or 0.5 per cent discrepancy in the poorly known planetary energy balance.' (Jan Veizer)"
+  //},
+  //{
+  //  "Id": 322153,
+  //  "ArgumentText": "2009-2010 winter saw record cold spells 'Britain's big freeze is the start of a worldwide trend towards colder weather that seriously challenges global warming theories, eminent scientists claimed yesterday. The world has entered a 'cold mode' which is likely to bring a global dip in temperatures which will last for 20 to 30 years, they say.' (Daily Mail)"
+  //},
+  //{
+  //  "Id": 794259,
+  //  "ArgumentText": "It's methane 'A United Nations report has identified the world's rapidly growing herds of cattle as the greatest threat to the climate, forests and wildlife. ... ...Livestock are responsible for 18 per cent of the greenhouse gases that cause global warming, more than cars, planes and all other forms of transport put together. Burning fuel to produce fertiliser to grow feed, to produce meat and to transport it - and clearing vegetation for grazing - produces 9 per cent of all emissions of carbon dioxide, the most common greenhouse gas. And their wind and manure emit more than one third of emissions of another, methane, which warms the world 20 times faster than carbon dioxide.' (Geoffrey Lean)"
+  //},
+  //{
+  //  "Id": 108500,
+  //  "ArgumentText": "500 scientists refute the consensus 'According to a report in the WorldNet Daily, more than 500 scientists have published evidence refuting the current man-made global warming scare, according to a new analysis of peer-reviewed literature by the Hudson Institute.' (American Conservative Daily)"
+  //},
+  //{
+  //  "Id": 950623,
+  //  "ArgumentText": "Scientists tried to 'hide the decline' in global temperature 'Perhaps the most infamous example of this comes from the 'hide the decline' email. This email initially garnered widespread media attention, as well as significant disagreement over its implications. In our view, the email, as well as the contextual history behind it, appears to show several scientists eager to present a particular viewpoint-that anthropogenic emissions are largely responsible for global warming-even when the data showed something different.' (David Lungren)"
+  //},
+  //{
+  //  "Id": 798210,
+  //  "ArgumentText": "IPCC were wrong about Himalayan glaciers 'In 1999 New Scientist reported a comment by the leading Indian glaciologist Syed Hasnain, who said in an email interview with this author that all the glaciers in the central and eastern Himalayas could disappear by 2035. Hasnain, of Jawaharlal Nehru University in Delhi, who was then chairman of the International Commission on Snow and Ice's working group on Himalayan glaciology, has never repeated the prediction in a peer-reviewed journal. He now says the comment was 'speculative'. Despite the 10-year-old New Scientist report being the only source, the claim found its way into the IPCC fourth assessment report published in 2007. Moreover the claim was extrapolated to include all glaciers in the Himalayas.' (Fred Pearce)"
+  //},
+  //{
+  //  "Id": 184647,
+  //  "ArgumentText": "Ocean acidification isn't serious 'Our harmless emissions of trifling quantities of carbon dioxide cannot possibly acidify the oceans. Paper after paper after learned paper in the peer-reviewed literature makes that quite plain. Idso cites some 150 scientific sources, nearly all of them providing hard evidence, by measurement and experiment, that there is no basis for imagining that we can acidify the oceans to any extent large enough to be measured even by the most sensitive instruments.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 950518,
+  //  "ArgumentText": "Sea level rise predictions are exaggerated 'Professor Niklas M\u00f6rner, who has been studying sea level for a third of a century, says it is physically impossible for sea level to rise at much above its present rate, and he expects 4-8 inches of sea level rise this century, if anything rather below the rate of increase in the last century. In the 11,400 years since the end of the last Ice Age, sea level has risen at an average of 4 feet/century, though it is now rising much more slowly because very nearly all of the land-based ice that is at low enough latitudes and altitudes to melt has long since gone.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 982226,
+  //  "ArgumentText": "Naomi Oreskes' study on consensus was flawed The claim of \u201cconsensus\u201d rests almost entirely on an inaccurate and now-outdated single page comment in the journal Science entitled The Scientific Consensus on Climate Change (Oreskes 2004). Benny Peiser conducted a search of peer-reviewed literature on the ISI Web of Science database between 1993 and 2003. Dr. Peiser\u2019s research demonstrated that several of the abstracts confounded Oreskes\u2019 assertion of unanimity by explicitly rejecting or casting doubt upon the notion that human activities are the main drivers of the observed warming over the last 50 years. (source: Consensus? What Consensus?)"
+  //},
+  //{
+  //  "Id": 990766,
+  //  "ArgumentText": "Phil Jones says no global warming since 1995 'Phil Jones said that for the past 15 years there has been no 'statistically significant' warming. The admissions will be seized on by sceptics as fresh evidence that there are serious flaws at the heart of the science of climate change and the orthodoxy that recent rises in temperature are largely man-made.' (Daily Mail)"
+  //},
+  //{
+  //  "Id": 364015,
+  //  "ArgumentText": "Ice isn't melting Thanks to a rapid rebound in recent months, global sea ice levels now equal those seen 29 years ago, when the year 1979 also drew to a close. In fact, the rate of increase from September onward is the fastest rate of change on record, either upwards or downwards. The data is being reported by the University of Illinois's Arctic Climate Research Center, and is derived from satellite observations of the Northern and Southern hemisphere polar regions (Daily Tech)."
+  //},
+  //{
+  //  "Id": 251291,
+  //  "ArgumentText": "CO2 is coming from the ocean 'The solubility of carbon dioxide in water is listed in the Handbook of Chemistry and Physics as a declining function of temperature. ... The rising values of atmospheric carbon dioxide during the time of the Mouna Loa measurements could clearly be a function of reduced solubility of CO2 in the oceans of the Planet.' (Watts Up With That)"
+  //},
+  //{
+  //  "Id": 829388,
+  //  "ArgumentText": "It's not us 'What do the skeptics believe? First, they concur with the believers that the Earth has been warming since the end of a Little Ice Age around 1850. The cause of this warming is the question. Believers think the warming is man-made, while the skeptics believe the warming is natural and contributions from man are minimal and certainly not potentially catastrophic \u00e0 la Al Gore.' (Neil Frank)"
+  //},
+  //{
+  //  "Id": 955810,
+  //  "ArgumentText": "CO2 is not increasing '...there is the contention by Wolfgang Knorr of the Department of Earth Sciences at the University of Bristol in England that carbon dioxide levels in the atmosphere are about where they were 160 years ago.' (as quoted by Ken Ward Jr.)"
+  //},
+  //{
+  //  "Id": 444650,
+  //  "ArgumentText": "It's albedo 'Earth\u2019s Albedo has risen in the past few years, and by doing reconstructions of the past albedo, it appears that there was a significant reduction in Earth\u2019s albedo leading up to a lull in 1997. The most interesting thing here is that the albedo forcings, in watts/sq meter seem to be fairly large. Larger than that of all manmade greenhouse gases combined.' (Anthony Watts)"
+  //},
+  //{
+  //  "Id": 124987,
+  //  "ArgumentText": "Record snowfall disproves global warming 'Global warming continues to cause trouble to this tiny, blue planet: A new record was set Wednesday when Chicago had its ninth consecutive day of measurable snowfall and Flint, Michigan, broke a 95-year-old record early Wednesday morning when the temperature plummeted to a frigid 19 below zero. The previous record? Minus 10, set in 1914. Meanwhile, it will likely to continue to snow in Chicago in the coming days. Global warming sure is\u2026 cold!' (Michael van der Galien)"
+  //},
+  //{
+  //  "Id": 891562,
+  //  "ArgumentText": "Hansen's 1988 prediction was wrong 'On June 23, 1988, NASA scientist James Hansen testified before the House of Representatives that there was a strong 'cause and effect relationship' between observed temperatures and human emissions into the atmosphere. At that time, Hansen also produced a model of the future behavior of the globe\u2019s temperature, which he had turned into a video movie that was heavily shopped in Congress. That model predicted that global temperature between 1988 and 1997 would rise by 0.45\u00b0C (Figure 1). Ground-based temperatures from the IPCC show a rise of 0.11\u00b0C, or more than four times less than Hansen predicted. The forecast made in 1988 was an astounding failure, and IPCC\u2019s 1990 statement about the realistic nature of these projections was simply wrong.' (Pat Michaels)"
+  //},
+  //{
+  //  "Id": 935611,
+  //  "ArgumentText": "Lindzen and Choi find low climate sensitivity Climate feedbacks are estimated from fluctuations in the outgoing radiation budget from the latest version of Earth Radiation Budget Experiment (ERBE) nonscanner data. It appears, for the entire tropics, the observed outgoing radiation fluxes increase with the increase in sea surface temperatures (SSTs). The observed behavior of radiation fluxes implies negative feedback processes associated with relatively low climate sensitivity. This is the opposite of the behavior of 11 atmospheric models forced by the same SSTs. (Lindzen & Choi 2009)"
+  //},
+  //{
+  //  "Id": 255554,
+  //  "ArgumentText": "The sun is getting hotter There is no single continuous satellite measurement of Total Solar Irradiance (TSI). Instead, the data is composited from various satellite measurements. The two most cited composites are PMOD and ACRIM. According to Nicola Scafetta, ACRIM more faithfully reproduces the observations whereas PMOD assumes the published TSI satellite data are wrong and need additional corrections. In particular, PMOD alters the data from the Nimbus7/ERB record from 1989 to 1991. Nimbus7/ERB data during such a short period show a clear upward trend while PMOD during the same period is almost constant. The alteration of the Nimbus7/ERB data is responsible for the different shape between the ACRIM and PMOD TSI composites (Shining More Light on the Solar Factor)."
+  //},
+  //{
+  //  "Id": 798344,
+  //  "ArgumentText": "Solar cycles cause global warming A new peer-reviewed study on Surface Warming and the Solar Cycle found that times of high solar activity are on average 0.2\u00b0C warmer than times of low solar activity, and that there is a polar amplification of the warming. This result is the first to document a statistically significant globally coherent temperature response to the solar cycle, the authors note (source: Mark Morano)."
+  //},
+  //{
+  //  "Id": 911609,
+  //  "ArgumentText": "Springs aren't advancing 'While there are numerous studies that indicate that spring has advanced, there is a recent satellite based study that indicates no consistent trends in the start of spring in North America.' (Indur M. Goklany)"
+  //},
+  //{
+  //  "Id": 506702,
+  //  "ArgumentText": "Over 31,000 scientists signed the OISM Petition Project The Petition Project features over 31,000 scientists signing the petition stating 'there is no convincing scientific evidence that human release of carbon dioxide will, in the forseeable future, cause catastrophic heating of the Earth's atmosphere'. (OISM)"
+  //},
+  //{
+  //  "Id": 382764,
+  //  "ArgumentText": "Water levels correlate with sunspots Several studies have found a link between solar activity and water levels. A South African paper has found a 21 year cycle synchronous with the solar cycle (Alexander et al. 2007). Another paper finds a link between galactic cosmic rays and precipitation in the Midwestern USA (Perry 2007)."
+  //},
+  //{
+  //  "Id": 610686,
+  //  "ArgumentText": "IPCC were wrong about Amazon rainforests 'The IPCC also made false predictions on the Amazon rain forests, referenced to a non peer-reviewed paper produced by an advocacy group working with the WWF. This time though, the claim made is not even supported by the report and seems to be a complete fabrication.' (EU Referendum)"
+  //},
+  //{
+  //  "Id": 330001,
+  //  "ArgumentText": "Climate is chaotic and cannot be predicted 'Lorenz (1963), in the landmark paper that founded chaos theory, said that because the climate is a mathematically-chaotic object (a point which the UN's climate panel admits), accurate long-term prediction of the future evolution of the climate is not possible 'by any method'. At present, climate forecasts even as little as six weeks ahead can be diametrically the opposite of what actually occurs, even if the forecasts are limited to a small region of the planet.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 704627,
+  //  "ArgumentText": "Water vapor in the stratosphere stopped global warming A new study authored by Susan Solomon, lead author of the study and a researcher at the National Oceanic and Atmospheric Administration in Boulder, Colo. could explain why atmospheric carbon is not contributing to warming significantly. According to the study, as carbon levels have risen, the cold air at high altitudes over the tropics has actually grown colder. The lower temperatures at this 'coldest point' have caused global water vapor levels to drop, even as carbon levels rise. Water vapor helps trap heat, and is a far the strongest of the major greenhouse gases, contributing 36\u201372 percent of the greenhouse effect. However more atmospheric carbon has actually decreased water vapor levels. Thus rather than a 'doomsday' cycle of runaway warming, Mother Earth appears surprisingly tolerant of carbon, decreasing atmospheric levels of water vapor -- a more effective greenhouse gas -- to compensate. (Daily Tech)"
+  //},
+  //{
+  //  "Id": 400885,
+  //  "ArgumentText": "Scientists retracted claim that sea levels are rising 'Another global warming myth comes crashing down. No warming since at least 1995, no melting glaciers and now no rising sea levels. Basically this leaves the warmers with no credibility, along with the U.S. media, which is largely ignoring this massive scandal.' (JammieWearingFool)"
+  //},
+  //{
+  //  "Id": 258743,
+  //  "ArgumentText": "Mauna Loa is a volcano 'Mauna Loa has been producing a readout which supports Manning's predetermined goal by showing steady growth in atmospheric CO2 concentrations since 1959. Just thirty miles from the observatory, Kilauea's Pu`u O`o vent sends 3.3 million metric tons of CO2 into the atmosphere every year. Pu`u O`o sends into 'the undisturbed air' near 'the remote location' the equivalent to yearly CO2 production from an average city of 660,000 people.' (Andrew Walden)"
+  //},
+  //{
+  //  "Id": 606258,
+  //  "ArgumentText": "CO2 is not the only driver of climate CO2 is not the only driver of climate. There are a myriad of other radiative forcings that affect the planet's energy imbalance. Volcanoes, solar variations, clouds, methane, aerosols - these all change the way energy enters and/or leaves our climate."
+  //},
+  //{
+  //  "Id": 930632,
+  //  "ArgumentText": "Trenberth can't account for the lack of warming in one e-mail, a top 'warmist' researcher admits it\u2019s a 'travesty' that 'we can\u2019t account for the lack of warming at the moment.' As it happens, the writer of that October 2009 e-mail\u2014Kevin Trenberth, a lead author of the warmist bible, the 2007 Intergovernmental Panel on Climate Change (IPCC) report\u2014told Congress two years ago that evidence for manmade warming is 'unequivocal.' He claimed 'the planet is running a \u2019fever\u2019 and the prognosis is that it is apt to get much worse.' But Trenberth\u2019s 'lack of warming at the moment' has been going on at least a decade. (Michael Fumento)"
+  //},
+  //{
+  //  "Id": 857683,
+  //  "ArgumentText": "CO2 was higher in the late Ordovician 'To the consternation of global warming proponents, the Late Ordovician Period was also an Ice Age while at the same time CO2 concentrations then were nearly 12 times higher than today - 4400 ppm. According to greenhouse theory, Earth should have been exceedingly hot. Instead, global temperatures were no warmer than today. Clearly, other factors besides atmospheric carbon influence earth temperatures and global warming.' (Monte Hieb)"
+  //},
+  //{
+  //  "Id": 216293,
+  //  "ArgumentText": "Southern sea ice is increasing 'Antarctic sea ice set a new record in October 2007, as photographs distributed by the National Oceanic and Atmospheric Administration showed penguins and other cold-weather creatures able to stand farther north on Southern Hemisphere sea ice than has ever been recorded. The news of expanding Antarctic sea ice stole headlines from global warming alarmists who asserted Arctic sea ice had reached its lowest extent since 1979.' (James Taylor)"
+  //},
+  //{
+  //  "Id": 562446,
+  //  "ArgumentText": "Melting ice isn't warming the Arctic 'The University of Melbourne study claims are not supported by the available data. The authors seem to have jumped right into statistical analysis without proposing a physical mechanism that works. Heat flows across differences in temperatures, yet the winter water temperature under the ice is fixed at -2C. Thus elevated winter air temperatures should actually cause a reduction in heat flow out of the ocean. Whatever is driving increases in winter Arctic temperatures is not heat coming out of the Arctic Ocean, which is covered with insulating ice.' (Steve Goddard)"
+  //},
+  //{
+  //  "Id": 519357,
+  //  "ArgumentText": "Global warming stopped in 1998, 1995, 2002, 2007, 2010, ???? 'January 2008 capped a 12 month period of global temperature drops on all of the major well respected indicators. HadCRUT, RSS, UAH, and GISS global temperature sets all show sharp drops in the last year' (source: Watts Up With That)."
+  //},
+  //{
+  //  "Id": 397550,
+  //  "ArgumentText": "Tree-rings diverge from temperature after 1960 Actual reconstructions 'diverge' from the instrumental series in the last part of 20th century. For instance, in the original hockey stick (ending 1980) the last 30-40 years of data points slightly downwards. In order to smooth those time series one needs to 'pad' the series beyond the end time, and no matter what method one uses, this leads to a smoothed graph pointing downwards in the end whereas the smoothed instrumental series is pointing upwards \u2014 a divergence (Climate Audit)."
+  //},
+  //{
+  //  "Id": 541364,
+  //  "ArgumentText": "The IPCC consensus is phoney 'The UN\u2019s Intergovernmental Panel on Climate Change misled the press and public into believing that thousands of scientists backed its claims on manmade global warming, according to Mike Hulme, a prominent climate scientist and IPCC insider. The actual number of scientists who backed that claim was \u201conly a few dozen experts,\u201d he states in a paper forProgress in Physical Geography, co-authored with student Martin Mahony.' (Lawrence Solomon)"
+  //},
+  //{
+  //  "Id": 990859,
+  //  "ArgumentText": "It's CFCs 'The observed data show that CFCs conspiring with cosmic rays most likely caused both the Antarctic ozone hole and global warming... The total amount of CFCs, ozone-depleting molecules that are well-known greenhouse gases, has decreased around 2000. Correspondingly, the global surface temperature has also dropped.' (Qing-Bin Lu)"
+  //},
+  //{
+  //  "Id": 191587,
+  //  "ArgumentText": "A drop in volcanic activity caused warming 'There is no question the Earth has been warming; it is coming out of the 'Little Ice Age'. However, there is no credible evidence that it is due to mankind and carbon dioxide. We've been coming out of a Little Ice Age for 300 years. We have not been making very much carbon dioxide for 300 years. It's been warming up for a long time. The Little Ice Age was driven by volcanic activity. That settled down, so it is getting warmer' (Reid Bryson)"
+  //},
+  //{
+  //  "Id": 494275,
+  //  "ArgumentText": "CO2 emissions do not correlate with CO2 concentration 'It is easily demonstrated that there is no correlation between CO2 emissions and atmospheric CO2 concentration. Over the three years from 1979 to 1982 when CO2 emissions were decreasing due to the rapid increase in the price of oil that drastically reduced consumption, there was no change in the rate of increase in atmospheric concentration of CO2 proving that humans were not the primary source for the increase in concentration.' (Laurence Gould)"
+  //},
+  //{
+  //  "Id": 400069,
+  //  "ArgumentText": "It's global brightening '...satellites confirmed measurements from ground stations show a considerable, and naturally-occurring, global brightening from 1983-2001 (Pinker et al., 2005). Elementary radiative-transfer calculations demonstrate that a natural surface global brightening amounting to ~1.9 Wm\u20132 over the 18-year period of study would be expected \u2013 using the IPCC\u2019s own methodology \u2013 to have caused a transient warming of 1 K (1.8 F\u00b0). To put this naturally-occurring global brightening into perspective, the IPCC\u2019s estimated total of all the anthropogenic influences on climate combined in the 256 years 1750-2005 is only 1.6 Wm\u20132.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 484311,
+  //  "ArgumentText": "Warming causes CO2 rise 'Differentiating the CO2 measurements over the last thirty years produces a pattern that matches the temperature anomaly measured by satellites in extreme detail. That this correlation includes El Ni\u00f1o years, and shows that the temperature rise is causing the rise in CO2, rather than the other way around.' (Lon Hocker)"
+  //},
+  //{
+  //  "Id": 279174,
+  //  "ArgumentText": "It's ozone The Ozone Layer stops UV radiation from entering our atmosphere. As the ozone layer has been declining in recent decades, that may be causing global warming."
+  //},
+  //{
+  //  "Id": 666445,
+  //  "ArgumentText": "It's satellite microwave transmissions Global Warming history completely coincides with the history of artificial satellites and the use of microwave frequencies from outer space. Satellite antennas transmit UHF and higher microwaves frequencies all over the planet. Sending oscillating microwaves from an antenna inside a vacuum through an electromagnetic field through a dielectric material, such as water, creates radio frequency heating at the molecular level (source: Global Warming and Microwaves)."
+  //},
+  //{
+  //  "Id": 245109,
+  //  "ArgumentText": "We didn't have global warming during the Industrial Revolution 'Why didn\u2019t we have global warming during the Industrial Revolution? In those days you couldn\u2019t have seen across the street for all the carbon emissions and the crap coming out of the chimneys.' (Alan Titchmarsh)"
+  //},
+  //{
+  //  "Id": 387554,
+  //  "ArgumentText": "Greenland has only lost a tiny fraction of its ice mass 'Greenland is losing about 0.007% of its total mass every year \u2026 seven thousandths of one percent lost annually, be still, my beating heart \u2026 And if that terrifying rate of loss continues unabated, of course, it will all be gone in a mere 15,000 years.' (Willis Eschenbach)"
+  //},
+  //{
+  //  "Id": 884259,
+  //  "ArgumentText": "Antarctica is too cold to lose ice 'The real issue is absolute temperatures. Some of the regions in which GRACE claims ice loss in East Antarctica average colder than -30\u00b0C during the summer, and never, ever get above freezing. How can you melt ice at those temperatures?' (Steve Goddard)"
+  //},
+  //{
+  //  "Id": 461064,
+  //  "ArgumentText": "It's waste heat 'Global warming is mostly due to heat production by human industry since the 1800s, from nuclear power and fossil fuels, better termed hydrocarbons, \u2013 coal, oil, natural gas. Greenhouse gases such as carbon dioxide (CO2 play a minor role even though they are widely claimed the cause.' (Morton Skorodin)"
+  //},
+  //{
+  //  "Id": 392749,
+  //  "ArgumentText": "CO2 is plant food Earth's current atmospheric CO2 concentration is almost 390 parts per million (ppm). Adding another 300 ppm of CO2 to the air has been shown by literally thousands of experiments to greatly increase the growth or biomass production of nearly all plants. This growth stimulation occurs because CO2 is one of the two raw materials (the other being water) that are required for photosynthesis. Hence, CO2 is actually the 'food' that sustains essentially all plants on the face of the earth, as well as those in the sea. And the more CO2 they 'eat' (absorb from the air or water), the bigger and better they grow. (source: Plants Need CO2)"
+  //},
+  //{
+  //  "Id": 826120,
+  //  "ArgumentText": "Satellite error inflated Great Lakes temperatures 'Global warming data apparently cooked by U.S. government-funded body shows astounding temperature fraud with increases averaging 10 to 15 degrees Fahrenheit. The tax-payer funded National Oceanic and Atmospheric Administration (NOAA) has become mired in fresh global warming data scandal involving numbers for the Great Lakes region that substantially ramp up averages.' (John O'Sullivan)"
+  //},
+  //{
+  //  "Id": 743775,
+  //  "ArgumentText": "Positive feedback means runaway warming 'One of the oft-cited predictions of potential warming is that a doubling of atmospheric carbon dioxide levels from pre-industrial levels \u2014 from 280 to 560 parts per million \u2014 would alone cause average global temperature to increase by about 1.2 \u00b0C. Recognizing the ho-hum nature of such a temperature change, the alarmist camp moved on to hypothesize that even this slight warming will cause irreversible changes in the atmosphere that, in turn, will cause more warming. These alleged 'positive feedback' cycles supposedly will build upon each other to cause runaway global warming, according to the alarmists.' (Junk Science)"
+  //},
+  //{
+  //  "Id": 319091,
+  //  "ArgumentText": "CO2 is just a trace gas 'We have been grossly misled to think there is tens of thousands of times as much CO2 as there is! Why has such important information been withheld from the public? If the public were aware that man-made CO2 is so incredibly small there would be very little belief in a climate disaster ...' (Gregg Thompson)"
+  //},
+  //{
+  //  "Id": 771028,
+  //  "ArgumentText": "IPCC overestimate temperature rise 'The IPCC\u2019s predicted equilibrium warming path bears no relation to the far lesser rate of \u201cglobal warming\u201d that has been observed in the 21st century to date.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 665386,
+  //  "ArgumentText": "Breathing contributes to CO2 buildup 'Pollution; none of us are supporting putting substances into the atmosphere or the waterways that might be pollutants, but carbon dioxide is not a pollutant. If Senator Wong was really serious about her science she would stop breathing because you inhale air that's got 385 parts per million carbon dioxide in it and you exhale air with about ten times as much, and that extra carbon comes from what you eat. So that is absolute nonsense.' (Ian Plimer)"
+  //},
+  //{
+  //  "Id": 892023,
+  //  "ArgumentText": "Ice Sheet losses are overestimated 'Rapid loss of ice-mass from the glaciers of Greenland and Antarctica are cited as proof positive of global warming's onslaught. The latest measurements involve the use of satellite gravimetry, estimating the mass of terrain beneath by detecting slight changes in gravity as a satellite passes overhead. But gravity measurements of ice-mass loss are complicated by glacial isostatic adjustments\u2014compensation for the rise or fall of the underlying crustal material. A new article in Nature Geoscience describes an innovative approach employed to derive ice-mass changes from GRACE data. The report suggests significantly smaller overall ice-mass losses than previous estimates.' (Doug Hoffman)"
+  //},
+  //{
+  //  "Id": 145058,
+  //  "ArgumentText": "Royal Society embraces skepticism 'The UK today has made it official. With the release of its revised guide to climate change by the Royal Society, the nation\u2019s preeminent scientific organization, the UK now formally joins the ranks of the denier nations. The science on climate change is no longer certain, the Society now says.' (Lawrence Solomon)"
+  //},
+  //{
+  //  "Id": 988338,
+  //  "ArgumentText": "DMI show cooling Arctic From DMI we learn, that Arctic 80N-90N temperatures in the melt season this year is colder than average. This was the case last year too, while earlier years in the DMI analysis period (1958-2010) hardly ever shows Arctic melt season temperatures this cold (Frank Lansner)"
+  //},
+  //{
+  //  "Id": 413151,
+  //  "ArgumentText": "CO2 only causes 35% of global warming CO2 does not account for even a majority of the warming seen over the past century. If other species accounted for 65% of historical warming that leaves only 35% for carbon dioxide. (Doug Hoffman)"
+  //},
+  //{
+  //  "Id": 755590,
+  //  "ArgumentText": "Humidity is falling '...the largest of all the positive or temperature-amplifying feedbacks in the UN\u2019s arsenal is the water-vapor feedback. The UN gets this feedback wrong in numerous fundamental ways. For instance, its models tend to treat column absolute humidity as being uniform at all altitudes, when in fact \u2013 as Paltridge et al. (2009) have demonstrated recently \u2013 the upper troposphere (the only place where adding CO2 to the atmosphere could make any difference to temperature) is considerably drier than the models are tuned to expect.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 639989,
+  //  "ArgumentText": "It's a natural cycle 'Global warming (i.e, the warming since 1977) is over. The minute increase of anthropogenic CO2 in the atmosphere (0.008%) was not the cause of the warming\u2014it was a continuation of natural cycles that occurred over the past 500 years.' (Don Easterbrook)"
+  //},
+  //{
+  //  "Id": 844405,
+  //  "ArgumentText": "It's only a few degrees 'There might be some adverse outcomes from that eight tenths of a degree of temperature rise threatening my Grandchildren in 2050, but neither I nor anyone else knows what those outcomes might be. We\u2019ll assuredly get an extra flood over here, and one less flood over there, it\u2019s very likely to be drier somewhere and wetter somewhere else, in other words, the climate will do what climate has done since forever \u2014 change.' (Willis Eschenbach)"
+  //},
+  //{
+  //  "Id": 572809,
+  //  "ArgumentText": "It's too hard 'The fact is that there is no one in the world who can explain how we could cut our emissions by four fifths without shutting down virtually all our existing economy. What carries this even further into the higher realms of lunacy is that such a Quixotic gesture would do nothing to halt the world\u2019s fast-rising CO2 emissions, already up 40 per cent since 1990. There is no way for us to prevent the world\u2019s CO2 emissions from doubling by 2100' (Christopher Booker)"
+  //},
+  //{
+  //  "Id": 849063,
+  //  "ArgumentText": "CO2 limits will harm the economy 'Legally mandated measures for reducing greenhouse gas emissions are likely to have significant adverse impacts on GDP growth of developing countries [...] This in turn will have serious implications for our poverty alleviation programs.' (Pradipto Ghosh)"
+  //},
+  //{
+  //  "Id": 778328,
+  //  "ArgumentText": "Renewables can't provide baseload power"
+  //},
+  //{
+  //  "Id": 632546,
+  //  "ArgumentText": "Clouds provide negative feedback 'Climate models used by the International Panel on Climate Change (IPCC) assume that clouds provide a large positive feedback, greatly amplifying the small warming effect of increasing CO2 content in air. Clouds have made fools of climate modelers. A detailed analysis of cloud behavior from satellite data by Dr. Roy Spencer of the University of Alabama in Huntsville shows that clouds actually provide a strong negative feedback, the opposite of that assumed by the climate modelers. The modelers confused cause and effect, thereby getting the feedback in the wrong direction.' (Ken Gregory)"
+  //},
+  //{
+  //  "Id": 611634,
+  //  "ArgumentText": "CRU tampered with temperature data 'So recently the media picked up on the fact that CRU deleted the raw data for this important global temperature set long ago. We have known this for some time now. The interesting point is that it also seems each time they come across a new dataset it is simply replaced. So what we have is a process which allows the systematic choosing of ever warmer records over time which is so convoluted nobody can figure out what really happened.' (The Air Vent)"
+  //},
+  //{
+  //  "Id": 695028,
+  //  "ArgumentText": "Peer review process was corrupted 'They had interfered with the process of peer-review itself by leaning on journals to get their friends rather than independent scientists to review their papers. They had successfully leaned on friendly journal editors to reject papers reporting results inconsistent with their political viewpoint. They had campaigned for the removal of a learned journal\u2019s editor, solely because he did not share their willingness to debase and corrupt science for political purposes.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 303515,
+  //  "ArgumentText": "Skeptics were kept out of the IPCC? 'The Team had tampered with the complex, bureaucratic processes of the UN\u2019s climate panel, the IPCC, so as to exclude inconvenient scientific results from its four Assessment Reports, and to influence the panel\u2019s conclusions for political rather than scientific reasons. The Team had conspired in an attempt to redefine what is and is not peer-reviewed science for the sake of excluding results that did not fit what they and the politicians with whom they were closely linked wanted the UN\u2019s climate panel to report.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 884536,
+  //  "ArgumentText": "Freedom of Information (FOI) requests were ignored 'The emails suggest that the authors co-operated (perhaps the word is \u201cconspired\u201d) to prevent data from being made available to other researchers through either data archiving requests or through the Freedom of Information Acts of both the U.S. and the UK.' (Pajamas Media)"
+  //},
+  //{
+  //  "Id": 593900,
+  //  "ArgumentText": "Corals are resilient to bleaching 'Three recent articles give us reason to question the alarmists\u2019 claims that coral reefs are in deep trouble due to the buildup of greenhouse gases.' (World Climate Report)"
+  //},
+  //{
+  //  "Id": 778519,
+  //  "ArgumentText": "We're heading into cooling 'The climate of this planet oscillates between periods of approximately 30 years of warming followed by approximately 30 years of cooling. Rather than 100 years of unprecedented global warming as predicted by IPCC, the global temperatures have leveled off and we seem to be heading for cooler weather.' (Matt Vooro)"
+  //},
+  //{
+  //  "Id": 403213,
+  //  "ArgumentText": "Plant stomata show higher and more variable CO2 levels 'When stomata-derived CO2 (red) is compared to ice core-derived CO2 (blue), the stomata generally show much more variability in the atmospheric CO2 level and often show levels much higher than the ice cores.' (David Middleton)"
+  //},
+  //{
+  //  "Id": 206046,
+  //  "ArgumentText": "They changed the name from 'global warming' to 'climate change' They changed the name from \u201cglobal warming\u201d to \u201cclimate change\u201d after the term global warming just wasn\u2019t working (it was too cold)! (Donald J. Trump)"
+  //},
+  //{
+  //  "Id": 314237,
+  //  "ArgumentText": "Soares finds lack of correlation between CO2 and temperature 'The comparison of temperature changes and CO2 changes in the atmosphere is made for a large diversity of conditions, with the same data used to model climate changes. Correlation of historical series of data is the main approach. CO2 changes are closely related to temperature. Warmer seasons or triennial phases are followed by an atmosphere that is rich in CO2, reflecting the gas solving or exsolving from water, and not photosynthesis activity. Interannual correlations between the variables are good. A weak dominance of temperature changes precedence, relative to CO2 changes, indicate that the main effect is the CO2 increase in the atmosphere due to temperature rising. Decreasing temperature is not followed by CO2 decrease, which indicates a different route for the CO2 capture by the oceans, not by gas re-absorption. Monthly changes have no correspondence as would be expected if the warming was an important absorption-radiation effect of the CO2 increase. The anthropogenic wasting of fossil fuel CO2 to the atmosphere shows no relation with the temperature changes even in an annual basis. The absence of immediate relation between CO2 and temperature is evidence that rising its mix ratio in the atmosphere will not imply more absorption and time residence of energy over the Earth surface.' (Paulo Soares)"
+  //},
+  //{
+  //  "Id": 319609,
+  //  "ArgumentText": "Arctic sea ice loss is matched by Antarctic sea ice gain In fact, the global sea-ice record shows virtually no change throughout the past 30 years, because the quite rapid loss of Arctic sea ice since the satellites were watching has been matched by a near-equally rapid gain of Antarctic sea ice. Indeed, when the summer extent of Arctic sea ice reached its lowest point in the 30-year record in mid-September 2007, just three weeks later the Antarctic sea extent reached a 30-year record high. The record low was widely reported; the corresponding record high was almost entirely unreported. (Chris Monckton)"
+  //},
+  //{
+  //  "Id": 320342,
+  //  "ArgumentText": "An exponential increase in CO2 will result in a linear increase in temperature"
+  //},
+  //{
+  //  "Id": 323473,
+  //  "ArgumentText": "Record high snow cover was set in winter 2008/2009"
+  //},
+  //{
+  //  "Id": 553139,
+  //  "ArgumentText": "Coral atolls grow as sea levels rise"
+  //},
+  //{
+  //  "Id": 649601,
+  //  "ArgumentText": "Earth hasn't warmed as much as expected 'According to the UN\u2019s Intergovernmental Panel on Climate Change, the greenhouse forcing from man made greenhouse gases is already about 86% of what one expects from a doubling of CO2 (with about half coming from methane, nitrous oxide, freons and ozone), and alarming predictions depend on models for which the sensitivity to a doubling for CO2 is greater than 2C which implies that we should already have seen much more warming than we have seen thus far, even if all the warming we have seen so far were due to man.' (Richard Lindzen)"
+  //},
+  //{
+  //  "Id": 517777,
+  //  "ArgumentText": "It warmed just as fast in 1860-1880 and 1910-1940 \u201cIn fact, the rate of warming from 1975-2001, at 0.16 \u00b0C per decade, was the fastest rate to be sustained for more than a decade in the 160-year record, but exactly the same rate occurred from 1860-1880 and again from 1910-1940, when we could not possibly have had anything to do with it.\u201d (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 297924,
+  //  "ArgumentText": "Most of the last 10,000 years were warmer Even if the warming were as big as the IPCC imagines, it would not be as dangerous as Mr. Brown suggests. After all, recent research suggests that some 9,100 of the past 10,500 years were warmer than the present by up to 3 Celsius degrees: yet here we all are. (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 677169,
+  //  "ArgumentText": "IPCC \u2018disappeared\u2019 the Medieval Warm Period 'by the 2001 [IPCC] climate assessment...the Medieval Warm Period had been ingeniously wiped out. This was the headline graph in the 2001 report. It was reproduced six times in the report, large, and in full color, the only graph to be so favored. However, the graph was bogus. The warm period during the Middle Ages had been artificially eradicated' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 709410,
+  //  "ArgumentText": "Ljungqvist broke the hockey stick '[Ljungqvist 2010 shows that] there is nothing unusual, nothing unnatural or nothing unprecedented about the planet's current level of warmth, seeing it was just as warm as, or even warmer than, it has been recently during both the Roman and Medieval Warm Periods, when the atmosphere's CO2 concentration was more than 100 ppm less than it is today. And this latter observation, together with the realization that earth's climate naturally transits back and forth between cooler and warmer conditions on a millennial timescale, demonstrates that there is absolutely no need to associate the planet's current level of warmth with its current higher atmospheric CO2 concentration, in clear contradiction of the worn-out IPCC and climate-alarmist claim that the only way to explain earth's current warmth is to associate it with the greenhouse effect of CO2' (NIPCC)"
+  //},
+  //{
+  //  "Id": 839680,
+  //  "ArgumentText": "CO2 limits will make little difference 'Cap and tax is as pointless as it is cruel. Australia accounts for 1.5 per cent of global carbon emissions. So if it cut its emissions, the warming forestalled would be infinitesimal.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 590665,
+  //  "ArgumentText": "Hansen predicted the West Side Highway would be underwater 'What I can comment on is this prediction by Dr. Hansen: \u201cThe West Side Highway [which runs along the Hudson River] will be under water.\u201d As you can clearly see in the Google Earth images, the West Side Highway remains dry and open. Sea level (at which the Hudson River at that point becomes) is not encroaching on the highway' (Anthony Watts)"
+  //},
+  //{
+  //  "Id": 580086,
+  //  "ArgumentText": "Removing all CO2 would make little difference 'Cloud cover in models is poorly treated and inaccurately predicted. Yet clouds reflect about seventy-five watts per square meter. Given that a doubling of carbon dioxide would change the surface heat flux by only two watts per square meter, it is evident that a small change in cloud cover can strongly affect the response to carbon dioxide.' (Richard Lindzen)"
+  //},
+  //{
+  //  "Id": 934579,
+  //  "ArgumentText": "It's not urgent 'There are many urgent priorities that need the attention of Congress, and it is not for me as an invited guest in your country to say what they are. Yet I can say this much: on any view, \u201cglobal warming\u201d is not one of them.' (Christopher Monckton in testimony to the US Congress)"
+  //},
+  //{
+  //  "Id": 338068,
+  //  "ArgumentText": "It's soot 'The Intergovernmental Panel On Climate Change (IPCC) drastically understates the warming potential of soot (black carbon) in its report to policy makers. The IPCC has an agenda and that agenda is to blame manmade carbon dioxide emission for climate change. Europe and Asia emit most of the soot from burning coal, wood, dung, and diesel in open fires or without particulate filters in stoves, chimneys, smokestacks, and exhaust pipes. The United States has been restricting soot emissions in Draconian fashion since the Clean Air Act of 1963. The IPCC agenda is really about blaming the United States.' (Uncommon Descent)"
+  //},
+  //{
+  //  "Id": 708953,
+  //  "ArgumentText": "CO2 limits will hurt the poor 'Legally mandated measures for reducing greenhouse gas emissions are likely to have significant adverse impacts on GDP growth of developing countries, including India.' (Pradipto Ghosh, as quoted by Associated Press)"
+  //},
+  //{
+  //  "Id": 857277,
+  //  "ArgumentText": "Arctic was warmer in 1940 'Temperatures in the Arctic and in Greenland were warmer by up to 3 Fahrenheit degrees in the late 1930s and early 1940s than they are at present' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 732182,
+  //  "ArgumentText": "Renewable energy is too expensive '[Wind energy] is a more expensive way of producing energy than the alternative.' (David Montgomery)"
+  //},
+  //{
+  //  "Id": 612768,
+  //  "ArgumentText": "Sea level rise is decelerating 'A former research director with the Army Corps of Engineers and a former civil-engineering professor at the University of Florida decided to put the sea-rise claims to the test. They gathered U.S. tide-gauge readings from 57 stations where water levels had been continuously recorded for as long as 156 years. The result did suggest the sea level was increasing in the western Pacific, but this was offset by a drop in the level near the Alaskan coast. \u201cOur analyses do not indicate acceleration in sea level in U.S. tide gauge records during the 20th century,\u201d the study\u2019s authors concluded. \u201cInstead, for each time period we consider, the records show small decelerations that are consistent with a number of earlier studies of worldwide-gauge records.' (Washington Times)"
+  //},
+  //{
+  //  "Id": 361825,
+  //  "ArgumentText": "Venus doesn't have a runaway greenhouse effect Venus is not hot because of a runaway greenhouse."
+  //},
+  //{
+  //  "Id": 492584,
+  //  "ArgumentText": "It's internal variability When you look at the possibility of natural unforced variability, you see that can cause excursions that we've seen recently (Dr. John Christy)"
+  //},
+  //{
+  //  "Id": 696381,
+  //  "ArgumentText": "CO2 limits won't cool the planet '[CO2 limits] will not make a difference for 1000 years. So this is a government which is proposing to put at risk our manufacturing industry, to penalise struggling families, to make a tough situation worse for millions of households right around Australia. And for what? To make not a scrap of difference to the environment any time in the next 1000 years.' (Tony Abbott)"
+  //},
+  //{
+  //  "Id": 344153,
+  //  "ArgumentText": "Sea level is not rising 'Together, these two unaltered [sea level] datasets indicate that global mean sea level trend has remained stable over the entire period 1992-2007, altogether eliminating the apparent 3.2 mm/year rate of sea-level rise arising from the \u201cadjusted\u201d data.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 581874,
+  //  "ArgumentText": "Renewable energy investment kills jobs 'for every renewable energy job that the State manages to finance, Spain\u2019s experience...reveals with high confidence, by two different methods, that the U.S. should expect a loss of at least 2.2 jobs on average' (Gabriel Calzada \u00c1lvarez)"
+  //},
+  //{
+  //  "Id": 849199,
+  //  "ArgumentText": "Great Barrier Reef is in good shape the Great Barrier Reef is in fine fettle (Bob Carter)"
+  //},
+  //{
+  //  "Id": 881142,
+  //  "ArgumentText": "Roy Spencer finds negative feedback 'NASA satellite data from the years 2000 through 2011 show the Earth's atmosphere is allowing far more heat to be released into space than alarmist computer models have predicted, reports a new study in the peer-reviewed science journal Remote Sensing. The study indicates far less future global warming will occur than United Nations computer models have predicted, and supports prior studies indicating increases in atmospheric carbon dioxide trap far less heat than alarmists have claimed.' (James Taylor)"
+  //},
+  //{
+  //  "Id": 825666,
+  //  "ArgumentText": "Loehle and Scafetta find a 60 year cycle causing global warming About 60% of the warming observed from 1970 to 2000 was very likely caused by this natural 60-year climatic cycle during its warming phase...climate may remain approximately steady until 2030-2040, and may at most warm 0.5-1.0\u00b0C by 2100 at the estimated 0.66\u00b0C/century anthropogenic warming rate, which is about 3.5 times smaller than the average 2.3\u00b0C/century anthropogenic warming rate projected by the IPCC during the first decades of the 21st century (Craig Loehle)"
+  //},
+  //{
+  //  "Id": 250406,
+  //  "ArgumentText": "Murry Salby finds CO2 rise is natural 'Salby\u2019s argument is that the usual evidence given for the rise in CO2 being man-made is mistaken. It\u2019s usually taken to be the fact that as carbon dioxide concentrations in the atmosphere increase, the 1 per cent of CO2 that\u2019s the heavier carbon isotope ratio c13 declines in proportion. Plants, which produced our coal and oil, prefer the lighter c12 isotope. Hence, it must be our gasses that caused this relative decline. But that conclusion holds true only if there are no other sources of c12 increases which are not human caused. Salby says there are - the huge increases in carbon dioxide concentrations caused by such things as spells of warming and El Ninos, which cause concentration levels to increase independently of human emissions. He suggests that its warmth which tends to produce more CO2, rather than vice versa - which, incidentally is the story of the past recoveries from ice ages.' (Andrew Bolt)"
+  //},
+  //{
+  //  "Id": 761164,
+  //  "ArgumentText": "CO2 increase is natural, not human-caused '[A]tmospheric CO2 increase that we observe is a product of temperature increase, and not the other way around, meaning it is a product of natural variation...' (Anthony Watts)"
+  //},
+  //{
+  //  "Id": 256207,
+  //  "ArgumentText": "Postma disproved the greenhouse effect 'Skeptics hope that Postma\u2019s alternative thermal model will lead to the birth of a new climatology, one that actually follows the laws of physics and properly physical modeling techniques...Postma deftly shows how the systemically tautologous conjecture that is \u201cback-radiative heating\u201d just doesn't add up. We see how climatologists fudged the numbers to make it appear as if Earth actually raises its own temperature by having its own radiation fall back upon it - a conjecture contrary to fundamental physics.' (John O'Sullivan)"
+  //},
+  //{
+  //  "Id": 548321,
+  //  "ArgumentText": "CERN CLOUD experiment proved cosmic rays are causing global warming 'The new [CERN] findings point to cosmic rays and the sun \u2014 not human activities \u2014 as the dominant controller of climate on Earth...CERN, and the Danes, have in all likelihood found the path to the Holy Grail of climate science' [Lawrence Solomon]"
+  //},
+  //{
+  //  "Id": 111912,
+  //  "ArgumentText": "Sea level fell in 2010 Large sea level fall in 2010 means IPCC sea level projections are wrong."
+  //},
+  //{
+  //  "Id": 719923,
+  //  "ArgumentText": "Underground temperatures control climate 'There are other possible causes for climate change which could be associated with solar activity or related to variations in the temperature of the liquid core of the Earth, which is about 5,400 degrees Celsius. We don't need a high heat flow - just a high temperature for the core to affect the surface climate. There is massive heat inside the Earth' (Doug Cotton)"
+  //},
+  //{
+  //  "Id": 965747,
+  //  "ArgumentText": "Climate 'Skeptics' are like Galileo 'I mean, it - I mean - and I tell somebody, I said, just because you have a group of scientists that have stood up and said here is the fact, Galileo got outvoted for a spell' (Texas Governor Rick Perry)"
+  //},
+  //{
+  //  "Id": 187749,
+  //  "ArgumentText": "Northwest passage has been navigated in the past 'Here is a photo of the St. Roch. It\u2019s a wooden ship, not some massive, metallic icebreaker. According to the Vancouver Maritime Museum web site, this 104 foot wooden ship sailed through the Northwest Passage from 1940 to 1942, that was from west to east. In 1944 it did it again from from east to west...Once \u201cglobal warming\u201d is mentioned all critical faculties are shut down in the media. They don\u2019t verify facts. They just repeat the claims that are made' (Classically Liberal)"
+  //},
+  //{
+  //  "Id": 336995,
+  //  "ArgumentText": "It's a climate shift step function caused by natural cycles 'the temperature increase in the second half of the 20th century could have taken place in steps driven by major ENSO events' (Jens Rauns\u00f8 Jensen)"
+  //},
+  //{
+  //  "Id": 263424,
+  //  "ArgumentText": "Tuvalu sea level isn't rising"
+  //},
+  //{
+  //  "Id": 599747,
+  //  "ArgumentText": "It's planetary movements 'The solar system oscillates with a 60-year cycle due to the Jupiter/Saturn three-synodic cycle and to a Jupiter/Saturn beat tidal cycle...About 60% of the warming observed from 1970 to 2000 was very likely caused by the above natural 60-year climatic cycle during its warming phase' (Loehle and Scafetta)"
+  //},
+  //{
+  //  "Id": 602629,
+  //  "ArgumentText": "Schmittner finds low climate sensitivity 'a paper...in Science magazine concludes that the climate sensitivity\u2014how much the earth\u2019s average temperature will rise as a result of a doubling of the atmospheric concentration of carbon dioxide\u2014likely (that is, with a 66% probability) lies in the range 1.7\u00b0C to 2.6\u00b0C, with a median value of 2.3\u00b0C. This is a sizeable contraction and reduction from the estimates of the climate sensitivity given by the Intergovernmental Panel on Climate Change (IPCC) Fourth Assessment Report (AR4), in which the likely range is given as 2.0\u00b0C to 4.5\u00b0C, with a best estimate of 3.0\u00b0C' (Pat Michaels)"
+  //},
+  //{
+  //  "Id": 551817,
+  //  "ArgumentText": "Infrared Iris will reduce global warming 'a [cloudcover] change in the Tropics could lead to a negative feedback in the global climate, with a feedback factor of about \u20131.1, which if correct, would more than cancel all the positive feedbacks in the more sensitive current climate models' (Lindzen et al. 2001)"
+  //},
+  //{
+  //  "Id": 323688,
+  //  "ArgumentText": "UAH atmospheric temperatures prove climate models and/or surface temperature data sets are wrong the satellite sensors show less warming in the lower troposphere (approximately 10,000 feet above the earth\u2019s surface) than is reported by surface temperature readings. Global warming theory holds that one of the fingerprints of human-induced global warming is more rapid warming in the lower troposphere than at the surface (James Taylor)"
+  //},
+  //{
+  //  "Id": 293583,
+  //  "ArgumentText": "Ben Santer rewrote the 1995 IPCC report 'However, a single scientist, Dr. Ben Santer of Lawrence Livermore National Laboratory, rewrote the draft at the IPCC\u2019s request, deleting all five statements, replacing them with a single statement to the effect that a human influence on global climate was now discernible, and making some 200 consequential amendments. These changes were considered by a political contact group, but they were not referred back to the vast majority of the authors whose texts Dr. Santer had tampered with, and whose five-times-stated principal conclusion he had single-handedly and unjustifiably negated.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 947677,
+  //  "ArgumentText": "IPCC graph showing accelerating trends is misleading 'The IPCC\u2019s Fourth Assessment Report, 2007, carries in three places a graph in which the Hadley Center\u2019s global mean surface temperature anomaly dataset from 1850-2005 is displayed with four arbitrarily-chosen trend-lines overlaid upon it. At each place where the altered graph is displayed, the incorrect conclusion is drawn that because trend-lines starting closer to the present have a steeper slope than those starting farther back, the rate of warming is accelerating and that we are to blame.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 158545,
+  //  "ArgumentText": "IPCC edited out natural causes of climate change 'The long version of the IPCC report does mention natural causes of climate change, like the sun and oscillating ocean currents. But they no longer appear in the summary for politicians. They were simply edited out.' (Fritz Vahrenholt)"
+  //},
+  //{
+  //  "Id": 532313,
+  //  "ArgumentText": "Tropical thermostat limits sea surface temperature to 30\u00b0C 'It has been known for some time that the \u201cPacific Warm Pool\u201d, the area just northeast of Australia, has a maximum temperature. It never gets much warmer than around 30 \u2013 31\u00b0C. This has been borne out by the Argo floats.''...this thermostatic mechanism...is regulated by temperature, and not by forcing. It is insensitive to excess incoming radiation, whether from CO2 or from the sun. During the part of the year when the incoming radiation would be enough to increase the temperature over ~ 30\u00b0, the temperature simply stops rising at 30\u00b0. It is no longer a function of the forcing.' (Willis Eschenbach)"
+  //},
+  //{
+  //  "Id": 214818,
+  //  "ArgumentText": "Humans survived past climate changes 'Yes, our climates change. They've been changing ever since the earth was formed.' (Rick Perry)"
+  //},
+  //{
+  //  "Id": 208013,
+  //  "ArgumentText": "Himalayan glaciers are not shrinking '...the [Himalayan] glaciers are not shrinking. A new report by a senior Indian glaciologist states that the glaciers remain frozen and quite intact, thank you.'(Doug Hoffman)"
+  //},
+  //{
+  //  "Id": 773934,
+  //  "ArgumentText": "Climate science peer review is pal review 'Peer review has become \u201dpal review.\u201d Send a paper to one of the very many journals published by the American Geophysical Union\u2013the world\u2019s largest publisher of academic climate science\u2013and you can suggest five reviewers. The editor doesn\u2019t have to take your advice, but he\u2019s more likely to if you bought him dinner at the last AGU meeting, isn\u2019t he? That is, of course, unless journal editors are somehow different than government officials, congressmen, or you.' (Patrick Michaels)"
+  //},
+  //{
+  //  "Id": 612334,
+  //  "ArgumentText": "Nuclear testing is causing global warming 'Could it be that what we are experiencing now is merely the blowback from a nuclear testing policy carried out by the USA, Soviet Union, UK, Australia, China, France and Germany and others between 1945 [and] 1993?'(Source: djpauledge.com )"
+  //},
+  //{
+  //  "Id": 493708,
+  //  "ArgumentText": "Arctic sea ice loss in the 1940s was similar to today's '...there [is] anecdotal and other evidence suggesting similar melts from 1938-43 and on other occasions.' (John Christy via Jonathan Leake)"
+  //},
+  //{
+  //  "Id": 744950,
+  //  "ArgumentText": "Arctic sea ice extent was lower in the past '...there [is] anecdotal and other evidence suggesting similar melts from 1938-43 and on other occasions.' (John Christy via Jonathan Leake)"
+  //},
+  //{
+  //  "Id": 301886,
+  //  "ArgumentText": "Arctic Storm Caused the 2012 Record Sea Ice Minimum '...the massive Arctic storm that broke up huge amounts of sea ice [made] this new record low possible.' (Anthony Watts)"
+  //},
+  //{
+  //  "Id": 849101,
+  //  "ArgumentText": "The connection between Hurricane Sandy and global warming 'The magnitude of ignorance on display by people claiming Sandy is a sign of global warming is stunning!' (Joe Bastardi)"
+  //},
+  //{
+  //  "Id": 623803,
+  //  "ArgumentText": "Monckton shows the IPCC overestimated warming 'The IPCC\u2019s predicted equilibrium warming path bears no relation to the far lesser rate of \u201cglobal warming\u201d that has been observed in the 21st century to date.' (Christopher Monckton)"
+  //},
+  //{
+  //  "Id": 825633,
+  //  "ArgumentText": "No warming in 16 years '...there has been no increase in the global average surface temperature for the past 16 years' (Judith Curry and David Rose)"
+  //},
+  //{
+  //  "Id": 494613,
+  //  "ArgumentText": "No long tail means climate sensitivity is low 'this is what many have been saying now and for some time, that the climate sensitivity has been overestimated. Kudos to Annan for realizing the likelihood of a lower climate sensitivity' (Anthony Watts)"
+  //},
+  //{
+  //  "Id": 196893,
+  //  "ArgumentText": "The 97% consensus on human-caused global warming is a robust result 'That [97% consensus] survey has of course been substantially discredited ... 35 percent of the abstracts were misclassified, and they were classified to the pro-global warming side. Professor Richard Tol ... has disassociated himself from that and said it's not reliable.' - Andrew Neil"
+  //},
+  //{
+  //  "Id": 414041,
+  //  "ArgumentText": "A grand solar minimum could trigger another ice age 'The sun is acting bizarrely and scientists have no idea why. Solar activity is in gradual decline, a change from the norm which in the past triggered a 300-year-long mini ice age' (Dick Ahlstrom, The Irish Times)"
+  //},
+  //{
+  //  "Id": 233178,
+  //  "ArgumentText": "97% consensus on human-caused global warming has been disproven Cooks \u201997% consensus\u2019 disproven by a new peer reviewed paper showing major math errors (Anthony Watts)"
+  //},
+  //{
+  //  "Id": 446668,
+  //  "ArgumentText": "Akasofu Proved Global Warming is Just a Recovery from the Little Ice Age 'The rise in global average temperature over the last century has halted since roughly the year 2000, despite the fact that the release of CO2 into the atmosphere is still increasing. It is suggested here that this interruption has been caused by the suspension of the near linear (+ 0.5 \u00b0C/100 years or 0.05 \u00b0C/10 years) temperature increase over the last two centuries, due to recovery from the Little Ice Age...' (Syun-Ichi Akasofu)"
+  //},
+  //{
+  //  "Id": 545162,
+  //  "ArgumentText": "IPCC human-caused global warming attribution confidence is unfounded '[The IPCC 95% confidence in human-caused global warming] is incomprehensible to me ... IPCC projections are overconfident' (Judith Curry)"
+  //},
+  //{
+  //  "Id": 539490,
+  //  "ArgumentText": "IPCC global warming projections were wrong 'Yet the leaked report makes the extraordinary concession that over the past 15 years, recorded world temperatures have increased at only a quarter of the rate of IPCC claimed when it published its last assessment in 2007. Back then, it said observed warming over the 15 years from 1990-2005 had taken place at a rate of 0.2C per decade, and it predicted this would continue for the following 20 years, on the basis of forecasts made by computer climate models. But the new report says the observed warming over the more recent 15 years to 2012 was just 0.05C per decade - below almost all computer predictions.' (David Rose)"
+  //},
+  //{
+  //  "Id": 481226,
+  //  "ArgumentText": "IPCC admits global warming has paused '[The IPCC] recognise the global warming \u2018pause\u2019...is real \u2013 and concede that their computer models did not predict it. But they cannot explain why world average temperatures have not shown any statistically significant increase since 1997.' (David Rose)"
+  //},
+  //{
+  //  "Id": 159094,
+  //  "ArgumentText": "Heatwaves have happened before 'Australia has always had extreme heat, droughts, bushfire and flooding rains... Whatever is the extent of global warming and any human contribution to climate change, exaggerating the 2013 heatwave is just another green lie which will blow up in all our faces.' (Miranda Devine)"
+  //},
+  //{
+  //  "Id": 822715,
+  //  "ArgumentText": "Deniers are part of the 97% 'All [contrarians] are part of that 97% because that 97% includes those who think humans have some influence on climate. Well, that's a fairly innocuous statement.' (Roy Spencer)"
+  //},
+  //{
+  //  "Id": 194899,
+  //  "ArgumentText": "Climate change isn't increasing extreme weather damage costs 'Disasters Cost More Than Ever \u2014 But Not Because of Climate Change' (Roger Pielke Jr.)"
+  //},
+  //{
+  //  "Id": 590332,
+  //  "ArgumentText": "Climate change solutions are too expensive 'If we don\u2019t do anything, the damages caused by climate change will cost less than 2 per cent of GDP in about 2070. Yet the cost of doing something will likely be higher than 6 per cent of GDP' (Bjorn Lomborg)"
+  //},
+  //{
+  //  "Id": 560639,
+  //  "ArgumentText": "Animal agriculture and eating meat are the biggest causes of global warming 'Livestock and their byproducts actually account for at least 32,564 million tons of CO2e per year, or 51 percent of annual worldwide GHG emissions.' (source: Robert Goodland and Jeff Anhang)"
+  //},
+  //{
+  //  "Id": 371280,
+  //  "ArgumentText": "Satellite record is more reliable than thermometers 'The satellite data are the best data we have.'Ted Cruz"
+  //},
+  //{
+  //  "Id": 330209,
+  //  "ArgumentText": "Climate scientists are in it for the money In truth, the overwhelming majority of climate-research funding comes from the federal government and left-wing foundations. And while the energy industry funds both sides of the climate debate, the government/foundation monies go only toward research that advances the warming regulatory agenda. With a clear public-policy outcome in mind, the government/foundation gravy train is a much greater threat to scientific integrity. -Henry Payne, National Review"
+  //},
+  //{
+  //  "Id": 623166,
+  //  "ArgumentText": "Holistic Management can reverse Climate Change \u201cHolistic management as a planned grazing strategy is able to reverse desertification and sequester atmospheric carbon dioxide into soil, reducing atmospheric carbon dioxide levels to pre-industrial levels in a period of forty years.\u201d (Allan Savory, 2014)"
+  //},
+  //{
+  //  "Id": 157650,
+  //  "ArgumentText": "Wildfires are not caused by global warming 'it\u2019s not climate change that has caused today\u2019s [bushfire] disaster, but the criminal negligence of governments that have tried to buy green votes by locking up vast tracts of land as national parks, yet failed to spend the money needed to control ground fuel and maintain fire trails ... We can\u2019t dial down the Earth\u2019s temperature any more than we can lock up every teenage arsonist.' [Miranda Divine, NY Post]"
+  //},
+  //{
+  //  "Id": 156229,
+  //  "ArgumentText": "Planting a trillion trees will solve global warming 'There is no limit to how much carbon we can store in wood' [Rep. Bruce Westerman (R-AR)]"
+  //}
+]

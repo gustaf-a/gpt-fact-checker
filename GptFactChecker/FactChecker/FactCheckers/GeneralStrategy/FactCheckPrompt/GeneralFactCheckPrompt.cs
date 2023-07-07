@@ -19,7 +19,7 @@ Act as a knowledgable expert fact checker.
     {
         var systemPrompt = SystemPrompt;
 
-        string userPrompt = CreateUserPrompt(fact);
+        var userPrompt = CreateUserPrompt(fact);
 
         return await GetPrompt(systemPrompt, userPrompt, FunctionsFilePath);
     }

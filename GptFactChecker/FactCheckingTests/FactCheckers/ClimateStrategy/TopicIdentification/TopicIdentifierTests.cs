@@ -1,5 +1,5 @@
-﻿using FactCheckingService.FactCheckers.ClimateStrategy.Models;
-using FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
+﻿using FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
+using FactCheckingService.Models;
 using Microsoft.Extensions.Options;
 using Moq;
 using Shared.Configuration;
@@ -73,9 +73,9 @@ public class TopicIdentifierTests
 
         _mockGptClient.Setup(client => client.GetCompletion(It.IsAny<string>(), It.IsAny<double>())).ReturnsAsync(_topicResponse);
 
-        _mockGptResponseParser.Setup(parser => parser.ParseGptResponseFunctionCall<TopicIdentificationFunctionCallArguments>(
+        _mockGptResponseParser.Setup(parser => parser.ParseGptResponseFunctionCall<GptResponseFunctionCallTopicIdentification>(
                 It.IsAny<string>(), It.IsAny<string>()))
-            .Returns(new TopicIdentificationFunctionCallArguments { ClaimsWithReferences = expectedClaims });
+            .Returns(new GptResponseFunctionCallTopicIdentification { ClaimsWithReferences = expectedClaims });
 
         // Act
         var claimsWithReferences = await topicIdentifier.GetClaimsWithReferences(facts, arguments);
@@ -105,11 +105,11 @@ public class TopicIdentifierTests
 
         _mockGptClient.Setup(client => client.GetCompletion(It.IsAny<string>(), It.IsAny<double>())).ReturnsAsync(_topicResponse);
 
-        _mockGptResponseParser.SetupSequence(parser => parser.ParseGptResponseFunctionCall<TopicIdentificationFunctionCallArguments>(
+        _mockGptResponseParser.SetupSequence(parser => parser.ParseGptResponseFunctionCall<GptResponseFunctionCallTopicIdentification>(
                 It.IsAny<string>(), It.IsAny<string>()))
-            .Returns(new TopicIdentificationFunctionCallArguments { ClaimsWithReferences = new List<ClaimWithReferences> { new ClaimWithReferences { ClaimId = "1", ReferenceIds = new List<string> { "Ref1", "Ref2" } } } })
-            .Returns(new TopicIdentificationFunctionCallArguments { ClaimsWithReferences = new List<ClaimWithReferences> { new ClaimWithReferences { ClaimId = "1", ReferenceIds = new List<string> { "Ref3", "Ref4" } } } })
-            .Returns(new TopicIdentificationFunctionCallArguments { ClaimsWithReferences = new List<ClaimWithReferences> { new ClaimWithReferences { ClaimId = "1", ReferenceIds = new List<string> { "Ref5", "Ref6" } } } });
+            .Returns(new GptResponseFunctionCallTopicIdentification { ClaimsWithReferences = new List<ClaimWithReferences> { new ClaimWithReferences { ClaimId = "1", ReferenceIds = new List<string> { "Ref1", "Ref2" } } } })
+            .Returns(new GptResponseFunctionCallTopicIdentification { ClaimsWithReferences = new List<ClaimWithReferences> { new ClaimWithReferences { ClaimId = "1", ReferenceIds = new List<string> { "Ref3", "Ref4" } } } })
+            .Returns(new GptResponseFunctionCallTopicIdentification { ClaimsWithReferences = new List<ClaimWithReferences> { new ClaimWithReferences { ClaimId = "1", ReferenceIds = new List<string> { "Ref5", "Ref6" } } } });
 
         // Act
         var claimsWithReferences = await topicIdentifier.GetClaimsWithReferences(facts, arguments);

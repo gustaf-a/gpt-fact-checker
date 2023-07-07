@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace FactCheckingService.FactCheckers.ClimateStrategy.Models;
+namespace FactCheckingService.Models;
 
 public class ClaimWithReferences
 {

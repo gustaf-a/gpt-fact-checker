@@ -3,6 +3,7 @@ using FactCheckingService.FactCheckers.GeneralStrategy;
 using Moq;
 using Shared.GptClient;
 using Shared.Models;
+using FactCheckingService.Models;
 
 namespace FactCheckingServiceTests.FactCheckers.GeneralStrategy;
 

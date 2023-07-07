@@ -1,4 +1,4 @@
-﻿namespace Shared.Models;
+﻿namespace FactCheckingService.Models;
 
 public class GptResponseFunctionCallFactCheck
 {

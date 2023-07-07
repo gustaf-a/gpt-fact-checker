@@ -1,4 +1,4 @@
-﻿using FactCheckingService.FactCheckers.ClimateStrategy.Models;
+﻿using FactCheckingService.Models;
 using Shared.Models;
 
 namespace FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;

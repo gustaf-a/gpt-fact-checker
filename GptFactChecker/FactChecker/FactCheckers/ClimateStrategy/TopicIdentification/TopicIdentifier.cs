@@ -1,9 +1,9 @@
-﻿using FactCheckingService.FactCheckers.ClimateStrategy.Models;
-using Shared.GptClient;
+﻿using Shared.GptClient;
 using Shared.Models;
 using Shared.Extensions;
 using Shared.Configuration;
 using Microsoft.Extensions.Options;
+using FactCheckingService.Models;
 
 namespace FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
 
@@ -65,12 +65,12 @@ public class TopicIdentifier : ITopicIdentifier
 
         var allReturnedClaims = ExtractClaimsWithReferences(topicIdentificationResponse);
 
-        return allReturnedClaims;
+        return allReturnedClaims ?? new();
     }
 
-    private List<ClaimWithReferences> ExtractClaimsWithReferences(string topicIdentificationResponse)
+    private List<ClaimWithReferences>? ExtractClaimsWithReferences(string topicIdentificationResponse)
     {
-        var topicIdentificationArguments = _gptResponseParser.ParseGptResponseFunctionCall<TopicIdentificationFunctionCallArguments>(topicIdentificationResponse, nameof(ClimateFactCheckerWithReferencesStrategy));
+        var topicIdentificationArguments = _gptResponseParser.ParseGptResponseFunctionCall<GptResponseFunctionCallTopicIdentification>(topicIdentificationResponse, nameof(ClimateFactCheckerWithReferencesStrategy));
         if (topicIdentificationArguments is null)
             return null;
 

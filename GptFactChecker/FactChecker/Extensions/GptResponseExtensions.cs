@@ -1,6 +1,8 @@
-﻿using Shared.Models;
+﻿using FactCheckingService.Models;
+using Shared.Extensions;
+using Shared.Models;
 
-namespace Shared.Extensions;
+namespace FactCheckingService.Extensions;
 
 public static class GptResponseExtensions
 {

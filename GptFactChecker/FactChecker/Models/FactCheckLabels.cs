@@ -1,4 +1,4 @@
-﻿namespace FactCheckingService.FactCheckers.ClimateStrategy.Models;
+﻿namespace FactCheckingService.Models;
 
 /// <summary>
 /// Remember to change in climateFactCheckWithFunctions.json too

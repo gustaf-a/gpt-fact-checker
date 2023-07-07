@@ -1,5 +1,6 @@
 ﻿using FactCheckingService.FactCheckers.ClimateStrategy.FactCheckWithData;
 using FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
+using FactCheckingService.Utils;
 using GptFactCheckerApi.Repository.JsonRepo;
 using Shared.Extensions;
 using Shared.Models;
@@ -10,17 +11,18 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
 {
     private const string ArgumentDataFilePath = @"C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\Data\climateArgumentData.json";
 
-    private readonly static List<string> CompatibleTags = new() { "climate", "environment", "sustainability", "global warming", "ipcc" };
+    private readonly static List<string> CompatibleTags = new() { "climate", "environment", "sustainability", "global warming", "ipcc", "pollution", "emissions", "co2", "temperature", "weather" };
 
     private readonly ITopicIdentifier _topicIdentifier;
     private readonly IClimateFactCheckerWithData _climateFactCheckerWithData;
-
+    private readonly ITagMatcher _tagMatcher;
     private static List<ArgumentData> _cachedArgumentData;
 
-    public ClimateFactCheckerWithReferencesStrategy(ITopicIdentifier topicIdentifier, IClimateFactCheckerWithData climateFactCheckerWithData)
+    public ClimateFactCheckerWithReferencesStrategy(ITopicIdentifier topicIdentifier, IClimateFactCheckerWithData climateFactCheckerWithData, ITagMatcher tagMatcher)
     {
         _topicIdentifier = topicIdentifier;
         _climateFactCheckerWithData = climateFactCheckerWithData;
+        _tagMatcher = tagMatcher;
     }
 
     public int Priority => 1;
@@ -91,7 +93,7 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
 
     private static async Task<List<ArgumentData>> GetArgumentDataList()
     {
-        if(_cachedArgumentData.IsNullOrEmpty())
+        if (_cachedArgumentData.IsNullOrEmpty())
             _cachedArgumentData = await JsonHelper.GetObjectFromJson<List<ArgumentData>>(ArgumentDataFilePath);
 
         return _cachedArgumentData;
@@ -99,18 +101,6 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
 
     public bool IsCompatible(Fact fact)
     {
-        if (!fact.Tags.Any())
-            return false;
-
-        return AllTagsAreCompatible(fact.Tags);
-    }
-
-    private static bool AllTagsAreCompatible(string[] tags)
-    {
-        foreach (var tag in tags)
-            if (!CompatibleTags.Any(ct => tag.ToLower().Contains(ct)))
-                return false;
-
-        return true;
+        return _tagMatcher.IsMatch(CompatibleTags, fact.Tags.ToList());
     }
 }

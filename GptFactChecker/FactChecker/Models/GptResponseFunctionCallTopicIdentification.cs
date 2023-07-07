@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace FactCheckingService.FactCheckers.ClimateStrategy.Models;
+namespace FactCheckingService.Models;
 
-public class TopicIdentificationFunctionCallArguments
+public class GptResponseFunctionCallTopicIdentification
 {
     [JsonProperty(PropertyName = "claims_with_references")]
     public List<ClaimWithReferences> ClaimsWithReferences { get; set; }

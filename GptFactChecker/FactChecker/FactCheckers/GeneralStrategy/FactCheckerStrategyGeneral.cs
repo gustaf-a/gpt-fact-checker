@@ -1,5 +1,7 @@
-﻿using FactCheckingService.FactCheckers.ClimateStrategy;
+﻿using FactCheckingService.Extensions;
+using FactCheckingService.FactCheckers.ClimateStrategy;
 using FactCheckingService.FactCheckers.GeneralStrategy.FactCheckPrompt;
+using FactCheckingService.Models;
 using Shared.Extensions;
 using Shared.GptClient;
 using Shared.Models;
