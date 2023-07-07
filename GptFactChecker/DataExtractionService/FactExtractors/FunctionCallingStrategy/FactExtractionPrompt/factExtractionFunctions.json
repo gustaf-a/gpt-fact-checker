@@ -1,0 +1,36 @@
+[
+  {
+    "name": "store_claims",
+    "description": "Stores extracted claims",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "extracted_claims": {
+          "type": "array",
+          "description": "The extracted claims",
+          "items": {
+            "type": "object",
+            "properties": {
+              "claim_raw_text": {
+                "type": "string",
+                "description": "The raw text of the claim made exactly as is in the text with enough context for it to be understandable"
+              },
+              "claim_summarized": {
+                "type": "string",
+                "description": "A short summary of the claim made, stated as a fact"
+              },
+              "tags": {
+                "type": "array",
+                "description": "A few topics that relate to the claim made",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [ "extracted_claims", "claim_raw_text", "claim_summarized" ]
+    }
+  }
+]

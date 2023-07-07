@@ -10,9 +10,9 @@ namespace GptFactCheckerApi.Controllers;
 [Route("api/factchecker")]
 public class FactCheckerController : ControllerBase
 {
-    private readonly IFactCheckingService _factCheckingService;
+    private readonly IFactCheckService _factCheckingService;
 
-    public FactCheckerController(IFactCheckingService factCheckingService)
+    public FactCheckerController(IFactCheckService factCheckingService)
     {
         _factCheckingService = factCheckingService;
     }

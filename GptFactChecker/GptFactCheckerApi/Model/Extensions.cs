@@ -25,6 +25,8 @@ public static class Extensions
             CoverImageUrl = sourceDto.CoverImageUrl,
 
             Tags = sourceDto.Tags,
+
+            RawText = sourceDto.SourceRawText,
         };
     }
 
@@ -35,6 +37,9 @@ public static class Extensions
 
     public static SourceDto ToDto(this Source source)
     {
+        if (source is null)
+            return null;
+
         return new SourceDto
         {
             Id = source.Id,
@@ -53,7 +58,9 @@ public static class Extensions
             ClaimsUpdatedDate = source.ClaimsUpdatedDate,
             CoverImageUrl = source.CoverImageUrl,
 
-            Tags = source.Tags
+            Tags = source.Tags,
+
+            SourceRawText = source.RawText,
         };
     }
 

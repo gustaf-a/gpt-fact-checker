@@ -3,7 +3,7 @@ using Shared.Models;
 
 namespace GptFactCheckerApi.Services;
 
-public interface IFactCheckingService
+public interface IFactCheckService
 {
     Task<List<FactCheckResponse>> CheckFacts(List<ClaimDto> facts);
 }

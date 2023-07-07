@@ -5,13 +5,13 @@ using Shared.Models;
 
 namespace GptFactCheckerApi.Services;
 
-public class FactCheckingService : IFactCheckingService
+public class FactCheckService : IFactCheckService
 {
     private readonly IFactChecker _factChecker;
 
     private readonly IClaimCheckService _claimCheckService;
 
-    public FactCheckingService(IFactChecker factChecker, IClaimCheckService claimCheckService)
+    public FactCheckService(IFactChecker factChecker, IClaimCheckService claimCheckService)
     {
         _factChecker = factChecker;
         _claimCheckService = claimCheckService;

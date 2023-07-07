@@ -1,5 +1,5 @@
-﻿using GptFactCheckerApi.Model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Shared.Models;
 
 namespace GptFactCheckerApi.Repository;
 

@@ -1,4 +1,4 @@
-﻿using GptFactCheckerApi.Model;
+﻿using Shared.Models;
 
 namespace GptFactCheckerApi.Repository.JsonRepo;
 
