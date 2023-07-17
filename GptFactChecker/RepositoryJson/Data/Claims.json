@@ -1,0 +1,435 @@
+[
+  {
+    "Id": "26671426-44e0-4e42-9387-9c87f81a3756",
+    "ClaimSummarized": "WMO har rapporterat att havsisen i Antarktis under 2022 var på den lägsta nivå som hittills har uppmätts.",
+    "ClaimRawText": "WMO har presenterat en rapport om klimatet under 2022 med uppgifter om havsisen i Antarktis och meddelat att havsisen i Antarktis är på den lägsta nivå som hittills har uppmätts.",
+    "Tags": [
+      "climate",
+      "Antarctica",
+      "sea ice"
+    ]
+  },
+  {
+    "Id": "f1f9833f-4f02-4baf-8419-7b3c23786c5c",
+    "ClaimSummarized": "Trots den globala uppvärmningen visade trenden från 1979 till 2015 en tydlig tillväxt av havsis i Antarktis, men utbredningen var ovanligt liten 2022 och 2023, dock inte lägre än 2016.",
+    "ClaimRawText": "Som diagrammet visar är utbredningen i 2022 och 2023 ovanligt liten, men ändå inte under 2016. Vad som kanske är mer påtagligt är att trenden 1979 till 2015 var en tydlig tillväxt trots den globala uppvärmningen under denna period.",
+    "Tags": [
+      "climate",
+      "Antarctica",
+      "global warming",
+      "sea ice"
+    ]
+  },
+  {
+    "Id": "761c25bd-3c1c-4830-ba70-43fef4919f42",
+    "ClaimSummarized": "Den plötsliga minskningen av havsisen 2015 berodde på en kraftig storm.",
+    "ClaimRawText": "Det plötsliga minskningen av havsisen 2015 berodde på en mycket kraftig storm vid mätningen är årslägsta utbredningen.",
+    "Tags": [
+      "climate",
+      "Antarctica",
+      "storm",
+      "sea ice"
+    ]
+  },
+  {
+    "Id": "a80d9faf-a258-43fe-ab50-1aa5e3c74552",
+    "ClaimSummarized": "Isförlusten 2022 kan spåras tillbaka till stormar i oktober/november 2021, vilka överensstämmer med La Niña-förhållanden, i ett område starkt påverkat av El Niño-Southern Oscillation (ENSO).",
+    "ClaimRawText": "Ursprunget till isförlusten 2022 kan spåras tillbaka till oktober/november 2021 då det var serie stormar väster om den antarktiska halvön. Detta område är starkt påverkat av El Niño-Southern Oscillation (ENSO), och stormarna överensstämmer med La Niñas förhållanden vid den tiden.",
+    "Tags": [
+      "climate",
+      "Antarctica",
+      "storm",
+      "ENSO",
+      "La Niña"
+    ]
+  },
+  {
+    "Id": "93fbc53a-8b3d-4a57-b7d7-c4cb25ca163d",
+    "ClaimSummarized": "Testtetsetset",
+    "ClaimRawText": "Test",
+    "Tags": [
+      "climate"
+    ]
+  },
+  {
+    "Id": "287d6238-83dd-4968-902c-8b2797cc609c",
+    "ClaimSummarized": "The latest IPCC report should be ignored due to its analysis and reporting rules, and its prescription of Net Zero CO2 by 2050.",
+    "ClaimRawText": "And that’s why you should ignore the latest Intergovernmental Panel on Climate Change (IPCC) report because two similar rules govern their analysis and reporting. The cure is also similar: Net Zero CO2 by 2050.",
+    "Tags": [
+      "climate change",
+      "IPCC",
+      "carbon emissions"
+    ]
+  },
+  {
+    "Id": "a9adcb69-fa4b-43ae-8a3d-32c8f6ce09df",
+    "ClaimSummarized": "The IPCC has been perpetuating fear of human-caused global warming through constant reporting cycles over the last 35 years.",
+    "ClaimRawText": "For the last 35 years, the IPCC has developed this mandate into an industry of perpetual reporting on a six-year cycle designed to instill constant fear of human-caused global warming.",
+    "Tags": [
+      "climate change",
+      "IPCC",
+      "global warming"
+    ]
+  },
+  {
+    "Id": "f7d0dd8d-ccdc-4ea8-a27d-2516689f85a4",
+    "ClaimSummarized": "The IPCC's Summaries for Policymakers (SPMs) are approved line by line by member governments and override any conflicting scientific conclusions in the reports.",
+    "ClaimRawText": "All Summaries for Policymakers (SPMs) Are Approved Line by Line by Member Governments. Government SPMs Override Any Inconsistent Conclusions Scientists Write for IPCC Reports",
+    "Tags": [
+      "climate change",
+      "IPCC",
+      "government"
+    ]
+  },
+  {
+    "Id": "af0ed062-4280-4851-8f77-bc71874a458f",
+    "ClaimSummarized": "The IPCC political appointees only allow certain points in the SPM and delete any contrary evidence from the reports.",
+    "ClaimRawText": "The IPCC political appointees in charge of reviewing the SPM only allow the last point to be included (and only up to the comma) and all other evidence to the contrary is deleted from all other reports.",
+    "Tags": [
+      "climate change",
+      "IPCC",
+      "politics"
+    ]
+  },
+  {
+    "Id": "Tnl9LgBP",
+    "ClaimSummarized": "The IPCC's AR6 WG I report distorts climate history.",
+    "ClaimRawText": "I found the AR6 WG I report to be deceptive and an alteration of climate history, while their proposed planet-saving carbon budget did not balance and their temperature forecasts to be quite dodgy.",
+    "Tags": [
+      "climate",
+      "IPCC"
+    ]
+  },
+  {
+    "Id": "cg$seTI)",
+    "ClaimSummarized": "The IPCC's AR6 WG I report provides an unbalanced carbon budget.",
+    "ClaimRawText": "I found the AR6 WG I report to be deceptive and an alteration of climate history, while their proposed planet-saving carbon budget did not balance and their temperature forecasts to be quite dodgy.",
+    "Tags": [
+      "climate",
+      "IPCC"
+    ]
+  },
+  {
+    "Id": "z0c7zGE4",
+    "ClaimSummarized": "The IPCC's AR6 WG I report has questionable temperature forecasts.",
+    "ClaimRawText": "I found the AR6 WG I report to be deceptive and an alteration of climate history, while their proposed planet-saving carbon budget did not balance and their temperature forecasts to be quite dodgy.",
+    "Tags": [
+      "climate",
+      "IPCC"
+    ]
+  },
+  {
+    "Id": "9420829",
+    "ClaimSummarized": "More than half of teenagers surveyed believe the world may end in their lifetime",
+    "ClaimRawText": "More than half of teenagers surveyed believe the world 'may end in their lifetime'",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "1170098",
+    "ClaimSummarized": "Our schools are doing an abysmal job teaching kids how to read or do math",
+    "ClaimRawText": "Our schools are doing an abysmal job teaching kids how to read or do math",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "3419796",
+    "ClaimSummarized": "Kids graduating from high school can barely read their diplomas",
+    "ClaimRawText": "Kids graduating from high school can barely read their diplomas",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "8297178",
+    "ClaimSummarized": "The schools are wildly succeeding with their climate change indoctrination program",
+    "ClaimRawText": "The schools are wildly succeeding with their climate change indoctrination program",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "8596379",
+    "ClaimSummarized": "The greatest threat to the current generation, according to kids, is global warming or climate change",
+    "ClaimRawText": "The greatest threat to the current generation, according to kids, is global warming or climate change",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "5257177",
+    "ClaimSummarized": "More than half of surveyed teenagers think that the world may end in their lifetime due to climate change.",
+    "ClaimRawText": "More than half of teenagers surveyed believe that the world \"may end in their lifetime\" because of climate change.",
+    "Tags": [
+      "survey",
+      "teenagers",
+      "climate change",
+      "belief"
+    ]
+  },
+  {
+    "Id": "7536809",
+    "ClaimSummarized": "No one has informed the surveyed teenagers about the long history of climate change.",
+    "ClaimRawText": "No one has ever told them that the climate has been changing for as long as the planet has existed.",
+    "Tags": [
+      "survey",
+      "teenagers",
+      "climate change",
+      "knowledge"
+    ]
+  },
+  {
+    "Id": "8856827",
+    "ClaimSummarized": "The Earth has experienced centuries of warming, even before the invention of air conditioning.",
+    "ClaimRawText": "The Earth has gone through centuries of warming – and that was before air conditioning, which the climate czars want to take away from us to combat warming.",
+    "Tags": [
+      "global warming",
+      "air conditioning"
+    ]
+  },
+  {
+    "Id": "4674435",
+    "ClaimSummarized": "Those who question the experts of global warming are dismissed as crazy or quacks.",
+    "ClaimRawText": "Anyone who dares question the \"experts\" of global warming is written off as crazy or a quack.",
+    "Tags": [
+      "global warming",
+      "skepticism",
+      "experts"
+    ]
+  },
+  {
+    "Id": "8075626",
+    "ClaimSummarized": "Those who warned us about various doomsday scenarios are now building a multi-trillion dollar climate change industrial complex focusing on wind energy.",
+    "ClaimRawText": "The people who warned us about \"the population bomb,\" nuclear winter, mass starvation, running out of energy, global cooling, and pollution are now telling us to trust them as they build a multi-trillion dollar climate change industrial complex centered around wind energy.",
+    "Tags": [
+      "warning",
+      "population bomb",
+      "nuclear winter",
+      "mass starvation",
+      "energy scarcity",
+      "global cooling",
+      "pollution",
+      "trust",
+      "climate change industrial complex",
+      "wind energy"
+    ]
+  },
+  {
+    "Id": "5558324",
+    "ClaimSummarized": "Misinforming kids about climate change leads to negative consequences like teen depression, suicide, lower productivity, and drug addiction.",
+    "ClaimRawText": "Scaring kids with misinformation about climate change is causing negative effects such as teen depression, suicide, lower productivity, and drug addiction.",
+    "Tags": [
+      "climate change",
+      "misinformation",
+      "negative effects"
+    ]
+  },
+  {
+    "Id": "3473424",
+    "ClaimSummarized": "There is a severe birth dearth in American history.",
+    "ClaimRawText": "We are experiencing one of the most severe birth dearths in American history.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "6990993",
+    "ClaimSummarized": "The birth rate is declining rapidly.",
+    "ClaimRawText": "The birth rate is plummeting.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "1605922",
+    "ClaimSummarized": "There is a new syndrome called \"eco-anxiety\" which is attributed to the fear that Mother Earth will punish us.",
+    "ClaimRawText": "There is a new syndrome called \"eco-anxiety\" which is attributed to the fear that Mother Earth will punish us.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "6015292",
+    "ClaimSummarized": "Today's children and teens have a higher living standard, a cleaner planet, and access to superior goods, services, technologies, and medical care.",
+    "ClaimRawText": "Today's children and teens have a living standard, cleaner planet, and access to goods and services and technologies and medical care that is far superior to anything in history.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "4639792",
+    "ClaimSummarized": "Climate change should be seen in the context of other historical challenges such as the bubonic plague, polio, tuberculosis, and working conditions in the past.",
+    "ClaimRawText": "Climate change should be seen in the context of other historical challenges such as the bubonic plague, polio, tuberculosis, and working conditions in the past.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "9823159",
+    "ClaimSummarized": "The author believes that the current generation is becoming neurotic due to the influence of the Left and their focus on climate change.",
+    "ClaimRawText": "The author believes that the current generation is becoming neurotic due to the influence of the Left and their focus on climate change.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "6837246",
+    "ClaimSummarized": "The author blames the parents for allowing the Left to influence their children's beliefs.",
+    "ClaimRawText": "The author blames the parents for allowing the Left to influence their children's beliefs.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "8844205",
+    "ClaimSummarized": "The author suggests that the Left's influence can lead to extreme measures such as euthanasia in order to save the planet.",
+    "ClaimRawText": "The author suggests that the Left's influence can lead to extreme measures such as euthanasia in order to save the planet.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "4045793",
+    "ClaimSummarized": "Teaching children that they are inheriting a \"fiery hell\" instead of the Earth can have negative consequences.",
+    "ClaimRawText": "Teaching children that they are inheriting a \"fiery hell\" instead of the Earth can have negative consequences.",
+    "Tags": [
+      "climate change",
+      " education"
+    ]
+  },
+  {
+    "Id": "3735229",
+    "ClaimSummarized": "Cosmic rays modulating cloud cover are the dominant cause of million-year climate variations",
+    "ClaimRawText": "million-year variations in cosmic rays (CR) modulating cloud cover are the dominant cause of million-year climate variations",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "5211200",
+    "ClaimSummarized": "Declining CO2 and rising solar luminosity cannot explain past climate variations",
+    "ClaimRawText": "declining CO2 and rising solar luminosity over the last billion years cannot explain past climate variations",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "9745664",
+    "ClaimSummarized": "CO2's effects on climate are assessed to be nearly half of what climate models predict",
+    "ClaimRawText": "CO2's effects on climate are assessed to be nearly just half of what the climate models say they are",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "5024754",
+    "ClaimSummarized": "The cosmic rays/climate relationship explains the magnitude of observed solar-climate interactions",
+    "ClaimRawText": "The CR/climate relationship is the only one capable of explaining the magnitude of the observed solar-climate interactions",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "7937544",
+    "ClaimSummarized": "Cosmic rays affect cloud cover, explaining solar-related climate variations.",
+    "ClaimRawText": "The apparent effect that the CRs have on cloud cover automatically explains the size of all the observed solar-related climate variations.",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "8981376",
+    "ClaimSummarized": "Ice-age epochs occurred when cosmic ray flux was higher.",
+    "ClaimRawText": "The seven ice-age epochs…over the past billion years have taken place when the CR flux was higher, as the theory predicts.",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "5579155",
+    "ClaimSummarized": "Decreases in CO2 and increases in solar luminosity offset each other.",
+    "ClaimRawText": "Decreases in CO2 concentration and the increase in solar luminosity mostly cancel each other out.",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "8837134",
+    "ClaimSummarized": "Study authors documented the effect of cosmic rays on climate through cloud radiative forcing.",
+    "ClaimRawText": "Two of the three study’s authors documented the large effect on climate due to 'cloud radiative forcing' induced by a cosmic ray-cloud link a few years ago (Svensmark et al., 2021).",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "7001170",
+    "ClaimSummarized": "Low liquid clouds contribute to short-term net radiative forcing.",
+    "ClaimRawText": "They found that 'low liquid clouds are mainly responsible for the change in net radiative forcing' (i.e., 2 W/m²) over short-term periods as well.",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "5230601",
+    "ClaimSummarized": "Other scientists suggest a link between cosmic rays/clouds and ancient global cooling and mass extinctions.",
+    "ClaimRawText": "The ancient climate link to galactic cosmic ray/cloud-induced global cooling and consequent mass extinction episodes have been suggested by other scientists (Isozaki, 2019) as well.",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "5186859",
+    "ClaimSummarized": "Galactic cosmic radiation and solar/terrestrial responses can impact Earth's climate, particularly cloud coverage.",
+    "ClaimRawText": "Galactic cosmic radiation (GCR) and solar/terrestrial responses in magnetism (Category 4) could have had a profound impact on the Earth’s climate, in particular on extensive cloud coverage (irradiance shutdown).",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  },
+  {
+    "Id": "9520131",
+    "ClaimSummarized": "Episodic increase in GCR-dust flux may have contributed to major climate changes and global cooling in the past.",
+    "ClaimRawText": "As an ultimate cause (Category 4) for major extinction, the episodic increase in GCR-dust flux from the source (dark clouds derived from starburst) against the geomagnetic shield likely determined the major climate changes, particularly global cooling in the past.",
+    "Tags": [
+      "climate change",
+      " cosmic rays",
+      " "
+    ]
+  }
+]

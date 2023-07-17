@@ -1,5 +1,5 @@
 ﻿using FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
-using GptFactCheckerApi.Repository.JsonRepo;
+using JsonClient;
 using Shared.Models;
 
 namespace FactCheckingServiceTests.FactCheckers.ClimateStrategy.TopicIdentification;

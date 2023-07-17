@@ -8,14 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataExtractionService\FactExtractionService.csproj" />
     <ProjectReference Include="..\FactChecker\FactCheckingService.csproj" />
+    <ProjectReference Include="..\GptFactCheckerApiController\GptFactCheckerApiController.csproj" />
     <ProjectReference Include="..\JsonClient\JsonClient.csproj" />
+    <ProjectReference Include="..\RepositoryJson\RepositoryJson.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 

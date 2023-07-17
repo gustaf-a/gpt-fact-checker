@@ -1,4 +1,4 @@
-﻿using GptFactCheckerApi.Repository.JsonRepo;
+﻿using JsonClient;
 using Microsoft.Extensions.Options;
 using Shared.Configuration;
 using Shared.Models;

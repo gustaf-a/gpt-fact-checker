@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace GptFactCheckerApi.Repository.JsonRepo;
+namespace JsonClient;
 
 public static class JsonHelper
 {

@@ -11,11 +11,11 @@ using FactExtractionService.FactExtractors;
 using FactExtractionService.FactExtractors.FunctionCallingStrategy;
 using FactExtractionService.FactExtractors.FunctionCallingStrategy.FactExtractionPrompt;
 using FactExtractionService.Utils;
-using GptFactCheckerApi.Repository;
-using GptFactCheckerApi.Repository.JsonRepo;
 using GptFactCheckerApi.Services;
+using RepositoryJson;
 using Shared.Configuration;
 using Shared.GptClient;
+using Shared.Repository;
 
 namespace GptFactCheckerApi;
 
@@ -31,6 +31,7 @@ public class Startup
     public void ConfigureMyServices(IServiceCollection services)
     {
         services.Configure<OpenAiOptions>(_configurationManager.GetSection(OpenAiOptions.OpenAi));
+        services.Configure<RepositoryJsonOptions>(_configurationManager.GetSection(RepositoryJsonOptions.RepositoryJson));
 
         services.AddSingleton<ISourceRepository, SourceJsonRepository>();
         services.AddSingleton<IClaimRepository, ClaimJsonRepository>();

@@ -1,8 +1,8 @@
-﻿using GptFactCheckerApi.Repository.JsonRepo;
-using Shared.Models;
+﻿using Shared.Models;
 using Shared.Extensions;
 using Shared.Prompts;
 using System.Text;
+using JsonClient;
 
 namespace FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
 

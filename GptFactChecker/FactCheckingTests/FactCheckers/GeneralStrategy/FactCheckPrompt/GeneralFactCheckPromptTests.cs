@@ -1,5 +1,5 @@
 ﻿using FactCheckingService.FactCheckers.GeneralStrategy.FactCheckPrompt;
-using GptFactCheckerApi.Repository.JsonRepo;
+using JsonClient;
 using Shared.Models;
 
 namespace FactCheckingServiceTests.FactCheckers.GeneralStrategy.FactCheckPrompt;
