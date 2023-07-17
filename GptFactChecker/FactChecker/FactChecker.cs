@@ -15,14 +15,14 @@ public class FactChecker : IFactChecker
         _factCheckers = _factCheckers.OrderBy(f => f.Priority);
     }
 
-    public async Task<List<FactCheckResponse>> CheckFacts(List<Fact> facts)
+    public async Task<List<FactCheckResult>> CheckFacts(List<Fact> facts)
     {
         if (facts.IsNullOrEmpty())
             return new();
 
         var factsToFactCheck = new List<Fact>(facts);
 
-        var factCheckResponses = new List<FactCheckResponse>();
+        var factCheckResponses = new List<FactCheckResult>();
 
         foreach (var factChecker in _factCheckers)
         {
@@ -39,10 +39,10 @@ public class FactChecker : IFactChecker
         return factCheckResponses;
     }
 
-    private static void RemoveCheckedFacts(List<Fact> facts, List<FactCheckResponse> responses)
+    private static void RemoveCheckedFacts(List<Fact> facts, List<FactCheckResult> responses)
     {
         var checkedFactIds = responses
-            .Where(r => r.IsChecked)
+            .Where(r => r.IsFactChecked)
             .Select(r => r.Fact.Id)
             .ToList();
 

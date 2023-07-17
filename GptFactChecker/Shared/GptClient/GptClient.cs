@@ -38,6 +38,9 @@ public class GptClient : IGptClient
     /// </summary>
     public async Task<string> GetCompletion(string prompt, double temperature = 0)
     {
+        if (_openAiOptions.LogPrompts)
+            Log(nameof(GptClient) + " Prompt: " + prompt);
+
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Post,
@@ -52,18 +55,28 @@ public class GptClient : IGptClient
     {
         var response = await _httpClient.SendAsync(request);
 
+        var responseContent = await response.Content.ReadAsStringAsync();
+
         if (!response.IsSuccessStatusCode)
         {
-            Console.WriteLine($"Request failed with status code {response.StatusCode}");
-            Console.WriteLine($"Response: {await response.Content.ReadAsStringAsync()}");
+            Console.WriteLine(nameof(GptClient) + $": Request failed with status code {response.StatusCode}");
+
+            if (_openAiOptions.LogResponses)
+                Log(nameof(GptClient) + " Response: " + responseContent);
+
             return string.Empty;
         }
 
-        var responseContent = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(nameof(GptClient) + $": Request success.");
 
-        Console.WriteLine("Request success");
-        Console.WriteLine(responseContent);
+        if (_openAiOptions.LogResponses)
+            Log(nameof(GptClient) + " Response: " + responseContent);
 
         return responseContent;
+    }
+
+    private static void Log(string msg)
+    {
+        Console.WriteLine(msg);
     }
 }

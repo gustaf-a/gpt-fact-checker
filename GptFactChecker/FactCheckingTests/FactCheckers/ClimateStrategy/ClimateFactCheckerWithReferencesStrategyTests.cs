@@ -98,21 +98,21 @@ public class ClimateFactCheckerWithReferencesStrategyTests
             }
         };
 
-        var factCheckerResponses = new List<FactCheckResponse>
+        var factCheckerResponses = new List<FactCheckResult>
         {
-            new FactCheckResponse
+            new FactCheckResult
             {
                 Fact = factsToCheck[0],
-                IsChecked = true,
+                IsFactChecked = true,
                 FactCheck = new FactCheck
                 {
                     Id = "11"
                 }
             },
-            new FactCheckResponse
+            new FactCheckResult
             {
                 Fact = factsToCheck[2],
-                IsChecked = true,
+                IsFactChecked = true,
                 FactCheck = new FactCheck
                 {
                     Id = "33"

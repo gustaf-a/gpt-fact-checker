@@ -1,5 +1,7 @@
 ﻿using FactCheckingService;
 using GptFactCheckerApi.Model;
+using Microsoft.Extensions.Options;
+using Shared.Configuration;
 using Shared.Extensions;
 using Shared.Models;
 
@@ -7,42 +9,70 @@ namespace GptFactCheckerApi.Services;
 
 public class FactCheckService : IFactCheckService
 {
+    private readonly FactCheckerOptions _factCheckerOptions;
     private readonly IFactChecker _factChecker;
-
+    private readonly IClaimService _claimService;
     private readonly IClaimCheckService _claimCheckService;
 
-    public FactCheckService(IFactChecker factChecker, IClaimCheckService claimCheckService)
+    public FactCheckService(IOptions<FactCheckerOptions> options, IFactChecker factChecker, IClaimService claimService, IClaimCheckService claimCheckService)
     {
+        _factCheckerOptions = options.Value;
         _factChecker = factChecker;
+        _claimService = claimService;
         _claimCheckService = claimCheckService;
     }
 
-    public async Task<List<FactCheckResponse>> CheckFacts(List<ClaimDto> claimDtos)
+    public async Task<BackendResponse<List<ClaimCheckResultsDto>>> CheckFacts(List<string> claimIds)
     {
-        var facts = claimDtos.ToClaims();
-        if (facts.IsNullOrEmpty())
+        var response = new BackendResponse<List<ClaimCheckResultsDto>>();
+
+        if (_factCheckerOptions.ReturnTestData)
+            return GetFakeData();
+
+        if (claimIds.IsNullOrEmpty())
         {
-            Console.WriteLine("Received empty list of claims");
-            return null;
+            LogError(response, "No Claim IDs received.");
+            return response;
         }
 
-        var factCheckResponses = await DoFactChecks(facts);
-        if (factCheckResponses.IsNullOrEmpty())
+        var claimDtos = await _claimService.GetClaims(claimIds);
+        if (claimDtos.IsNullOrEmpty())
         {
-            Console.WriteLine("All attempts at fact checking failed.");
-            return null;
+            LogError(response, "Failed to retrieve claims.");
+            return response;
         }
 
-        await StoreFactChecks(factCheckResponses);
+        if (claimDtos.Count != claimIds.Count)
+            LogError(response, $"Retrieved only {claimDtos.Count} claims from {claimIds.Count} IDs.");
 
-        return factCheckResponses;
+        var factCheckResults = await DoFactChecks(claimDtos.ToClaims());
+        if (factCheckResults.IsNullOrEmpty())
+        {
+            LogError(response, "All attempts at fact checking failed.");
+            return response;
+        }
+
+        if (_factCheckerOptions.SaveFactChecksDirectlyAfterCreation)
+            await StoreFactChecks(factCheckResults);
+
+        response.IsSuccess = true;
+        response.Data = factCheckResults.ToDtos();
+
+        return response;
     }
 
-    private async Task<List<FactCheckResponse>> DoFactChecks(List<Fact> facts)
+    private static void LogError<T>(BackendResponse<T> response, string message)
+    {
+        Console.WriteLine(message);
+
+        response.Messages.Add(message);
+    }
+
+    private async Task<List<FactCheckResult>> DoFactChecks(List<Fact> facts)
     {
         var factCheckResponses = await _factChecker.CheckFacts(facts);
 
-        var validFactCheckResponses = new List<FactCheckResponse>();
+        var validFactCheckResponses = new List<FactCheckResult>();
 
         foreach (var factCheckResponse in factCheckResponses.Where(FactCheckIsValid))
             validFactCheckResponses.Add(factCheckResponse);
@@ -50,23 +80,26 @@ public class FactCheckService : IFactCheckService
         return validFactCheckResponses;
     }
 
-    private static bool FactCheckIsValid(FactCheckResponse? factCheckResponse)
-        => factCheckResponse is not null && factCheckResponse.IsChecked && factCheckResponse.FactCheck is not null;
+    private static bool FactCheckIsValid(FactCheckResult? factCheckResponse)
+        => factCheckResponse is not null && factCheckResponse.IsFactChecked && factCheckResponse.FactCheck is not null;
 
-    private async Task StoreFactChecks(List<FactCheckResponse> factCheckResponses)
+    private async Task StoreFactChecks(List<FactCheckResult> factCheckResponses)
     {
         foreach (var factCheckResponse in factCheckResponses)
+        {
             if (!(await StoreFactCheck(factCheckResponse)))
             {
-                factCheckResponse.IsStored = false;
                 factCheckResponse.Messages.Add("Failed to store fact check");
                 continue;
             }
+
+            factCheckResponse.IsStored = true;
+        }
     }
-    
-    private async Task<bool> StoreFactCheck(FactCheckResponse factCheckResponse)
+
+    private async Task<bool> StoreFactCheck(FactCheckResult factCheckResponse)
     {
-        if (!factCheckResponse.IsChecked)
+        if (!factCheckResponse.IsFactChecked)
             return false;
 
         if (factCheckResponse?.FactCheck is null)
@@ -93,7 +126,7 @@ public class FactCheckService : IFactCheckService
         return true;
     }
 
-    private static ClaimCheck ConvertToClaimCheck(FactCheckResponse factCheckResponse)
+    private static ClaimCheck ConvertToClaimCheck(FactCheckResult factCheckResponse)
     {
         if (factCheckResponse.Author is null)
             Console.WriteLine("Invalid author registered with created fact checks.");
@@ -110,4 +143,37 @@ public class FactCheckService : IFactCheckService
             DateCreated = factCheck.DateCreated.ToIsoString(),
         };
     }
+
+    private BackendResponse<List<ClaimCheckResultsDto>> GetFakeData()
+    {
+        var data = new List<FactCheckResult>();
+
+        data.Add(new FactCheckResult
+        {
+            Fact = new Fact
+            {
+                Id = "123",
+                ClaimRawText = "Test 123",
+                ClaimSummarized = "Test 123 sum",
+            },
+            FactCheck = new FactCheck
+            {
+                Id = "123461",
+                Label = "True",
+                FactCheckText = "It's true",
+                DateCreated = DateTime.Now,
+                References = new() { "11", "22" }
+            },
+            IsFactChecked = true
+        });
+
+        var result = new BackendResponse<List<ClaimCheckResultsDto>>
+        {
+            Data = data.ToDtos(),
+            IsSuccess = true
+        };
+
+        return result;
+    }
+
 }

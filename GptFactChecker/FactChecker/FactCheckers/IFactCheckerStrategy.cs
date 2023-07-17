@@ -7,6 +7,6 @@ public interface IFactCheckerStrategy : IComparable<IFactCheckerStrategy>
     int Priority { get; }
 
     public bool IsCompatible(Fact fact);
-    public Task<List<FactCheckResponse>> ExecuteFactCheck(List<Fact> facts);
+    public Task<List<FactCheckResult>> ExecuteFactCheck(List<Fact> facts);
     public Author Author { get; }
 }

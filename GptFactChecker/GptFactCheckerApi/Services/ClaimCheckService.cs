@@ -1,5 +1,6 @@
 ﻿using GptFactCheckerApi.Model;
 using GptFactCheckerApi.Repository;
+using GptFactCheckerApi.Repository.JsonRepo;
 using Shared.Extensions;
 
 namespace GptFactCheckerApi.Services;
@@ -18,14 +19,57 @@ public class ClaimCheckService : IClaimCheckService
         _claimCheckReactionService = claimCheckReactionService;
     }
 
+    public async Task<BackendResponse<bool>> AddClaimCheckResults(List<ClaimCheckResultsDto> claimCheckResultsDtos)
+    {
+        var response = new BackendResponse<bool>();
+
+        if (claimCheckResultsDtos.IsNullOrEmpty())
+        {
+            response.Messages.Add("List of ClaimCheckResults received was null or empty.");
+            return response;
+        }
+
+        response.IsSuccess = true;
+
+        foreach (var claimCheckResultDto in claimCheckResultsDtos)
+        {
+            var claimId = claimCheckResultDto.Claim?.Id;
+
+            var claimCheckDto = claimCheckResultDto.ClaimCheck;
+            if (claimCheckDto is null || string.IsNullOrWhiteSpace(claimId))
+            {
+                response.Messages.Add($"Invalid ClaimCheckResul received: {JsonHelper.Serialize(claimCheckResultDto)}");
+                response.IsSuccess = false;
+            }
+
+            var partialResult = await AddClaimChecks(new List<ClaimCheckDto>() { claimCheckDto }, claimCheckResultDto.Claim.Id);
+
+            if (!partialResult)
+            {
+                response.Messages.Add($"Failed to add ClaimCheckResult: {JsonHelper.Serialize(claimCheckResultDto)}");
+                response.IsSuccess = false;
+            }
+        }
+
+        return response;
+    }
+
     public async Task<bool> AddClaimChecks(List<ClaimCheckDto> claimCheckDtos, string claimId)
     {
         var claimChecks = claimCheckDtos.ToClaimChecks();
 
-        if (!await _claimCheckRepository.CreateClaimChecks(claimChecks))
-            return false;
+        try
+        {
+            if (!await _claimCheckRepository.CreateClaimChecks(claimChecks))
+                return false;
 
-        await _claimsClaimChecksRepository.AddClaimChecksForClaim(claimId, claimChecks);
+            await _claimsClaimChecksRepository.AddClaimChecksForClaim(claimId, claimChecks);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to save claim checks to claim with ID: {claimId}. ClaimChecks: {JsonHelper.Serialize(claimCheckDtos)}", ex);
+            return false;
+        }
 
         return true;
     }
@@ -62,8 +106,33 @@ public class ClaimCheckService : IClaimCheckService
         return claimCheckDtos;
     }
 
-    public async Task<bool> DeleteClaimChecks(List<string> claimCheckIds)
+    public async Task<BackendResponse<bool>> DeleteClaimChecks(List<string> claimCheckIds)
     {
-        return await _claimCheckRepository.DeleteClaimChecks(claimCheckIds);
+        var response = new BackendResponse<bool>();
+
+        foreach (var claimCheckId in claimCheckIds)
+            await DeleteClaimCheck(claimCheckId, response);
+
+        return response;
+    }
+
+    private async Task DeleteClaimCheck(string claimCheckId, BackendResponse<bool> response)
+    {
+        if (string.IsNullOrWhiteSpace(claimCheckId))
+        {
+            response.Messages.Add("Invalid ClaimCheckId received.");
+            return;
+        }
+
+        if (!await _claimCheckReactionService.DeleteClaimCheckReactionsByClaimCheck(claimCheckId))
+            response.Messages.Add($"Failed to delete claim check reactions for claim check: {claimCheckId}");
+
+        if (!await _claimsClaimChecksRepository.RemoveClaimChecks(new List<string>() { claimCheckId }))
+            response.Messages.Add($"Failed to remove claims claimcheck relationships for ClaimCheck ID: {claimCheckId}");
+
+        if (!await _claimCheckRepository.DeleteClaimChecks(new List<string>() { claimCheckId }))
+            response.Messages.Add($"Failed to delete claim check: {claimCheckId}");
+
+        return;
     }
 }

@@ -76,6 +76,12 @@ public class ParentChildrenHolderJsonRepository : IParentChildrenHolderRepositor
 
     private static ParentChildrenHolder? GetParentChildrenHolder(string parentId, List<ParentChildrenHolder> parentChildrenHolders)
     {
+        if (string.IsNullOrWhiteSpace(parentId))
+            throw new ArgumentNullException(nameof(parentId), "invalid argument for parentId");
+
+        if (parentChildrenHolders is null)
+            return null;
+
         return parentChildrenHolders.Find(cc => parentId.Equals(cc.ParentId));
     }
 }

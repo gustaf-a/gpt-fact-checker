@@ -17,7 +17,7 @@ public class ClimateFactCheckWithDataPrompt : PromptWithReferencesBase, IClimate
 
     private const string SystemPromptStart =
 $"""
-Act as an expert fact checker specialized in climate change, environmental issues and sustainability. Use the references below to fact check the presented claim.
+Act as an expert fact checker specialized in climate change, environmental issues and sustainability. Use the references provided to fact check the presented claim. When a reference is used the ID should be written like this in the explanation: (ref:123)
 """;
 
     protected override string BuildSystemPrompt(List<ArgumentData> relevantArguments)
@@ -61,7 +61,6 @@ Act as an expert fact checker specialized in climate change, environmental issue
 
         var sb = new StringBuilder();
 
-        sb.Append($"Claim ID: {fact.Id} ");
         sb.Append(Delimiter);
         sb.Append(fact.ClaimRawText);
         sb.Append(Delimiter);

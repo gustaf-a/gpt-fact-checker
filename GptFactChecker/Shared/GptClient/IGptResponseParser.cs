@@ -16,4 +16,12 @@ public interface IGptResponseParser
     /// <param name="gptResponseString">Content response string from GptClient call</param>
     /// <param name="callerName">Name of the caller, used for logging.</param>
     public T ParseGptResponseFunctionCall<T>(string gptResponseString, string callerName);
+
+    /// <summary>
+    /// Get's the name of the function call from GPT as a string. 
+    /// Returns string empty if name cannot be found.
+    /// </summary>
+    /// <param name="gptResponseString">Content response string from GptClient call</param>
+    /// <param name="callerName">Name of the caller, used for logging.</param>
+    public bool GetGptResponseFunctionCallName(string gptResponseString, string callerName, out string functionCallName);
 }

@@ -4,5 +4,5 @@ namespace FactCheckingService;
 
 public interface IFactChecker
 {
-    public Task<List<FactCheckResponse>> CheckFacts(List<Fact> facts);
+    public Task<List<FactCheckResult>> CheckFacts(List<Fact> facts);
 }

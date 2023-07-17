@@ -7,6 +7,22 @@ public class GptResponseParser : IGptResponseParser
 {
     private static readonly List<string> ValidFinishReasons = new() { "function_call", "stop" };
 
+    public bool GetGptResponseFunctionCallName(string gptResponseString, string callerName, out string functionCallName)
+    {
+        functionCallName = string.Empty;
+
+        var choice = ParseChoice(gptResponseString, callerName);
+        if (choice is null)
+            return false;
+
+        if (string.IsNullOrWhiteSpace(choice.Message?.FunctionCall?.Name))
+            return false;
+
+        functionCallName = choice.Message.FunctionCall.Name;
+
+        return true;
+    }
+
     public T ParseGptResponseFunctionCall<T>(string gptResponseString, string callerName)
     {
         var choice = ParseChoice(gptResponseString, callerName);
@@ -14,12 +30,9 @@ public class GptResponseParser : IGptResponseParser
             return default;
 
         if (!ValidFinishReasons.Contains(choice.FinishReason))
-        {
-            Console.WriteLine($"Possible corrupt finish response from GPT Client. Bad finish reason: {choice.FinishReason}. {callerName} failed.");
-            return default;
-        }
+            Console.WriteLine($"Possible corrupt finish response from GPT Client. Bad finish reason: {choice.FinishReason}.");
 
-        var functionCall = choice.Message.FunctionCall;
+        var functionCall = choice.Message?.FunctionCall;
         if (functionCall is null)
         {
             Console.WriteLine($"Bad response from GPT Client. Function call not set in response. {callerName} failed.");

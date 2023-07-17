@@ -1,6 +1,6 @@
 ﻿using FactCheckingService.Models;
-using Shared.Extensions;
 using Shared.Models;
+using Shared.Utils;
 
 namespace FactCheckingService.Extensions;
 
@@ -13,10 +13,9 @@ public static class GptResponseExtensions
 
         return new FactCheck
         {
-            Id = functionCallFactCheck.Id,
-            Label = functionCallFactCheck.Label,
-            FactCheckText = functionCallFactCheck.Explanation,
-            References = functionCallFactCheck.ReferencesUsed.IsNullOrEmpty() ? new() : functionCallFactCheck.ReferencesUsed
+            Id = IdGeneration.GenerateStringId(),
+            Label = functionCallFactCheck.Label ?? string.Empty,
+            FactCheckText = functionCallFactCheck.Explanation
         };
     }
 

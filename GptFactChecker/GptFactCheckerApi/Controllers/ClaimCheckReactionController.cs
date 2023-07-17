@@ -22,33 +22,33 @@ public class ClaimCheckReactionController : ControllerBase
     [HttpPost("claimcheck/id")]
     public async Task<IActionResult> CreateClaimCheckReaction([FromQuery] string claimCheckId, [FromBody] ClaimCheckReaction claimCheckReaction)
     {
-        var result = await _claimCheckReactionService.AddClaimCheckReaction(claimCheckReaction, claimCheckId);
+        var backendResponse = await _claimCheckReactionService.AddClaimCheckReaction(claimCheckReaction, claimCheckId);
 
-        if (!result)
-            return StatusCode(500);
+        if (!backendResponse.IsSuccess)
+            return StatusCode(500, backendResponse);
 
-        return Ok();
+        return Ok(backendResponse);
     }
 
-    /// <summary>
-    /// Returns all claim check reactions related to a claimCheckId
-    /// </summary>
-    [HttpGet("claimcheck/id")]
-    public async Task<IActionResult> GetAllClaimCheckReactionsByClaimCheck([FromQuery] string claimCheckId)
-    {
-        if (string.IsNullOrWhiteSpace(claimCheckId))
-            return NotFound();
+    ///// <summary>
+    ///// Returns all claim check reactions related to a claimCheckId
+    ///// </summary>
+    //[HttpGet("claimcheck/id")]
+    //public async Task<IActionResult> GetAllClaimCheckReactionsByClaimCheck([FromQuery] string claimCheckId)
+    //{
+    //    if (string.IsNullOrWhiteSpace(claimCheckId))
+    //        return NotFound();
 
-        var claimCheckReactions = 
-            await _claimCheckReactionService.GetClaimCheckReactions(claimCheckId);
+    //    var claimCheckReactions = 
+    //        await _claimCheckReactionService.GetClaimCheckReactions(claimCheckId);
 
-        return Ok(claimCheckReactions);
-    }
+    //    return Ok(claimCheckReactions);
+    //}
 
     /// <summary>
     /// Deletes a claim check reaction matching the provided claimCheckReactionId
     /// </summary>
-    [HttpDelete("id")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteClaimCheckReactionById([FromQuery] string id)
     {
         if (string.IsNullOrWhiteSpace(id))

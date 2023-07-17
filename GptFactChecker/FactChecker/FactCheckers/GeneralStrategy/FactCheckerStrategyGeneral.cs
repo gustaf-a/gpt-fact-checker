@@ -41,9 +41,9 @@ public class FactCheckerStrategyGeneral : IFactCheckerStrategy
         return Priority.CompareTo(other.Priority);
     }
 
-    public async Task<List<FactCheckResponse>> ExecuteFactCheck(List<Fact> facts)
+    public async Task<List<FactCheckResult>> ExecuteFactCheck(List<Fact> facts)
     {
-        var results = new List<FactCheckResponse>();
+        var results = new List<FactCheckResult>();
 
         if (facts.IsNullOrEmpty())
             return results;
@@ -64,11 +64,11 @@ public class FactCheckerStrategyGeneral : IFactCheckerStrategy
                 continue;
             }
 
-            results.Add(new FactCheckResponse
+            results.Add(new FactCheckResult
             {
                 Fact = fact,
                 FactCheck = factCheck,
-                IsChecked = true,
+                IsFactChecked = true,
                 Author = Author,
                 Messages = CreateFactCheckMessage()
             });

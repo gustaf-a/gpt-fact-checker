@@ -1,5 +1,7 @@
 ﻿using GptFactCheckerApi.Model;
 using GptFactCheckerApi.Repository;
+using GptFactCheckerApi.Repository.JsonRepo;
+using Shared.Extensions;
 
 namespace GptFactCheckerApi.Services;
 
@@ -14,19 +16,30 @@ public class ClaimCheckReactionService : IClaimCheckReactionService
         _claimChecksClaimCheckReactionsRepository = claimChecksClaimCheckReactionsRepository;
     }
 
-    public async Task<bool> AddClaimCheckReaction(ClaimCheckReaction claimCheckReaction, string claimCheckId)
+    public async Task<BackendResponse<bool>> AddClaimCheckReaction(ClaimCheckReaction claimCheckReaction, string claimCheckId)
     {
+        var response = new BackendResponse<bool>();
+
         var claimCheckReactionsForClaim = await GetClaimCheckReactions(claimCheckId);
 
         if (claimCheckReactionsForClaim.Any())
             await RemoveClaimCheckReactionsByUser(claimCheckReactionsForClaim, claimCheckReaction.UserId);
 
         if (!await _claimCheckReactionRepository.CreateClaimCheckReaction(claimCheckReaction))
-            return false;
+        {
+            response.Messages.Add($"Failed to create claim check reaction: {JsonHelper.Serialize(claimCheckReaction)}");
+            return response;
+        }
 
-        await _claimChecksClaimCheckReactionsRepository.AddClaimCheckReactionForClaimCheck(claimCheckId, claimCheckReaction);
+        if(!await _claimChecksClaimCheckReactionsRepository.AddClaimCheckReactionForClaimCheck(claimCheckId, claimCheckReaction))
+        {
+            response.Messages.Add($"Failed to create claim check to claim check reaction relationship for ClaimCheckId {claimCheckId}: {JsonHelper.Serialize(claimCheckReaction)}");
+            return response;
+        }
 
-        return true;
+        response.IsSuccess = true;
+
+        return response;
     }
 
     private async Task RemoveClaimCheckReactionsByUser(List<ClaimCheckReaction> claimCheckReactionsForClaim, string userId)
@@ -41,12 +54,28 @@ public class ClaimCheckReactionService : IClaimCheckReactionService
         }
     }
 
+    public async Task<bool> DeleteClaimCheckReactionsByClaimCheck(string claimCheck)
+    {
+        var claimCheckReactionIds = await GetClaimCheckReactionIds(claimCheck);
+        if (claimCheckReactionIds.IsNullOrEmpty())
+            return false;
+
+        if (!await DeleteClaimCheckReactions(claimCheckReactionIds))
+            return false;
+
+        return true;
+    }
+
     public async Task<List<ClaimCheckReaction>> GetClaimCheckReactions(string claimCheckId)
     {
-        var claimCheckReactionIds 
-            = await _claimChecksClaimCheckReactionsRepository.GetClaimCheckReactionsForClaimCheck(claimCheckId);
+        List<string> claimCheckReactionIds = await GetClaimCheckReactionIds(claimCheckId);
 
         return await _claimCheckReactionRepository.GetClaimCheckReactions(claimCheckReactionIds);
+    }
+
+    private async Task<List<string>> GetClaimCheckReactionIds(string claimCheckId)
+    {
+        return await _claimChecksClaimCheckReactionsRepository.GetClaimCheckReactionsForClaimCheck(claimCheckId);
     }
 
     public async Task<bool> DeleteClaimCheckReactions(List<string> claimCheckReactionIds)

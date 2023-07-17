@@ -1,5 +1,6 @@
 ﻿namespace Shared.Configuration;
 
-public class FeatureFlags
+public class FeatureFlagsOptions
 {
+
 }

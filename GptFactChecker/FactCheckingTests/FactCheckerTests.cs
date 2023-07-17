@@ -44,10 +44,10 @@ public class FactCheckerTests
         // Arrange
         var facts = GetTestFacts();
 
-        var factCheckResponses = new List<FactCheckResponse> {
-            new FactCheckResponse
+        var factCheckResponses = new List<FactCheckResult> {
+            new FactCheckResult
             {
-                IsChecked = true,
+                IsFactChecked = true,
                 Fact = facts[0]
             }
         };
@@ -77,11 +77,11 @@ public class FactCheckerTests
 
         _mockedFackCheckerStrategyOne
             .Setup(f => f.ExecuteFactCheck(It.IsAny<List<Fact>>()))
-            .ReturnsAsync(new List<FactCheckResponse>());
+            .ReturnsAsync(new List<FactCheckResult>());
 
         _mockedFackCheckerStrategyTwo
             .Setup(f => f.ExecuteFactCheck(It.IsAny<List<Fact>>()))
-            .ReturnsAsync(new List<FactCheckResponse>() { new FactCheckResponse { IsChecked = true, Fact = facts[0] } });
+            .ReturnsAsync(new List<FactCheckResult>() { new FactCheckResult { IsFactChecked = true, Fact = facts[0] } });
 
         // Act
         var responses = await _factChecker.CheckFacts(facts);

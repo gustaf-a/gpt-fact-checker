@@ -45,7 +45,7 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
         return Priority.CompareTo(other.Priority);
     }
 
-    public async Task<List<FactCheckResponse>> ExecuteFactCheck(List<Fact> facts)
+    public async Task<List<FactCheckResult>> ExecuteFactCheck(List<Fact> facts)
     {
         var compatibleFacts = facts.Where(IsCompatible).ToList();
         if (compatibleFacts.IsNullOrEmpty())
@@ -56,7 +56,7 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
         return result;
     }
 
-    private async Task<List<FactCheckResponse>> DoFactCheck(List<Fact> compatibleFacts)
+    private async Task<List<FactCheckResult>> DoFactCheck(List<Fact> compatibleFacts)
     {
         var argumentDataList = await GetArgumentDataList();
         if (argumentDataList.IsNullOrEmpty())
@@ -72,22 +72,22 @@ public class ClimateFactCheckerWithReferencesStrategy : IFactCheckerStrategy
             return new();
         }
 
-        var factCheckResponses = await _climateFactCheckerWithData.GetFactCheckResponses(claimsWithReferences, compatibleFacts, argumentDataList);
-        if (factCheckResponses.IsNullOrEmpty())
+        var factCheckResults = await _climateFactCheckerWithData.GetFactCheckResponses(claimsWithReferences, compatibleFacts, argumentDataList);
+        if (factCheckResults.IsNullOrEmpty())
         {
             Console.WriteLine($"Failed to fact check any of the claims using identified references. {nameof(ClimateFactCheckerWithReferencesStrategy)} failed.");
             return new();
         }
 
-        AddAuthorIfChecked(factCheckResponses);
+        AddAuthorIfChecked(factCheckResults);
 
-        return factCheckResponses;
+        return factCheckResults;
     }
 
-    private void AddAuthorIfChecked(List<FactCheckResponse> factCheckResponses)
+    private void AddAuthorIfChecked(List<FactCheckResult> factCheckResponses)
     {
         foreach (var factCheckResponse in factCheckResponses)
-            if (factCheckResponse.IsChecked)
+            if (factCheckResponse.IsFactChecked)
                 factCheckResponse.Author = Author;
     }
 

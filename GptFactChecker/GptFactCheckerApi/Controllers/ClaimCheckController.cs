@@ -17,7 +17,7 @@ public class ClaimCheckController : ControllerBase
     }
 
     /// <summary>
-    /// Creates a ClaimCheck
+    /// Creates ClaimChecks for a claim
     /// </summary>
     [HttpPost("claim/id")]
     public async Task<IActionResult> CreateClaimChecks([FromQuery] string claimId, [FromBody] ClaimCheckDto[] claimChecksDtos)
@@ -25,6 +25,20 @@ public class ClaimCheckController : ControllerBase
         var result = await _claimCheckService.AddClaimChecks(claimChecksDtos.ToList(), claimId);
 
         if (!result)
+            return StatusCode(500);
+
+        return Ok();
+    }
+
+    /// <summary>
+    /// Creates ClaimChecks for multiple claims
+    /// </summary>
+    [HttpPost("claimcheckresults")]
+    public async Task<IActionResult> CreateClaimCheckFromResults([FromBody] ClaimCheckResultsDto[] claimCheckResultsDtos)
+    {
+        var result = await _claimCheckService.AddClaimCheckResults(claimCheckResultsDtos.ToList());
+
+        if (!result.IsSuccess)
             return StatusCode(500);
 
         return Ok();
@@ -58,16 +72,13 @@ public class ClaimCheckController : ControllerBase
     /// <summary>
     /// Deletes a claim matching the provided claimId
     /// </summary>
-    [HttpDelete("id")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteClaimCheckById([FromQuery] string id)
     {
-        if (string.IsNullOrWhiteSpace(id))
-            return NotFound();
-
         var result = await _claimCheckService.DeleteClaimChecks(new List<string>() { id });
 
-        if (!result)
-            return NotFound();
+        if (!result.IsSuccess)
+            return StatusCode(500);
 
         return Ok();
     }

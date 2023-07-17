@@ -37,10 +37,8 @@ public class FactCheckerStrategyGeneralTests
         var factCheckGptResponse = "Test Response";
         var gptResponseFunctionCallFactCheck = new GptResponseFunctionCallFactCheck
         {
-            Id = "1234",
             Label = "correct",
-            Explanation = "It's true",
-            ReferencesUsed = new List<string> { "Myself (2023)" }
+            Explanation = "It's true"
         };
 
         _mockGeneralFactCheckPrompt.Setup(x => x.GetPrompt(It.IsAny<Fact>())).ReturnsAsync(factCheckPrompt);
@@ -53,7 +51,7 @@ public class FactCheckerStrategyGeneralTests
         var result = await _factCheckerStrategy.ExecuteFactCheck(new List<Fact> { new Fact { /* initialization code here */ } });
 
         Assert.Single(result);
-        Assert.True(result.First().IsChecked);
+        Assert.True(result.First().IsFactChecked);
     }
 
     [Fact]

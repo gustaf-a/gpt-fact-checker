@@ -1,7 +1,5 @@
 ﻿using GptFactCheckerApi.Services;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Extensions;
-using GptFactCheckerApi.Model;
 
 namespace GptFactCheckerApi.Controllers;
 
@@ -21,16 +19,13 @@ public class FactCheckerController : ControllerBase
     /// Fact checks claims automatically
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> FactCheckClaims([FromBody] IEnumerable<ClaimDto> claims)
+    public async Task<IActionResult> FactCheckClaims([FromBody] IEnumerable<string> claimIds)
     {
-        if (claims.IsNullOrEmpty())
-            return StatusCode(400);
+        var backendResponse = await _factCheckingService.CheckFacts(claimIds.ToList());
 
-        var result = await _factCheckingService.CheckFacts(claims.ToList());
+        if (!backendResponse.IsSuccess)
+            return StatusCode(500, backendResponse);
 
-        if (result.IsNullOrEmpty())
-            return StatusCode(500);
-
-        return Ok(result);
+        return Ok(backendResponse);
     }
 }

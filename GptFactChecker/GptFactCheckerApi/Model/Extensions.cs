@@ -1,4 +1,5 @@
-﻿using Shared.Models;
+﻿using Shared.Extensions;
+using Shared.Models;
 
 namespace GptFactCheckerApi.Model;
 
@@ -19,7 +20,7 @@ public static class Extensions
             SourceContext = sourceDto.SourceContext,
             SourceCreatedDate = sourceDto.SourceCreatedDate,
             SourceImportedDate = sourceDto.SourceImportedDate,
-           
+
             ClaimsFirstExtractedDate = sourceDto.ClaimsFirstExtractedDate,
             ClaimsUpdatedDate = sourceDto.ClaimsUpdatedDate,
             CoverImageUrl = sourceDto.CoverImageUrl,
@@ -87,24 +88,33 @@ public static class Extensions
         return claims;
     }
 
-    public static List<ClaimDto> ToDtos(this List<Fact> claims)
+    public static List<ClaimDto> ToDtos(this List<Fact> facts)
     {
         List<ClaimDto> claimDtos = new();
 
-        foreach (Fact claim in claims)
+        foreach (Fact fact in facts)
         {
-            ClaimDto claimDto = new()
-            {
-                Id = claim.Id,
-                ClaimSummarized = claim.ClaimSummarized,
-                ClaimRawText = claim.ClaimRawText,
-                Tags = claim.Tags
-            };
+            ClaimDto claimDto = fact.ToDto();
 
-            claimDtos.Add(claimDto);
+            if (claimDto is not null)
+                claimDtos.Add(claimDto);
         }
 
         return claimDtos;
+    }
+
+    public static ClaimDto ToDto(this Fact fact)
+    {
+        if (fact is null)
+            return null;
+
+        return new()
+        {
+            Id = fact.Id,
+            ClaimSummarized = fact.ClaimSummarized,
+            ClaimRawText = fact.ClaimRawText,
+            Tags = fact.Tags
+        };
     }
 
     public static List<ClaimCheck> ToClaimChecks(this IEnumerable<ClaimCheckDto> claimCheckDtos)
@@ -123,6 +133,7 @@ public static class Extensions
                 Label = claimCheckDto.Label,
                 ClaimCheckText = claimCheckDto.ClaimCheckText,
                 DateCreated = claimCheckDto.DateCreated,
+                References = claimCheckDto.References ?? new()
             };
 
             claimChecks.Add(claimCheck);
@@ -142,12 +153,57 @@ public static class Extensions
                 Id = claimCheck.Id,
                 UserId = claimCheck.UserId,
                 Label = claimCheck.Label,
-                ClaimCheckText = claimCheck.ClaimCheckText
+                ClaimCheckText = claimCheck.ClaimCheckText,
+                DateCreated = claimCheck.DateCreated,
+                References = claimCheck.References ?? new()
             };
 
             claimCheckDtos.Add(claimCheckDto);
         }
 
         return claimCheckDtos;
+    }
+
+    public static List<ClaimCheckResultsDto> ToDtos(this IEnumerable<FactCheckResult> factCheckResults)
+    {
+        List<ClaimCheckResultsDto> claimCheckResultDtos = new();
+
+        if (factCheckResults is null)
+            return claimCheckResultDtos;
+
+        foreach (FactCheckResult factCheckResult in factCheckResults)
+        {
+            var userId = factCheckResult.Author?.Id ?? string.Empty;
+
+            ClaimCheckResultsDto claimCheckResultsDto = new()
+            {
+                Claim = factCheckResult.Fact.ToDto(),
+                ClaimCheck = factCheckResult.FactCheck.ToClaimCheckDto(userId),
+                IsFactChecked = factCheckResult.IsFactChecked,
+                IsStored = factCheckResult.IsStored,
+                AuthorUserId = userId,
+                Messages = factCheckResult.Messages
+            };
+
+            claimCheckResultDtos.Add(claimCheckResultsDto);
+        }
+
+        return claimCheckResultDtos;
+    }
+
+    public static ClaimCheckDto ToClaimCheckDto(this FactCheck factCheck, string userId = "")
+    {
+        if (factCheck is null)
+            return null;
+
+        return new ClaimCheckDto
+        {
+            Id = factCheck.Id,
+            UserId = userId,
+            Label = factCheck.Label,
+            ClaimCheckText = factCheck.FactCheckText,
+            DateCreated = factCheck.DateCreated.ToIsoString(),
+            References = factCheck.References ?? new()
+        };
     }
 }

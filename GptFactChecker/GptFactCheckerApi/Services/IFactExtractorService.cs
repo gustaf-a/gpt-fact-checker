@@ -4,5 +4,5 @@ namespace GptFactCheckerApi.Services;
 
 public interface IFactExtractorService
 {
-    Task<FactExtractionResponse> ExtractFactsForSource(string id);
+    Task<BackendResponse<FactExtractionResponse>> ExtractFactsForSource(string id);
 }

@@ -40,7 +40,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonClient", "JsonClient\Js
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactCheckingServiceTests", "FactCheckingTests\FactCheckingServiceTests.csproj", "{8215BF60-536A-4625-AAA7-E277182CEAC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromptTester", "PromptTester\PromptTester.csproj", "{51A931DE-C80E-42AD-916C-1EC6B3C3F4E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromptTester", "PromptTester\PromptTester.csproj", "{51A931DE-C80E-42AD-916C-1EC6B3C3F4E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedTests", "SharedTests\SharedTests.csproj", "{0FAACB5F-28B5-4962-A3FA-7EBD2E1D7C07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactExtractionServiceTests", "FactExtractionServiceTests\FactExtractionServiceTests.csproj", "{97132348-BAE6-4AF6-AF62-E3C3F8B2E607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryJson", "RepositoryJson\RepositoryJson.csproj", "{40572AA9-B1C6-4F8A-923C-C973E7D5ECBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +94,18 @@ Global
 		{51A931DE-C80E-42AD-916C-1EC6B3C3F4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51A931DE-C80E-42AD-916C-1EC6B3C3F4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51A931DE-C80E-42AD-916C-1EC6B3C3F4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FAACB5F-28B5-4962-A3FA-7EBD2E1D7C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAACB5F-28B5-4962-A3FA-7EBD2E1D7C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FAACB5F-28B5-4962-A3FA-7EBD2E1D7C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAACB5F-28B5-4962-A3FA-7EBD2E1D7C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97132348-BAE6-4AF6-AF62-E3C3F8B2E607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97132348-BAE6-4AF6-AF62-E3C3F8B2E607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97132348-BAE6-4AF6-AF62-E3C3F8B2E607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97132348-BAE6-4AF6-AF62-E3C3F8B2E607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40572AA9-B1C6-4F8A-923C-C973E7D5ECBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40572AA9-B1C6-4F8A-923C-C973E7D5ECBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40572AA9-B1C6-4F8A-923C-C973E7D5ECBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40572AA9-B1C6-4F8A-923C-C973E7D5ECBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

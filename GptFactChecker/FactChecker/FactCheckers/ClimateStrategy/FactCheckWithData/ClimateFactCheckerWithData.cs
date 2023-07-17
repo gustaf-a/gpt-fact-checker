@@ -19,9 +19,9 @@ public class ClimateFactCheckerWithData : IClimateFactCheckerWithData
         _climateFactCheckWithDataPrompt = climateFactCheckWithDataPrompt;
     }
 
-    public async Task<List<FactCheckResponse>> GetFactCheckResponses(List<ClaimWithReferences> claimsWithReferences, List<Fact> claimsToCheck, List<ArgumentData> argumentDataList)
+    public async Task<List<FactCheckResult>> GetFactCheckResponses(List<ClaimWithReferences> claimsWithReferences, List<Fact> claimsToCheck, List<ArgumentData> argumentDataList)
     {
-        var results = new List<FactCheckResponse>();
+        var results = new List<FactCheckResult>();
 
         foreach (var claimWithRefs in claimsWithReferences)
         {
@@ -52,15 +52,17 @@ public class ClimateFactCheckerWithData : IClimateFactCheckerWithData
             var factCheck = await DoFactCheck(factCheckPrompt);
             if (factCheck is null)
             {
-                Console.WriteLine($"Error: Failed parse fact check from GPT response for: {claimWithRefs.ClaimId} using argument references: {string.Join(",", claimWithRefs.ReferenceIds)}");
+                Console.WriteLine($"Error: Failed to parse fact check from GPT response for: {claimWithRefs.ClaimId} using argument references: {string.Join(",", claimWithRefs.ReferenceIds)}");
                 continue;
             }
 
-            results.Add(new FactCheckResponse
+            factCheck.References = claimWithRefs.ReferenceIds;
+
+            results.Add(new FactCheckResult
             {
                 Fact = claim,
                 FactCheck = factCheck,
-                IsChecked = true,
+                IsFactChecked = true,
                 Messages = CreateFactCheckMessage()
             });
         }

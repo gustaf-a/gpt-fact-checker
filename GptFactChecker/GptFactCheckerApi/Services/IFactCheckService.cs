@@ -5,5 +5,5 @@ namespace GptFactCheckerApi.Services;
 
 public interface IFactCheckService
 {
-    Task<List<FactCheckResponse>> CheckFacts(List<ClaimDto> facts);
+    Task<BackendResponse<List<ClaimCheckResultsDto>>> CheckFacts(List<string> claimIds);
 }

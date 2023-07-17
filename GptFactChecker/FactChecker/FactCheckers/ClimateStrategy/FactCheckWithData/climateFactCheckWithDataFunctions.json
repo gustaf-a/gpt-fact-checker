@@ -5,27 +5,16 @@
     "parameters": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of the fact checked claim"
-        },
         "label": {
           "type": "string",
-          "enum": [ "correct", "false", "misleading", "exaggerated", "unsupported" ]
+          "enum": [ "True", "False", "Misleading", "Exaggerated", "Understated", "Unsupported", "Out of Context", "Fact Check Failed" ]
         },
         "explanation": {
           "type": "string",
-          "description": "Short text explaining why the label is proper"
-        },
-        "reference_ids": {
-          "type": "array",
-          "description": "The ids of the references used for the explanation",
-          "items": {
-            "type": "string"
-          }
+          "description": "Short text explaining why the label is correct with references used like this (ref:123)"
         }
       },
-      "required": [ "id", "label", "explanation" ]
+      "required": [ "label", "explanation" ]
     }
   }
 ]
