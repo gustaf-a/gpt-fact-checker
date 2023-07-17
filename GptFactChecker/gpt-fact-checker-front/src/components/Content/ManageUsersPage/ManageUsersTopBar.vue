@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import AddNewSourceDrawer from "@/components/Content/ManageSourcesPage/AddNewSourceDrawer.vue";
-import { useSourcesStore } from "@/stores/sources";
 import { useUserStore } from "@/stores/users";
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
+import { useUsersAdminStore } from "@/stores/usersadmin"
 import FilterOptions from "@/model/FilterOptions"
-
-const { applyFilters } = useSourcesStore();
+import User from "@/model/User";
 
 const userStore = useUserStore();
 const { userHasRole, Roles } = userStore;
+
+const usersAdminStore = useUsersAdminStore();
+const { getAllUsers, applyFilters, users } = usersAdminStore;
+
+const allUsers = ref<User[]>([]);
 
 const searchText = ref<string>('');
 
@@ -16,13 +20,22 @@ watch(searchText, () => {
     applyFilters(new FilterOptions(searchText.value.toLowerCase()));
 });
 
+const fetchAllUsers = async ()  => {
+	await getAllUsers();
+
+	allUsers.value = users;
+}
+
+onMounted(() => {
+	fetchAllUsers();
+});
 </script>
 
 <template>
 	<div class="manage-source-top-bar">
 		<div>
 			<a-input-search
-                v-model:value.trim="searchText"
+				v-model:value.trim="searchText"
 				class="nav-item navigation-search"
 				placeholder="Search.."
 			/>

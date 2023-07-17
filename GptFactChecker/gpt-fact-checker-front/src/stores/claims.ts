@@ -105,7 +105,7 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		if (!userHasRole(Roles.DELETECLAIMS)) return false;
 		
 		try {
-			const response = await axios.delete(`${VITE_API_BASE_URL}/api/claims/id?claimId=${claimId}`);
+			const response = await axios.delete(`${VITE_API_BASE_URL}/api/claims/id?id=${claimId}`);
 	
 			if (response.status !== 200) {
 				errorMessage.value = ErrorMessages.DELETE_RESOURCE_ERROR;

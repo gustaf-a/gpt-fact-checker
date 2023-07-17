@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import ClaimObject from "@/model/Claim";
 import ClaimCheckList from "./ClaimCheckList.vue";
+import { DeleteFilled } from "@ant-design/icons-vue";
 
 interface Props {
 	claim: ClaimObject;
 }
 
+const emits = defineEmits(["removeClaim"]);
+
 const { claim } = defineProps<Props>();
 
-//TODO base on claimcheck verdict
+//TODO base on claimcheck verdict?
+//TODO add tags
 const cardColor = () => {
 	if (!claim.claimChecks) return "gray";
 
@@ -23,6 +27,10 @@ const cardColor = () => {
 	}
 };
 
+const removeClaim = () => {
+	emits("removeClaim", claim.id);
+}
+
 </script>
 
 <template>
@@ -32,8 +40,13 @@ const cardColor = () => {
 				:span="10"
 				class="claim-card-left"
 			>
-				<h3 class="claim-summary">{{ claim.claimSummarized }}</h3>
-				<p class="claim-raw-text">"{{ claim.claimRawText }}"</p>
+				<a-row class="claim-content">
+					<h3 class="claim-summary">{{ claim.claimSummarized }}</h3>
+					<p class="claim-raw-text">"{{ claim.claimRawText }}"</p>
+				</a-row>
+				<a-row class="row-claim-management">
+					<a @click="removeClaim"><DeleteFilled /></a>
+				</a-row>
 			</a-col>
 			<a-col
 				:span="14"
@@ -87,5 +100,11 @@ const cardColor = () => {
 	flex-direction: column;
 	align-items: center;
 	justify-content: start;
+}
+
+.row-claim-management{
+	display: flex;
+	justify-content: end;
+	margin-right: 2vw;
 }
 </style>

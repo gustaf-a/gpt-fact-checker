@@ -6,6 +6,7 @@ class ClaimCheck {
     public label: string;
     public claimCheckText: string;
     public dateCreated: string;
+    public references?: string[];
 
     public claimCheckReactions?: ClaimCheckReaction[];
 

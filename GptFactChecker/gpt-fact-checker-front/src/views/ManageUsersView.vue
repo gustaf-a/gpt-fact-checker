@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Container from "@/components/Container.vue";
-import ManageSourcesPage from "@/components/Content/ManageSourcesPage/ManageSourcesPage.vue";
-import ManageSourcesTopBar from "@/components/Content/ManageSourcesPage/ManageSourcesTopBar.vue";
 import { useUserStore } from "@/stores/users";
 import NotFound from "@/components/NotFound.vue"
+import ManageUsersPage from "@/components/Content/ManageUsersPage/ManageUsersPage.vue";
+import ManageUsersTopBar from "@/components/Content/ManageUsersPage/ManageUsersTopBar.vue";
 
 const userStore = useUserStore();
 const { userHasRole, Roles } = userStore;
@@ -11,12 +11,12 @@ const { userHasRole, Roles } = userStore;
 
 <template>
 	<div class="content-container"
-	v-if="userHasRole(Roles.EDITSOURCES)">
+	v-if="userHasRole(Roles.ADMIN)">
 		<Container>
-			<ManageSourcesTopBar />
+			<ManageUsersTopBar />
 			<a-divider />
-			<div class="manage-sources-container">
-				<ManageSourcesPage />
+			<div class="">
+				<ManageUsersPage />
 			</div>
 		</Container>
 	</div>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type ClaimCheck from "@/model/ClaimCheck";
 import ClaimCheckReaction from "@/model/ClaimCheckReaction";
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { LikeFilled, LikeOutlined } from "@ant-design/icons-vue";
 import { useClaimCheckReactionsStore } from "@/stores/claimCheckReactions";
 import { generateGuid } from "@/utils/guid";
 import { NotificationError, NotificationSuccess } from "@/utils/notifications";
+import { DeleteFilled } from "@ant-design/icons-vue";
 
 interface Props {
 	claimCheck: ClaimCheck;
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const { claimCheck, depth } = defineProps<Props>();
+
+const emits = defineEmits(["removeClaimCheck"]);
 
 const claimCheckReactionsStore = useClaimCheckReactionsStore();
 const { userHasLikedClaimCheck, computeClaimCheckReactionSum } =
@@ -54,7 +57,7 @@ onMounted(async () => {
 	}
 
 	updateReactionsNumber();
-	
+
 	initLoading.value = false;
 });
 
@@ -84,6 +87,10 @@ const addClaimCheckReaction = async (reaction: number) => {
 		`Reaction registered successfully`
 	);
 };
+
+const removeClaim = () => {
+	emits("removeClaimCheck", claimCheck.id);
+};
 </script>
 
 <template>
@@ -108,6 +115,7 @@ const addClaimCheckReaction = async (reaction: number) => {
 			<span key="claimcheck-author"
 				><a>Written by {{ claimCheck.userId }}</a></span
 			>
+			<a @click="removeClaim"><DeleteFilled /></a>
 		</template>
 		<!-- <template #avatar>
 			<a-avatar
@@ -116,11 +124,34 @@ const addClaimCheckReaction = async (reaction: number) => {
 			/>
 		</template> -->
 		<template #content>
-			<p class="claimcheck-text">
-				{{ claimCheck.claimCheckText }}
-			</p>
+			<div class="claimcheck-comment">
+				<a-row class="claimcheck-label-row">
+					<p class="claimcheck-label">{{ claimCheck.label }}</p>
+				<a-row>
+				</a-row>
+					<p class="claimcheck-text">
+						{{ claimCheck.claimCheckText }}
+					</p>
+				</a-row>
+			</div>
 		</template>
 
 		<!-- TODO Add nested comments -->
 	</a-comment>
 </template>
+
+<style scoped>
+.claimcheck-label-row {
+	display: flex;
+}
+
+.claimcheck-label {
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+.claimcheck-text {
+	font-size: medium;
+	padding: 0 1vw;
+}
+</style>

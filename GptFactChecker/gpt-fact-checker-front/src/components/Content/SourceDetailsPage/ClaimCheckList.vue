@@ -74,6 +74,22 @@ const addClaimCheck = async (claimCheck: ClaimCheckObject) => {
 
 	NotificationSuccess("ClaimCheck Created!", `ClaimCheck created successfully`);
 };
+
+async function removeClaimCheck(claimCheckId: string) {
+	try {
+		const result = await claimCheckStore.deleteClaimChecksAsync(claimCheckId);
+		if (!result) {
+			console.log("Failed to delete claim check from store.");
+			return;
+		}
+
+		claimChecks.value = claimChecks.value.filter((ch) => ch.id !== claimCheckId);
+	} catch (error) {
+		console.error(error);
+	} finally {
+		loadingClaimChecks.value = false;
+	}
+}
 </script>
 
 <template>
@@ -100,6 +116,7 @@ const addClaimCheck = async (claimCheck: ClaimCheckObject) => {
 			<ClaimCheckComment
 				:claimCheck="claimCheck"
 				:depth="0"
+				@removeClaimCheck="removeClaimCheck"
 			/>
 		</div>
 	</div>

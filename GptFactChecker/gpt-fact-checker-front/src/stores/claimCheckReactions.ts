@@ -1,6 +1,7 @@
 import { ref } from "vue";
 import { defineStore, storeToRefs } from "pinia";
 import axios from "axios";
+import requestHandler from "@/utils/axioshandler";
 import { Keys } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
 import ClaimCheckReaction from "@/model/ClaimCheckReaction";
@@ -47,7 +48,7 @@ export const useClaimCheckReactionsStore = defineStore(
 		}
 
 		async function addClaimCheckReactionAsync(
-			claimCheckReactionToAdd: ClaimCheckReaction,
+			claimCheckReaction: ClaimCheckReaction,
 			claimCheck: ClaimCheck
 		) {
 			if (!userHasRole(Roles.ADDCLAIMCHECKREACTIONS)) return;
@@ -57,7 +58,7 @@ export const useClaimCheckReactionsStore = defineStore(
 				return false;
 			}
 
-			if (!claimCheckReactionToAdd) {
+			if (!claimCheckReaction) {
 				console.log("No claim check reaction to add found.");
 				return false;
 			}
@@ -72,34 +73,41 @@ export const useClaimCheckReactionsStore = defineStore(
 			const userId = user.value?.id;
 			if (!userId) return;
 
-			claimCheckReactionToAdd.userId = userId;
+			claimCheckReaction.userId = userId;
 
 			try {
 				loadingClaimCheckReactions.value = true;
 
-				const response = await axios.post(
-					`${VITE_API_BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheck.id}`,
-					claimCheckReactionToAdd
+				const backendResponse = await requestHandler<boolean>(
+					{
+						method: "post",
+						url: `${VITE_API_BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheck.id}`,
+						data: claimCheckReaction,
+					},
+					ErrorMessages.CREATE_RESOURCE_ERROR
 				);
 
-				if (response.status !== 200) {
-					errorMessage.value = ErrorMessages.CREATE_RESOURCE_ERROR;
-					console.log(
-						ErrorMessages.CREATE_RESOURCE_ERROR,
-						claimCheckReactionToAdd
-					);
+				if (backendResponse.messages) {
+					backendResponse.messages.forEach((msg) => {
+						console.log(msg);
+					});
+				}
+
+				if (!backendResponse.isSuccess) {
+					console.log("Failed to add claim check reaction.");
 					return false;
 				}
 
-				addReactionToClaimCheck(claimCheck, claimCheckReactionToAdd);
+				addReactionToClaimCheck(claimCheck, claimCheckReaction);
 
 				return true;
 			} catch (error) {
-				errorMessage.value = `${ErrorMessages.CREATE_RESOURCE_ERROR}: ${
-					error instanceof Error ? error.message : String(error)
-				}`;
-				console.log(error, claimCheckReactionToAdd);
-				return false;
+				// Any unexpected error
+				console.log(
+					`Unexpected error: ${
+						error instanceof Error ? error.message : String(error)
+					}`
+				);
 			} finally {
 				loadingClaimCheckReactions.value = false;
 			}
@@ -120,32 +128,32 @@ export const useClaimCheckReactionsStore = defineStore(
 			claimCheck.claimCheckReactions.push(reaction);
 		}
 
-		async function getAllClaimCheckReactionsAsync(): Promise<
-			ClaimCheckReaction[]
-		> {
-			loadingClaimCheckReactions.value = true;
+		// async function getAllClaimCheckReactionsAsync(): Promise<
+		// 	ClaimCheckReaction[]
+		// > {
+		// 	loadingClaimCheckReactions.value = true;
 
-			try {
-				const response = await axios.get(
-					`${VITE_API_BASE_URL}/api/claimcheckreactions`
-				);
+		// 	try {
+		// 		const response = await axios.get(
+		// 			`${VITE_API_BASE_URL}/api/claimcheckreactions`
+		// 		);
 
-				if (response.status !== 200) {
-					errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
-					return [];
-				}
+		// 		if (response.status !== 200) {
+		// 			errorMessage.value = ErrorMessages.DATA_FETCH_ERROR;
+		// 			return [];
+		// 		}
 
-				return response.data;
-			} catch (error) {
-				errorMessage.value = `${ErrorMessages.DATA_FETCH_ERROR}: ${
-					error instanceof Error ? error.message : String(error)
-				}`;
-			} finally {
-				loadingClaimCheckReactions.value = false;
-			}
+		// 		return response.data;
+		// 	} catch (error) {
+		// 		errorMessage.value = `${ErrorMessages.DATA_FETCH_ERROR}: ${
+		// 			error instanceof Error ? error.message : String(error)
+		// 		}`;
+		// 	} finally {
+		// 		loadingClaimCheckReactions.value = false;
+		// 	}
 
-			return [];
-		}
+		// 	return [];
+		// }
 
 		async function deleteClaimCheckReactionsAsync(
 			claimCheckReactionId: string
@@ -154,7 +162,7 @@ export const useClaimCheckReactionsStore = defineStore(
 
 			try {
 				const response = await axios.delete(
-					`${VITE_API_BASE_URL}/api/claimcheckreactions/id?claimCheckReactionId=${claimCheckReactionId}`
+					`${VITE_API_BASE_URL}/api/claimcheckreactions?id=${claimCheckReactionId}`
 				);
 
 				if (response.status !== 200) {
@@ -209,7 +217,7 @@ export const useClaimCheckReactionsStore = defineStore(
 			errorMessage,
 			loadingClaimCheckReactions,
 			getClaimCheckReactionsAsync,
-			getAllClaimCheckReactionsAsync,
+			// getAllClaimCheckReactionsAsync,
 			addClaimCheckReactionAsync,
 			deleteClaimCheckReactionsAsync,
 			userHasLikedClaimCheck,

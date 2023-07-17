@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import Container from "../Container.vue";
 import { ref } from "vue";
-import { useUserStore } from "@/stores/users";
-import { storeToRefs } from "pinia";
 import LoginModal from "../UserHandling/LoginModal.vue";
 import SignupModal from "../UserHandling/SignupModal.vue";
+import { useUserStore } from "@/stores/users";
+import { storeToRefs } from "pinia";
 
 const userStore = useUserStore();
+const { userHasRole, Roles } = userStore;
 const { user } = storeToRefs(userStore);
-
-const initLoading = ref(true);
 
 const handleLogout = async () => {
 	await userStore.handleLogout();
-}
-
+};
 </script>
 
 <template>
@@ -58,12 +56,24 @@ const handleLogout = async () => {
 					class="navigation-right"
 				>
 					<RouterLink
+						v-if="userHasRole(Roles.ADMIN)"
+						class="nav-item nav-button"
+						to="/managesources"
+						>Manage Users</RouterLink
+						>
+						
+						<RouterLink
+						v-if="userHasRole(Roles.EDITSOURCES)"
 						class="nav-item nav-button"
 						to="/managesources"
 						>Manage Sources</RouterLink
 					>
 					<!-- <a-button class="nav-item">MyPages</a-button> -->
-					<a-button class="nav-item" @click="handleLogout">Logout</a-button>
+					<a-button
+						class="nav-item"
+						@click="handleLogout"
+						>Logout</a-button
+					>
 				</div>
 				<div
 					v-else
@@ -111,7 +121,7 @@ const handleLogout = async () => {
 	font-size: larger;
 }
 
-.discrete{
+.discrete {
 	opacity: 0.9;
 }
 

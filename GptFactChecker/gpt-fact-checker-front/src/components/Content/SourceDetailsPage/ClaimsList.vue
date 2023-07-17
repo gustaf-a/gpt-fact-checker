@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { useClaimsStore } from "@/stores/claims";
-import ClaimObject from "@/model/Claim";
+import { storeToRefs } from "pinia";
 import SourceObject from "@/model/Source";
+import Claim from "@/model/Claim";
+import ClaimCheckResult from "@/model/ClaimCheckResult";
 import ClaimCard from "./ClaimCard.vue";
 import AddClaimsModal from "./AddClaimsModal.vue";
+import AddClaimChecksModal from "./AddClaimChecksModal.vue";
 import { useUserStore } from "@/stores/users";
-import { storeToRefs } from "pinia";
+import { useClaimsStore } from "@/stores/claims";
+import { useClaimCheckStore } from "@/stores/claimChecks";
 
 const userStore = useUserStore();
 const { user } = storeToRefs(userStore);
@@ -19,7 +22,9 @@ interface Props {
 const { source } = defineProps<Props>();
 
 const claimsStore = useClaimsStore();
-const claims = ref<ClaimObject[]>([]);
+const claimChecksStore = useClaimCheckStore();
+
+const claims = ref<Claim[]>([]);
 const loadingClaims = ref<boolean>(true);
 const initLoading = ref<boolean>(true);
 
@@ -47,7 +52,7 @@ async function fetchClaims() {
 	}
 }
 
-async function addClaims(claimsToAdd: ClaimObject[]) {
+async function addClaims(claimsToAdd: Claim[]) {
 	try {
 		const result = await claimsStore.addClaimsAsync(claimsToAdd, source.id);
 		if (!result) {
@@ -65,16 +70,66 @@ async function addClaims(claimsToAdd: ClaimObject[]) {
 	}
 }
 
-async function removeClaim(claimId: string) {}
+async function removeClaim(claimId: string) {
+	try {
+		const result = await claimsStore.deleteClaimsAsync(claimId);
+		if (!result) {
+			console.log("Failed to delete claims from store.");
+			return;
+		}
+
+		claims.value = claims.value.filter((claim) => claim.id !== claimId);
+	} catch (error) {
+		console.error(error);
+	} finally {
+		loadingClaims.value = false;
+	}
+}
+
+async function addClaimCheckResults(claimCheckResults: ClaimCheckResult[]) {
+	try {
+		if(claimCheckResults == undefined || claimCheckResults.length == 0)
+			return;
+		
+		const success = await claimChecksStore.addClaimCheckResultsAsync(claimCheckResults)
+
+		if(success) 
+			await fetchClaims();
+
+	} catch (error) {
+		console.error(error);
+	} finally {
+		loadingClaims.value = false;
+	}
+}
 </script>
 
 <template>
 	<div class="claims-header">
-		<h3 class="claim-title">Claims</h3>
-		<AddClaimsModal
-			@claims="addClaims"
-			v-if="userHasRole(Roles.ADDCLAIMS)"
-		/>
+		<a-row class="claims-header-row">
+			<a-col
+				:span="10"
+				class="claims-header-col"
+			>
+				<h3 class="col-header-title">Claims</h3>
+				<AddClaimsModal
+					@claims="addClaims"
+					:source="source"
+					v-if="userHasRole(Roles.ADDCLAIMS)"
+				/>
+			</a-col>
+			<a-col
+				:span="14"
+				class="claims-header-col"
+			>
+				<h3 class="col-header-title">Fact Checks</h3>
+				<AddClaimChecksModal
+					@claimCheckResults="addClaimCheckResults"
+					:source="source"
+					v-if="userHasRole(Roles.ADDCLAIMCHECKSWITHAI)"
+				/>
+			</a-col>
+		</a-row>
 	</div>
 
 	<div class="claims-container">
@@ -83,7 +138,10 @@ async function removeClaim(claimId: string) {}
 			:key="claim.id"
 			class="claim"
 		>
-			<ClaimCard :claim="claim" />
+			<ClaimCard
+				:claim="claim"
+				@removeClaim="removeClaim"
+			/>
 		</div>
 	</div>
 </template>
@@ -102,16 +160,23 @@ async function removeClaim(claimId: string) {}
 	margin-top: 1vh;
 }
 
-.claims-header {
+.claims-header-row {
 	display: flex;
 	align-items: center;
-	justify-content: start;
+	justify-content: center;
 }
 
-.claim-title {
+.claims-header-col {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.col-header-title {
 	font-size: 2em;
 	padding-top: 5px;
 	margin-right: 1vw;
 	margin-bottom: 0;
 }
 </style>
+@/model/ClaimCheckResult

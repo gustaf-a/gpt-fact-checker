@@ -5,6 +5,7 @@ import SourceView from "../views/SourceView.vue";
 import SourcesViewVue from "@/views/SourcesView.vue";
 import ResourcesViewVue from "@/views/ResourcesView.vue"
 import ManageSourcesViewVue from "@/views/ManageSourcesView.vue";
+import ManageUsersView from "@/views/ManageUsersView.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,11 @@ const router = createRouter({
 			path: "/resources",
 			name: "resources",
 			component: ResourcesViewVue,
+		},
+		{
+			path: "/manageusers",
+			name: "manageusers",
+			component: ManageUsersView,
 		},
 		{
 			path: "/managesources",

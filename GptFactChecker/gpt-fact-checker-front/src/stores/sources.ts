@@ -6,7 +6,7 @@ import { ErrorMessages } from "@/utils/errors";
 import Source from "@/model/Source";
 import { useUserStore } from "@/stores/users";
 import { filterSources } from "@/utils/searchfilters";
-import SourcesFilterOptions from "@/model/SourcesFilterOptions"
+import FilterOptions from "@/model/FilterOptions"
 
 const { VITE_API_BASE_URL } = import.meta.env;
 
@@ -17,7 +17,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 	const sources = ref<Source[]>([]);
 	const filteredSources = ref<Source[]>([]);
 
-	function applyFilters(filterOptions: SourcesFilterOptions | undefined){
+	function applyFilters(filterOptions: FilterOptions | undefined){
 		filteredSources.value = filterSources(sources.value, filterOptions);
 	}
 

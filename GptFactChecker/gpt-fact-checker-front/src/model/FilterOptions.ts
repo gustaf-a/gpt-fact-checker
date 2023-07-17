@@ -1,4 +1,4 @@
-class SourcesFilterOptions {
+class FilterOptions {
 	public searchTextValue: string;
 
 	constructor(searchValue: string) {
@@ -6,4 +6,4 @@ class SourcesFilterOptions {
 	}
 }
 
-export default SourcesFilterOptions;
+export default FilterOptions;

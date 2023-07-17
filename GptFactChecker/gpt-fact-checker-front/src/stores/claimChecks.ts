@@ -1,9 +1,11 @@
 import { ref } from "vue";
 import { defineStore, storeToRefs } from "pinia";
 import axios from "axios";
+import requestHandler from "@/utils/axioshandler";
 import { Keys } from "./constants";
 import { ErrorMessages } from "@/utils/errors";
 import ClaimCheck from "@/model/ClaimCheck";
+import ClaimCheckResult from "@/model/ClaimCheckResult";
 import { useUserStore } from "@/stores/users";
 
 const { VITE_API_BASE_URL } = import.meta.env;
@@ -46,18 +48,64 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 		return [];
 	}
 
+	async function addClaimCheckResultsAsync(
+		claimCheckResults: ClaimCheckResult[]
+	): Promise<boolean> {
+		if (claimCheckResults == undefined) return false;
+
+		let validatedClaimCheckResults: ClaimCheckResult[] = [];
+
+		claimCheckResults.forEach(async (fc) => {
+			if (fc && fc.claim && fc.claimCheck) {
+				validatedClaimCheckResults.push(fc);
+			}
+		});
+
+		try {
+			loadingClaimChecks.value = true;
+
+			const backendResponse = await requestHandler<boolean>(
+				{
+					method: "post",
+					url: `${VITE_API_BASE_URL}/api/claimchecks/claimcheckresults`,
+					data: validatedClaimCheckResults,
+				},
+				ErrorMessages.FACT_EXTRACTION_ERROR
+			);
+
+			if (backendResponse.messages) {
+				console.log(backendResponse.messages);
+			}
+
+			if (backendResponse.data) {
+				return backendResponse.data;
+			}
+		} catch (error) {
+			// Any unexpected error
+			console.log(
+				`Unexpected error: ${
+					error instanceof Error ? error.message : String(error)
+				}`
+			);
+		} finally {
+			loadingClaimChecks.value = false;
+		}
+
+		return true;
+	}
+
 	async function addClaimCheckAsync(
 		claimCheckToAdd: ClaimCheck,
 		claimId: string | undefined
-	) {
+	): Promise<boolean> {
 		return await addClaimChecksAsync([claimCheckToAdd], claimId);
 	}
 
 	async function addClaimChecksAsync(
 		claimChecksToAdd: ClaimCheck[],
 		claimId: string | undefined
-	) {
-		if (!userHasRole(Roles.ADDCLAIMCHECKS)) return;
+	): Promise<boolean> {
+		if (!userHasRole(Roles.ADDCLAIMCHECKS)) return false;
 
 		if (!claimChecksToAdd || claimChecksToAdd.length == 0) {
 			console.log("No claim checks to add found.");
@@ -66,7 +114,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 
 		if (!claimId || claimId === "") {
 			console.log("Failed to add claim checks: Invalid claim ID.");
-			return;
+			return false;
 		}
 
 		if (isInvalidClaimChecks(claimChecksToAdd)) {
@@ -74,7 +122,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 				"Failed to add claim checks: ClaimChecks invalid.",
 				claimChecksToAdd
 			);
-			return;
+			return false;
 		}
 
 		try {
@@ -158,7 +206,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 
 		try {
 			const response = await axios.delete(
-				`${VITE_API_BASE_URL}/api/claimchecks/id?claimCheckId=${claimCheckId}`
+				`${VITE_API_BASE_URL}/api/claimchecks?id=${claimCheckId}`
 			);
 
 			if (response.status !== 200) {
@@ -183,5 +231,6 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 		addClaimCheckAsync,
 		addClaimChecksAsync,
 		deleteClaimChecksAsync,
+		addClaimCheckResultsAsync,
 	};
 });

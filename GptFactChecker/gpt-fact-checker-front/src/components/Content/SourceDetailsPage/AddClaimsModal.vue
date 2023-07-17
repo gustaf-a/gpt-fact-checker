@@ -2,9 +2,16 @@
 import { ref } from "vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
 import Claim from "@/model/Claim";
+import Source from "@/model/Source";
 import { generateGuid } from "@/utils/guid";
 import AddClaimsFromJson from "./AddClaimsModalTabFromJson.vue";
 import AddClaimsManual from "./AddClaimsModalTabManual.vue";
+import AddClaimsAiExtraction from "./AddClaimsModalTabAiExtraction.vue";
+
+interface Props {
+	source: Source;
+}
+const { source } = defineProps<Props>();
 
 const emits = defineEmits(["claims"]);
 
@@ -16,6 +23,12 @@ const activeKey = ref("1");
 
 const showModal = () => {
 	visible.value = true;
+};
+
+const receiveClaims = (claims: Claim[]) => {
+	claims.forEach((claim) => {
+		receiveClaim(claim);
+	});
 };
 
 const receiveClaim = (claim: Claim) => {
@@ -39,16 +52,6 @@ function claimIsValid(claim: Claim) {
 	return true;
 }
 
-const receiveClaims = (claims: Claim[]) => {
-	claims.forEach((claim) => {
-		receiveClaim(claim);
-	});
-};
-
-const getClaimSummarizedString = (claim: Claim): string => {
-	return claim.claimSummarized.slice(0, 30).trim() + "..";
-};
-
 const maxTagsToShow = 2;
 
 const getTagsString = (claim: Claim): string => {
@@ -71,8 +74,13 @@ const getClaimDescriptionLine = (claim: Claim): string => {
 	return getClaimSummarizedString(claim) + (tags !== "" ? ` (${tags})` : "");
 };
 
+const getClaimSummarizedString = (claim: Claim): string => {
+	return claim.claimSummarized.slice(0, 30).trim() + "..";
+};
+
+
 const removeClaim = (index: number) => {
-	claimsToBeAdded.value.splice(index, 1);
+	claimsToBeAdded.value = claimsToBeAdded.value.splice(index, 1);
 };
 
 const handleOk = () => {
@@ -107,6 +115,17 @@ const handleOk = () => {
 				</a-tab-pane>
 				<a-tab-pane
 					key="2"
+					tab="Extract with AI"
+					force-render
+				>
+					<div>
+						<AddClaimsAiExtraction 
+						:source="source" 
+						@claims="receiveClaims" />
+					</div>
+				</a-tab-pane>
+				<a-tab-pane
+					key="3"
 					tab="Add JSON Object"
 					force-render
 				>

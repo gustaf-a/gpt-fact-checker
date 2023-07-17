@@ -46,6 +46,8 @@ async function removeSource(sourceId: string) {
 		}
 
 		openNotificationWithIcon("success", "Source removed", "Removed source.");
+
+		await fetchSources();
 	} catch (error) {
 		console.error(error);
 		openNotificationWithIcon(
@@ -76,30 +78,31 @@ const openNotificationWithIcon = (
 </script>
 
 <template>
-	<a-list
+	<div>
+		<a-list
 		:loading="loadingSources || initLoading"
 		item-layout="horizontal"
 		:data-source="filteredSources"
-	>
+		>
 		<template #renderItem="{ item: source }">
 			<a-list-item>
 				<template #actions>
 					<a
-						key="more"
+					key="more"
 						@click="navigateToDetails(source.id)"
 						>Details</a
 					>
 					<a key="edit">Edit</a>
 					<a
-						key="delete"
+					key="delete"
 						@click="removeSource(source.id)"
 						>Remove</a
 					>
 				</template>
 				<a-skeleton
-					:title="false"
+				:title="false"
 					:loading="!!source.loading"
-				>
+					>
 					<a-list-item-meta :description="source.description">
 						<template #title>
 							<div>
@@ -109,15 +112,16 @@ const openNotificationWithIcon = (
 					</a-list-item-meta>
 					<div class="list-item-content">
 						<a
-							:href="source.sourceUrl"
-							target="_blank"
-							>Source</a
+						:href="source.sourceUrl"
+						target="_blank"
+						>Link to Source</a
 						>
 					</div>
 				</a-skeleton>
 			</a-list-item>
 		</template>
 	</a-list>
+</div>
 </template>
 
 <style scoped>

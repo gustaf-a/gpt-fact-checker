@@ -28,11 +28,13 @@ export const useUserStore = defineStore(UsersKey, () => {
 		EDITSOURCES: "editsources",
 		DELETESOURCES: "deletesources",
 		ADDCLAIMCHECKS: "addclaimchecks",
+		ADDCLAIMCHECKSWITHAI: "addclaimcheckswithai",
 		EDITCLAIMCHECKS: "editclaimchecks",
 		DELETECLAIMCHECKS: "deleteclaimchecks",
 		ADDCLAIMCHECKREACTIONS: "addclaimcheckreactions",
 		EDITCLAIMCHECKREACTIONS: "editclaimcheckreactions",
 		DELETECLAIMCHECKREACTIONS: "deleteclaimcheckreactions",
+		EXTRACTCLAIMSFROMSOURCEWITHAI: "extractclaimsfromsourcewithai",
 	};
 
 	const userHasRole = (role: string): boolean => {
@@ -189,7 +191,7 @@ export const useUserStore = defineStore(UsersKey, () => {
 			loadingUser.value = true;
 
 			const { data } = await supabase.auth.getUser();
-
+			
 			if (!data.user) {
 				return;
 			}
@@ -206,7 +208,7 @@ export const useUserStore = defineStore(UsersKey, () => {
 			}
 
 			const existingUser = {
-				// id: userInfo.,
+				id: userInfo.id,
 				name: userInfo.name,
 				userName: userInfo.username,
 				email: userInfo.email,
