@@ -6,13 +6,13 @@ namespace FactCheckingService;
 
 public class FactChecker : IFactChecker
 {
-    private readonly IEnumerable<IFactCheckerStrategy> _factCheckers;
+    private readonly IEnumerable<IFactCheckerStrategy> _factCheckerStrategies;
 
-    public FactChecker(IEnumerable<IFactCheckerStrategy> factCheckers)
+    public FactChecker(IEnumerable<IFactCheckerStrategy> factCheckerStrategies)
     {
-        _factCheckers = factCheckers;
+        _factCheckerStrategies = factCheckerStrategies;
 
-        _factCheckers = _factCheckers.OrderBy(f => f.Priority);
+        _factCheckerStrategies = _factCheckerStrategies.OrderBy(f => f.Priority);
     }
 
     public async Task<List<FactCheckResult>> CheckFacts(List<Fact> facts)
@@ -24,7 +24,7 @@ public class FactChecker : IFactChecker
 
         var factCheckResponses = new List<FactCheckResult>();
 
-        foreach (var factChecker in _factCheckers)
+        foreach (var factChecker in _factCheckerStrategies)
         {
             var responses = await factChecker.ExecuteFactCheck(factsToFactCheck);
 
