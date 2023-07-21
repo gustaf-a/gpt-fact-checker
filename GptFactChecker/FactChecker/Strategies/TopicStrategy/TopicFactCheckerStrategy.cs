@@ -1,13 +1,13 @@
 ﻿using FactCheckingService.Extensions;
 using FactCheckingService.Strategies.ClimateStrategy;
 using FactCheckingService.Models;
-using FactCheckingService.Services;
 using FactCheckingService.Strategies.TopicStrategy.ReferenceMatching;
 using FactCheckingService.Strategies.TopicStrategy.RefererenceFactChecking;
 using FactCheckingService.Utils;
 using JsonClient;
 using Shared.Extensions;
 using Shared.Models;
+using Shared.Services;
 
 namespace FactCheckingService.Strategies.TopicStrategy;
 
@@ -36,9 +36,9 @@ public class TopicFactCheckerStrategy : FactCheckerStrategyBase
 
     public override async Task<List<FactCheckResult>> ExecuteFactCheck(List<Fact> facts)
     {
-        _allTopics ??= await _topicService.GetAllTopics(includeReferences: true);
+        _allTopics ??= await _topicService.GetAll(includeReferences: true);
         if (_allTopics.IsNullOrEmpty())
-            throw new Exception($"Failed to get any topics from service.");
+            return new();
 
         var factsToFactCheck = new List<Fact>(facts);
         var factCheckResponses = new List<FactCheckResult>();

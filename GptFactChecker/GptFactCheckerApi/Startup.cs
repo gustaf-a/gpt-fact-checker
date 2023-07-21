@@ -1,5 +1,4 @@
 ﻿using FactCheckingService;
-using FactCheckingService.Services;
 using FactCheckingService.Strategies;
 using FactCheckingService.Strategies.ClimateStrategy;
 using FactCheckingService.Strategies.ClimateStrategy.FactCheckWithData;
@@ -21,7 +20,7 @@ using Shared.Configuration;
 using Shared.GptClient;
 using Shared.Prompts;
 using Shared.Repository;
-using System.ComponentModel.Design;
+using Shared.Services;
 
 namespace GptFactCheckerApi;
 
@@ -43,18 +42,20 @@ public class Startup
         services.AddSingleton<IClaimRepository, ClaimRepositoryJson>();
         services.AddSingleton<IClaimCheckRepository, ClaimCheckRepositoryJson>();
         services.AddSingleton<IClaimCheckReactionRepository, ClaimCheckReactionRepositoryJson>();
+        services.AddSingleton<IReferenceRepository, ReferencesRepositoryJson>();
         services.AddSingleton<ITopicRepository, TopicsRepositoryJson>();
 
         services.AddSingleton<ISourcesClaimsRepository, SourcesClaimsRepositoryJson>();
         services.AddSingleton<IClaimsClaimChecksRepository, ClaimsClaimCheckRepositoryJson>();
         services.AddSingleton<IClaimChecksClaimCheckReactionsRepository, ClaimChecksClaimCheckReactionsRepositoryJson>();
+        services.AddSingleton<ITopicReferencesRepository, TopicsReferencesJsonRepository>();
 
         services.AddSingleton<ISourceService, SourceService>();
         services.AddSingleton<IClaimService, ClaimService>();
         services.AddSingleton<IClaimCheckService, ClaimCheckService>();
         services.AddSingleton<IClaimCheckReactionService, ClaimCheckReactionService>();
+        services.AddSingleton<IReferenceService, ReferenceService>();
         services.AddSingleton<ITopicService, TopicService>();
-
 
         services.AddSingleton<IPromptBuilder, PromptBuilder>();
 
