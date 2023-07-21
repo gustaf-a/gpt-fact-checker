@@ -7,4 +7,5 @@ public class FactCheck
     public string FactCheckText { get; set; }
     public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.UtcNow;
     public List<string> References { get; set; } = new();
+    public List<string> AvailableReferences { get; set; } = new();
 }

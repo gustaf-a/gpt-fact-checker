@@ -3,11 +3,11 @@ using JsonClient;
 
 namespace RepositoryJson;
 
-public class ParentChildrenHolderJsonRepository : IParentChildrenHolderRepository
+public class ParentChildrenHolderRepositoryJson : IParentChildrenHolderRepository
 {
     private readonly string _jsonFilePath;
 
-    public ParentChildrenHolderJsonRepository(string jsonFilePath)
+    public ParentChildrenHolderRepositoryJson(string jsonFilePath)
     {
         _jsonFilePath = jsonFilePath;
     }

@@ -21,7 +21,7 @@ public class ClaimService : IClaimService
     {
         var claims = claimDtos.ToClaims();
 
-        if(!await _claimRepository.CreateClaims(claims))
+        if(!await _claimRepository.Create(claims))
             return false;
 
         await _sourcesClaimsRepository.AddClaimsForSource(sourceId, claims);
@@ -31,7 +31,7 @@ public class ClaimService : IClaimService
 
     public async Task<List<ClaimDto>> GetAllClaims(bool includeClaimChecks = false)
     {
-        var claimDtos = (await _claimRepository.GetAllClaims()).ToDtos();
+        var claimDtos = (await _claimRepository.GetAll()).ToDtos();
 
         if (includeClaimChecks)
             foreach (var claimDto in claimDtos)
@@ -44,7 +44,7 @@ public class ClaimService : IClaimService
     {
         var claimIds = await _sourcesClaimsRepository.GetClaimsForSource(sourceId);
 
-        var claimDtos = (await _claimRepository.GetClaims(claimIds)).ToDtos();
+        var claimDtos = (await _claimRepository.Get(claimIds)).ToDtos();
 
         if (includeClaimChecks)
             foreach (var claimDto in claimDtos)
@@ -55,7 +55,7 @@ public class ClaimService : IClaimService
 
     public async Task<List<ClaimDto>> GetClaims(List<string> claimIds, bool includeClaimChecks = false)
     {
-        var claimDtos = (await _claimRepository.GetClaims(claimIds)).ToDtos();
+        var claimDtos = (await _claimRepository.Get(claimIds)).ToDtos();
 
         if (includeClaimChecks)
             foreach (var claimDto in claimDtos)
@@ -66,6 +66,6 @@ public class ClaimService : IClaimService
 
     public async Task<bool> DeleteClaims(List<string> claimIds)
     {
-        return await _claimRepository.RemoveClaims(claimIds);
+        return await _claimRepository.Delete(claimIds);
     }
 }

@@ -3,7 +3,8 @@ using Moq;
 using Shared.Configuration;
 using Shared.Models;
 using Shared.Prompts;
-using System.Reflection;
+
+namespace SharedTests.Prompts;
 
 public class PromptBuilderBaseTests
 {
@@ -20,9 +21,9 @@ public class PromptBuilderBaseTests
     public void ConstructorTest()
     {
         // Arrange
-        
+
         // Act
-        var promptBuilder = new PromptBuilderBase(_openAiOptionsMock.Object);
+        var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
         // Assert
         Assert.NotNull(promptBuilder);
@@ -34,9 +35,10 @@ public class PromptBuilderBaseTests
         // Arrange
 
         var model = "test";
-        var promptBuilder = new PromptBuilderBase(_openAiOptionsMock.Object);
+        var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
         // Act
+        promptBuilder.AddUserMessage("test");
         promptBuilder.AddModel(model);
 
         // Assert
@@ -52,7 +54,7 @@ public class PromptBuilderBaseTests
         // Arrange
 
         var model = "";
-        var promptBuilder = new PromptBuilderBase(_openAiOptionsMock.Object);
+        var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
         // Act and Assert
         Assert.Throws<ArgumentNullException>(() => promptBuilder.AddModel(model));
@@ -62,7 +64,7 @@ public class PromptBuilderBaseTests
     public void GetPrompt_NoPromptMessagesTest()
     {
         // Arrange
-        var promptBuilder = new PromptBuilderBase(_openAiOptionsMock.Object);
+        var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
         // Act
 
@@ -75,7 +77,7 @@ public class PromptBuilderBaseTests
     {
         // Arrange
         var promptFunction = new PromptFunction { Name = "TestFunction" };
-        var promptBuilder = new PromptBuilderBase(_openAiOptionsMock.Object);
+        var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
         // Act
         promptBuilder.AddFunctionCall(promptFunction);

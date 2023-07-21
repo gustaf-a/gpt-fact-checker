@@ -5,5 +5,5 @@ namespace FactCheckingService.Models;
 internal class GeneralFactCheckFunctionCallArguments
 {
     [JsonProperty(PropertyName = "fact_check")]
-    public GptResponseFunctionCallFactCheck FactCheck { get; set; }
+    public FactCheckResponse FactCheck { get; set; }
 }

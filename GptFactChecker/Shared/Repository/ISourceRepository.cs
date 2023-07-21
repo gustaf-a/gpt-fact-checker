@@ -2,10 +2,6 @@
 
 namespace Shared.Repository;
 
-public interface ISourceRepository
+public interface ISourceRepository : IRepository<Source>
 {
-    public Task<bool> CreateSource(Source source);
-    public Task<Source> GetByIdAsync(string id);
-    public Task<List<Source>> GetAllAsync();
-    public Task<bool> DeleteAsync(string id);
 }

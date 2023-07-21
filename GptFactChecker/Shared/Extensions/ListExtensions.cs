@@ -9,6 +9,34 @@ public static class ListExtensions
         => list is null || !list.Any();
 
     /// <summary>
+    /// Splits the provided list into lists depending on the max allowed count.
+    /// </summary>
+    /// <typeparam name="T">The type of items in the list.</typeparam>
+    /// <param name="list">The list to split.</param>
+    /// <param name="maxCount">Max number of items allowed in any single list.</param>
+    /// <returns>A list of lists, representing the split parts of the original list.</returns>
+    public static List<List<T>> SplitByMaxCount<T>(this List<T> list, int maxCount)
+    {
+        if(list is null)
+            throw new ArgumentNullException(nameof(list));
+
+        if (list.Count == 0)
+            throw new ArgumentOutOfRangeException(nameof(list.Count), "Cannot split a list without elements.");
+
+        var splitLists = new List<List<T>>();
+
+        if(maxCount <= 0 || list.Count <= maxCount)
+        {
+            splitLists.Add(list);
+            return splitLists;
+        }
+
+        int numberOfLists = (int)Math.Ceiling((double)list.Count / maxCount);
+
+        return list.SplitIntoParts(numberOfLists);
+    }
+
+    /// <summary>
     /// Splits the provided list into a specified number of parts.
     /// </summary>
     /// <typeparam name="T">The type of items in the list.</typeparam>

@@ -1,4 +1,5 @@
-﻿using FactCheckingService.FactCheckers;
+﻿using FactCheckingService.Extensions;
+using FactCheckingService.Strategies;
 using Shared.Extensions;
 using Shared.Models;
 
@@ -26,26 +27,16 @@ public class FactChecker : IFactChecker
 
         foreach (var factChecker in _factCheckerStrategies)
         {
-            var responses = await factChecker.ExecuteFactCheck(factsToFactCheck);
+            var factCheckResults = await factChecker.ExecuteFactCheck(factsToFactCheck);
 
-            factCheckResponses.AddRange(responses);
+            factCheckResponses.AddRange(factCheckResults);
 
-            RemoveCheckedFacts(factsToFactCheck, responses);
+            factsToFactCheck.RemoveCheckedFacts(factCheckResults);
 
             if (!factsToFactCheck.Any())
                 break;
         }
 
         return factCheckResponses;
-    }
-
-    private static void RemoveCheckedFacts(List<Fact> facts, List<FactCheckResult> responses)
-    {
-        var checkedFactIds = responses
-            .Where(r => r.IsFactChecked)
-            .Select(r => r.Fact.Id)
-            .ToList();
-
-        facts.RemoveAll(fact => checkedFactIds.Contains(fact.Id));
     }
 }

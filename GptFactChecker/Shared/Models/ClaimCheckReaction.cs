@@ -2,7 +2,7 @@
 
 namespace Shared.Models;
 
-public class ClaimCheckReaction
+public class ClaimCheckReaction : IIdentifiable
 {
     [JsonProperty(PropertyName = "id")]
     public string? Id { get; set; }

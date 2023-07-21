@@ -18,7 +18,7 @@ public class SourceService : ISourceService
 
     public async Task<bool> AddSource(SourceDto source)
     {
-        var result = await _sourceRepository.CreateSource(source.ToSource());
+        var result = await _sourceRepository.Create(source.ToSource());
 
         return result;
     }
@@ -31,14 +31,14 @@ public class SourceService : ISourceService
 
         var deleteSourcesClaimsResult = await _sourcesClaimsRepository.RemoveSource(sourceId);
 
-        var deleteSourceResult = await _sourceRepository.DeleteAsync(sourceId);
+        var deleteSourceResult = await _sourceRepository.Delete(sourceId);
 
         return deleteSourceResult && deleteSourcesClaimsResult && deleteClaimsResult;
     }
 
     public async Task<SourceDto> GetSourceById(string sourceId, bool includeClaims = false)
     {
-        var source = await _sourceRepository.GetByIdAsync(sourceId);
+        var source = await _sourceRepository.Get(sourceId);
 
         var sourceDto = source.ToDto();
 
@@ -54,7 +54,7 @@ public class SourceService : ISourceService
 
     public async Task<List<SourceDto>> GetSources(bool includeClaims = false)
     {
-        var sources = await _sourceRepository.GetAllAsync();
+        var sources = await _sourceRepository.GetAll();
 
         var sourceDtos = sources.ToDtos();
 

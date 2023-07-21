@@ -1,6 +1,6 @@
 ﻿namespace Shared.Models;
 
-public class Source
+public class Source : IIdentifiable
 {
     public string Id { get; set; }
     public string Name { get; set; }

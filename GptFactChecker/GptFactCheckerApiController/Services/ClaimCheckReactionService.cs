@@ -26,7 +26,7 @@ public class ClaimCheckReactionService : IClaimCheckReactionService
         if (claimCheckReactionsForClaim.Any())
             await RemoveClaimCheckReactionsByUser(claimCheckReactionsForClaim, claimCheckReaction.UserId);
 
-        if (!await _claimCheckReactionRepository.CreateClaimCheckReaction(claimCheckReaction))
+        if (!await _claimCheckReactionRepository.Create(claimCheckReaction))
         {
             response.Messages.Add($"Failed to create claim check reaction: {JsonHelper.Serialize(claimCheckReaction)}");
             return response;
@@ -71,7 +71,7 @@ public class ClaimCheckReactionService : IClaimCheckReactionService
     {
         List<string> claimCheckReactionIds = await GetClaimCheckReactionIds(claimCheckId);
 
-        return await _claimCheckReactionRepository.GetClaimCheckReactions(claimCheckReactionIds);
+        return await _claimCheckReactionRepository.Get(claimCheckReactionIds);
     }
 
     private async Task<List<string>> GetClaimCheckReactionIds(string claimCheckId)
@@ -84,6 +84,6 @@ public class ClaimCheckReactionService : IClaimCheckReactionService
         if (!await _claimChecksClaimCheckReactionsRepository.RemoveClaimCheckReactions(claimCheckReactionIds))
             return false;
 
-        return await _claimCheckReactionRepository.RemoveClaimCheckReactions(claimCheckReactionIds);
+        return await _claimCheckReactionRepository.Delete(claimCheckReactionIds);
     }
 }

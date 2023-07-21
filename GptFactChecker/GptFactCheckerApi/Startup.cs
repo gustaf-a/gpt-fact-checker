@@ -1,10 +1,14 @@
 ﻿using FactCheckingService;
-using FactCheckingService.FactCheckers;
-using FactCheckingService.FactCheckers.ClimateStrategy;
-using FactCheckingService.FactCheckers.ClimateStrategy.FactCheckWithData;
-using FactCheckingService.FactCheckers.ClimateStrategy.TopicIdentification;
-using FactCheckingService.FactCheckers.GeneralStrategy;
-using FactCheckingService.FactCheckers.GeneralStrategy.FactCheckPrompt;
+using FactCheckingService.Services;
+using FactCheckingService.Strategies;
+using FactCheckingService.Strategies.ClimateStrategy;
+using FactCheckingService.Strategies.ClimateStrategy.FactCheckWithData;
+using FactCheckingService.Strategies.ClimateStrategy.TopicIdentification;
+using FactCheckingService.Strategies.GeneralStrategy;
+using FactCheckingService.Strategies.GeneralStrategy.FactCheckPrompt;
+using FactCheckingService.Strategies.TopicStrategy;
+using FactCheckingService.Strategies.TopicStrategy.ReferenceMatching;
+using FactCheckingService.Strategies.TopicStrategy.RefererenceFactChecking;
 using FactCheckingService.Utils;
 using FactExtractionService;
 using FactExtractionService.FactExtractors;
@@ -15,7 +19,9 @@ using GptFactCheckerApi.Services;
 using RepositoryJson;
 using Shared.Configuration;
 using Shared.GptClient;
+using Shared.Prompts;
 using Shared.Repository;
+using System.ComponentModel.Design;
 
 namespace GptFactCheckerApi;
 
@@ -32,20 +38,25 @@ public class Startup
     {
         services.Configure<OpenAiOptions>(_configurationManager.GetSection(OpenAiOptions.OpenAi));
         services.Configure<RepositoryJsonOptions>(_configurationManager.GetSection(RepositoryJsonOptions.RepositoryJson));
+        
+        services.AddSingleton<ISourceRepository, SourceRepositoryJson>();
+        services.AddSingleton<IClaimRepository, ClaimRepositoryJson>();
+        services.AddSingleton<IClaimCheckRepository, ClaimCheckRepositoryJson>();
+        services.AddSingleton<IClaimCheckReactionRepository, ClaimCheckReactionRepositoryJson>();
+        services.AddSingleton<ITopicRepository, TopicsRepositoryJson>();
 
-        services.AddSingleton<ISourceRepository, SourceJsonRepository>();
-        services.AddSingleton<IClaimRepository, ClaimJsonRepository>();
-        services.AddSingleton<IClaimCheckRepository, ClaimCheckJsonRepository>();
-        services.AddSingleton<IClaimCheckReactionRepository, ClaimCheckReactionJsonRepository>();
-
-        services.AddSingleton<ISourcesClaimsRepository, SourcesClaimsJsonRepository>();
-        services.AddSingleton<IClaimsClaimChecksRepository, ClaimsClaimCheckJsonRepository>();
-        services.AddSingleton<IClaimChecksClaimCheckReactionsRepository, ClaimChecksClaimCheckReactionsJsonRepository>();
+        services.AddSingleton<ISourcesClaimsRepository, SourcesClaimsRepositoryJson>();
+        services.AddSingleton<IClaimsClaimChecksRepository, ClaimsClaimCheckRepositoryJson>();
+        services.AddSingleton<IClaimChecksClaimCheckReactionsRepository, ClaimChecksClaimCheckReactionsRepositoryJson>();
 
         services.AddSingleton<ISourceService, SourceService>();
         services.AddSingleton<IClaimService, ClaimService>();
         services.AddSingleton<IClaimCheckService, ClaimCheckService>();
         services.AddSingleton<IClaimCheckReactionService, ClaimCheckReactionService>();
+        services.AddSingleton<ITopicService, TopicService>();
+
+
+        services.AddSingleton<IPromptBuilder, PromptBuilder>();
 
         services.AddHttpClient();
 
@@ -61,13 +72,21 @@ public class Startup
     {
         services.Configure<FactCheckerOptions>(_configurationManager.GetSection(FactCheckerOptions.FactChecker));
 
+        services.Configure<ReferenceMatchingOptions>(_configurationManager.GetSection(ReferenceMatchingOptions.ReferenceMatching));
+        services.Configure<ReferenceFactCheckingOptions>(_configurationManager.GetSection(ReferenceFactCheckingOptions.ReferenceFactChecking));
+
         services.AddSingleton<IFactCheckService, FactCheckService>();
 
         services.AddSingleton<IFactChecker, FactChecker>();
-
-        services.AddSingleton<IFactCheckerStrategy, ClimateFactCheckerWithReferencesStrategy>();
         services.AddSingleton<ITagMatcher, TagMatcher>();
 
+        services.AddSingleton<IFactCheckerStrategy, TopicFactCheckerStrategy>();
+        services.AddSingleton<IReferenceMatcher, ReferenceMatcher>();
+        services.AddSingleton<IReferenceMatcherPromptDirector, ReferenceMatcherPromptDirector>();
+        services.AddSingleton<IReferenceFactChecker, ReferenceFactChecker>();
+        services.AddSingleton<IReferenceFactCheckerPromptDirector, ReferenceFactCheckerPromptDirector>();
+
+        services.AddSingleton<IFactCheckerStrategy, ClimateFactCheckerWithReferencesStrategy>();
         services.AddSingleton<ITopicIdentifier, TopicIdentifier>();
         services.AddSingleton<ITopicIdentificationPrompt, TopicIdentificationPrompt>();
         services.AddSingleton<IClimateFactCheckerWithData, ClimateFactCheckerWithData>();

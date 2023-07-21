@@ -60,7 +60,7 @@ public class ClaimCheckService : IClaimCheckService
 
         try
         {
-            if (!await _claimCheckRepository.CreateClaimChecks(claimChecks))
+            if (!await _claimCheckRepository.Create(claimChecks))
                 return false;
 
             await _claimsClaimChecksRepository.AddClaimChecksForClaim(claimId, claimChecks);
@@ -76,8 +76,7 @@ public class ClaimCheckService : IClaimCheckService
 
     public async Task<List<ClaimCheckDto>> GetAllClaimChecks(bool includeClaimCheckReactions = false)
     {
-        List<ClaimCheckDto> claimCheckDtos
-            = (await _claimCheckRepository.GetClaimChecks(new List<string>(), includeClaimCheckReactions)).ToDtos();
+        List<ClaimCheckDto> claimCheckDtos = (await _claimCheckRepository.GetAll()).ToDtos();
 
         if (includeClaimCheckReactions)
             foreach (var claimCheckDto in claimCheckDtos)
@@ -90,7 +89,7 @@ public class ClaimCheckService : IClaimCheckService
     {
         var claimCheckIds = await _claimsClaimChecksRepository.GetClaimChecksForClaim(claimId);
 
-        var claimCheckDtos = (await _claimCheckRepository.GetClaimChecks(claimCheckIds)).ToDtos();
+        var claimCheckDtos = (await _claimCheckRepository.Get(claimCheckIds)).ToDtos();
 
         if (includeClaimCheckReactions)
         {
@@ -130,7 +129,7 @@ public class ClaimCheckService : IClaimCheckService
         if (!await _claimsClaimChecksRepository.RemoveClaimChecks(new List<string>() { claimCheckId }))
             response.Messages.Add($"Failed to remove claims claimcheck relationships for ClaimCheck ID: {claimCheckId}");
 
-        if (!await _claimCheckRepository.DeleteClaimChecks(new List<string>() { claimCheckId }))
+        if (!await _claimCheckRepository.Delete(claimCheckId))
             response.Messages.Add($"Failed to delete claim check: {claimCheckId}");
 
         return;

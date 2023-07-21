@@ -1,6 +1,6 @@
 ﻿namespace Shared.Models;
 
-public class ClaimCheck
+public class ClaimCheck : IIdentifiable
 {
     public string Id { get; set; }
     public string UserId { get; set; }

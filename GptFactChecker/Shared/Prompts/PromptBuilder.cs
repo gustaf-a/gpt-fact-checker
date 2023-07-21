@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using JsonClient;
+using Microsoft.Extensions.Options;
 using Shared.Configuration;
 using Shared.Extensions;
 using Shared.Models;
 
 namespace Shared.Prompts;
 
-public class PromptBuilderBase : IPromptBuilder
+public class PromptBuilder : IPromptBuilder
 {
     private readonly OpenAiOptions _openAiOptions;
     private readonly List<PromptMessage> _promptMessages = new();
@@ -13,9 +14,17 @@ public class PromptBuilderBase : IPromptBuilder
 
     private string _model;
 
-    public PromptBuilderBase(IOptions<OpenAiOptions> options)
+    public PromptBuilder(IOptions<OpenAiOptions> options)
     {
         _openAiOptions = options.Value;
+    }
+
+
+    public void Reset()
+    {
+        _model = string.Empty;
+        _promptFunctions.Clear();
+        _promptMessages.Clear();  
     }
 
     public Prompt GetPrompt()
@@ -60,6 +69,18 @@ public class PromptBuilderBase : IPromptBuilder
 
         foreach (var promptFunction in promptFunctions)
             AddFunctionCall(promptFunction);
+    }
+
+    public void AddFunctionCall(string promptFunctionJson)
+    {
+        if(string.IsNullOrWhiteSpace(promptFunctionJson))
+            throw new ArgumentNullException(nameof(promptFunctionJson));
+
+        var functionCall = JsonHelper.Deserialize<PromptFunction>(promptFunctionJson);
+        if (functionCall is null)
+            throw new ArgumentNullException(nameof(functionCall), "Failed to deserialize input into PromptFunction.");
+        
+        AddFunctionCall(functionCall);
     }
 
     public void AddFunctionCall(PromptFunction promptFunction)

@@ -11,6 +11,8 @@ public interface IPromptBuilder
     public void AddSystemMessage(string systemPrompt);
     public void AddUserMessage(string userPrompt);
 
+    public void AddFunctionCall(string promptFunctionJson);
     public void AddFunctionCall(PromptFunction promptFunction);
     public void AddFunctionCalls(List<PromptFunction> promptFunctions);
+    public void Reset();
 }

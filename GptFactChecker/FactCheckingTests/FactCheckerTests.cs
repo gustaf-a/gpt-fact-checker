@@ -1,5 +1,5 @@
 using FactCheckingService;
-using FactCheckingService.FactCheckers;
+using FactCheckingService.Strategies;
 using Moq;
 using Shared.Models;
 

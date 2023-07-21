@@ -17,9 +17,11 @@ public class FactCheckService : IFactCheckService
     public FactCheckService(IOptions<FactCheckerOptions> options, IFactChecker factChecker, IClaimService claimService, IClaimCheckService claimCheckService)
     {
         _factCheckerOptions = options.Value;
-        _factChecker = factChecker;
+
         _claimService = claimService;
         _claimCheckService = claimCheckService;
+
+        _factChecker = factChecker;
     }
 
     public async Task<BackendResponse<List<ClaimCheckResultsDto>>> CheckFacts(List<string> claimIds)

@@ -400,3 +400,4 @@ GptFactChecker/gpt-fact-checker-front/.env
 /SkepticalScienceCrawler
 /GptFactChecker/GptFactCheckerApi/appsettings.json
 /GptFactChecker/PromptTester/apikey.json
+/GptFactChecker/Prompting

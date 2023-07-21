@@ -1,6 +1,6 @@
 ﻿namespace Shared.Models;
 
-public class Fact
+public class Fact : IIdentifiable
 {
     public string Id { get; set; }
     public string ClaimSummarized { get; set; }

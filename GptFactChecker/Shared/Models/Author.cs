@@ -6,4 +6,5 @@ public class Author
     public string Name { get; set; } = string.Empty;
     public bool IsSystem { get; set; } = false;
     public bool IsVerified { get; set; } = false;
+    public string Description { get; set; }
 }

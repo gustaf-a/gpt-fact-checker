@@ -6,7 +6,7 @@ namespace FactCheckingService.Extensions;
 
 public static class GptResponseExtensions
 {
-    public static FactCheck ConvertToFactCheck(this GptResponseFunctionCallFactCheck functionCallFactCheck)
+    public static FactCheck ConvertToFactCheck(this FactCheckResponse functionCallFactCheck)
     {
         if (functionCallFactCheck is null)
             return null;
