@@ -4,5 +4,6 @@ export const Keys = {
     CLAIMCHECKS: "claimchecks",
     CLAIMCHECKREACTIONS: "claimcheckreactions",
     FACTEXTRACTIONS: "factextractions",
-    FACTCHECKS: "factchecks"
+    FACTCHECKS: "factchecks",
+    SOURCEEXTRACTIONS: "sourceextractions"
 };

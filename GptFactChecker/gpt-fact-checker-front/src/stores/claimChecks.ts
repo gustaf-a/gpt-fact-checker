@@ -70,7 +70,7 @@ export const useClaimCheckStore = defineStore(Keys.CLAIMCHECKS, () => {
 					url: `${VITE_API_BASE_URL}/api/claimchecks/claimcheckresults`,
 					data: validatedClaimCheckResults,
 				},
-				ErrorMessages.FACT_EXTRACTION_ERROR
+				ErrorMessages.FACT_CHECK_ERROR
 			);
 
 			if (backendResponse.messages) {

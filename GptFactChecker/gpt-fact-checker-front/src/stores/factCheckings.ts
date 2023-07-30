@@ -38,7 +38,7 @@ export const useFactChecksStore = defineStore(
 						url: `${VITE_API_BASE_URL}/api/factchecker`,
 						data: claimIds
 					},
-					ErrorMessages.FACT_EXTRACTION_ERROR
+					ErrorMessages.FACT_CHECK_ERROR
 				);
 
 				if (backendResponse.messages) {

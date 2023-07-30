@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeroBanner from "@/components/Header/HeroBanner.vue";
+import HeroBanner from "@/components/Header/HeroBannerMini.vue";
 import Container from "@/components/Container.vue";
 </script>
 

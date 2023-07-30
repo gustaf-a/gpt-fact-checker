@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import useColorScheme from '@/stores/colorScheme'
 import { onMounted, ref } from "vue";
 import { useSourcesStore } from "@/stores/sources";
 import SourceObject from "@/model/Source";
@@ -6,6 +7,8 @@ import Container from "@/components/Container.vue";
 import SourcesList from "./SourcesListText.vue";
 import ClaimsList from "./ClaimsListText.vue"
 import type ClaimWithSource from "@/model/ClaimWithSource";
+
+useColorScheme();
 
 const sourcesStore = useSourcesStore();
 const sources = ref<SourceObject[]>([]);
@@ -80,6 +83,10 @@ function assignMostEngagingClaims() {
 
 <template>
 	<Container>
+        <!-- How it works -->
+
+        <!-- Simple use case -->
+
         <div class="list-container">
             <SourcesList
 			v-if="!loadingSourcesMostViewed"
@@ -142,3 +149,4 @@ function assignMostEngagingClaims() {
 	cursor: pointer;
 }
 </style>
+@/utils/colorScheme

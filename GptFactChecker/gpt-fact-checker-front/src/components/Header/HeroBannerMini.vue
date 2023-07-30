@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import Container from "../Container.vue";
+import useColorScheme from '@/stores/colorScheme'
+
+//Ensure CSS Variables are created
+useColorScheme()
 </script>
 
 <template>
 	<a-layout-header class="hero-banner">
 		<Container>
 			<div class="hero-container">
-				<h1 class="hero-title">FactCheckMe</h1>
+				<h1 class="hero-title">Fact Friend</h1>
 				<p class="hero-subtext">
 					Clearly presented claims - easy to check
 				</p>
@@ -16,7 +20,7 @@ import Container from "../Container.vue";
 </template>
 <style scoped>
 .hero-banner {
-	background-color: #9f9f9f;
+	background-color: var(--color-background);
 	height: 8vh;
 }
 
@@ -27,20 +31,18 @@ h1{
 
 .hero-container {
 	display: flex;
-	color: #ffffff;
 	justify-content: center;
 }
 
 .hero-title {
-	color: #ffffff;
-	opacity: 0.7;
-	font-size: 2em;
+	color: var(--color-text);
+	font-size: 1.5em;
 	font-weight: bold;
 }
 
 .hero-subtext {
+	color: var(--color-text);
 	margin-left: 2vw;
-	font-size: 1.2em;
-	opacity: 0.7;
+	font-size: 1.5em;
 }
 </style>

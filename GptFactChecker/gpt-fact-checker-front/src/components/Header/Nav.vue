@@ -5,6 +5,10 @@ import LoginModal from "../UserHandling/LoginModal.vue";
 import SignupModal from "../UserHandling/SignupModal.vue";
 import { useUserStore } from "@/stores/users";
 import { storeToRefs } from "pinia";
+import useColorScheme from '@/stores/colorScheme'
+
+//Ensure CSS Variables are created
+useColorScheme()
 
 const userStore = useUserStore();
 const { userHasRole, Roles } = userStore;
@@ -23,20 +27,14 @@ const handleLogout = async () => {
 					<RouterLink
 						class="logo"
 						to="/"
-						>FactCheckMe</RouterLink
+						>FactFriend</RouterLink
 					>
 
 					<RouterLink
 						class="nav-item nav-button"
 						to="/sources"
-						>FactChecks</RouterLink
+						>Sources</RouterLink
 					>
-					<!-- 
-					<RouterLink
-						class="nav-item nav-button"
-						to="/resources"
-						>Resources</RouterLink
-					> -->
 
 					<RouterLink
 						class="nav-item nav-button"
@@ -56,13 +54,20 @@ const handleLogout = async () => {
 					class="navigation-right"
 				>
 					<RouterLink
-						v-if="userHasRole(Roles.ADMIN)"
+						v-if="userHasRole(Roles.EDITREFERENCES)"
 						class="nav-item nav-button"
-						to="/managesources"
-						>Manage Users</RouterLink
-						>
-						
-						<RouterLink
+						to="/managereferences"
+						>Manage References</RouterLink
+					>
+
+					<RouterLink
+						v-if="userHasRole(Roles.EDITTOPICS)"
+						class="nav-item nav-button"
+						to="/managetopics"
+						>Manage Topics</RouterLink
+					>
+
+					<RouterLink
 						v-if="userHasRole(Roles.EDITSOURCES)"
 						class="nav-item nav-button"
 						to="/managesources"
@@ -90,7 +95,7 @@ const handleLogout = async () => {
 <style scoped>
 .ant-layout-header {
 	color: #fff;
-	background: #576f72;
+	background: var(--color-backgroundNavAndFooter);
 }
 
 .container-navigation {
@@ -113,11 +118,10 @@ const handleLogout = async () => {
 
 .nav-item {
 	margin-left: 1vw;
-	color: black;
 }
 
 .nav-button {
-	color: white;
+	color: var(--color-textNavLink);
 	font-size: larger;
 }
 

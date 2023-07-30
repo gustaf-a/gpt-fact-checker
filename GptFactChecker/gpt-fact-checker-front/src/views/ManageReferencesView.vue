@@ -2,8 +2,6 @@
 import Container from "@/components/Container.vue";
 import { useUserStore } from "@/stores/users";
 import NotFound from "@/components/NotFound.vue"
-import ManageUsersPage from "@/components/Content/ManageUsersPage/ManageUsersPage.vue";
-import ManageUsersTopBar from "@/components/Content/ManageUsersPage/ManageUsersTopBar.vue";
 
 const userStore = useUserStore();
 const { userHasRole, Roles } = userStore;
@@ -11,12 +9,12 @@ const { userHasRole, Roles } = userStore;
 
 <template>
 	<div class="content-container"
-	v-if="userHasRole(Roles.ADMIN)">
+	v-if="userHasRole(Roles.EDITREFERENCES)">
 		<Container>
-			<ManageUsersTopBar />
+			<!-- <ManageSourcesTopBar /> -->
 			<a-divider />
-			<div class="">
-				<ManageUsersPage />
+			<div class="manage-references-container">
+				<!-- <ManageSourcesPage /> -->
 			</div>
 		</Container>
 	</div>

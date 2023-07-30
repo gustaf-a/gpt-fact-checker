@@ -5,7 +5,8 @@ import SourceView from "../views/SourceView.vue";
 import SourcesViewVue from "@/views/SourcesView.vue";
 import ResourcesViewVue from "@/views/ResourcesView.vue"
 import ManageSourcesViewVue from "@/views/ManageSourcesView.vue";
-import ManageUsersView from "@/views/ManageUsersView.vue";
+import ManageReferencesView from "@/views/ManageReferencesView.vue";
+import ManageTopicsView from "@/views/ManageTopicsView.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,9 +32,14 @@ const router = createRouter({
 			component: ResourcesViewVue,
 		},
 		{
-			path: "/manageusers",
-			name: "manageusers",
-			component: ManageUsersView,
+			path: "/managereferences",
+			name: "managereferences",
+			component: ManageReferencesView,
+		},
+		{
+			path: "/managetopics",
+			name: "managetopics",
+			component: ManageTopicsView,
 		},
 		{
 			path: "/managesources",

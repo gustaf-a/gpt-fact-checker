@@ -5,7 +5,7 @@ import ContainerVue from "../Container.vue";
 <template>
 	<a-layout-footer class="footer">
 		<ContainerVue>
-			<h3 class="footer-title">FactCheckMe</h3>
+			<h3 class="footer-title">Fact Friend</h3>
 			<a-divider class="divider" />
 		</ContainerVue>
 	</a-layout-footer>

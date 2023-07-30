@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { useSourcesStore } from "@/stores/sources";
 import { storeToRefs } from "pinia";
 import { notification } from "ant-design-vue";
+import EditSourceLink from "./EditSourceLink.vue";
 
 const sourcesStore = useSourcesStore();
 const { filteredSources, loadingSources } = storeToRefs(sourcesStore);
@@ -92,7 +93,7 @@ const openNotificationWithIcon = (
 						@click="navigateToDetails(source.id)"
 						>Details</a
 					>
-					<a key="edit">Edit</a>
+					<EditSourceLink :source-input="source"/>
 					<a
 					key="delete"
 						@click="removeSource(source.id)"

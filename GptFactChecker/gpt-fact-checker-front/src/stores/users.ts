@@ -27,6 +27,7 @@ export const useUserStore = defineStore(UsersKey, () => {
 		ADDSOURCES: "addsources",
 		EDITSOURCES: "editsources",
 		DELETESOURCES: "deletesources",
+		EXTRACTSOURCES: "extractsources",
 		ADDCLAIMCHECKS: "addclaimchecks",
 		ADDCLAIMCHECKSWITHAI: "addclaimcheckswithai",
 		EDITCLAIMCHECKS: "editclaimchecks",
@@ -35,6 +36,8 @@ export const useUserStore = defineStore(UsersKey, () => {
 		EDITCLAIMCHECKREACTIONS: "editclaimcheckreactions",
 		DELETECLAIMCHECKREACTIONS: "deleteclaimcheckreactions",
 		EXTRACTCLAIMSFROMSOURCEWITHAI: "extractclaimsfromsourcewithai",
+		EDITREFERENCES: "editreferences",
+		EDITTOPICS: "edittopics"
 	};
 
 	const userHasRole = (role: string): boolean => {

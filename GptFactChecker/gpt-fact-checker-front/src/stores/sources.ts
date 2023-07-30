@@ -91,7 +91,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 				return false;
 			}
 
-			sources.value = sources.value.filter((source) => source.id !== sourceId);
+			removeFromSourceIfExists(sourceId);
 
 			return true;
 		} catch (error) {
@@ -137,6 +137,44 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		}
 	}
 
+	async function updateSourceAsync(source: Source): Promise<boolean> {
+		if (!userHasRole(Roles.EDITSOURCES)) return false;
+		
+		if (!source) {
+			console.log("Can't updatede null source.");
+			return false;
+		}
+
+		try {
+			loadingSources.value = true;
+
+			const response = await axios.put(`${VITE_API_BASE_URL}/api/sources`, source);
+
+			if (response.status !== 200) {
+				errorMessage.value = ErrorMessages.UPDATE_RESOURCE_ERROR;
+				console.log(ErrorMessages.UPDATE_RESOURCE_ERROR, source);
+				return false;
+			}
+
+			removeFromSourceIfExists(source.id)
+
+			sources.value.push(source);
+			return true;
+		} catch (error) {
+			errorMessage.value = `${ErrorMessages.UPDATE_RESOURCE_ERROR}: ${
+				error instanceof Error ? error.message : String(error)
+			}`;
+			console.log(error, source);
+			return false;
+		} finally {
+			loadingSources.value = false;
+		}
+	}
+
+	function removeFromSourceIfExists(sourceId: string){
+		sources.value = sources.value.filter((source) => source.id !== sourceId);
+	}
+
 	return {
 		sources,
 		filteredSources,
@@ -145,6 +183,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 		getSourcesAsync,
 		getSourceByIdAsync,
 		addSourceAsync,
+		updateSourceAsync,
 		deleteSourceAsync,
 		applyFilters
 	};
