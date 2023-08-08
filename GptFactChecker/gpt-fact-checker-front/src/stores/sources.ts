@@ -14,6 +14,8 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 	const userStore = useUserStore();
 	const { userHasRole, Roles } = userStore;
 
+	const draftSource = ref<Source | null>(null);
+
 	const sources = ref<Source[]>([]);
 	const filteredSources = ref<Source[]>([]);
 
@@ -178,6 +180,7 @@ export const useSourcesStore = defineStore(Keys.SOURCES, () => {
 	return {
 		sources,
 		filteredSources,
+		draftSource,
 		errorMessage,
 		loadingSources,
 		getSourcesAsync,

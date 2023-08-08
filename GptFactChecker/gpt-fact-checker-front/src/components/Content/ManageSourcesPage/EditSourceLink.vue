@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import SourceForm from "@/components/Content/ManageSourcesPage/SourceForm.vue";
-import { PlusOutlined } from "@ant-design/icons-vue";
 import Source from "@/model/Source";
 import { useSourcesStore } from "@/stores/sources";
 import { storeToRefs } from "pinia";
@@ -14,7 +13,7 @@ interface Props {
 const { sourceInput } = defineProps<Props>();
 
 const sourcesStore = useSourcesStore();
-const { errorMessage } = storeToRefs(sourcesStore);
+const { draftSource, errorMessage } = storeToRefs(sourcesStore);
 
 const updateSource = async (source: Source) => {
 	if (!source) {
@@ -40,10 +39,12 @@ const updateSource = async (source: Source) => {
 const visible = ref<boolean>(false);
 
 const showDrawer = () => {
+	draftSource.value = sourceInput;
 	visible.value = true;
 };
 
 const onClose = () => {
+	draftSource.value = null;
 	visible.value = false;
 };
 </script>

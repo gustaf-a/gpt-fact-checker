@@ -4,9 +4,7 @@ import { useRoute } from "vue-router";
 import { useSourcesStore } from "@/stores/sources";
 import SourceObject from "@/model/Source";
 import ClaimsList from "./ClaimsList.vue";
-
-const isLoggedIn = ref(true);
-const hasEditingRights = ref(true);
+import DisplayRawStringModal from "./DisplayRawStringModal.vue";
 
 const colors = ["green", "pink", "blue", "orange", "cyan", "red", "purple"];
 
@@ -61,29 +59,48 @@ onMounted(async () => {
 		<p>
 			{{ source.description ? source.description : "No description available" }}
 		</p>
-		<a-descriptions class="description-title" size="small">
-			<a-descriptions-item label="Author" class="description-item">{{
-				source.sourcePerson
-			}}</a-descriptions-item>
-				<a-descriptions-item label="Context" class="description-item">{{
-					source.sourceContext
-				}}</a-descriptions-item>
-			<a-descriptions-item label="Language" class="description-item">{{
-				source.language
-			}}</a-descriptions-item>
-			<a-descriptions-item label="Media type" class="description-item">{{
-				source.sourceType
-			}}</a-descriptions-item>
-			<a-descriptions-item label="Source created" class="description-item">{{
-				source.sourceCreatedDate
-			}}</a-descriptions-item>
+		<a-descriptions
+			class="description-title"
+			size="small"
+		>
+			<a-descriptions-item
+				label="Author"
+				class="description-item"
+				>{{ source.sourcePerson }}</a-descriptions-item
+			>
+			<a-descriptions-item
+				label="Context"
+				class="description-item"
+				>{{ source.sourceContext }}</a-descriptions-item
+			>
+			<a-descriptions-item
+				label="Language"
+				class="description-item"
+				>{{ source.language }}</a-descriptions-item
+			>
+			<a-descriptions-item
+				label="Media type"
+				class="description-item"
+				>{{ source.sourceType }}</a-descriptions-item
+			>
+			<a-descriptions-item
+				label="Source created"
+				class="description-item"
+				>{{ source.sourceCreatedDate }}</a-descriptions-item
+			>
+			<a-descriptions-item
+				label="Raw String"
+				class="description-item"
+			>
+				<DisplayRawStringModal :source="source"/>
+			</a-descriptions-item>
 			<a-descriptions-item class="description-item">
 				<a
-				:href="source.sourceUrl"
-				target="_blank"
-			>
-				Source Link</a
-			>
+					:href="source.sourceUrl"
+					target="_blank"
+				>
+					Source Link</a
+				>
 			</a-descriptions-item>
 		</a-descriptions>
 

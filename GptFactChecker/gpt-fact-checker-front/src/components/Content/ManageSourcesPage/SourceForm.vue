@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, onMounted } from "vue";
+import { reactive, ref, watch } from "vue";
 import Source from "@/model/Source";
 import type { Rule } from "ant-design-vue/es/form";
 import type { FormInstance } from "ant-design-vue";
@@ -7,26 +7,12 @@ import { useSourcesStore } from "@/stores/sources";
 import { storeToRefs } from "pinia";
 import { generateGuid } from "@/utils/guid";
 
-interface Props {
-	sourceInput: Source | null;
-}
-
-const { sourceInput } = defineProps<Props>();
-
 const emits = defineEmits(["onClosed", "onSubmitted"]);
 
 const isEditMode = ref<boolean>(false);
 
 const sourcesStore = useSourcesStore();
-const { errorMessage } = storeToRefs(sourcesStore);
-
-onMounted(() => {
-	if (sourceInput != null) {
-		setFormState(sourceInput);
-		isEditMode.value = true;
-	}
-});
-
+const { draftSource, errorMessage } = storeToRefs(sourcesStore);
 
 // ------------- Form --------------
 //TODO
@@ -66,19 +52,28 @@ function setFormState(sourceInput: Source) {
 	formState.name = sourceInput.name || formState.name;
 	formState.language = sourceInput.language || formState.language;
 	formState.description = sourceInput.description || formState.description;
-	formState.tags = sourceInput.tags.join(",") || formState.tags;
 	formState.sourceType = sourceInput.sourceType || formState.sourceType;
 	formState.sourcePerson = sourceInput.sourcePerson || formState.sourcePerson;
 	formState.sourceContext =
-		sourceInput.sourceContext || formState.sourceContext;
+	sourceInput.sourceContext || formState.sourceContext;
 	formState.sourceUrl = sourceInput.sourceUrl || formState.sourceUrl;
 	formState.sourceRawText =
-		sourceInput.sourceRawText || formState.sourceRawText;
+	sourceInput.sourceRawText || formState.sourceRawText;
 	formState.coverImageUrl =
-		sourceInput.coverImageUrl || formState.coverImageUrl;
+	sourceInput.coverImageUrl || formState.coverImageUrl;
 	formState.sourceCreatedDate =
-		sourceInput.sourceCreatedDate || formState.sourceCreatedDate;
+	sourceInput.sourceCreatedDate || formState.sourceCreatedDate;
+	
+	if(sourceInput.tags)
+		formState.tags = sourceInput.tags.join(",") || formState.tags;
 }
+
+watch(draftSource, (newSourceInput, oldSourceInput) => {
+	if (newSourceInput != null) {
+		setFormState(newSourceInput);
+		isEditMode.value = true;
+	}
+}, { immediate: true });
 
 const formRef = ref<FormInstance>();
 
@@ -104,6 +99,8 @@ const onValidationFailed = (errorInfo: any) => {
 };
 
 const onClose = () => {
+	draftSource.value = null;
+
 	emits("onClosed");
 };
 
@@ -126,7 +123,7 @@ const submitForm = async () => {
 
 function getSourceObject(form: FormState): Source | null {
 	try {
-		let source = sourceInput;
+		let source = draftSource.value;
 
 		if (source == null) {
 			source = new Source();

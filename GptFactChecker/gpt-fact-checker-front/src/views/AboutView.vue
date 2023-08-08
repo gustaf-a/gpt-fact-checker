@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HeroBanner from "@/components/Header/HeroBannerMini.vue";
 import Container from "@/components/Container.vue";
+import ProcessBanner from "@/components/Content/HomePage/ProcessOverViewBanner.vue";
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import Container from "@/components/Container.vue";
 				</p>
 			</div>
 		</Container>
+		<ProcessBanner />
 	</div>
 </template>
 

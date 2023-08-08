@@ -49,7 +49,7 @@ export const useSourceExtractionsStore = defineStore(
 				}
 
 				if (backendResponse.data) {
-					sourceExctracted = backendResponse.data.CollectedSource;
+					sourceExctracted = backendResponse.data.collectedSource;
 				}
 
 				return sourceExctracted;

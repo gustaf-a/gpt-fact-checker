@@ -12,13 +12,11 @@ import { NotificationError, NotificationSuccess } from "@/utils/notifications";
 
 const sourcesStore = useSourcesStore();
 const sourceExtractionsStore = useSourceExtractionsStore();
-const { errorMessage: sourcesErrorMessage } = storeToRefs(sourcesStore);
+const { draftSource, errorMessage: sourcesErrorMessage } = storeToRefs(sourcesStore);
 const { errorMessages: sourceExtractionErrorMessages, loadingSourceMetaData } =
 	storeToRefs(sourceExtractionsStore);
 
 const errorMessages = ref<string[]>([]);
-
-const sourceInput = ref<Source | null>(null);
 
 const createSource = async (source: Source) => {
 	if (!source) {
@@ -112,7 +110,7 @@ const submitModal = async () => {
 
 	if (errorMessages.value.length > 0) return;
 
-	sourceInput.value = sourceWithMetaData || null;
+	draftSource.value = sourceWithMetaData || null;
 
 	showDrawer();
 	visibleModal.value = false;
@@ -137,7 +135,7 @@ const onClose = () => {
 		@click="showModal"
 	>
 		<template #icon><PlusOutlined /></template>
-		Add Source From URL
+		Add Source
 	</a-button>
 
 	<a-modal
@@ -155,7 +153,7 @@ const onClose = () => {
 				@finish="submitModal"
 				@finishFailed="onValidationFailed"
 			>
-				<h3 class="modal-title">Create Source from URL</h3>
+				<h3 class="modal-title">Create Source</h3>
 
 				<div class="spinner-container" v-if="loadingSourceMetaData">
 					<p class="spinner-text">Loading source data</p>
@@ -198,7 +196,6 @@ const onClose = () => {
 		@close="onClose"
 	>
 		<SourceForm
-			:source-input="sourceInput"
 			@on-closed="onClose"
 			@on-submitted="createSource"
 		/>

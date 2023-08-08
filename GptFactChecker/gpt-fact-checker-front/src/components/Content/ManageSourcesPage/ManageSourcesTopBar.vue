@@ -31,7 +31,7 @@ watch(searchText, () => {
 			class="new-source-container"
 			v-if="userHasRole(Roles.ADDSOURCES)"
 		>
-			<AddNewSourceButton/>
+			<!-- <AddNewSourceButton/> -->
 			<AddNewSourceFromUrlButton/>
 		</div>
 	</div>

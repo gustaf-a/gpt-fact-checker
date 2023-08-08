@@ -38,6 +38,16 @@ const factCheckUncheckedClaims = async () => {
 	await factCheckClaims(claimIds);
 };
 
+const factCheckFirstUncheckedClaims = async () => {
+	if (!claimsWithoutFactChecks.value || claimsWithoutFactChecks.value.length == 0) return;
+
+	var claimIds = claimsWithoutFactChecks.value.filter(claim => claim.id !== undefined).map(claim => claim.id as string);
+
+	var firstFive = claimIds.slice(0, 5); //this will take the first five elements of the array if possible
+
+	await factCheckClaims(firstFive);
+};
+
 const factCheckClaims = async (claimIdsToCheck: string[]) => {
 	if (!claimIdsToCheck || claimIdsToCheck.length == 0) return;
 
@@ -82,14 +92,22 @@ const factCheckClaims = async (claimIdsToCheck: string[]) => {
 			:disabled="loading"
 			:loading="loading"
 			@click="factCheckUncheckedClaims"
-			>Fact Check Unchecked</a-button
+			>Check Unchecked</a-button
+		>
+		<a-button 
+			class="fact-check-button"
+			type="primary"
+			:disabled="loading"
+			:loading="loading"
+			@click="factCheckFirstUncheckedClaims"
+			>Check 5 Unchecked</a-button
 		>
 		<a-button
 			type="primary"
 			:disabled="loading"
 			:loading="loading"
 			@click="factCheckAllClaims"
-			>Fact Check All</a-button
+			>Check All</a-button
 		>
 	</div>
 </template>
@@ -103,7 +121,7 @@ const factCheckClaims = async (claimIdsToCheck: string[]) => {
 }
 
 .fact-check-button{
-	margin: 0 2vw;
+	margin: 0 0.5vw;
 }
 
 .error-message-text {
