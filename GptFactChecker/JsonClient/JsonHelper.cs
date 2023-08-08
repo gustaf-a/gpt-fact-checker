@@ -51,4 +51,16 @@ public static class JsonHelper
     {
         return JsonConvert.DeserializeObject<T>(jsonString);
     }
+
+    public static T TryDeserialize<T>(string promptFunctionJson)
+    {
+        try
+        {
+            return Deserialize<T>(promptFunctionJson);
+        }
+        catch (Exception)
+        {
+            return default;
+        }
+    }
 }
