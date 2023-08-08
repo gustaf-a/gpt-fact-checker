@@ -116,6 +116,30 @@ namespace RepositoryJson
             return existingItems;
         }
 
+        public async Task<bool> Update(T item)
+        {
+            //Remove old item
+            var existingItems = await GetExistingItems();
+
+            var existingItem = existingItems.FirstOrDefault(i => i.Id.Equals(item.Id));
+
+            if (existingItem is null)
+                return false;
+
+            existingItems.Remove(existingItem);
+
+            // Add updated item
+            if (existingItems.Any(i => i.Id.Equals(existingItem.Id)))
+                return false;
+
+            existingItems.Add(item);
+
+            // Save
+            await JsonHelper.SaveToJson(existingItems, JsonFilePath);
+
+            return true;
+        }
+
         private async Task<List<T>> GetExistingItems()
         {
             var existingItems = await JsonHelper.GetObjectFromJson<List<T>>(JsonFilePath);

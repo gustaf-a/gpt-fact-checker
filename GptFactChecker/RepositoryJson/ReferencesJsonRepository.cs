@@ -7,7 +7,7 @@ namespace RepositoryJson;
 
 public class ReferencesRepositoryJson : RepositoryBaseJson<Reference>, IReferenceRepository
 {
-    private const string FileName = "Topics.json";
+    private const string FileName = "References.json";
 
     public ReferencesRepositoryJson(IOptions<RepositoryJsonOptions> options)
         : base(options, FileName) { }
