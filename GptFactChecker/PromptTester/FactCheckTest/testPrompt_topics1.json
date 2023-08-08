@@ -1,0 +1,34 @@
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Act as an expert fact checker specialized in climate change, environmental issues and sustainability. Use the references provided to fact check the presented claim. When a reference is used the ID should be written like this in the explanation: (ref:123)\r\n<references>\r\n<twUdcxrH>The counterargument discredits the view that climate change won't be too severe. It argues that while CO2 is indeed a nutrient for plants, it is just one of many requirements for plant health. Climate change disrupts agriculture through more intense droughts, floods, and soil degradation, implying that any benefit from additional CO2 is outweighed by the detrimental impacts of a changing climate.</twUdcxrH>\r\n<OdCU3WvJ>More Carbon Dioxide in the atmosphere is not necessarily good for plants.</OdCU3WvJ>\r\n</references>\r\n"
+    },
+    {
+      "role": "user",
+      "content": "####More CO2 is good because it helps plants grow better.####"
+    }
+  ],
+  "functions": [
+    {
+      "name": "store_fact_check",
+      "description": "Stores a fact checked claim",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "enum": [ "True", "False", "Misleading", "Exaggerated", "Understated", "Unsupported", "Out of Context", "Fact Check Failed" ]
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Short text explaining why the label is correct with references used like this (ref:123)"
+          }
+        },
+        "required": [ "label", "explanation" ]
+      }
+    }
+  ],
+  "function_call": { "name": "store_fact_check" }
+}

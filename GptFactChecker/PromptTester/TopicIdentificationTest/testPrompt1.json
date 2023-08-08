@@ -1,0 +1,43 @@
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Act as an expert fact checker specialized in climate change, environmental issues and sustainability. Use the references below to fact check the presented claim.\r\n<references>\r\n<458097>Claiming 'the climate's changed before' is not a useful statement, as it lacks specifics about how it changed and the impacts. Rapid climate changes, like those caused by human carbon emissions, can lead to severe and potentially disastrous consequences for ecosystems, including humans. Hence, such dismissive statements either stem from ignorance or intentional deception.</458097>\r\n<419924>Our Sun's stability and the relatively minimal fluctuations in solar irradiance demonstrate that it cannot be the primary cause of global warming. Data shows that while solar radiation has slightly declined since the 1970s, global temperatures have continued to rise, indicating other factors, like greenhouse gases, are at play. Claims attributing global warming to the Sun often involve 'cherry-picking' data and ignoring conflicting evidence.</419924>\r\n<654985>Scientific consensus, when the majority of experts agree on a principle, is the product of thorough research and examination. With regards to climate change, there's a strong consensus (greater than 97%) that carbon dioxide traps heat and its increase warms the planet. Public misunderstanding of this consensus is often due to the spread of misinformation.</654985>\r\n</references>\r\n"
+    },
+    {
+      "role": "user",
+      "content": "Claim ID: 50 ####The sun is getting warmer and causing climate change.####"
+    }
+  ],
+  "functions": [
+    {
+      "name": "store_fact_check",
+      "description": "Stores a fact checked claim",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the fact checked claim"
+          },
+          "label": {
+            "type": "string",
+            "enum": [ "correct", "false", "misleading", "exaggerated", "unsupported" ]
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Short text explaining why the label is proper"
+          },
+          "reference_ids": {
+            "type": "array",
+            "description": "The ids of the references used for the explanation",
+            "items": { "type": "string" }
+          }
+        },
+        "required": [ "id", "label", "explanation" ]
+      }
+    }
+  ],
+  "function_call": { "name": "store_fact_check" }
+}

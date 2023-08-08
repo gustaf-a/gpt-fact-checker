@@ -1,4 +1,4 @@
-﻿using GptFactCheckerApi.Repository.JsonRepo;
+﻿using JsonClient;
 using Microsoft.Extensions.Options;
 using Moq;
 using Shared.Configuration;
@@ -27,7 +27,7 @@ internal class Program
         var options = Options.Create(openAiOptions);
 
         var httpClientFactoryMock = new Mock<IHttpClientFactory>();
-        httpClientFactoryMock.Setup(h => h.CreateClient()).Returns(new HttpClient());
+        httpClientFactoryMock.Setup(h => h.CreateClient(It.IsAny<string>())).Returns(new HttpClient());
 
         var gptClient = new GptClient(httpClientFactoryMock.Object, options);
 
@@ -74,7 +74,7 @@ internal class Program
 
         var promptToTest = new Prompt
         {
-            Model = openAiOptions.ApiModel,
+            Model = openAiOptions.ApiModelBase,
             Messages = messages,
             Functions = functions,
             FunctionCall = functionCall

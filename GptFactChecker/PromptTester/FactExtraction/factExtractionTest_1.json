@@ -1,0 +1,38 @@
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Act as an expert fact checker specialized in climate change, environmental issues and sustainability. Use the references provided to fact check the presented claim. When a reference is used the ID should be written like this in the explanation: (ref:123)\r\n<references>\r\n<242194>The idea that changes in cosmic ray flux, which leads to variation in cloud formation, could drive global warming is not supported by substantial scientific evidence. The 'Cosmics Leaving Outdoor Droplets' (CLOUD) experiment showed that the effect of changes in cosmic ray flux intensity on cloud formation is relatively insignificant compared to other natural factors like volcanic eruptions.</242194>\r\n<665386>By breathing out, we are simply returning to the air the same CO2 that was there to begin with.</665386>\r\n<548321>Even the CERN scientist who ran the experiment admits that it 'says nothing about a possible cosmic-ray effect on clouds and climate.'</548321>\r\n</references>\r\n"
+    },
+    {
+      "role": "user",
+      "content": "Claim ID: 3735229 ####million-year variations in cosmic rays (CR) modulating cloud cover are the dominant cause of million-year climate variations####"
+    }
+  ],
+  "functions": [
+    {
+      "name": "store_fact_check",
+      "description": "Stores a fact checked claim",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the fact checked claim"
+          },
+          "label": {
+            "type": "string",
+            "enum": [ "True", "False", "Misleading", "Exaggerated", "Understated", "Unsupported", "Out of Context", "Fact Check Failed" ]
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Short text explaining why the label is correct with references used like this (ref:123)"
+          }
+        },
+        "required": [ "id", "label", "explanation" ]
+      }
+    }
+  ],
+  "function_call": { "name": "store_fact_check" }
+}

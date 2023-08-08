@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-7YuyRTy6bF7FfFG4buFqzplwVzG3q",
+  "object": "chat.completion",
+  "created": 1688556515,
+  "model": "gpt-3.5-turbo-0613",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "function_call": {
+          "name": "store_fact_check",
+          "arguments": "{\n  \"id\": \"50\",\n  \"label\": \"misleading\",\n  \"explanation\": \"The claim that high LDL (low-density lipoprotein) doesn't cause heart disease is misleading. Multiple studies have shown a strong association between high levels of LDL cholesterol and an increased risk of heart disease. Elevated LDL cholesterol contributes to the development of atherosclerosis, a condition characterized by the buildup of plaque in the arteries, which can lead to heart attacks and strokes. Lowering LDL cholesterol levels through lifestyle changes (such as a healthy diet and exercise) or medication has been shown to reduce the risk of cardiovascular events. References: [1] [2] [3]\"\n}"
+        }
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 141,
+    "completion_tokens": 138,
+    "total_tokens": 279
+  }
+}
