@@ -4,6 +4,7 @@ public class ReferenceFactCheckingOptions
 {
     public const string ReferenceFactChecking = "ReferenceFactChecking";
 
+    public string Version { get; set; } = "1.0";
     public string Delimiter { get; set; } = "####";
     public string ReferencesTagText { get; set; } = "references";
 

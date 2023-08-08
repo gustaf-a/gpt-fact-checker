@@ -3,6 +3,7 @@
 public class ReferenceMatchingOptions
 {
     public const string ReferenceMatching = "ReferenceMatching";
+    public string Version { get; set; } = "1.0";
 
     public int MaxRefCount { get; set; } = 80;
     public int MaxFactsCount { get; set; } = 20;

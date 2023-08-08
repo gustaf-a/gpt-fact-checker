@@ -12,4 +12,6 @@ public class FactCheckerOptions
     public bool SaveFactChecksDirectlyAfterCreation { get; set; } = false;
 
     public bool ReturnTestData { get; set; } = false;
+
+    public bool AllowGeneralFactCheck { get; set; } = false;
 }
