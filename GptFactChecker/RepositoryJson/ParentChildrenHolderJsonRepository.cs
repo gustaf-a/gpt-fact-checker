@@ -1,5 +1,6 @@
 ﻿using GptFactCheckerApi.Model;
 using JsonClient;
+using Shared.Extensions;
 
 namespace RepositoryJson;
 
@@ -15,6 +16,8 @@ public class ParentChildrenHolderRepositoryJson : IParentChildrenHolderRepositor
     public async Task<bool> AddChildrenForParent(string parentId, List<string> childIds)
     {
         var parentChildrenHolders = await JsonHelper.GetObjectFromJson<List<ParentChildrenHolder>>(_jsonFilePath);
+        if (parentChildrenHolders is null)
+            parentChildrenHolders = new();
 
         var parentChildrenHolder = GetParentChildrenHolder(parentId, parentChildrenHolders);
 
