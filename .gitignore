@@ -402,3 +402,4 @@ GptFactChecker/gpt-fact-checker-front/.env
 /GptFactChecker/PromptTester/apikey.json
 /GptFactChecker/Prompting
 GptFactChecker/RepositoryJson/Data
+/Untracked
