@@ -20,12 +20,40 @@ public class ReferenceService : IReferenceService
         if (!await _referenceRepository.Create(reference))
             return false;
 
+        await _topicReferencesRepository.AddReferencesForTopic(topicId, new() { reference });
+
+        return true;
+    }
+
+    public async Task<bool> CreateReferences(List<Reference> references, string topicId)
+    {
+        if (!await _referenceRepository.Create(references))
+            return false;
+
+        await _topicReferencesRepository.AddReferencesForTopic(topicId, references);
+
         return true;
     }
 
     public async Task<bool> Delete(string id)
     {
         return await _referenceRepository.Delete(id);
+    }
+
+    public async Task<List<Reference>> GetAll()
+    {
+        var references = await _referenceRepository.GetAll();
+        if (references.IsNullOrEmpty())
+            return new();
+
+        return references;
+    }
+
+    public async Task<Reference> GetById(string id)
+    {
+        var refererence = await _referenceRepository.Get(id);
+
+        return refererence;
     }
 
     public async Task<List<Reference>> GetReferencesByTopic(string topicId)

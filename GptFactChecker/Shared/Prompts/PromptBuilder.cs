@@ -19,7 +19,6 @@ public class PromptBuilder : IPromptBuilder
         _openAiOptions = options.Value;
     }
 
-
     public void Reset()
     {
         _model = string.Empty;
@@ -34,7 +33,7 @@ public class PromptBuilder : IPromptBuilder
 
         var prompt = new Prompt
         {
-            Model = GetModel(),
+            Model = GetModelInternal(),
             Messages = _promptMessages,
             Functions = _promptFunctions,
             FunctionCall = GetFunctionCall()
@@ -43,15 +42,20 @@ public class PromptBuilder : IPromptBuilder
         return prompt;
     }
 
-    private string GetModel()
+    private string GetModelInternal()
     {
         if (!string.IsNullOrWhiteSpace(_model))
             return _model;
 
-        if (string.IsNullOrWhiteSpace(_openAiOptions.ApiModel))
-            throw new ArgumentNullException(nameof(_openAiOptions.ApiModel));
+        if (string.IsNullOrWhiteSpace(_openAiOptions.ApiModelBase))
+            throw new ArgumentNullException(nameof(_openAiOptions.ApiModelBase));
 
-        return _openAiOptions.ApiModel;
+        return _openAiOptions.ApiModelBase;
+    }
+
+    public string GetModel()
+    {
+        return GetModelInternal();
     }
 
     public void AddModel(string model)
@@ -76,11 +80,21 @@ public class PromptBuilder : IPromptBuilder
         if(string.IsNullOrWhiteSpace(promptFunctionJson))
             throw new ArgumentNullException(nameof(promptFunctionJson));
 
-        var functionCall = JsonHelper.Deserialize<PromptFunction>(promptFunctionJson);
-        if (functionCall is null)
-            throw new ArgumentNullException(nameof(functionCall), "Failed to deserialize input into PromptFunction.");
-        
-        AddFunctionCall(functionCall);
+        var functionCall = JsonHelper.TryDeserialize<PromptFunction>(promptFunctionJson);
+        if (functionCall != null)
+        {
+            AddFunctionCall(functionCall);
+            return;
+        }
+
+        var functionCallList = JsonHelper.TryDeserialize<List<PromptFunction>>(promptFunctionJson);
+        if (functionCallList.IsNullOrEmpty())
+            throw new ArgumentException(nameof(promptFunctionJson), "Failed to deserialize input into PromptFunction or List<PromptFunction>");
+
+        foreach (var call in functionCallList)
+            AddFunctionCall(call);
+
+        return;
     }
 
     public void AddFunctionCall(PromptFunction promptFunction)

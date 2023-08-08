@@ -9,7 +9,7 @@ public abstract class PromptWithReferencesBase : PromptBase
 
     protected const string ReferenceTagText = "references";
 
-    public async Task<Prompt> GetPrompt(List<Fact> facts, List<ArgumentData> arguments, string promptFunctionsFilePath)
+    public Prompt GetPrompt(List<Fact> facts, List<ArgumentData> arguments, List<PromptFunction> promptFunctions)
     {
         if (facts.IsNullOrEmpty())
             throw new ArgumentNullException(nameof(facts));
@@ -17,7 +17,7 @@ public abstract class PromptWithReferencesBase : PromptBase
         if (arguments.IsNullOrEmpty())
             throw new ArgumentNullException(nameof(arguments));
 
-        return await base.GetPrompt(BuildSystemPrompt(arguments), BuildUserPrompt(facts), promptFunctionsFilePath);
+        return GetPrompt(BuildSystemPrompt(arguments), BuildUserPrompt(facts), promptFunctions);
     }
 
     protected abstract string BuildSystemPrompt(List<ArgumentData> arguments);

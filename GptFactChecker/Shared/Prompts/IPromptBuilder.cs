@@ -7,6 +7,7 @@ public interface IPromptBuilder
     public Prompt GetPrompt();
 
     public void AddModel(string model);
+    public string GetModel();
 
     public void AddSystemMessage(string systemPrompt);
     public void AddUserMessage(string userPrompt);

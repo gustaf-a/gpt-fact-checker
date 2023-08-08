@@ -13,7 +13,7 @@ public class PromptBuilderBaseTests
     public PromptBuilderBaseTests()
     {
         _openAiOptionsMock = new Mock<IOptions<OpenAiOptions>>();
-        _openAiOptionsMock.Setup(o => o.Value).Returns(new OpenAiOptions { ApiModel = "testModel" });
+        _openAiOptionsMock.Setup(o => o.Value).Returns(new OpenAiOptions { ApiModelBase = "testModel" });
 
     }
 
@@ -33,7 +33,6 @@ public class PromptBuilderBaseTests
     public void AddModel_ValidInputTest()
     {
         // Arrange
-
         var model = "test";
         var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
@@ -52,7 +51,6 @@ public class PromptBuilderBaseTests
     public void AddModel_NullOrWhiteSpaceInputTest()
     {
         // Arrange
-
         var model = "";
         var promptBuilder = new PromptBuilder(_openAiOptionsMock.Object);
 
