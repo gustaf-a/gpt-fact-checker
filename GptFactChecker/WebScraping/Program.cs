@@ -1,4 +1,4 @@
-﻿using GptFactCheckerApi.Repository.JsonRepo;
+﻿using JsonClient;
 using Shared.Models;
 using Shared.Utils;
 using WebScraping.SkepticalScience;
