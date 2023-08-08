@@ -4,5 +4,5 @@ namespace FactCheckingService.Strategies.GeneralStrategy.FactCheckPrompt;
 
 public interface IGeneralFactCheckPrompt
 {
-    public Task<Prompt> GetPrompt(Fact fact);
+    public Prompt GetPrompt(Fact fact);
 }

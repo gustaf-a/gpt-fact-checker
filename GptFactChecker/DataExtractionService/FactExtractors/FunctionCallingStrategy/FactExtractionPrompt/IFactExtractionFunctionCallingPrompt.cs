@@ -4,5 +4,5 @@ namespace FactExtractionService.FactExtractors.FunctionCallingStrategy.FactExtra
 
 public interface IFactExtractionFunctionCallingPrompt
 {
-    public Task<Prompt> GetPrompt(string rawText);
+    public Prompt GetPrompt(string rawText, string contextText, string modelToUse);
 }

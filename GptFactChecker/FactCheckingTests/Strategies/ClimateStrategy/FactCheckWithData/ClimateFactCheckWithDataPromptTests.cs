@@ -34,7 +34,7 @@ public class ClimateFactCheckWithDataPromptTests
 """;
 
     [Fact]
-    public async Task GetPrompt_should_return_correct_prompt()
+    public void GetPrompt_should_return_correct_prompt()
     {
         // Arrange
         var climateFactCheckDataPrompt = new ClimateFactCheckWithDataPrompt();
@@ -50,7 +50,7 @@ public class ClimateFactCheckWithDataPromptTests
 
         // Act
         
-        var result = await climateFactCheckDataPrompt.GetPrompt(fact, relevantArguments);
+        var result = climateFactCheckDataPrompt.GetPrompt(fact, relevantArguments);
 
         // Assert
         Assert.NotNull(result);

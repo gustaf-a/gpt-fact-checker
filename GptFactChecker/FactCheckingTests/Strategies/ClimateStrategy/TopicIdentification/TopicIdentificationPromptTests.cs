@@ -7,7 +7,7 @@ namespace FactCheckingServiceTests.FactCheckers.ClimateStrategy.TopicIdentificat
 public class TopicIdentificationPromptTests
 {
     [Fact]
-    public async Task GetPrompt_throws_if_invalid_factClaims()
+    public void GetPrompt_throws_if_invalid_factClaims()
     {
         // Arrange
         var topicIdentificationPrompt = new TopicIdentificationPrompt();
@@ -20,11 +20,11 @@ public class TopicIdentificationPromptTests
 
         // Act
         // Assert
-        await Assert.ThrowsAsync<ArgumentNullException>(() => topicIdentificationPrompt.GetPrompt(factClaims, argumentData));
+        Assert.Throws<ArgumentNullException>(() => topicIdentificationPrompt.GetPrompt(factClaims, argumentData));
     }
 
     [Fact]
-    public async Task GetPrompt_throws_if_invalid_argumentData()
+    public void GetPrompt_throws_if_invalid_argumentData()
     {
         // Arrange
         var topicIdentificationPrompt = new TopicIdentificationPrompt();
@@ -38,11 +38,11 @@ public class TopicIdentificationPromptTests
 
         // Act
         // Assert
-        await Assert.ThrowsAsync<ArgumentNullException>(() => topicIdentificationPrompt.GetPrompt(factClaims, argumentData));
+        Assert.Throws<ArgumentNullException>(() => topicIdentificationPrompt.GetPrompt(factClaims, argumentData));
     }
 
     [Fact]
-    public async Task GetPrompt_returns_prompt_with_references_and_facts()
+    public void GetPrompt_returns_prompt_with_references_and_facts()
     {
         // Arrange
         var topicIdentificationPrompt = new TopicIdentificationPrompt();
@@ -80,7 +80,7 @@ public class TopicIdentificationPromptTests
         };
 
         // Act
-        var result = await topicIdentificationPrompt.GetPrompt(factClaims, argumentData);
+        var result = topicIdentificationPrompt.GetPrompt(factClaims, argumentData);
 
         // Assert
         Assert.NotNull(result);

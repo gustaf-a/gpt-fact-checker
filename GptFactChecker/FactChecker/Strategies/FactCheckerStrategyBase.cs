@@ -1,5 +1,4 @@
-﻿using FactCheckingService.Strategies;
-using Shared.Models;
+﻿using Shared.Models;
 
 namespace FactCheckingService.Strategies;
 

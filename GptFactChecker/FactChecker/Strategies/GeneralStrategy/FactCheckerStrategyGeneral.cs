@@ -2,21 +2,26 @@
 using FactCheckingService.Strategies.ClimateStrategy;
 using FactCheckingService.Strategies.GeneralStrategy.FactCheckPrompt;
 using FactCheckingService.Models;
-using FactCheckingService.Strategies;
 using Shared.Extensions;
 using Shared.GptClient;
 using Shared.Models;
+using Microsoft.Extensions.Options;
+using Shared.Configuration;
 
 namespace FactCheckingService.Strategies.GeneralStrategy;
 
 public class FactCheckerStrategyGeneral : FactCheckerStrategyBase
 {
+    private readonly FactCheckerOptions _factCheckerOptions;
+
     private readonly IGeneralFactCheckPrompt _generalFactCheckPrompt;
     private readonly IGptClient _gptClient;
     private readonly IGptResponseParser _gptResponseParser;
 
-    public FactCheckerStrategyGeneral(IGeneralFactCheckPrompt generalFactCheckPrompt, IGptClient gptClient, IGptResponseParser gptResponseParser)
+    public FactCheckerStrategyGeneral(IOptions<FactCheckerOptions> options,IGeneralFactCheckPrompt generalFactCheckPrompt, IGptClient gptClient, IGptResponseParser gptResponseParser)
     {
+        _factCheckerOptions = options.Value;
+
         _generalFactCheckPrompt = generalFactCheckPrompt;
         _gptClient = gptClient;
         _gptResponseParser = gptResponseParser;
@@ -41,9 +46,12 @@ public class FactCheckerStrategyGeneral : FactCheckerStrategyBase
         if (facts.IsNullOrEmpty())
             return results;
 
+        if (!_factCheckerOptions.AllowGeneralFactCheck)
+            return results;
+
         foreach (Fact fact in facts)
         {
-            var factCheckPrompt = await _generalFactCheckPrompt.GetPrompt(fact);
+            var factCheckPrompt = _generalFactCheckPrompt.GetPrompt(fact);
             if (factCheckPrompt is null)
             {
                 Console.WriteLine($"Error: Failed to fact check claim: {fact.Id}. Failed to create prompt in {nameof(FactCheckerStrategyGeneral)}.");

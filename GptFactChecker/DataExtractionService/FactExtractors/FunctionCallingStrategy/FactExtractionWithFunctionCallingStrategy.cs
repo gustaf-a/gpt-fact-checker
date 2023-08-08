@@ -13,6 +13,7 @@ namespace FactExtractionService.FactExtractors.FunctionCallingStrategy;
 public class FactExtractionWithFunctionCallingStrategy : IFactExtractionStrategy
 {
     private readonly FactExtractionOptions _factExtractionOptions;
+    private readonly OpenAiOptions _openAiOptions;
 
     private readonly IFactExtractionFunctionCallingPrompt _factExtractionFunctionCallingPrompt;
     private readonly IGptClient _gptClient;
@@ -20,9 +21,10 @@ public class FactExtractionWithFunctionCallingStrategy : IFactExtractionStrategy
 
     private readonly ISourceSplitter _sourceSplitter;
 
-    public FactExtractionWithFunctionCallingStrategy(IOptions<FactExtractionOptions> options, IFactExtractionFunctionCallingPrompt factExtractionFunctionCallingPrompt, IGptClient gptClient, IGptResponseParser gptResponseParser, ISourceSplitter sourceSplitter)
+    public FactExtractionWithFunctionCallingStrategy(IOptions<FactExtractionOptions> factExtractionOptions, IOptions<OpenAiOptions> openAiOptions, IFactExtractionFunctionCallingPrompt factExtractionFunctionCallingPrompt, IGptClient gptClient, IGptResponseParser gptResponseParser, ISourceSplitter sourceSplitter)
     {
-        _factExtractionOptions = options.Value;
+        _factExtractionOptions = factExtractionOptions.Value;
+        _openAiOptions = openAiOptions.Value;
 
         _factExtractionFunctionCallingPrompt = factExtractionFunctionCallingPrompt;
         _gptClient = gptClient;
@@ -35,7 +37,7 @@ public class FactExtractionWithFunctionCallingStrategy : IFactExtractionStrategy
     public async Task<List<ExtractedClaims>> ExtractFacts(Source source)
     {
         if (source is null)
-            throw new ArgumentNullException("source");
+            throw new ArgumentNullException(nameof(source));
 
         if (IsInvalid(source))
         {
@@ -43,13 +45,17 @@ public class FactExtractionWithFunctionCallingStrategy : IFactExtractionStrategy
             return null;
         }
 
+        var contextText = GetSourceContext(source);
+
         var splitRawTexts = GetRawSourceTexts(source);
 
         var results = new List<ExtractedClaims>();
 
+        var modelToUse = _factExtractionOptions.UseExpensiveServices ? _openAiOptions.ApiModelExpensive : _openAiOptions.ApiModelBase;
+
         foreach (var rawText in splitRawTexts)
         {
-            var factExtractionPrompt = await _factExtractionFunctionCallingPrompt.GetPrompt(rawText);
+            var factExtractionPrompt = _factExtractionFunctionCallingPrompt.GetPrompt(rawText, contextText, modelToUse);
             if (factExtractionPrompt is null)
             {
                 Console.WriteLine($"Fact extraction failed for {source.Id}: Failed to create prompt.");
@@ -79,6 +85,16 @@ public class FactExtractionWithFunctionCallingStrategy : IFactExtractionStrategy
         var rawTextSource = source.RawText;
 
         return _sourceSplitter.SplitSourceText(rawTextSource, maxCharacters);
+    }
+
+    private string GetSourceContext(Source source)
+    {
+        var context = source.Description;
+
+        if (context.Length < _factExtractionOptions.ContextTextSizeLimit)
+            return context;
+
+        return context[.._factExtractionOptions.ContextTextSizeLimit];
     }
 
     private static bool IsInvalid(Source source)

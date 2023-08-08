@@ -77,4 +77,9 @@ public class ReferenceFactCheckerPromptDirector : IReferenceFactCheckerPromptDir
 
         return sb.ToString();
     }
+
+    public string GetVersionInfo()
+    {
+        return $"{_referenceFactCheckingOptions.Version} using {_promptBuilder.GetModel()}";
+    }
 }

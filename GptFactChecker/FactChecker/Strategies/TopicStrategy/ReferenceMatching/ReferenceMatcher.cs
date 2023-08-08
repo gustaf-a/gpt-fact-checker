@@ -1,4 +1,5 @@
-﻿using FactCheckingService.Models;
+﻿using FactCheckingService.Extensions;
+using FactCheckingService.Models;
 using Microsoft.Extensions.Options;
 using Shared.Configuration;
 using Shared.Extensions;
@@ -22,6 +23,11 @@ public class ReferenceMatcher : IReferenceMatcher
         _referenceMatcherPromptDirector = referenceMatcherPromptDirector;
     }
 
+    public string GetVersionInfo()
+    {
+        return $"{nameof(ReferenceMatcher)}: {_referenceMatcherPromptDirector.GetVersionInfo()}";
+    }
+
     public async Task<List<ClaimWithReferences>> MatchFactsWithReferences(List<Fact> facts, List<Reference> references)
     {
         var factsParts = facts.SplitByMaxCount(_referenceMatchingOptions.MaxFactsCount);
@@ -37,7 +43,7 @@ public class ReferenceMatcher : IReferenceMatcher
             Console.WriteLine("Failed to divide references into parts for reference matching.");
             return new();
         }
-        
+
         var claimsWithReferences = new List<ClaimWithReferences>();
 
         foreach (var factsPart in factsParts)
@@ -48,7 +54,7 @@ public class ReferenceMatcher : IReferenceMatcher
                 if (claimsWithPartOfReferences.IsNullOrEmpty())
                     continue;
 
-                claimsWithReferences.AddRange(claimsWithPartOfReferences);
+                claimsWithReferences = claimsWithReferences.Merge(claimsWithPartOfReferences);
             }
         }
 
@@ -69,13 +75,13 @@ public class ReferenceMatcher : IReferenceMatcher
 
             var referenceMatchingResponse = _gptResponseParser.ParseGptResponseFunctionCall<ReferenceMatchingResponse>(gptResponse, nameof(ReferenceMatcher));
             if (referenceMatchingResponse is null)
-                return new();
-
-            if (referenceMatchingResponse.ClaimsWithReferences.IsNullOrEmpty())
             {
-                Console.WriteLine($"Unable to deserialize claims with references. {nameof(ReferenceMatcher)} failed.");
+                Console.WriteLine($"Unable to deserialize claims with references.");
                 return new();
             }
+
+            if (referenceMatchingResponse.ClaimsWithReferences.IsNullOrEmpty())
+                return new();
 
             return referenceMatchingResponse.ClaimsWithReferences;
         }

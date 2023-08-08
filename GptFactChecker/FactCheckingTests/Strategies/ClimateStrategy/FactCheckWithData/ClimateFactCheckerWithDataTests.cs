@@ -23,7 +23,7 @@ public class ClimateFactCheckerWithDataTests
         gptClientMock.Setup(g => g.GetCompletion(It.IsAny<Prompt>(), It.IsAny<double>())).Returns(Task.FromResult(FactCheckResponse));
 
         var climateFactCheckWithDataPromptMock = new Mock<IClimateFactCheckWithDataPrompt>();
-        climateFactCheckWithDataPromptMock.Setup(c => c.GetPrompt(It.IsAny<Fact>(), It.IsAny<List<ArgumentData>>())).Returns(Task.FromResult(testPrompt));
+        climateFactCheckWithDataPromptMock.Setup(c => c.GetPrompt(It.IsAny<Fact>(), It.IsAny<List<ArgumentData>>())).Returns(testPrompt);
 
         var climateFactChecker = new ClimateFactCheckerWithData(gptClientMock.Object, new GptResponseParser(), climateFactCheckWithDataPromptMock.Object);
 

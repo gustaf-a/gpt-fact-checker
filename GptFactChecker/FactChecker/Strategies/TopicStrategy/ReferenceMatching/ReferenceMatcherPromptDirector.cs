@@ -96,4 +96,9 @@ public class ReferenceMatcherPromptDirector : IReferenceMatcherPromptDirector
 
         return sb.ToString().Trim();
     }
+
+    public string GetVersionInfo()
+    {
+        return $"{_referenceMatchingOptions.Version} using {_promptBuilder.GetModel()}";
+    }
 }

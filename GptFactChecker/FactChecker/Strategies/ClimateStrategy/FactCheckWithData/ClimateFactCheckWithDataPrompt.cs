@@ -1,4 +1,5 @@
-﻿using Shared.Models;
+﻿using JsonClient;
+using Shared.Models;
 using Shared.Prompts;
 using System.Text;
 
@@ -6,11 +7,35 @@ namespace FactCheckingService.Strategies.ClimateStrategy.FactCheckWithData;
 
 public class ClimateFactCheckWithDataPrompt : PromptWithReferencesBase, IClimateFactCheckWithDataPrompt
 {
-    private const string FunctionsFilePath = @"C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\FactCheckers\ClimateStrategy\FactCheckWithData\climateFactCheckWithDataFunctions.json";
-
-    public async Task<Prompt> GetPrompt(Fact fact, List<ArgumentData> relevantArguments)
+    private const string Functions =
+"""
+[
+  {
+    "name": "store_fact_check",
+    "description": "Stores a fact checked claim",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "enum": [ "True", "False", "Misleading", "Exaggerated", "Understated", "Unsupported", "Out of Context", "Fact Check Failed" ]
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Short text explaining why the label is correct with references used like this (ref:123)"
+        }
+      },
+      "required": [ "label", "explanation" ]
+    }
+  }
+]
+""";
+        
+    public Prompt GetPrompt(Fact fact, List<ArgumentData> relevantArguments)
     {
-        Prompt factCheckPrompt = await base.GetPrompt(new List<Fact>{ fact }, relevantArguments, FunctionsFilePath);
+        var functions = JsonHelper.Deserialize<List<PromptFunction>>(Functions);
+
+        Prompt factCheckPrompt = base.GetPrompt(new List<Fact>{ fact }, relevantArguments, functions);
 
         return factCheckPrompt;
     }

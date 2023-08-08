@@ -42,7 +42,7 @@ public class ClimateFactCheckerWithData : IClimateFactCheckerWithData
                 continue;
             }
 
-            var factCheckPrompt = await _climateFactCheckWithDataPrompt.GetPrompt(claim, relevantArguments);
+            var factCheckPrompt = _climateFactCheckWithDataPrompt.GetPrompt(claim, relevantArguments);
             if (factCheckPrompt is null)
             {
                 Console.WriteLine($"Error: Failed to fact check claim: {claimWithRefs.ClaimId} using argument references: {string.Join(",", claimWithRefs.ReferenceIds)}");

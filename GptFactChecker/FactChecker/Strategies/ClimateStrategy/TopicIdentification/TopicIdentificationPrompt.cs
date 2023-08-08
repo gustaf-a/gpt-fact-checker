@@ -8,16 +8,52 @@ namespace FactCheckingService.Strategies.ClimateStrategy.TopicIdentification;
 
 public class TopicIdentificationPrompt : PromptWithReferencesBase, ITopicIdentificationPrompt
 {
-    private const string FunctionsFilePath = @"C:\PrivateRepos\gpt-fact-checker\GptFactChecker\FactChecker\Strategies\ClimateStrategy\TopicIdentification\TopicIdentificationFunctions.json";
+    private const string Functions =
+"""
+[
+  {
+    "name": "fact_check_claims",
+    "description": "Fact check claims with or without references",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "claims_with_references": {
+          "type": "array",
+          "description": "The claims with any found relevant references",
+          "items": {
+            "type": "object",
+            "properties": {
+              "claim_id": {
+                "type": "string",
+                "description": "The id of the claim"
+              },
+              "reference_ids": {
+                "type": "array",
+                "description": "The ids of the relevant references if any found",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [ "claims_with_references", "claim_id" ]
+    }
+  }
+]
+""";
     
     private const string SystemPromptWithoutReferences =
         $"""
 Your task is to identify which references are related to different claims and send them for fact checking. Reference IDs with keywords are presented below.
 """;
 
-    public async Task<Prompt> GetPrompt(List<Fact> factClaims, List<ArgumentData> argumentData)
+    public Prompt GetPrompt(List<Fact> factClaims, List<ArgumentData> argumentData)
     {
-        return await GetPrompt(factClaims, argumentData, FunctionsFilePath);
+        var functions = JsonHelper.Deserialize<List<PromptFunction>>(Functions);
+
+        return GetPrompt(factClaims, argumentData, functions);
     }
 
     protected override string BuildSystemPrompt(List<ArgumentData> arguments)

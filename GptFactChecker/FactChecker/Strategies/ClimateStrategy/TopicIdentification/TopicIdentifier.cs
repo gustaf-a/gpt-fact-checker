@@ -46,7 +46,7 @@ public class TopicIdentifier : ITopicIdentifier
 
     private async Task<List<ClaimWithReferences>> GetClaimsWithReferencesInternal(List<Fact> compatibleFacts, List<ArgumentData> argumentDataList)
     {
-        var topicIdentificationPrompt = await _topicIdentificationPrompt.GetPrompt(compatibleFacts, argumentDataList);
+        var topicIdentificationPrompt = _topicIdentificationPrompt.GetPrompt(compatibleFacts, argumentDataList);
 
         var topicIdentificationResponse = await _gptClient.GetCompletion(topicIdentificationPrompt);
 

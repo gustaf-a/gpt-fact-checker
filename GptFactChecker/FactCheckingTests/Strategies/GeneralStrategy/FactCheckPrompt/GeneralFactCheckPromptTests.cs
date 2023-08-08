@@ -22,7 +22,7 @@ public class GeneralFactCheckPromptTests
 
         // Act
 
-        var result = await generalFactCheckPrompt.GetPrompt(fact);
+        var result = generalFactCheckPrompt.GetPrompt(fact);
 
         // Assert
         Assert.NotNull(result);

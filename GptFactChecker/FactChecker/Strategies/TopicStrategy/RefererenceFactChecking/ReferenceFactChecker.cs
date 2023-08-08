@@ -38,6 +38,11 @@ public class ReferenceFactChecker : IReferenceFactChecker
         return factCheckResponse;
     }
 
+    public string GetVersionInfo()
+    {
+        return $"{nameof(ReferenceFactChecker)}: {_referenceFactCheckerPromptDirector.GetVersionInfo()}";
+    }
+
     private async Task<FactCheckResponse> DoFactCheck(Prompt factCheckPrompt)
     {
         try

@@ -32,7 +32,7 @@ public class TopicFactCheckerStrategy : FactCheckerStrategyBase
     private const string VersionNumber = "1.0";
 
     private const string AuthorId = $"TFC-{VersionNumber}";
-    private const string AuthorName = $"Topic Fact Checker {VersionNumber}";
+    private const string TopicFactCheckerVersionInfo = $"Topic Fact Checker {VersionNumber}";
 
     public override async Task<List<FactCheckResult>> ExecuteFactCheck(List<Fact> facts)
     {
@@ -40,8 +40,10 @@ public class TopicFactCheckerStrategy : FactCheckerStrategyBase
         if (_allTopics.IsNullOrEmpty())
             return new();
 
+        _allTopics.Sort();
+
         var factsToFactCheck = new List<Fact>(facts);
-        var factCheckResponses = new List<FactCheckResult>();
+        var factCheckResult = new List<FactCheckResult>();
 
         foreach (var topic in _allTopics)
         {
@@ -51,13 +53,14 @@ public class TopicFactCheckerStrategy : FactCheckerStrategyBase
 
             var factCheckResults = await DoFactCheck(topic, compatibleFacts);
 
-            factsToFactCheck.RemoveCheckedFacts(factCheckResults);
+            factCheckResult.AddRange(factCheckResults);
+            factsToFactCheck = factsToFactCheck.RemoveCheckedFacts(factCheckResults);
 
             if (!factsToFactCheck.Any())
                 break;
         }
 
-        return factCheckResponses;
+        return factCheckResult;
     }
 
     private bool IsCompatible(Topic topic, Fact fact)
@@ -123,7 +126,7 @@ public class TopicFactCheckerStrategy : FactCheckerStrategyBase
             };
 
             factCheckResult.Messages.Add($"Fact checked automatically using: {nameof(ClimateFactCheckerWithReferencesStrategy)}.");
-            factCheckResult.Author = GetAuthor(topic);
+            //factCheckResult.Author = GetAuthor(topic);
 
             factCheckResults.Add(factCheckResult);
         }
@@ -131,12 +134,15 @@ public class TopicFactCheckerStrategy : FactCheckerStrategyBase
         return factCheckResults;
     }
 
-    private static Author GetAuthor(Topic topic)
+    private Author GetAuthor(Topic topic)
     {
+        var referenceMatchingVersionInfo = _referenceMatcher.GetVersionInfo();
+        var referenceFactCheckerVersionInfo = _referenceFactChecker.GetVersionInfo();
+
         return new()
         {
             Id = AuthorId,
-            Name = AuthorName,
+            Name = $"{TopicFactCheckerVersionInfo} - {referenceMatchingVersionInfo} - {referenceFactCheckerVersionInfo}",
             IsSystem = true,
             IsVerified = true,
             Description = CreateAuthorDescription(topic),
