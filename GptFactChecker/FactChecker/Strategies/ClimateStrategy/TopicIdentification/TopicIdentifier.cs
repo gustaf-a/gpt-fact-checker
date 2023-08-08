@@ -4,6 +4,7 @@ using Shared.Extensions;
 using Shared.Configuration;
 using Microsoft.Extensions.Options;
 using FactCheckingService.Models;
+using FactCheckingService.Extensions;
 
 namespace FactCheckingService.Strategies.ClimateStrategy.TopicIdentification;
 
@@ -37,21 +38,7 @@ public class TopicIdentifier : ITopicIdentifier
         {
             var claimsWithPartOfReferences = await GetClaimsWithReferencesInternal(compatibleFacts, argumentDataParts[i]);
 
-            if (claimsWithReferences.IsNullOrEmpty())
-            {
-                claimsWithReferences = claimsWithPartOfReferences;
-                continue;
-            }
-
-            foreach (var claimWithPartOfReference in claimsWithPartOfReferences)
-            {
-                var matchingClaim = claimsWithReferences.FirstOrDefault(c => c.ClaimId == claimWithPartOfReference.ClaimId);
-
-                if (matchingClaim is null)
-                    claimsWithReferences.Add(claimWithPartOfReference);
-                else
-                    matchingClaim.ReferenceIds.AddRange(claimWithPartOfReference.ReferenceIds);
-            }
+            claimsWithReferences = claimsWithReferences.Merge(claimsWithPartOfReferences);
         }
 
         return claimsWithReferences;

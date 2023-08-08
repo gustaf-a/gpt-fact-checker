@@ -4,7 +4,7 @@ namespace FactCheckingService.Extensions;
 
 public static class FactExtensions
 {
-    public static void RemoveCheckedFacts(this List<Fact> facts, List<FactCheckResult> factCheckResults)
+    public static List<Fact> RemoveCheckedFacts(this List<Fact> facts, List<FactCheckResult> factCheckResults)
     {
         var checkedFactIds = factCheckResults
             .Where(r => r.IsFactChecked)
@@ -12,5 +12,7 @@ public static class FactExtensions
             .ToList();
 
         facts.RemoveAll(fact => checkedFactIds.Contains(fact.Id));
+
+        return facts;
     }
 }

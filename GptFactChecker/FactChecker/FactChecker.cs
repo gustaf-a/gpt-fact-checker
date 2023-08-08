@@ -28,10 +28,10 @@ public class FactChecker : IFactChecker
         foreach (var factChecker in _factCheckerStrategies)
         {
             var factCheckResults = await factChecker.ExecuteFactCheck(factsToFactCheck);
-
+            
             factCheckResponses.AddRange(factCheckResults);
 
-            factsToFactCheck.RemoveCheckedFacts(factCheckResults);
+            factsToFactCheck = factsToFactCheck.RemoveCheckedFacts(factCheckResults);
 
             if (!factsToFactCheck.Any())
                 break;
