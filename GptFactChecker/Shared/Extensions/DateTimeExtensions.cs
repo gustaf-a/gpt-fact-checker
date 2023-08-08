@@ -2,11 +2,14 @@
 
 public static class DateTimeExtensions
 {
-    public static string ToIsoString(this DateTimeOffset dateTimeOffset)
+    public static string ToIsoString(this DateTimeOffset dateTimeOffset, bool includeTime = true)
     {
-        if(dateTimeOffset == DateTimeOffset.MinValue)
+        if (dateTimeOffset == DateTimeOffset.MinValue)
             return string.Empty;
 
-        return dateTimeOffset.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fff'Z'");
+        if (includeTime)
+            return dateTimeOffset.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fff'Z'");
+
+        return dateTimeOffset.ToUniversalTime().ToString("yyyy-MM-dd");
     }
 }
