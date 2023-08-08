@@ -401,3 +401,4 @@ GptFactChecker/gpt-fact-checker-front/.env
 /GptFactChecker/GptFactCheckerApi/appsettings.json
 /GptFactChecker/PromptTester/apikey.json
 /GptFactChecker/Prompting
+GptFactChecker/RepositoryJson/Data
