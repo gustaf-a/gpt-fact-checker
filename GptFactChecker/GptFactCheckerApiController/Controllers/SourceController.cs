@@ -59,6 +59,20 @@ public class SourceController : ControllerBase
     }
 
     /// <summary>
+    /// Creates a source
+    /// </summary>
+    [HttpPut]
+    public async Task<IActionResult> UpdateSource([FromBody] SourceDto sourceDto)
+    {
+        var result = await _sourceService.UpdateSource(sourceDto);
+
+        if (!result)
+            return NotFound();
+
+        return Ok();
+    }
+
+    /// <summary>
     /// Deletes a source matching the provided sourceId
     /// </summary>
     [HttpDelete("id")]

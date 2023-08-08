@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\SourceCollectingService.Audio\SourceCollectingService.Audio.csproj" />
+    <ProjectReference Include="..\TranscriptionService\SourceCollectingService.Transcription.csproj" />
+  </ItemGroup>
+
+</Project>

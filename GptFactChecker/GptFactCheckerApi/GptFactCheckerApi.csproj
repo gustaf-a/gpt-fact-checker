@@ -18,6 +18,8 @@
     <ProjectReference Include="..\JsonClient\JsonClient.csproj" />
     <ProjectReference Include="..\RepositoryJson\RepositoryJson.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\SourceCollectingService.Audio\SourceCollectingService.Audio.csproj" />
+    <ProjectReference Include="..\SourceCollectingService\SourceCollectingService.csproj" />
   </ItemGroup>
 
 </Project>

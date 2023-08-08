@@ -15,6 +15,7 @@
     <ProjectReference Include="..\DataExtractionService\FactExtractionService.csproj" />
     <ProjectReference Include="..\FactChecker\FactCheckingService.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\SourceCollectingService\SourceCollectingService.csproj" />
   </ItemGroup>
 
 </Project>

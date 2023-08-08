@@ -21,6 +21,15 @@ using Shared.GptClient;
 using Shared.Prompts;
 using Shared.Repository;
 using Shared.Services;
+using SourceCollectingService;
+using SourceCollectingService.Audio;
+using SourceCollectingService.Audio.Strategies;
+using SourceCollectingService.Audio.Strategies.YouTube;
+using SourceCollectingService.Strategies;
+using SourceCollectingService.Strategies.MediaCollectingStrategy;
+using SourceCollectingService.Transcription;
+using SourceCollectingService.Transcription.Strategies;
+using SourceCollectingService.Transcription.Strategies.OpenAIWhisper;
 
 namespace GptFactCheckerApi;
 
@@ -50,11 +59,12 @@ public class Startup
         services.AddSingleton<IClaimChecksClaimCheckReactionsRepository, ClaimChecksClaimCheckReactionsRepositoryJson>();
         services.AddSingleton<ITopicReferencesRepository, TopicsReferencesJsonRepository>();
 
-        services.AddSingleton<ISourceService, SourceService>();
         services.AddSingleton<IClaimService, ClaimService>();
         services.AddSingleton<IClaimCheckService, ClaimCheckService>();
         services.AddSingleton<IClaimCheckReactionService, ClaimCheckReactionService>();
         services.AddSingleton<IReferenceService, ReferenceService>();
+        services.AddSingleton<ISourceService, SourceService>();
+        services.AddSingleton<ISourceExtractorService, SourceExtractorService>();
         services.AddSingleton<ITopicService, TopicService>();
 
         services.AddSingleton<IPromptBuilder, PromptBuilder>();
@@ -67,6 +77,8 @@ public class Startup
         ConfigureFactCheckingServices(services);
 
         ConfigureFactExtractionServices(services);
+
+        ConfigureSourceCollectingServices(services);
     }
 
     private void ConfigureFactCheckingServices(IServiceCollection services)
@@ -87,7 +99,7 @@ public class Startup
         services.AddSingleton<IReferenceFactChecker, ReferenceFactChecker>();
         services.AddSingleton<IReferenceFactCheckerPromptDirector, ReferenceFactCheckerPromptDirector>();
 
-        services.AddSingleton<IFactCheckerStrategy, ClimateFactCheckerWithReferencesStrategy>();
+        //services.AddSingleton<IFactCheckerStrategy, ClimateFactCheckerWithReferencesStrategy>();
         services.AddSingleton<ITopicIdentifier, TopicIdentifier>();
         services.AddSingleton<ITopicIdentificationPrompt, TopicIdentificationPrompt>();
         services.AddSingleton<IClimateFactCheckerWithData, ClimateFactCheckerWithData>();
@@ -107,5 +119,21 @@ public class Startup
         services.AddSingleton<IFactExtractionFunctionCallingPrompt, FactExtractionFunctionCallingPrompt>();
 
         services.AddSingleton<ISourceSplitter, SourceSplitter>();
+    }
+
+    private void ConfigureSourceCollectingServices(IServiceCollection services)
+    {
+        services.Configure<SourceCollectingOptions>(_configurationManager.GetSection(SourceCollectingOptions.SourceCollecting));
+
+        services.AddSingleton<ISourceCollectorService, SourceCollectorService>();
+        services.AddSingleton<ICollectorStrategyFactory, CollectorStrategyFactory>();
+        services.AddSingleton<IMediaCollectorStrategy, MediaCollectorStrategy>();
+
+        services.AddSingleton<IAudioCollectingService, AudioCollectingService>();
+        services.AddSingleton<IAudioCollectingStrategy, YouTubeAudioCollectingStrategy>();
+
+        services.AddSingleton<ITranscribingService, TranscribingService>();
+        services.AddSingleton<ITranscriptionStrategy, OpenAiWhisperStrategy>();
+
     }
 }

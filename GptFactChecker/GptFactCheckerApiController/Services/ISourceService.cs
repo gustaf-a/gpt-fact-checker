@@ -8,4 +8,5 @@ public interface ISourceService
     public Task<List<SourceDto>> GetSources(bool includeClaims = false);
     public Task<SourceDto> GetSourceById(string sourceId, bool includeClaims = false);
     public Task<bool> DeleteSource(string sourceId);
+    public Task<bool> UpdateSource(SourceDto sourceDto);
 }

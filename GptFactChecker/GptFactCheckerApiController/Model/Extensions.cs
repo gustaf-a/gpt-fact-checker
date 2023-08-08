@@ -1,5 +1,7 @@
-﻿using Shared.Extensions;
+﻿using GptFactCheckerApiController.Model;
+using Shared.Extensions;
 using Shared.Models;
+using SourceCollectingService.Models;
 
 namespace GptFactCheckerApi.Model;
 
@@ -204,6 +206,18 @@ public static class Extensions
             ClaimCheckText = factCheck.FactCheckText,
             DateCreated = factCheck.DateCreated.ToIsoString(),
             References = factCheck.References ?? new()
+        };
+    }    
+    
+    public static SourceCollectingResponseDto ToDto(this SourceCollectingResponse sourceCollectingResponse)
+    {
+        if (sourceCollectingResponse is null)
+            return null;
+
+        return new SourceCollectingResponseDto
+        {
+            SourceId = sourceCollectingResponse.SourceId,
+            CollectedSource = sourceCollectingResponse.CollectedSource.ToDto()
         };
     }
 }

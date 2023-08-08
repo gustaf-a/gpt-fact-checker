@@ -23,19 +23,6 @@ public class SourceService : ISourceService
         return result;
     }
 
-    public async Task<bool> DeleteSource(string sourceId)
-    {
-        var claims = await _sourcesClaimsRepository.GetClaimsForSource(sourceId);
-
-        var deleteClaimsResult = await _claimService.DeleteClaims(claims);
-
-        var deleteSourcesClaimsResult = await _sourcesClaimsRepository.RemoveSource(sourceId);
-
-        var deleteSourceResult = await _sourceRepository.Delete(sourceId);
-
-        return deleteSourceResult && deleteSourcesClaimsResult && deleteClaimsResult;
-    }
-
     public async Task<SourceDto> GetSourceById(string sourceId, bool includeClaims = false)
     {
         var source = await _sourceRepository.Get(sourceId);
@@ -68,4 +55,25 @@ public class SourceService : ISourceService
 
         return sourceDtos;
     }
+
+    public async Task<bool> UpdateSource(SourceDto sourceDto)
+    {
+        var result = await _sourceRepository.Update(sourceDto.ToSource());
+
+        return result;
+    }
+
+    public async Task<bool> DeleteSource(string sourceId)
+    {
+        var claims = await _sourcesClaimsRepository.GetClaimsForSource(sourceId);
+
+        var deleteClaimsResult = await _claimService.DeleteClaims(claims);
+
+        var deleteSourcesClaimsResult = await _sourcesClaimsRepository.RemoveSource(sourceId);
+
+        var deleteSourceResult = await _sourceRepository.Delete(sourceId);
+
+        return deleteSourceResult && deleteSourcesClaimsResult && deleteClaimsResult;
+    }
+
 }
