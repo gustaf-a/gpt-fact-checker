@@ -1,10 +1,12 @@
-﻿namespace Shared.Extensions;
+﻿using Shared.Models;
+
+namespace Shared.Extensions;
 
 public static class ListExtensions
 {
     public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
         => list.ToList().IsNullOrEmpty();
-    
+
     public static bool IsNullOrEmpty<T>(this List<T> list)
         => list is null || !list.Any();
 
@@ -17,7 +19,7 @@ public static class ListExtensions
     /// <returns>A list of lists, representing the split parts of the original list.</returns>
     public static List<List<T>> SplitByMaxCount<T>(this List<T> list, int maxCount)
     {
-        if(list is null)
+        if (list is null)
             throw new ArgumentNullException(nameof(list));
 
         if (list.Count == 0)
@@ -25,7 +27,7 @@ public static class ListExtensions
 
         var splitLists = new List<List<T>>();
 
-        if(maxCount <= 0 || list.Count <= maxCount)
+        if (maxCount <= 0 || list.Count <= maxCount)
         {
             splitLists.Add(list);
             return splitLists;
