@@ -1,8 +1,8 @@
-﻿using Shared.GptClient;
-using Shared.Models;
+﻿using Shared.Models;
 using Shared.Extensions;
 using FactCheckingService.Models;
 using FactCheckingService.Extensions;
+using GptHandler.GptClient;
 
 namespace FactCheckingService.Strategies.ClimateStrategy.FactCheckWithData;
 

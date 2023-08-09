@@ -1,10 +1,10 @@
-﻿using Shared.GptClient;
-using Shared.Models;
+﻿using Shared.Models;
 using Shared.Extensions;
 using Shared.Configuration;
 using Microsoft.Extensions.Options;
 using FactCheckingService.Models;
 using FactCheckingService.Extensions;
+using GptHandler.GptClient;
 
 namespace FactCheckingService.Strategies.ClimateStrategy.TopicIdentification;
 

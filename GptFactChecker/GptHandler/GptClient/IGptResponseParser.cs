@@ -1,4 +1,4 @@
-﻿namespace Shared.GptClient;
+﻿namespace GptHandler.GptClient;
 
 public interface IGptResponseParser
 {

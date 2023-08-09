@@ -5,7 +5,7 @@ using FactExtractionService.Utils;
 using Microsoft.Extensions.Options;
 using Shared.Configuration;
 using Shared.Extensions;
-using Shared.GptClient;
+using GptHandler.GptClient;
 using Shared.Models;
 
 namespace FactExtractionService.FactExtractors.FunctionCallingStrategy;

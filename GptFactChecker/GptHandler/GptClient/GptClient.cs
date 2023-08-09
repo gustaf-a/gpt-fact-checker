@@ -5,7 +5,7 @@ using Shared.Models;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace Shared.GptClient;
+namespace GptHandler.GptClient;
 
 public class GptClient : IGptClient
 {

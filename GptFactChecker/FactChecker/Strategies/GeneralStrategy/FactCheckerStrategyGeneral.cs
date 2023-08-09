@@ -3,10 +3,10 @@ using FactCheckingService.Strategies.ClimateStrategy;
 using FactCheckingService.Strategies.GeneralStrategy.FactCheckPrompt;
 using FactCheckingService.Models;
 using Shared.Extensions;
-using Shared.GptClient;
 using Shared.Models;
 using Microsoft.Extensions.Options;
 using Shared.Configuration;
+using GptHandler.GptClient;
 
 namespace FactCheckingService.Strategies.GeneralStrategy;
 

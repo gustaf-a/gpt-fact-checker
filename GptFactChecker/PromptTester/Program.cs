@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using Moq;
 using Shared.Configuration;
-using Shared.GptClient;
+using GptHandler.GptClient;
 using Shared.Models;
 using Shared.Prompts;
 

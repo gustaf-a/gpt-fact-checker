@@ -1,7 +1,7 @@
 ﻿using JsonClient;
 using Shared.Models;
 
-namespace Shared.GptClient;
+namespace GptHandler.GptClient;
 
 public class GptResponseParser : IGptResponseParser
 {

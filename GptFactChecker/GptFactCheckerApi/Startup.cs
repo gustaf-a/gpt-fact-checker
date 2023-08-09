@@ -1,6 +1,5 @@
 ﻿using FactCheckingService;
 using FactCheckingService.Strategies;
-using FactCheckingService.Strategies.ClimateStrategy;
 using FactCheckingService.Strategies.ClimateStrategy.FactCheckWithData;
 using FactCheckingService.Strategies.ClimateStrategy.TopicIdentification;
 using FactCheckingService.Strategies.GeneralStrategy;
@@ -15,9 +14,9 @@ using FactExtractionService.FactExtractors.FunctionCallingStrategy;
 using FactExtractionService.FactExtractors.FunctionCallingStrategy.FactExtractionPrompt;
 using FactExtractionService.Utils;
 using GptFactCheckerApi.Services;
+using GptHandler.GptClient;
 using RepositoryJson;
 using Shared.Configuration;
-using Shared.GptClient;
 using Shared.Prompts;
 using Shared.Repository;
 using Shared.Services;

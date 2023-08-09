@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Shared.GptClient;
+﻿using GptHandler.GptClient;
+using Newtonsoft.Json;
 
-namespace SharedTests.GptClient;
+namespace GptHandlerTests.GptClient;
 
 public class GptResponseParserTests
 {
@@ -74,7 +74,7 @@ public class GptResponseParserTests
     public void ParseGptResponseFunctionCall_ShouldReturnDefaultWhenGptResponseStringIsInvalid()
     {
         var result = _gptResponseParser.ParseGptResponseFunctionCall<TestFunctionCallArgs>("bad test string", "caller");
-        
+
         Assert.Null(result);
     }
 
@@ -82,9 +82,9 @@ public class GptResponseParserTests
     public void ParseGptResponseFunctionCall_ShouldReturnDeserializedTypeWhenAllConditionsMet_FinishReasonIsStop()
     {
         var result = _gptResponseParser.ParseGptResponseFunctionCall<TestFunctionCallArgs>(TestResponse_FunctionCall_Stop, "caller");
-        
+
         Assert.NotNull(result);
-        
+
         //Assert.Equal("test-id", result.TestArguments.First().ClaimId);
     }
 
@@ -92,9 +92,9 @@ public class GptResponseParserTests
     public void ParseGptResponseFunctionCall_ShouldReturnDeserializedTypeWhenAllConditionsMet_FinishReasonIsFunctionCall()
     {
         var result = _gptResponseParser.ParseGptResponseFunctionCall<TestFunctionCallArgs>(TestResponse_FunctionCall_FunctionCall, "caller");
-        
+
         Assert.NotNull(result);
-        
+
         //Assert.Equal("test-id", result.TestArguments.First().ClaimId);
     }
 

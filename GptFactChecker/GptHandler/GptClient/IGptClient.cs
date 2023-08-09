@@ -1,6 +1,6 @@
 ﻿using Shared.Models;
 
-namespace Shared.GptClient;
+namespace GptHandler.GptClient;
 
 public interface IGptClient
 {

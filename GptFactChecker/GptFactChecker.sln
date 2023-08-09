@@ -26,8 +26,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "gpt-fact-checker-front", "g
 		SlnRelativePath = "gpt-fact-checker-front\"
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GptFactCheckerApiTests", "GptFactCheckerApiTests\GptFactCheckerApiTests.csproj", "{692DB627-1745-45F8-B807-281836535448}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactExtractionService", "DataExtractionService\FactExtractionService.csproj", "{CB3C298B-5D05-4427-871D-17C1C076F531}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{EE64359A-971D-4D83-AB66-3629B579D17E}"
@@ -58,7 +56,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceCollectingService.Aud
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceCollectingService.Audio.Tests", "SourceCollectingService.Audio.Tests\SourceCollectingService.Audio.Tests.csproj", "{9EF398B4-D761-43D9-9A56-7EDAD6C56289}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceCollectingServiceTests", "SourceCollectingServiceTests\SourceCollectingServiceTests.csproj", "{49F936B7-C520-4506-9D0A-136A17BB5D68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceCollectingServiceTests", "SourceCollectingServiceTests\SourceCollectingServiceTests.csproj", "{49F936B7-C520-4506-9D0A-136A17BB5D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GptHandler", "GptHandler\GptHandler.csproj", "{A1EE82D1-1E9D-4B88-A67C-CFA11C031890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GptHandlerTests", "GptHandlerTests\GptHandlerTests.csproj", "{6A41D968-D6CD-4378-A191-59A5924C8B59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,10 +76,6 @@ Global
 		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8C59B11-84B2-451B-B488-B00E546B06DC}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{692DB627-1745-45F8-B807-281836535448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{692DB627-1745-45F8-B807-281836535448}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{692DB627-1745-45F8-B807-281836535448}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{692DB627-1745-45F8-B807-281836535448}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB3C298B-5D05-4427-871D-17C1C076F531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB3C298B-5D05-4427-871D-17C1C076F531}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB3C298B-5D05-4427-871D-17C1C076F531}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -142,6 +140,14 @@ Global
 		{49F936B7-C520-4506-9D0A-136A17BB5D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49F936B7-C520-4506-9D0A-136A17BB5D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49F936B7-C520-4506-9D0A-136A17BB5D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EE82D1-1E9D-4B88-A67C-CFA11C031890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EE82D1-1E9D-4B88-A67C-CFA11C031890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EE82D1-1E9D-4B88-A67C-CFA11C031890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EE82D1-1E9D-4B88-A67C-CFA11C031890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A41D968-D6CD-4378-A191-59A5924C8B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A41D968-D6CD-4378-A191-59A5924C8B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A41D968-D6CD-4378-A191-59A5924C8B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A41D968-D6CD-4378-A191-59A5924C8B59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

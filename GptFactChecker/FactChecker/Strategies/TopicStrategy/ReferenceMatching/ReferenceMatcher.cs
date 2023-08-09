@@ -3,7 +3,7 @@ using FactCheckingService.Models;
 using Microsoft.Extensions.Options;
 using Shared.Configuration;
 using Shared.Extensions;
-using Shared.GptClient;
+using GptHandler.GptClient;
 using Shared.Models;
 
 namespace FactCheckingService.Strategies.TopicStrategy.ReferenceMatching;

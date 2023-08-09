@@ -1,7 +1,7 @@
 ﻿using FactCheckingService.Models;
 using FactCheckingService.Strategies.TopicStrategy.ReferenceMatching;
 using JsonClient;
-using Shared.GptClient;
+using GptHandler.GptClient;
 using Shared.Models;
 
 namespace FactCheckingService.Strategies.TopicStrategy.RefererenceFactChecking;
