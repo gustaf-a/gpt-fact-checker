@@ -56,6 +56,20 @@ public class ClaimController : ControllerBase
     }
 
     /// <summary>
+    /// Updates a claim
+    /// </summary>
+    [HttpPut]
+    public async Task<IActionResult> UpdateClaim([FromBody] ClaimDto claimDto)
+    {
+        var result = await _claimService.UpdateClaim(claimDto);
+
+        if (!result)
+            return NotFound();
+
+        return Ok();
+    }
+
+    /// <summary>
     /// Deletes a claim matching the provided claimId
     /// </summary>
     [HttpDelete("id")]

@@ -21,7 +21,7 @@ public class ClaimService : IClaimService
     {
         var claims = claimDtos.ToClaims();
 
-        if(!await _claimRepository.Create(claims))
+        if (!await _claimRepository.Create(claims))
             return false;
 
         await _sourcesClaimsRepository.AddClaimsForSource(sourceId, claims);
@@ -62,6 +62,13 @@ public class ClaimService : IClaimService
                 claimDto.ClaimChecks = await _claimCheckService.GetClaimChecks(claimDto.Id, true);
 
         return claimDtos;
+    }
+
+    public async Task<bool> UpdateClaim(ClaimDto claimDto)
+    {
+        var result = await _claimRepository.Update(claimDto.ToClaim());
+
+        return result;
     }
 
     public async Task<bool> DeleteClaims(List<string> claimIds)

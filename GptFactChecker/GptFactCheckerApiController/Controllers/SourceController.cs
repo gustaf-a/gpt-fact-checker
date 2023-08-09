@@ -59,7 +59,7 @@ public class SourceController : ControllerBase
     }
 
     /// <summary>
-    /// Creates a source
+    /// Updates a source
     /// </summary>
     [HttpPut]
     public async Task<IActionResult> UpdateSource([FromBody] SourceDto sourceDto)

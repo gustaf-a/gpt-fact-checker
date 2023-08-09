@@ -76,18 +76,29 @@ public static class Extensions
 
         foreach (ClaimDto claimDto in claimDtos)
         {
-            Fact claim = new()
-            {
-                Id = claimDto.Id,
-                ClaimSummarized = claimDto.ClaimSummarized,
-                ClaimRawText = claimDto.ClaimRawText,
-                Tags = claimDto.Tags
-            };
+            var claim = claimDto.ToClaim();
+
+            if(claim is null) 
+                continue;
 
             claims.Add(claim);
         }
 
         return claims;
+    }
+
+    public static Fact ToClaim(this ClaimDto claimDto)
+    {
+        if (claimDto is null)
+            return null;
+
+        return new()
+        {
+            Id = claimDto.Id,
+            ClaimSummarized = claimDto.ClaimSummarized,
+            ClaimRawText = claimDto.ClaimRawText,
+            Tags = claimDto.Tags
+        };
     }
 
     public static List<ClaimDto> ToDtos(this List<Fact> facts)
@@ -207,8 +218,8 @@ public static class Extensions
             DateCreated = factCheck.DateCreated.ToIsoString(),
             References = factCheck.References ?? new()
         };
-    }    
-    
+    }
+
     public static SourceCollectingResponseDto ToDto(this SourceCollectingResponse sourceCollectingResponse)
     {
         if (sourceCollectingResponse is null)
