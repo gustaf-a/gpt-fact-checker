@@ -20,9 +20,9 @@ public class ClaimCheckReactionController : ControllerBase
     /// Creates a source
     /// </summary>
     [HttpPost("claimcheck/id")]
-    public async Task<IActionResult> CreateClaimCheckReaction([FromQuery] string claimCheckId, [FromBody] ClaimCheckReaction claimCheckReaction)
+    public async Task<IActionResult> CreateClaimCheckReaction([FromQuery] string id, [FromBody] ClaimCheckReaction claimCheckReaction)
     {
-        var backendResponse = await _claimCheckReactionService.AddClaimCheckReaction(claimCheckReaction, claimCheckId);
+        var backendResponse = await _claimCheckReactionService.AddClaimCheckReaction(claimCheckReaction, id);
 
         if (!backendResponse.IsSuccess)
             return StatusCode(500, backendResponse);

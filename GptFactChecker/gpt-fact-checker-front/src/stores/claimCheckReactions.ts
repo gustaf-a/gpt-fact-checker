@@ -81,7 +81,7 @@ export const useClaimCheckReactionsStore = defineStore(
 				const backendResponse = await requestHandler<boolean>(
 					{
 						method: "post",
-						url: `${VITE_API_BASE_URL}/api/claimcheckreactions/claimcheck/id?claimCheckId=${claimCheck.id}`,
+						url: `${VITE_API_BASE_URL}/api/claimcheckreactions/claimcheck/id?id=${claimCheck.id}`,
 						data: claimCheckReaction,
 					},
 					ErrorMessages.CREATE_RESOURCE_ERROR

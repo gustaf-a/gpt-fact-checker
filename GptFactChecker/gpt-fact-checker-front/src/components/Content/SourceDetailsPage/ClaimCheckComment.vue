@@ -7,6 +7,10 @@ import { useClaimCheckReactionsStore } from "@/stores/claimCheckReactions";
 import { generateGuid } from "@/utils/guid";
 import { NotificationError, NotificationSuccess } from "@/utils/notifications";
 import { DeleteFilled } from "@ant-design/icons-vue";
+import { useUserStore } from "@/stores/users";
+
+const userStore = useUserStore();
+const { userHasRole, Roles } = userStore;
 
 interface Props {
 	claimCheck: ClaimCheck;
@@ -96,7 +100,7 @@ const removeClaim = () => {
 <template>
 	<a-comment>
 		<template #actions>
-			<span key="comment-basic-like">
+			<!-- <span key="comment-basic-like">
 				<a-tooltip title="Like">
 					<template
 						v-if="userHasLikedClaimCheck(claimCheck.claimCheckReactions)"
@@ -110,12 +114,14 @@ const removeClaim = () => {
 				<span style="padding-left: 8px; cursor: auto">
 					{{ claimCheckRating }}
 				</span>
-			</span>
+			</span> -->
 			<!-- <span key="comment-nested-reply-to">Reply to</span> -->
 			<span key="claimcheck-author"
 				><a>Written by {{ claimCheck.userId }}</a></span
 			>
-			<a @click="removeClaim"><DeleteFilled /></a>
+			<div v-if="userHasRole(Roles.ADDCLAIMCHECKREACTIONS)">
+				<a @click="removeClaim"><DeleteFilled /></a>
+			</div>
 		</template>
 		<!-- <template #avatar>
 			<a-avatar
