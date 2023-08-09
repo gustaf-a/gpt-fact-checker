@@ -44,7 +44,6 @@ const extractClaims = async () => {
 				<a-spin></a-spin>
 			</div>
 			<div v-else>
-				<hr />
 				<div v-for="msg in errorMessages">
 					<p class="error-message-text">{{ msg }}</p>
 				</div>

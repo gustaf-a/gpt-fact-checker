@@ -86,6 +86,24 @@ async function removeClaim(claimId: string) {
 	}
 }
 
+async function updateClaim(claim: Claim) {
+	if(claim == null) return;
+	
+	try {
+		const result = await claimsStore.updateClaimAsync(claim);
+		if (!result) {
+			console.log("Failed to delete claims from store.");
+			return;
+		}
+
+		await fetchClaims();
+	} catch (error) {
+		console.error(error);
+	} finally {
+		loadingClaims.value = false;
+	}
+}
+
 async function addClaimCheckResults(claimCheckResults: ClaimCheckResult[]) {
 	try {
 		if(claimCheckResults == undefined || claimCheckResults.length == 0)
@@ -141,6 +159,7 @@ async function addClaimCheckResults(claimCheckResults: ClaimCheckResult[]) {
 			<ClaimCard
 				:claim="claim"
 				@removeClaim="removeClaim"
+				@update-claim="updateClaim"
 			/>
 		</div>
 	</div>

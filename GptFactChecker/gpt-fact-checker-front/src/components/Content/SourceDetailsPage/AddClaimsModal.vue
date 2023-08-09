@@ -124,7 +124,7 @@ const handleOk = () => {
 						@claims="receiveClaims" />
 					</div>
 				</a-tab-pane>
-				<a-tab-pane
+				<!-- <a-tab-pane
 					key="3"
 					tab="Add JSON Object"
 					force-render
@@ -132,7 +132,7 @@ const handleOk = () => {
 					<div>
 						<AddClaimsFromJson @claims="receiveClaims" />
 					</div>
-				</a-tab-pane>
+				</a-tab-pane> -->
 			</a-tabs>
 
 			<div class="claims-to-be-added-list">

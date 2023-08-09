@@ -2,35 +2,33 @@
 import ClaimObject from "@/model/Claim";
 import ClaimCheckList from "./ClaimCheckList.vue";
 import { DeleteFilled } from "@ant-design/icons-vue";
+import EditClaimModal from "./EditClaimModal.vue";
+import { useUserStore } from "@/stores/users";
+
+const userStore = useUserStore();
+const { userHasRole, Roles } = userStore;
 
 interface Props {
 	claim: ClaimObject;
 }
 
-const emits = defineEmits(["removeClaim"]);
+const emits = defineEmits(["removeClaim", "updateClaim"]);
 
 const { claim } = defineProps<Props>();
 
-//TODO base on claimcheck verdict?
 //TODO add tags
-const cardColor = () => {
-	if (!claim.claimChecks) return "gray";
 
-	switch (claim.claimChecks[0].label) {
-		case "Correct":
-			return "green";
-		case "Incorrect":
-			return "red";
-		case "Not checked":
-		default:
-			return "gray";
-	}
-};
+//make smaller
+
+//
 
 const removeClaim = () => {
 	emits("removeClaim", claim.id);
-}
+};
 
+const updateClaim = (claimToUpdate: ClaimObject) => {
+	emits("updateClaim", claimToUpdate);
+};
 </script>
 
 <template>
@@ -42,10 +40,25 @@ const removeClaim = () => {
 			>
 				<a-row class="claim-content">
 					<h3 class="claim-summary">{{ claim.claimSummarized }}</h3>
+				</a-row>
+				<a-row class="claim-content">
 					<p class="claim-raw-text">"{{ claim.claimRawText }}"</p>
 				</a-row>
 				<a-row class="row-claim-management">
-					<a @click="removeClaim"><DeleteFilled /></a>
+					<div v-if="userHasRole(Roles.EDITCLAIMS)">
+						<EditClaimModal
+							:claim-input="claim"
+							class="claim-management-button"
+							@claim-to-update="updateClaim"
+						/>
+					</div>
+					<div v-if="userHasRole(Roles.DELETECLAIMS)">
+						<a
+							class="claim-management-button"
+							@click="removeClaim"
+							><DeleteFilled
+						/></a>
+					</div>
 				</a-row>
 			</a-col>
 			<a-col
@@ -61,7 +74,7 @@ const removeClaim = () => {
 <style scoped>
 .claim-card {
 	width: 90vw;
-	min-height: 25vh;
+	min-height: 5vh;
 	box-shadow: 0 2px 8px #f0f0f0;
 }
 
@@ -79,14 +92,17 @@ const removeClaim = () => {
 	border-right: 1px solid #f0f0f0;
 }
 
+.claim-content {
+}
+
 .claim-summary {
-	margin: 0 1vw;
-	font-size: 1em;
+	margin: 0 0.5vw;
+	font-size: 1.4em;
 }
 
 .claim-raw-text {
-	margin: 1vw 1vw 0 1vw;
-	font-size: 0.9em;
+	margin: 0.2vw 0.5vw 0 0.5vw;
+	font-size: 1em;
 	color: rgba(0, 0, 0, 0.9);
 	font-weight: 200;
 	font-style: italic;
@@ -102,9 +118,13 @@ const removeClaim = () => {
 	justify-content: start;
 }
 
-.row-claim-management{
+.row-claim-management {
 	display: flex;
 	justify-content: end;
 	margin-right: 2vw;
+}
+
+.claim-management-button {
+	margin-right: 1.5vw;
 }
 </style>
