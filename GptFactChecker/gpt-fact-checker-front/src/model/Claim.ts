@@ -1,13 +1,14 @@
 import type ClaimCheck from "./ClaimCheck";
 
 class Claim {
-	public id?: string;
+	public id: string;
 	public claimSummarized: string;
 	public claimRawText: string;
 	public tags: string[];
 	public claimChecks?: ClaimCheck[];
 
 	constructor() {
+		this.id = "";
 		this.claimSummarized = "";
 		this.claimRawText = "";
 		this.tags = [];

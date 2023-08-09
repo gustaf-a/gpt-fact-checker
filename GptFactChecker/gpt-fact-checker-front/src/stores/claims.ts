@@ -15,8 +15,6 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 	const errorMessage = ref("");
 	const loadingClaims = ref(false);
 
-	//TODO add local claims?
-
 	async function getClaimsAsync(sourceId: string): Promise<Claim[]> {
 		loadingClaims.value = true;
 
@@ -121,12 +119,44 @@ export const useClaimsStore = defineStore(Keys.CLAIMS, () => {
 		}
 	}
 
+	async function updateClaimAsync(claim: Claim): Promise<boolean> {
+		if (!userHasRole(Roles.EDITCLAIMS)) return false;
+		
+		if (!claim) {
+			console.log("Can't updatede null claim.");
+			return false;
+		}
+
+		try {
+			loadingClaims.value = true;
+
+			const response = await axios.put(`${VITE_API_BASE_URL}/api/claims`, claim);
+
+			if (response.status !== 200) {
+				errorMessage.value = ErrorMessages.UPDATE_RESOURCE_ERROR;
+				console.log(ErrorMessages.UPDATE_RESOURCE_ERROR, claim);
+				return false;
+			}
+
+			return true;
+		} catch (error) {
+			errorMessage.value = `${ErrorMessages.UPDATE_RESOURCE_ERROR}: ${
+				error instanceof Error ? error.message : String(error)
+			}`;
+			console.log(error, claim);
+			return false;
+		} finally {
+			loadingClaims.value = false;
+		}
+	}
+
 	return {
 		errorMessage,
 		loadingClaims,
 		getClaimsAsync,
 		getAllClaimsAsync,
 		addClaimsAsync,
-		deleteClaimsAsync
+		deleteClaimsAsync,
+		updateClaimAsync
 	};
 });
