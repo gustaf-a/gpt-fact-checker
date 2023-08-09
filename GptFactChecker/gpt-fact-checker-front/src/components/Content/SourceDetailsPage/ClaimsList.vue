@@ -7,13 +7,13 @@ import ClaimCheckResult from "@/model/ClaimCheckResult";
 import ClaimCard from "./ClaimCard.vue";
 import AddClaimsModal from "./AddClaimsModal.vue";
 import AddClaimChecksModal from "./AddClaimChecksModal.vue";
-import { useUserStore } from "@/stores/users";
 import { useClaimsStore } from "@/stores/claims";
 import { useClaimCheckStore } from "@/stores/claimChecks";
+import { useUserStore } from "@/stores/users";
 
 const userStore = useUserStore();
-const { user } = storeToRefs(userStore);
 const { userHasRole, Roles } = userStore;
+const { user } = storeToRefs(userStore);
 
 interface Props {
 	source: SourceObject;

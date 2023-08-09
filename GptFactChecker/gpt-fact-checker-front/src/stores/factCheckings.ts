@@ -64,10 +64,30 @@ export const useFactChecksStore = defineStore(
 			return claimCheckResults;
 		}
 
+		async function factCheckClaimAsync(
+			claimId: string
+		): Promise<ClaimCheckResult | null> {
+			errorMessages.value = [];
+
+			const claimCheckResults = await factCheckClaimsAsync([claimId])
+
+			if(!claimCheckResults || claimCheckResults.length == 0)
+				return null;
+
+			if(claimCheckResults.length > 1){
+				errorMessages.value.push(
+					`Expected one ClaimCheckResult, but received more: ${claimCheckResults}`
+				);
+			}
+
+			return claimCheckResults[0];
+		}
+
 		return {
 			errorMessages,
 			loading,
 			factCheckClaimsAsync,
+			factCheckClaimAsync
 		};
 	}
 );

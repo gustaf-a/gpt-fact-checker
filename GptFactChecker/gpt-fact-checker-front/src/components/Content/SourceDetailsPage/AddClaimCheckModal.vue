@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
+import { storeToRefs } from "pinia";
 import { PlusOutlined } from "@ant-design/icons-vue";
 import type { Rule } from "ant-design-vue/es/form";
 import type { FormInstance } from "ant-design-vue";
@@ -7,6 +8,14 @@ import Claim from "@/model/Claim";
 import ClaimCheck from "@/model/ClaimCheck";
 import { generateGuid } from "@/utils/guid";
 import { claimCheckVerdicts } from "@/model/ClaimCheckVerdicts";
+import { useFactChecksStore } from "@/stores/factCheckings";
+import { useUserStore } from "@/stores/users";
+
+const userStore = useUserStore();
+const { userHasRole, Roles } = userStore;
+
+const factCheckStore = useFactChecksStore();
+const { errorMessages, loading } = storeToRefs(factCheckStore);
 
 const emits = defineEmits(["addClaimCheck"]);
 
@@ -29,12 +38,23 @@ const formRef = ref<FormInstance>();
 const rules: Record<string, Rule[]> = {
 	claimCheckText: [
 		{ required: true, message: "Text for fact check is required." },
-		{ min: 20, message: 'Text for fact check should be at least 20 characters long.' },
-		{ max: 1000, message: 'Text for fact check should not exceed 1000 characters.' },
+		{
+			min: 20,
+			message: "Text for fact check should be at least 20 characters long.",
+		},
+		{
+			max: 1000,
+			message: "Text for fact check should not exceed 1000 characters.",
+		},
 	],
 	verdict: [
 		{ required: true, message: "Verdict is required." },
-		{ validator: (rule, value) => value !== "Select Verdict" ? Promise.resolve() : Promise.reject('Please change the verdict from default value.') },
+		{
+			validator: (rule, value) =>
+				value !== "Select Verdict"
+					? Promise.resolve()
+					: Promise.reject("Please change the verdict from default value."),
+		},
 	],
 };
 
@@ -96,6 +116,28 @@ function createClaimCheckObject(formState: FormState): ClaimCheck | null {
 		return null;
 	}
 }
+
+// --- AI creation
+
+async function createAiFactCheckForClaim() {
+	//if already creating, then nothing.
+	if (!claim || !claim.id) return;
+
+	if (loading.value) return;
+
+	const claimCheckResult = await factCheckStore.factCheckClaimAsync(claim.id);
+
+	if (!claimCheckResult) {
+		errorMessages.value.push("Failed to fact check claim.");
+		return;
+	}
+
+	emits("addClaimCheck", claimCheckResult.claimCheck);
+
+	resetValues();
+
+	visible.value = false;
+}
 </script>
 
 <template>
@@ -119,6 +161,7 @@ function createClaimCheckObject(formState: FormState): ClaimCheck | null {
 				<p class="claim-summary">Claim: {{ claim.claimSummarized }}</p>
 				<p class="claim-raw">"{{ claim.claimRawText }}"</p>
 			</div>
+
 			<div class="claim-chech-input">
 				<a-form
 					:model="formState"
@@ -128,6 +171,13 @@ function createClaimCheckObject(formState: FormState): ClaimCheck | null {
 					@finish="submitForm"
 					@finishFailed="onValidationFailed"
 				>
+					<div v-if="loading">
+						<a-spin></a-spin>
+					</div>
+					<div
+						class="manual-input"
+						v-else
+					>
 					<a-row>
 						<a-col :span="24">
 							<a-form-item
@@ -164,11 +214,13 @@ function createClaimCheckObject(formState: FormState): ClaimCheck | null {
 							</a-form-item>
 						</a-col>
 					</a-row>
+				</div>
 					<a-row>
 						<a-col :span="24">
 							<div class="form-buttons">
 								<a-form-item>
 									<a-button
+										:disabled="loading"
 										class="form-button"
 										@click="resetValues"
 										>Clear</a-button
@@ -176,11 +228,31 @@ function createClaimCheckObject(formState: FormState): ClaimCheck | null {
 								</a-form-item>
 								<a-form-item>
 									<a-button
+										:disabled="loading"
 										type="primary"
 										html-type="submit"
 										>Submit</a-button
 									>
 								</a-form-item>
+							</div>
+						</a-col>
+					</a-row>
+					<a-row>
+						<a-col :span="24">
+							<div
+								class="button-row"
+								v-if="userHasRole(Roles.ADDCLAIMCHECKSWITHAI)"
+							>
+								<h3>or create with AI</h3>
+								<a-button
+									shape="circle"
+									@click="createAiFactCheckForClaim"
+								>
+									<template #icon><PlusOutlined /></template>
+								</a-button>
+							</div>
+							<div v-for="msg in errorMessages">
+								<p class="error-message-text">{{ msg }}</p>
 							</div>
 						</a-col>
 					</a-row>
@@ -202,6 +274,12 @@ function createClaimCheckObject(formState: FormState): ClaimCheck | null {
 
 .claim-raw {
 	font-style: italic;
+}
+
+.button-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .form-buttons {
