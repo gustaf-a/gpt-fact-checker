@@ -1,7 +1,7 @@
 ﻿using FactCheckingService.Strategies.ClimateStrategy.FactCheckWithData;
 using FactCheckingService.Models;
 using Moq;
-using Shared.GptClient;
+using GptHandler.GptClient;
 using Shared.Models;
 
 namespace FactCheckingServiceTests.FactCheckers.ClimateStrategy.FactCheckWithData;

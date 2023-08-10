@@ -1,5 +1,5 @@
-﻿using JsonClient;
-using Shared.Models;
+﻿using GptHandler.Models;
+using JsonClient;
 
 namespace GptHandler.GptClient;
 

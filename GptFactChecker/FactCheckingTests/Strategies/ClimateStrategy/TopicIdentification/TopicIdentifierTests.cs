@@ -3,7 +3,7 @@ using FactCheckingService.Models;
 using Microsoft.Extensions.Options;
 using Moq;
 using Shared.Configuration;
-using Shared.GptClient;
+using GptHandler.GptClient;
 using Shared.Models;
 
 namespace FactCheckingServiceTests.FactCheckers.ClimateStrategy.TopicIdentification;

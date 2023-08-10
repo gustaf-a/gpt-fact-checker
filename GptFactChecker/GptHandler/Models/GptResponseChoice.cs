@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Shared.Models;
+namespace GptHandler.Models;
 
 public class GptResponseChoice
 {

@@ -5,6 +5,7 @@ using Shared.Configuration;
 using GptHandler.GptClient;
 using Shared.Models;
 using Shared.Prompts;
+using GptHandler.Models;
 
 namespace PromptTester;
 

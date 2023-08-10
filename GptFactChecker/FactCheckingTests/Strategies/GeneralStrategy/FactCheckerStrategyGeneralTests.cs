@@ -1,11 +1,12 @@
 ﻿using FactCheckingService.Strategies.GeneralStrategy.FactCheckPrompt;
 using FactCheckingService.Strategies.GeneralStrategy;
 using Moq;
-using Shared.GptClient;
-using Shared.Models;
+using GptHandler.GptClient;
+using GptHandler.Models;
 using FactCheckingService.Models;
 using Shared.Configuration;
 using Microsoft.Extensions.Options;
+using Shared.Models;
 
 namespace FactCheckingServiceTests.FactCheckers.GeneralStrategy;
 
